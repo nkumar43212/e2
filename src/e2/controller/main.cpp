@@ -7,9 +7,29 @@
 //
 
 #include <iostream>
+#include "Logger.hpp"
+#include "CmdOptions.hpp"
+#include "Config.hpp"
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+int main(int argc, const char * argv[])
+{
+    // Get all command line options
+    CmdOptions *opts;
+    opts = Config::createConfig(argc, argv);
+    if (!opts) {
+        std::cout << "Exiting: Failed to initialize configuration\n";
+        exit(0);
+    }
+    
+    // Start a logger
+    Logger *logger = new Logger(opts->getLogFile());
+    if (!logger) {
+        std::cout << "Exiting: Failed to initialize logging subsystem\n";
+        exit(0);
+    }
+    logger->enable();
+    logger->log("hello");
+    
+    // Start the controller server
     return 0;
 }
