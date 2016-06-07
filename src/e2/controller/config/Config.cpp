@@ -57,12 +57,19 @@ Config::parseConfig(const char *config_filename,
         return false;
     }
     
-    // See if the log file name is given
-    std::string path  = reader.Get(INI_SECTION_LOGGING, "log_file_path", "");
-    std::string fname = reader.Get(INI_SECTION_LOGGING, "log_file_name", "");
-    if (path != "") {
+    // See if the log file name is given. If the log file already present in command line, then don't
+    // override
+    if (opts->getLogFile() != std::string("")) {
+        std::string path  = reader.Get(INI_SECTION_LOGGING, "log_file_path", Config::getDefaultLogPath());
+        std::string fname = reader.Get(INI_SECTION_LOGGING, "log_file_name", Config::getDefaultLogFileName());
         opts->setFileName(path + "/" + fname);
     }
     
+    // Server Connectivity options
+    std::string ip_addr = reader.Get(INI_SECTION_CONN, "server_ip", Config::getDefaultIpAddress());
+    opts->setServerIpAddress(ip_addr);
+    u_int16_t   port    = reader.GetInteger(INI_SECTION_CONN, "server_port", Config::getDefaultPort());
+    opts->setServerPort(port);
+
     return true;
 }

@@ -13,7 +13,12 @@
 #include <string>
 
 class CmdOptions {
+    // Where logs should go
     char *_logfile;
+    
+    // Server connectivity options
+    std::string _server_ip;
+    u_int16_t   _server_port;
     
     bool _file_mode;
     char *_system_file_name;
@@ -34,7 +39,10 @@ public:
     ~CmdOptions() {
     }
     
-    char *getLogFile(void)          { return _logfile; }
+    char *      getLogFile(void)                { return _logfile;             }
+    const char *getServerIpAddress(void)        { return _server_ip.c_str();   }
+    uint16_t    getServerPort(void)             { return _server_port;         }
+    
     char *getSystemFileName(void)   { return _system_file_name; }
     bool isSystemModeNull(void)     { return _null_mode; }
     bool isSystemModeProc(void)     { return _proc_mode; }
@@ -44,6 +52,8 @@ public:
     void setLogFile(std::string logfile);
     void setFileMode(bool mode);
     void setFileName(std::string file);
+    void setServerPort(u_int16_t port)                 { _server_port = port; }
+    void setServerIpAddress(const std::string address) { _server_ip   = address; }
     void setNullMode(bool mode);
     void setProcMode(bool mode);
     void setINIConfigFile(std::string ini_config_file);

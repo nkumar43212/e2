@@ -66,6 +66,10 @@
             argument = "-l /Users/nitin/e2c/logs/e2.log"
             isEnabled = "YES">
          </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-c /Users/nitin/e2c/e2/config/e2.ini"
+            isEnabled = "YES">
+         </CommandLineArgument>
       </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>

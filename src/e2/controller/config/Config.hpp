@@ -13,6 +13,7 @@
 #include "CmdOptions.hpp"
 
 #define INI_SECTION_LOGGING    "logging"
+#define INI_SECTION_CONN       "connection"
 
 class Config {
 
@@ -26,6 +27,12 @@ public:
     
     static CmdOptions *createConfig(int argc, const char *argv[]);
     static bool        parseConfig(const char *config_filename, CmdOptions *opts);
+    
+    // Default values
+    static std::string getDefaultLogPath ()          { return "";        }
+    static std::string getDefaultLogFileName ()      { return "e2.log";  }
+    static u_int16_t   getDefaultPort ()             { return 50051;     }
+    static std::string getDefaultIpAddress ()        { return "0.0.0.0"; }
     
     // Configuration options
     char * getLogFileName ()

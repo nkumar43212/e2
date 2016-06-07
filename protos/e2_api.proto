@@ -1,0 +1,66 @@
+//
+// Copyrights (c) 2016, Juniper Networks, Inc.
+// All rights reserved.
+//
+
+//
+// Licensed to the Apache Software Foundation (ASF) under one
+// or more contributor license agreements.  See the NOTICE file
+// distributed with this work for additional information
+// regarding copyright ownership.  The ASF licenses this file
+// to you under the Apache License, Version 2.0 (the
+// "License"); you may not use this file except in compliance
+// with the License.  You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing,
+// software distributed under the License is distributed on an
+// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations
+// under the License.
+//
+
+//
+// Nitin Kumar          06/06/2016
+//
+// This file defines the E2 Controller's public interface
+//
+//
+// Version 1.0
+//
+
+syntax = "proto3";
+
+package E2;
+
+// Interface exported by Agent
+service E2 {
+    // Add a network element
+    rpc addElement(ConfigurationRequest)                     returns (ConfigurationReply) {}
+}
+
+// Message sent for a configuration request
+message ConfigurationRequest {
+    // Name of the device
+    string name    = 1;
+
+    // Management IP address of the device
+    string mgmt_ip = 2;
+}
+
+// Response from the controller
+message ConfigurationReply {
+    // Return code
+    ReturnCode code                                         = 1;
+
+    // Return code string
+    string     code_str                                     = 2;
+};
+
+// Result of the operation
+enum ReturnCode {
+    SUCCESS                                                 = 0;
+    UNKNOWN_ERROR                                           = 1;
+}

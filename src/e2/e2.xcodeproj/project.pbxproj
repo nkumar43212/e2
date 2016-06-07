@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		94EC47201D05C52300E34A5B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94EC471F1D05C52300E34A5B /* main.cpp */; };
 		94EC47271D05D15400E34A5B /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94EC47251D05D15400E34A5B /* Config.cpp */; };
-		94EC472B1D0616D800E34A5B /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94EC47291D0616D800E34A5B /* Logger.cpp */; };
 		94EC472E1D0618B500E34A5B /* CmdOptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94EC472C1D0618B500E34A5B /* CmdOptions.cpp */; };
+		94F0019A1D06A86B00EDC9F7 /* E2Server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94F001981D06A86B00EDC9F7 /* E2Server.cpp */; };
+		94F0019F1D0788F000EDC9F7 /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94F0019E1D0788F000EDC9F7 /* Logger.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,10 +41,13 @@
 		94EC471F1D05C52300E34A5B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		94EC47251D05D15400E34A5B /* Config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Config.cpp; sourceTree = "<group>"; };
 		94EC47261D05D15400E34A5B /* Config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
-		94EC47291D0616D800E34A5B /* Logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Logger.cpp; sourceTree = "<group>"; };
-		94EC472A1D0616D800E34A5B /* Logger.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Logger.hpp; sourceTree = "<group>"; };
 		94EC472C1D0618B500E34A5B /* CmdOptions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CmdOptions.cpp; sourceTree = "<group>"; };
 		94EC472D1D0618B500E34A5B /* CmdOptions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CmdOptions.hpp; sourceTree = "<group>"; };
+		94F001981D06A86B00EDC9F7 /* E2Server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = E2Server.cpp; sourceTree = "<group>"; };
+		94F001991D06A86B00EDC9F7 /* E2Server.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = E2Server.hpp; sourceTree = "<group>"; };
+		94F0019B1D074D3600EDC9F7 /* E2ServerProtos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = E2ServerProtos.h; sourceTree = "<group>"; };
+		94F0019D1D0788F000EDC9F7 /* Logger.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Logger.hpp; sourceTree = "<group>"; };
+		94F0019E1D0788F000EDC9F7 /* Logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Logger.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,9 +89,9 @@
 			isa = PBXGroup;
 			children = (
 				94EC471F1D05C52300E34A5B /* main.cpp */,
+				94F0019C1D0788BC00EDC9F7 /* utils */,
+				94F001971D06A85000EDC9F7 /* server */,
 				94EC47241D05D13A00E34A5B /* config */,
-				94EC47291D0616D800E34A5B /* Logger.cpp */,
-				94EC472A1D0616D800E34A5B /* Logger.hpp */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -101,6 +105,25 @@
 				94EC472D1D0618B500E34A5B /* CmdOptions.hpp */,
 			);
 			path = config;
+			sourceTree = "<group>";
+		};
+		94F001971D06A85000EDC9F7 /* server */ = {
+			isa = PBXGroup;
+			children = (
+				94F001981D06A86B00EDC9F7 /* E2Server.cpp */,
+				94F001991D06A86B00EDC9F7 /* E2Server.hpp */,
+				94F0019B1D074D3600EDC9F7 /* E2ServerProtos.h */,
+			);
+			path = server;
+			sourceTree = "<group>";
+		};
+		94F0019C1D0788BC00EDC9F7 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				94F0019D1D0788F000EDC9F7 /* Logger.hpp */,
+				94F0019E1D0788F000EDC9F7 /* Logger.cpp */,
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,7 +211,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				94EC47201D05C52300E34A5B /* main.cpp in Sources */,
-				94EC472B1D0616D800E34A5B /* Logger.cpp in Sources */,
+				94F0019F1D0788F000EDC9F7 /* Logger.cpp in Sources */,
+				94F0019A1D06A86B00EDC9F7 /* E2Server.cpp in Sources */,
 				94EC47271D05D15400E34A5B /* Config.cpp in Sources */,
 				94EC472E1D0618B500E34A5B /* CmdOptions.cpp in Sources */,
 			);
@@ -293,10 +317,24 @@
 		94EC47221D05C52300E34A5B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"HEADER_SEARCH_PATHS[arch=*]" = /Users/nitin/e2c/e2/src/e2/lib/h;
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					/Users/nitin/e2c/e2/src/e2/lib/h,
+					/usr/local/include,
+				);
+				"LIBRARY_SEARCH_PATHS[arch=*]" = (
+					/usr/local/lib,
+					/Users/nitin/e2c/e2/src/e2/lib,
+				);
 				"OTHER_LDFLAGS[arch=*]" = (
-					"-L/Users/nitin/e2c/e2/src/e2/lib/",
 					"-linih",
+					"-lprotos",
+					"-le2_api",
+					"-lpthread",
+					"-ldl",
+					"-lgrpc++_unsecure",
+					"-lgrpc",
+					"-lgpr",
+					"-lprotobuf",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
