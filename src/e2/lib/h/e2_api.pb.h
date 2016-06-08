@@ -39,16 +39,24 @@ void protobuf_ShutdownFile_e2_5fapi_2eproto();
 
 class ConfigurationReply;
 class ConfigurationRequest;
+class NetworkElement;
+class NetworkElementList;
+class NetworkElementOpState;
+class NetworkElementOpStateList;
+class NetworkElementProperty;
 
 enum ReturnCode {
   SUCCESS = 0,
   UNKNOWN_ERROR = 1,
+  ACTIVATE_ERROR = 2,
+  MEMORY_ERROR = 3,
+  ELEMENT_NOT_FOUND_ERROR = 4,
   ReturnCode_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   ReturnCode_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool ReturnCode_IsValid(int value);
 const ReturnCode ReturnCode_MIN = SUCCESS;
-const ReturnCode ReturnCode_MAX = UNKNOWN_ERROR;
+const ReturnCode ReturnCode_MAX = ELEMENT_NOT_FOUND_ERROR;
 const int ReturnCode_ARRAYSIZE = ReturnCode_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* ReturnCode_descriptor();
@@ -62,6 +70,554 @@ inline bool ReturnCode_Parse(
     ReturnCode_descriptor(), name, value);
 }
 // ===================================================================
+
+class NetworkElement : public ::google::protobuf::Message {
+ public:
+  NetworkElement();
+  virtual ~NetworkElement();
+
+  NetworkElement(const NetworkElement& from);
+
+  inline NetworkElement& operator=(const NetworkElement& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const NetworkElement& default_instance();
+
+  void Swap(NetworkElement* other);
+
+  // implements Message ----------------------------------------------
+
+  inline NetworkElement* New() const { return New(NULL); }
+
+  NetworkElement* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const NetworkElement& from);
+  void MergeFrom(const NetworkElement& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(NetworkElement* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string name = 1;
+  void clear_name();
+  static const int kNameFieldNumber = 1;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
+
+  // optional string mgmt_ip = 2;
+  void clear_mgmt_ip();
+  static const int kMgmtIpFieldNumber = 2;
+  const ::std::string& mgmt_ip() const;
+  void set_mgmt_ip(const ::std::string& value);
+  void set_mgmt_ip(const char* value);
+  void set_mgmt_ip(const char* value, size_t size);
+  ::std::string* mutable_mgmt_ip();
+  ::std::string* release_mgmt_ip();
+  void set_allocated_mgmt_ip(::std::string* mgmt_ip);
+
+  // @@protoc_insertion_point(class_scope:E2.NetworkElement)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
+  ::google::protobuf::internal::ArenaStringPtr mgmt_ip_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_e2_5fapi_2eproto();
+  friend void protobuf_AssignDesc_e2_5fapi_2eproto();
+  friend void protobuf_ShutdownFile_e2_5fapi_2eproto();
+
+  void InitAsDefaultInstance();
+  static NetworkElement* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class NetworkElementList : public ::google::protobuf::Message {
+ public:
+  NetworkElementList();
+  virtual ~NetworkElementList();
+
+  NetworkElementList(const NetworkElementList& from);
+
+  inline NetworkElementList& operator=(const NetworkElementList& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const NetworkElementList& default_instance();
+
+  void Swap(NetworkElementList* other);
+
+  // implements Message ----------------------------------------------
+
+  inline NetworkElementList* New() const { return New(NULL); }
+
+  NetworkElementList* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const NetworkElementList& from);
+  void MergeFrom(const NetworkElementList& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(NetworkElementList* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .E2.NetworkElement list = 1;
+  int list_size() const;
+  void clear_list();
+  static const int kListFieldNumber = 1;
+  const ::E2::NetworkElement& list(int index) const;
+  ::E2::NetworkElement* mutable_list(int index);
+  ::E2::NetworkElement* add_list();
+  ::google::protobuf::RepeatedPtrField< ::E2::NetworkElement >*
+      mutable_list();
+  const ::google::protobuf::RepeatedPtrField< ::E2::NetworkElement >&
+      list() const;
+
+  // @@protoc_insertion_point(class_scope:E2.NetworkElementList)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::google::protobuf::RepeatedPtrField< ::E2::NetworkElement > list_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_e2_5fapi_2eproto();
+  friend void protobuf_AssignDesc_e2_5fapi_2eproto();
+  friend void protobuf_ShutdownFile_e2_5fapi_2eproto();
+
+  void InitAsDefaultInstance();
+  static NetworkElementList* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class NetworkElementOpState : public ::google::protobuf::Message {
+ public:
+  NetworkElementOpState();
+  virtual ~NetworkElementOpState();
+
+  NetworkElementOpState(const NetworkElementOpState& from);
+
+  inline NetworkElementOpState& operator=(const NetworkElementOpState& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const NetworkElementOpState& default_instance();
+
+  void Swap(NetworkElementOpState* other);
+
+  // implements Message ----------------------------------------------
+
+  inline NetworkElementOpState* New() const { return New(NULL); }
+
+  NetworkElementOpState* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const NetworkElementOpState& from);
+  void MergeFrom(const NetworkElementOpState& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(NetworkElementOpState* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .E2.NetworkElement element = 1;
+  bool has_element() const;
+  void clear_element();
+  static const int kElementFieldNumber = 1;
+  const ::E2::NetworkElement& element() const;
+  ::E2::NetworkElement* mutable_element();
+  ::E2::NetworkElement* release_element();
+  void set_allocated_element(::E2::NetworkElement* element);
+
+  // repeated .E2.NetworkElementProperty properties = 2;
+  int properties_size() const;
+  void clear_properties();
+  static const int kPropertiesFieldNumber = 2;
+  const ::E2::NetworkElementProperty& properties(int index) const;
+  ::E2::NetworkElementProperty* mutable_properties(int index);
+  ::E2::NetworkElementProperty* add_properties();
+  ::google::protobuf::RepeatedPtrField< ::E2::NetworkElementProperty >*
+      mutable_properties();
+  const ::google::protobuf::RepeatedPtrField< ::E2::NetworkElementProperty >&
+      properties() const;
+
+  // @@protoc_insertion_point(class_scope:E2.NetworkElementOpState)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::E2::NetworkElement* element_;
+  ::google::protobuf::RepeatedPtrField< ::E2::NetworkElementProperty > properties_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_e2_5fapi_2eproto();
+  friend void protobuf_AssignDesc_e2_5fapi_2eproto();
+  friend void protobuf_ShutdownFile_e2_5fapi_2eproto();
+
+  void InitAsDefaultInstance();
+  static NetworkElementOpState* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class NetworkElementProperty : public ::google::protobuf::Message {
+ public:
+  NetworkElementProperty();
+  virtual ~NetworkElementProperty();
+
+  NetworkElementProperty(const NetworkElementProperty& from);
+
+  inline NetworkElementProperty& operator=(const NetworkElementProperty& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const NetworkElementProperty& default_instance();
+
+  enum ValueCase {
+    kDoubleValue = 2,
+    kIntValue = 3,
+    kUintValue = 4,
+    kSintValue = 5,
+    kBoolValue = 6,
+    kStrValue = 7,
+    kBytesValue = 8,
+    VALUE_NOT_SET = 0,
+  };
+
+  void Swap(NetworkElementProperty* other);
+
+  // implements Message ----------------------------------------------
+
+  inline NetworkElementProperty* New() const { return New(NULL); }
+
+  NetworkElementProperty* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const NetworkElementProperty& from);
+  void MergeFrom(const NetworkElementProperty& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(NetworkElementProperty* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string name = 1;
+  void clear_name();
+  static const int kNameFieldNumber = 1;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
+
+  // optional double double_value = 2;
+  private:
+  bool has_double_value() const;
+  public:
+  void clear_double_value();
+  static const int kDoubleValueFieldNumber = 2;
+  double double_value() const;
+  void set_double_value(double value);
+
+  // optional int64 int_value = 3;
+  private:
+  bool has_int_value() const;
+  public:
+  void clear_int_value();
+  static const int kIntValueFieldNumber = 3;
+  ::google::protobuf::int64 int_value() const;
+  void set_int_value(::google::protobuf::int64 value);
+
+  // optional uint64 uint_value = 4;
+  private:
+  bool has_uint_value() const;
+  public:
+  void clear_uint_value();
+  static const int kUintValueFieldNumber = 4;
+  ::google::protobuf::uint64 uint_value() const;
+  void set_uint_value(::google::protobuf::uint64 value);
+
+  // optional sint64 sint_value = 5;
+  private:
+  bool has_sint_value() const;
+  public:
+  void clear_sint_value();
+  static const int kSintValueFieldNumber = 5;
+  ::google::protobuf::int64 sint_value() const;
+  void set_sint_value(::google::protobuf::int64 value);
+
+  // optional bool bool_value = 6;
+  private:
+  bool has_bool_value() const;
+  public:
+  void clear_bool_value();
+  static const int kBoolValueFieldNumber = 6;
+  bool bool_value() const;
+  void set_bool_value(bool value);
+
+  // optional string str_value = 7;
+  private:
+  bool has_str_value() const;
+  public:
+  void clear_str_value();
+  static const int kStrValueFieldNumber = 7;
+  const ::std::string& str_value() const;
+  void set_str_value(const ::std::string& value);
+  void set_str_value(const char* value);
+  void set_str_value(const char* value, size_t size);
+  ::std::string* mutable_str_value();
+  ::std::string* release_str_value();
+  void set_allocated_str_value(::std::string* str_value);
+
+  // optional bytes bytes_value = 8;
+  private:
+  bool has_bytes_value() const;
+  public:
+  void clear_bytes_value();
+  static const int kBytesValueFieldNumber = 8;
+  const ::std::string& bytes_value() const;
+  void set_bytes_value(const ::std::string& value);
+  void set_bytes_value(const char* value);
+  void set_bytes_value(const void* value, size_t size);
+  ::std::string* mutable_bytes_value();
+  ::std::string* release_bytes_value();
+  void set_allocated_bytes_value(::std::string* bytes_value);
+
+  ValueCase value_case() const;
+  // @@protoc_insertion_point(class_scope:E2.NetworkElementProperty)
+ private:
+  inline void set_has_double_value();
+  inline void set_has_int_value();
+  inline void set_has_uint_value();
+  inline void set_has_sint_value();
+  inline void set_has_bool_value();
+  inline void set_has_str_value();
+  inline void set_has_bytes_value();
+
+  inline bool has_value() const;
+  void clear_value();
+  inline void clear_has_value();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
+  union ValueUnion {
+    ValueUnion() {}
+    double double_value_;
+    ::google::protobuf::int64 int_value_;
+    ::google::protobuf::uint64 uint_value_;
+    ::google::protobuf::int64 sint_value_;
+    bool bool_value_;
+    ::google::protobuf::internal::ArenaStringPtr str_value_;
+    ::google::protobuf::internal::ArenaStringPtr bytes_value_;
+  } value_;
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _oneof_case_[1];
+
+  friend void  protobuf_AddDesc_e2_5fapi_2eproto();
+  friend void protobuf_AssignDesc_e2_5fapi_2eproto();
+  friend void protobuf_ShutdownFile_e2_5fapi_2eproto();
+
+  void InitAsDefaultInstance();
+  static NetworkElementProperty* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class NetworkElementOpStateList : public ::google::protobuf::Message {
+ public:
+  NetworkElementOpStateList();
+  virtual ~NetworkElementOpStateList();
+
+  NetworkElementOpStateList(const NetworkElementOpStateList& from);
+
+  inline NetworkElementOpStateList& operator=(const NetworkElementOpStateList& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const NetworkElementOpStateList& default_instance();
+
+  void Swap(NetworkElementOpStateList* other);
+
+  // implements Message ----------------------------------------------
+
+  inline NetworkElementOpStateList* New() const { return New(NULL); }
+
+  NetworkElementOpStateList* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const NetworkElementOpStateList& from);
+  void MergeFrom(const NetworkElementOpStateList& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(NetworkElementOpStateList* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .E2.NetworkElementOpState opstate = 1;
+  int opstate_size() const;
+  void clear_opstate();
+  static const int kOpstateFieldNumber = 1;
+  const ::E2::NetworkElementOpState& opstate(int index) const;
+  ::E2::NetworkElementOpState* mutable_opstate(int index);
+  ::E2::NetworkElementOpState* add_opstate();
+  ::google::protobuf::RepeatedPtrField< ::E2::NetworkElementOpState >*
+      mutable_opstate();
+  const ::google::protobuf::RepeatedPtrField< ::E2::NetworkElementOpState >&
+      opstate() const;
+
+  // @@protoc_insertion_point(class_scope:E2.NetworkElementOpStateList)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::google::protobuf::RepeatedPtrField< ::E2::NetworkElementOpState > opstate_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_e2_5fapi_2eproto();
+  friend void protobuf_AssignDesc_e2_5fapi_2eproto();
+  friend void protobuf_ShutdownFile_e2_5fapi_2eproto();
+
+  void InitAsDefaultInstance();
+  static NetworkElementOpStateList* default_instance_;
+};
+// -------------------------------------------------------------------
 
 class ConfigurationRequest : public ::google::protobuf::Message {
  public:
@@ -119,35 +675,21 @@ class ConfigurationRequest : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional string name = 1;
-  void clear_name();
-  static const int kNameFieldNumber = 1;
-  const ::std::string& name() const;
-  void set_name(const ::std::string& value);
-  void set_name(const char* value);
-  void set_name(const char* value, size_t size);
-  ::std::string* mutable_name();
-  ::std::string* release_name();
-  void set_allocated_name(::std::string* name);
-
-  // optional string mgmt_ip = 2;
-  void clear_mgmt_ip();
-  static const int kMgmtIpFieldNumber = 2;
-  const ::std::string& mgmt_ip() const;
-  void set_mgmt_ip(const ::std::string& value);
-  void set_mgmt_ip(const char* value);
-  void set_mgmt_ip(const char* value, size_t size);
-  ::std::string* mutable_mgmt_ip();
-  ::std::string* release_mgmt_ip();
-  void set_allocated_mgmt_ip(::std::string* mgmt_ip);
+  // optional .E2.NetworkElement element = 1;
+  bool has_element() const;
+  void clear_element();
+  static const int kElementFieldNumber = 1;
+  const ::E2::NetworkElement& element() const;
+  ::E2::NetworkElement* mutable_element();
+  ::E2::NetworkElement* release_element();
+  void set_allocated_element(::E2::NetworkElement* element);
 
   // @@protoc_insertion_point(class_scope:E2.ConfigurationRequest)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
-  ::google::protobuf::internal::ArenaStringPtr name_;
-  ::google::protobuf::internal::ArenaStringPtr mgmt_ip_;
+  ::E2::NetworkElement* element_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_e2_5fapi_2eproto();
   friend void protobuf_AssignDesc_e2_5fapi_2eproto();
@@ -252,92 +794,633 @@ class ConfigurationReply : public ::google::protobuf::Message {
 // ===================================================================
 
 #if !PROTOBUF_INLINE_NOT_IN_HEADERS
-// ConfigurationRequest
+// NetworkElement
 
 // optional string name = 1;
-inline void ConfigurationRequest::clear_name() {
+inline void NetworkElement::clear_name() {
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& ConfigurationRequest::name() const {
-  // @@protoc_insertion_point(field_get:E2.ConfigurationRequest.name)
+inline const ::std::string& NetworkElement::name() const {
+  // @@protoc_insertion_point(field_get:E2.NetworkElement.name)
   return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void ConfigurationRequest::set_name(const ::std::string& value) {
+inline void NetworkElement::set_name(const ::std::string& value) {
   
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:E2.ConfigurationRequest.name)
+  // @@protoc_insertion_point(field_set:E2.NetworkElement.name)
 }
-inline void ConfigurationRequest::set_name(const char* value) {
+inline void NetworkElement::set_name(const char* value) {
   
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:E2.ConfigurationRequest.name)
+  // @@protoc_insertion_point(field_set_char:E2.NetworkElement.name)
 }
-inline void ConfigurationRequest::set_name(const char* value, size_t size) {
+inline void NetworkElement::set_name(const char* value, size_t size) {
   
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:E2.ConfigurationRequest.name)
+  // @@protoc_insertion_point(field_set_pointer:E2.NetworkElement.name)
 }
-inline ::std::string* ConfigurationRequest::mutable_name() {
+inline ::std::string* NetworkElement::mutable_name() {
   
-  // @@protoc_insertion_point(field_mutable:E2.ConfigurationRequest.name)
+  // @@protoc_insertion_point(field_mutable:E2.NetworkElement.name)
   return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* ConfigurationRequest::release_name() {
+inline ::std::string* NetworkElement::release_name() {
   
   return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void ConfigurationRequest::set_allocated_name(::std::string* name) {
+inline void NetworkElement::set_allocated_name(::std::string* name) {
   if (name != NULL) {
     
   } else {
     
   }
   name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
-  // @@protoc_insertion_point(field_set_allocated:E2.ConfigurationRequest.name)
+  // @@protoc_insertion_point(field_set_allocated:E2.NetworkElement.name)
 }
 
 // optional string mgmt_ip = 2;
-inline void ConfigurationRequest::clear_mgmt_ip() {
+inline void NetworkElement::clear_mgmt_ip() {
   mgmt_ip_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& ConfigurationRequest::mgmt_ip() const {
-  // @@protoc_insertion_point(field_get:E2.ConfigurationRequest.mgmt_ip)
+inline const ::std::string& NetworkElement::mgmt_ip() const {
+  // @@protoc_insertion_point(field_get:E2.NetworkElement.mgmt_ip)
   return mgmt_ip_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void ConfigurationRequest::set_mgmt_ip(const ::std::string& value) {
+inline void NetworkElement::set_mgmt_ip(const ::std::string& value) {
   
   mgmt_ip_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:E2.ConfigurationRequest.mgmt_ip)
+  // @@protoc_insertion_point(field_set:E2.NetworkElement.mgmt_ip)
 }
-inline void ConfigurationRequest::set_mgmt_ip(const char* value) {
+inline void NetworkElement::set_mgmt_ip(const char* value) {
   
   mgmt_ip_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:E2.ConfigurationRequest.mgmt_ip)
+  // @@protoc_insertion_point(field_set_char:E2.NetworkElement.mgmt_ip)
 }
-inline void ConfigurationRequest::set_mgmt_ip(const char* value, size_t size) {
+inline void NetworkElement::set_mgmt_ip(const char* value, size_t size) {
   
   mgmt_ip_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:E2.ConfigurationRequest.mgmt_ip)
+  // @@protoc_insertion_point(field_set_pointer:E2.NetworkElement.mgmt_ip)
 }
-inline ::std::string* ConfigurationRequest::mutable_mgmt_ip() {
+inline ::std::string* NetworkElement::mutable_mgmt_ip() {
   
-  // @@protoc_insertion_point(field_mutable:E2.ConfigurationRequest.mgmt_ip)
+  // @@protoc_insertion_point(field_mutable:E2.NetworkElement.mgmt_ip)
   return mgmt_ip_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* ConfigurationRequest::release_mgmt_ip() {
+inline ::std::string* NetworkElement::release_mgmt_ip() {
   
   return mgmt_ip_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void ConfigurationRequest::set_allocated_mgmt_ip(::std::string* mgmt_ip) {
+inline void NetworkElement::set_allocated_mgmt_ip(::std::string* mgmt_ip) {
   if (mgmt_ip != NULL) {
     
   } else {
     
   }
   mgmt_ip_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), mgmt_ip);
-  // @@protoc_insertion_point(field_set_allocated:E2.ConfigurationRequest.mgmt_ip)
+  // @@protoc_insertion_point(field_set_allocated:E2.NetworkElement.mgmt_ip)
+}
+
+// -------------------------------------------------------------------
+
+// NetworkElementList
+
+// repeated .E2.NetworkElement list = 1;
+inline int NetworkElementList::list_size() const {
+  return list_.size();
+}
+inline void NetworkElementList::clear_list() {
+  list_.Clear();
+}
+inline const ::E2::NetworkElement& NetworkElementList::list(int index) const {
+  // @@protoc_insertion_point(field_get:E2.NetworkElementList.list)
+  return list_.Get(index);
+}
+inline ::E2::NetworkElement* NetworkElementList::mutable_list(int index) {
+  // @@protoc_insertion_point(field_mutable:E2.NetworkElementList.list)
+  return list_.Mutable(index);
+}
+inline ::E2::NetworkElement* NetworkElementList::add_list() {
+  // @@protoc_insertion_point(field_add:E2.NetworkElementList.list)
+  return list_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::E2::NetworkElement >*
+NetworkElementList::mutable_list() {
+  // @@protoc_insertion_point(field_mutable_list:E2.NetworkElementList.list)
+  return &list_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::E2::NetworkElement >&
+NetworkElementList::list() const {
+  // @@protoc_insertion_point(field_list:E2.NetworkElementList.list)
+  return list_;
+}
+
+// -------------------------------------------------------------------
+
+// NetworkElementOpState
+
+// optional .E2.NetworkElement element = 1;
+inline bool NetworkElementOpState::has_element() const {
+  return !_is_default_instance_ && element_ != NULL;
+}
+inline void NetworkElementOpState::clear_element() {
+  if (GetArenaNoVirtual() == NULL && element_ != NULL) delete element_;
+  element_ = NULL;
+}
+inline const ::E2::NetworkElement& NetworkElementOpState::element() const {
+  // @@protoc_insertion_point(field_get:E2.NetworkElementOpState.element)
+  return element_ != NULL ? *element_ : *default_instance_->element_;
+}
+inline ::E2::NetworkElement* NetworkElementOpState::mutable_element() {
+  
+  if (element_ == NULL) {
+    element_ = new ::E2::NetworkElement;
+  }
+  // @@protoc_insertion_point(field_mutable:E2.NetworkElementOpState.element)
+  return element_;
+}
+inline ::E2::NetworkElement* NetworkElementOpState::release_element() {
+  
+  ::E2::NetworkElement* temp = element_;
+  element_ = NULL;
+  return temp;
+}
+inline void NetworkElementOpState::set_allocated_element(::E2::NetworkElement* element) {
+  delete element_;
+  element_ = element;
+  if (element) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:E2.NetworkElementOpState.element)
+}
+
+// repeated .E2.NetworkElementProperty properties = 2;
+inline int NetworkElementOpState::properties_size() const {
+  return properties_.size();
+}
+inline void NetworkElementOpState::clear_properties() {
+  properties_.Clear();
+}
+inline const ::E2::NetworkElementProperty& NetworkElementOpState::properties(int index) const {
+  // @@protoc_insertion_point(field_get:E2.NetworkElementOpState.properties)
+  return properties_.Get(index);
+}
+inline ::E2::NetworkElementProperty* NetworkElementOpState::mutable_properties(int index) {
+  // @@protoc_insertion_point(field_mutable:E2.NetworkElementOpState.properties)
+  return properties_.Mutable(index);
+}
+inline ::E2::NetworkElementProperty* NetworkElementOpState::add_properties() {
+  // @@protoc_insertion_point(field_add:E2.NetworkElementOpState.properties)
+  return properties_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::E2::NetworkElementProperty >*
+NetworkElementOpState::mutable_properties() {
+  // @@protoc_insertion_point(field_mutable_list:E2.NetworkElementOpState.properties)
+  return &properties_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::E2::NetworkElementProperty >&
+NetworkElementOpState::properties() const {
+  // @@protoc_insertion_point(field_list:E2.NetworkElementOpState.properties)
+  return properties_;
+}
+
+// -------------------------------------------------------------------
+
+// NetworkElementProperty
+
+// optional string name = 1;
+inline void NetworkElementProperty::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& NetworkElementProperty::name() const {
+  // @@protoc_insertion_point(field_get:E2.NetworkElementProperty.name)
+  return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void NetworkElementProperty::set_name(const ::std::string& value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:E2.NetworkElementProperty.name)
+}
+inline void NetworkElementProperty::set_name(const char* value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:E2.NetworkElementProperty.name)
+}
+inline void NetworkElementProperty::set_name(const char* value, size_t size) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:E2.NetworkElementProperty.name)
+}
+inline ::std::string* NetworkElementProperty::mutable_name() {
+  
+  // @@protoc_insertion_point(field_mutable:E2.NetworkElementProperty.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* NetworkElementProperty::release_name() {
+  
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void NetworkElementProperty::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    
+  } else {
+    
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:E2.NetworkElementProperty.name)
+}
+
+// optional double double_value = 2;
+inline bool NetworkElementProperty::has_double_value() const {
+  return value_case() == kDoubleValue;
+}
+inline void NetworkElementProperty::set_has_double_value() {
+  _oneof_case_[0] = kDoubleValue;
+}
+inline void NetworkElementProperty::clear_double_value() {
+  if (has_double_value()) {
+    value_.double_value_ = 0;
+    clear_has_value();
+  }
+}
+inline double NetworkElementProperty::double_value() const {
+  // @@protoc_insertion_point(field_get:E2.NetworkElementProperty.double_value)
+  if (has_double_value()) {
+    return value_.double_value_;
+  }
+  return 0;
+}
+inline void NetworkElementProperty::set_double_value(double value) {
+  if (!has_double_value()) {
+    clear_value();
+    set_has_double_value();
+  }
+  value_.double_value_ = value;
+  // @@protoc_insertion_point(field_set:E2.NetworkElementProperty.double_value)
+}
+
+// optional int64 int_value = 3;
+inline bool NetworkElementProperty::has_int_value() const {
+  return value_case() == kIntValue;
+}
+inline void NetworkElementProperty::set_has_int_value() {
+  _oneof_case_[0] = kIntValue;
+}
+inline void NetworkElementProperty::clear_int_value() {
+  if (has_int_value()) {
+    value_.int_value_ = GOOGLE_LONGLONG(0);
+    clear_has_value();
+  }
+}
+inline ::google::protobuf::int64 NetworkElementProperty::int_value() const {
+  // @@protoc_insertion_point(field_get:E2.NetworkElementProperty.int_value)
+  if (has_int_value()) {
+    return value_.int_value_;
+  }
+  return GOOGLE_LONGLONG(0);
+}
+inline void NetworkElementProperty::set_int_value(::google::protobuf::int64 value) {
+  if (!has_int_value()) {
+    clear_value();
+    set_has_int_value();
+  }
+  value_.int_value_ = value;
+  // @@protoc_insertion_point(field_set:E2.NetworkElementProperty.int_value)
+}
+
+// optional uint64 uint_value = 4;
+inline bool NetworkElementProperty::has_uint_value() const {
+  return value_case() == kUintValue;
+}
+inline void NetworkElementProperty::set_has_uint_value() {
+  _oneof_case_[0] = kUintValue;
+}
+inline void NetworkElementProperty::clear_uint_value() {
+  if (has_uint_value()) {
+    value_.uint_value_ = GOOGLE_ULONGLONG(0);
+    clear_has_value();
+  }
+}
+inline ::google::protobuf::uint64 NetworkElementProperty::uint_value() const {
+  // @@protoc_insertion_point(field_get:E2.NetworkElementProperty.uint_value)
+  if (has_uint_value()) {
+    return value_.uint_value_;
+  }
+  return GOOGLE_ULONGLONG(0);
+}
+inline void NetworkElementProperty::set_uint_value(::google::protobuf::uint64 value) {
+  if (!has_uint_value()) {
+    clear_value();
+    set_has_uint_value();
+  }
+  value_.uint_value_ = value;
+  // @@protoc_insertion_point(field_set:E2.NetworkElementProperty.uint_value)
+}
+
+// optional sint64 sint_value = 5;
+inline bool NetworkElementProperty::has_sint_value() const {
+  return value_case() == kSintValue;
+}
+inline void NetworkElementProperty::set_has_sint_value() {
+  _oneof_case_[0] = kSintValue;
+}
+inline void NetworkElementProperty::clear_sint_value() {
+  if (has_sint_value()) {
+    value_.sint_value_ = GOOGLE_LONGLONG(0);
+    clear_has_value();
+  }
+}
+inline ::google::protobuf::int64 NetworkElementProperty::sint_value() const {
+  // @@protoc_insertion_point(field_get:E2.NetworkElementProperty.sint_value)
+  if (has_sint_value()) {
+    return value_.sint_value_;
+  }
+  return GOOGLE_LONGLONG(0);
+}
+inline void NetworkElementProperty::set_sint_value(::google::protobuf::int64 value) {
+  if (!has_sint_value()) {
+    clear_value();
+    set_has_sint_value();
+  }
+  value_.sint_value_ = value;
+  // @@protoc_insertion_point(field_set:E2.NetworkElementProperty.sint_value)
+}
+
+// optional bool bool_value = 6;
+inline bool NetworkElementProperty::has_bool_value() const {
+  return value_case() == kBoolValue;
+}
+inline void NetworkElementProperty::set_has_bool_value() {
+  _oneof_case_[0] = kBoolValue;
+}
+inline void NetworkElementProperty::clear_bool_value() {
+  if (has_bool_value()) {
+    value_.bool_value_ = false;
+    clear_has_value();
+  }
+}
+inline bool NetworkElementProperty::bool_value() const {
+  // @@protoc_insertion_point(field_get:E2.NetworkElementProperty.bool_value)
+  if (has_bool_value()) {
+    return value_.bool_value_;
+  }
+  return false;
+}
+inline void NetworkElementProperty::set_bool_value(bool value) {
+  if (!has_bool_value()) {
+    clear_value();
+    set_has_bool_value();
+  }
+  value_.bool_value_ = value;
+  // @@protoc_insertion_point(field_set:E2.NetworkElementProperty.bool_value)
+}
+
+// optional string str_value = 7;
+inline bool NetworkElementProperty::has_str_value() const {
+  return value_case() == kStrValue;
+}
+inline void NetworkElementProperty::set_has_str_value() {
+  _oneof_case_[0] = kStrValue;
+}
+inline void NetworkElementProperty::clear_str_value() {
+  if (has_str_value()) {
+    value_.str_value_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    clear_has_value();
+  }
+}
+inline const ::std::string& NetworkElementProperty::str_value() const {
+  // @@protoc_insertion_point(field_get:E2.NetworkElementProperty.str_value)
+  if (has_str_value()) {
+    return value_.str_value_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  return *&::google::protobuf::internal::GetEmptyStringAlreadyInited();
+}
+inline void NetworkElementProperty::set_str_value(const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:E2.NetworkElementProperty.str_value)
+  if (!has_str_value()) {
+    clear_value();
+    set_has_str_value();
+    value_.str_value_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  value_.str_value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:E2.NetworkElementProperty.str_value)
+}
+inline void NetworkElementProperty::set_str_value(const char* value) {
+  if (!has_str_value()) {
+    clear_value();
+    set_has_str_value();
+    value_.str_value_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  value_.str_value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:E2.NetworkElementProperty.str_value)
+}
+inline void NetworkElementProperty::set_str_value(const char* value, size_t size) {
+  if (!has_str_value()) {
+    clear_value();
+    set_has_str_value();
+    value_.str_value_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  value_.str_value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:E2.NetworkElementProperty.str_value)
+}
+inline ::std::string* NetworkElementProperty::mutable_str_value() {
+  if (!has_str_value()) {
+    clear_value();
+    set_has_str_value();
+    value_.str_value_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_mutable:E2.NetworkElementProperty.str_value)
+  return value_.str_value_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* NetworkElementProperty::release_str_value() {
+  if (has_str_value()) {
+    clear_has_value();
+    return value_.str_value_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  } else {
+    return NULL;
+  }
+}
+inline void NetworkElementProperty::set_allocated_str_value(::std::string* str_value) {
+  if (!has_str_value()) {
+    value_.str_value_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  clear_value();
+  if (str_value != NULL) {
+    set_has_str_value();
+    value_.str_value_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+        str_value);
+  }
+  // @@protoc_insertion_point(field_set_allocated:E2.NetworkElementProperty.str_value)
+}
+
+// optional bytes bytes_value = 8;
+inline bool NetworkElementProperty::has_bytes_value() const {
+  return value_case() == kBytesValue;
+}
+inline void NetworkElementProperty::set_has_bytes_value() {
+  _oneof_case_[0] = kBytesValue;
+}
+inline void NetworkElementProperty::clear_bytes_value() {
+  if (has_bytes_value()) {
+    value_.bytes_value_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    clear_has_value();
+  }
+}
+inline const ::std::string& NetworkElementProperty::bytes_value() const {
+  // @@protoc_insertion_point(field_get:E2.NetworkElementProperty.bytes_value)
+  if (has_bytes_value()) {
+    return value_.bytes_value_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  return *&::google::protobuf::internal::GetEmptyStringAlreadyInited();
+}
+inline void NetworkElementProperty::set_bytes_value(const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:E2.NetworkElementProperty.bytes_value)
+  if (!has_bytes_value()) {
+    clear_value();
+    set_has_bytes_value();
+    value_.bytes_value_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  value_.bytes_value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:E2.NetworkElementProperty.bytes_value)
+}
+inline void NetworkElementProperty::set_bytes_value(const char* value) {
+  if (!has_bytes_value()) {
+    clear_value();
+    set_has_bytes_value();
+    value_.bytes_value_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  value_.bytes_value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:E2.NetworkElementProperty.bytes_value)
+}
+inline void NetworkElementProperty::set_bytes_value(const void* value, size_t size) {
+  if (!has_bytes_value()) {
+    clear_value();
+    set_has_bytes_value();
+    value_.bytes_value_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  value_.bytes_value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:E2.NetworkElementProperty.bytes_value)
+}
+inline ::std::string* NetworkElementProperty::mutable_bytes_value() {
+  if (!has_bytes_value()) {
+    clear_value();
+    set_has_bytes_value();
+    value_.bytes_value_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_mutable:E2.NetworkElementProperty.bytes_value)
+  return value_.bytes_value_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* NetworkElementProperty::release_bytes_value() {
+  if (has_bytes_value()) {
+    clear_has_value();
+    return value_.bytes_value_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  } else {
+    return NULL;
+  }
+}
+inline void NetworkElementProperty::set_allocated_bytes_value(::std::string* bytes_value) {
+  if (!has_bytes_value()) {
+    value_.bytes_value_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  clear_value();
+  if (bytes_value != NULL) {
+    set_has_bytes_value();
+    value_.bytes_value_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+        bytes_value);
+  }
+  // @@protoc_insertion_point(field_set_allocated:E2.NetworkElementProperty.bytes_value)
+}
+
+inline bool NetworkElementProperty::has_value() const {
+  return value_case() != VALUE_NOT_SET;
+}
+inline void NetworkElementProperty::clear_has_value() {
+  _oneof_case_[0] = VALUE_NOT_SET;
+}
+inline NetworkElementProperty::ValueCase NetworkElementProperty::value_case() const {
+  return NetworkElementProperty::ValueCase(_oneof_case_[0]);
+}
+// -------------------------------------------------------------------
+
+// NetworkElementOpStateList
+
+// repeated .E2.NetworkElementOpState opstate = 1;
+inline int NetworkElementOpStateList::opstate_size() const {
+  return opstate_.size();
+}
+inline void NetworkElementOpStateList::clear_opstate() {
+  opstate_.Clear();
+}
+inline const ::E2::NetworkElementOpState& NetworkElementOpStateList::opstate(int index) const {
+  // @@protoc_insertion_point(field_get:E2.NetworkElementOpStateList.opstate)
+  return opstate_.Get(index);
+}
+inline ::E2::NetworkElementOpState* NetworkElementOpStateList::mutable_opstate(int index) {
+  // @@protoc_insertion_point(field_mutable:E2.NetworkElementOpStateList.opstate)
+  return opstate_.Mutable(index);
+}
+inline ::E2::NetworkElementOpState* NetworkElementOpStateList::add_opstate() {
+  // @@protoc_insertion_point(field_add:E2.NetworkElementOpStateList.opstate)
+  return opstate_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::E2::NetworkElementOpState >*
+NetworkElementOpStateList::mutable_opstate() {
+  // @@protoc_insertion_point(field_mutable_list:E2.NetworkElementOpStateList.opstate)
+  return &opstate_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::E2::NetworkElementOpState >&
+NetworkElementOpStateList::opstate() const {
+  // @@protoc_insertion_point(field_list:E2.NetworkElementOpStateList.opstate)
+  return opstate_;
+}
+
+// -------------------------------------------------------------------
+
+// ConfigurationRequest
+
+// optional .E2.NetworkElement element = 1;
+inline bool ConfigurationRequest::has_element() const {
+  return !_is_default_instance_ && element_ != NULL;
+}
+inline void ConfigurationRequest::clear_element() {
+  if (GetArenaNoVirtual() == NULL && element_ != NULL) delete element_;
+  element_ = NULL;
+}
+inline const ::E2::NetworkElement& ConfigurationRequest::element() const {
+  // @@protoc_insertion_point(field_get:E2.ConfigurationRequest.element)
+  return element_ != NULL ? *element_ : *default_instance_->element_;
+}
+inline ::E2::NetworkElement* ConfigurationRequest::mutable_element() {
+  
+  if (element_ == NULL) {
+    element_ = new ::E2::NetworkElement;
+  }
+  // @@protoc_insertion_point(field_mutable:E2.ConfigurationRequest.element)
+  return element_;
+}
+inline ::E2::NetworkElement* ConfigurationRequest::release_element() {
+  
+  ::E2::NetworkElement* temp = element_;
+  element_ = NULL;
+  return temp;
+}
+inline void ConfigurationRequest::set_allocated_element(::E2::NetworkElement* element) {
+  delete element_;
+  element_ = element;
+  if (element) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:E2.ConfigurationRequest.element)
 }
 
 // -------------------------------------------------------------------
@@ -402,6 +1485,16 @@ inline void ConfigurationReply::set_allocated_code_str(::std::string* code_str) 
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 

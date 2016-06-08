@@ -15,6 +15,8 @@
 		94F001A71D07E09100EDC9F7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94F001A61D07E09100EDC9F7 /* main.cpp */; };
 		94F001AD1D07E24E00EDC9F7 /* E2Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94F001AB1D07E24E00EDC9F7 /* E2Client.cpp */; };
 		94F001B01D07E27400EDC9F7 /* AgentClientParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94F001AE1D07E27400EDC9F7 /* AgentClientParser.cpp */; };
+		94F001B41D08648000EDC9F7 /* Element.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94F001B21D08648000EDC9F7 /* Element.cpp */; };
+		94F001B81D08AF2100EDC9F7 /* ElementDb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94F001B71D08AF2100EDC9F7 /* ElementDb.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,6 +68,10 @@
 		94F001AC1D07E24E00EDC9F7 /* E2Client.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = E2Client.hpp; sourceTree = "<group>"; };
 		94F001AE1D07E27400EDC9F7 /* AgentClientParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AgentClientParser.cpp; sourceTree = "<group>"; };
 		94F001AF1D07E27400EDC9F7 /* AgentClientParser.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AgentClientParser.hpp; sourceTree = "<group>"; };
+		94F001B21D08648000EDC9F7 /* Element.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Element.cpp; sourceTree = "<group>"; };
+		94F001B31D08648000EDC9F7 /* Element.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Element.hpp; sourceTree = "<group>"; };
+		94F001B61D08694D00EDC9F7 /* E2Types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = E2Types.h; sourceTree = "<group>"; };
+		94F001B71D08AF2100EDC9F7 /* ElementDb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElementDb.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				94EC471F1D05C52300E34A5B /* main.cpp */,
+				94F001B51D08692200EDC9F7 /* include */,
+				94F001B11D08646E00EDC9F7 /* element */,
 				94F0019C1D0788BC00EDC9F7 /* utils */,
 				94F001971D06A85000EDC9F7 /* server */,
 				94EC47241D05D13A00E34A5B /* config */,
@@ -163,6 +171,24 @@
 				94F001AF1D07E27400EDC9F7 /* AgentClientParser.hpp */,
 			);
 			path = client;
+			sourceTree = "<group>";
+		};
+		94F001B11D08646E00EDC9F7 /* element */ = {
+			isa = PBXGroup;
+			children = (
+				94F001B21D08648000EDC9F7 /* Element.cpp */,
+				94F001B71D08AF2100EDC9F7 /* ElementDb.cpp */,
+				94F001B31D08648000EDC9F7 /* Element.hpp */,
+			);
+			path = element;
+			sourceTree = "<group>";
+		};
+		94F001B51D08692200EDC9F7 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				94F001B61D08694D00EDC9F7 /* E2Types.h */,
+			);
+			path = include;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,9 +296,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94F001B41D08648000EDC9F7 /* Element.cpp in Sources */,
 				94EC47201D05C52300E34A5B /* main.cpp in Sources */,
 				94F0019F1D0788F000EDC9F7 /* Logger.cpp in Sources */,
 				94F0019A1D06A86B00EDC9F7 /* E2Server.cpp in Sources */,
+				94F001B81D08AF2100EDC9F7 /* ElementDb.cpp in Sources */,
 				94EC47271D05D15400E34A5B /* Config.cpp in Sources */,
 				94EC472E1D0618B500E34A5B /* CmdOptions.cpp in Sources */,
 			);

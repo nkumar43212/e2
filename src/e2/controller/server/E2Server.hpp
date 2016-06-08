@@ -31,6 +31,9 @@ public:
     Status removeElement(ServerContext* context,
                          const ConfigurationRequest * request,
                          ConfigurationReply * reply) override;
+    Status getElements(ServerContext* context,
+                       const ConfigurationRequest * request,
+                       NetworkElementOpStateList * reply) override;
 };
 
 #endif /* E2Server_hpp */

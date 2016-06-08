@@ -42,15 +42,53 @@ service E2 {
 
     // Remove a network element
     rpc removeElement(ConfigurationRequest)                  returns (ConfigurationReply) {}
+
+    // Get all registered network elements
+    rpc getElements(ConfigurationRequest)                    returns (NetworkElementOpStateList) {}
 }
 
-// Message sent for a configuration request
-message ConfigurationRequest {
+// A network element
+message NetworkElement {
     // Name of the device
     string name    = 1;
 
     // Management IP address of the device
     string mgmt_ip = 2;
+}
+
+message NetworkElementList {
+    repeated NetworkElement list                            = 1;
+}
+
+// Operational State for a network element
+message NetworkElementOpState {
+    NetworkElement       element                            = 1;
+    repeated NetworkElementProperty properties              = 2;
+}
+
+message NetworkElementProperty {
+    string name                                             = 1;
+
+    // One of possible values
+    oneof value {
+        double double_value                                 =  2;
+        int64  int_value                                    =  3;
+        uint64 uint_value                                   =  4;
+        sint64 sint_value                                   =  5;
+        bool   bool_value                                   =  6;
+        string str_value                                    =  7;
+        bytes  bytes_value                                  =  8;
+    } 
+}
+
+
+message NetworkElementOpStateList {
+    repeated NetworkElementOpState opstate                  = 1;
+}
+
+// Message sent for a configuration request
+message ConfigurationRequest {
+    NetworkElement element                                  = 1;
 }
 
 // Response from the controller
@@ -66,4 +104,7 @@ message ConfigurationReply {
 enum ReturnCode {
     SUCCESS                                                 = 0;
     UNKNOWN_ERROR                                           = 1;
+    ACTIVATE_ERROR                                          = 2;
+    MEMORY_ERROR 					    = 3;
+    ELEMENT_NOT_FOUND_ERROR                                 = 4;
 }

@@ -18,6 +18,10 @@ using grpc::ServerWriter;
 using grpc::Status;
 
 using E2::E2;
+using E2::NetworkElement;
+using E2::NetworkElementList;
+using E2::NetworkElementOpState;
+using E2::NetworkElementOpStateList;
 using E2::ConfigurationRequest;
 using E2::ConfigurationReply;
 
