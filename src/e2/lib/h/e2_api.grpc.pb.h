@@ -34,8 +34,13 @@ class E2 GRPC_FINAL {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>> AsyncaddElement(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>>(AsyncaddElementRaw(context, request, cq));
     }
+    virtual ::grpc::Status removeElement(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::E2::ConfigurationReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>> AsyncremoveElement(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>>(AsyncremoveElementRaw(context, request, cq));
+    }
   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>* AsyncaddElementRaw(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>* AsyncremoveElementRaw(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub GRPC_FINAL : public StubInterface {
    public:
@@ -44,11 +49,17 @@ class E2 GRPC_FINAL {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>> AsyncaddElement(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>>(AsyncaddElementRaw(context, request, cq));
     }
+    ::grpc::Status removeElement(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::E2::ConfigurationReply* response) GRPC_OVERRIDE;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>> AsyncremoveElement(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>>(AsyncremoveElementRaw(context, request, cq));
+    }
 
    private:
     std::shared_ptr< ::grpc::Channel> channel_;
     ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* AsyncaddElementRaw(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
+    ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* AsyncremoveElementRaw(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
     const ::grpc::RpcMethod rpcmethod_addElement_;
+    const ::grpc::RpcMethod rpcmethod_removeElement_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::Channel>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -57,6 +68,7 @@ class E2 GRPC_FINAL {
     Service() : service_(nullptr) {}
     virtual ~Service();
     virtual ::grpc::Status addElement(::grpc::ServerContext* context, const ::E2::ConfigurationRequest* request, ::E2::ConfigurationReply* response);
+    virtual ::grpc::Status removeElement(::grpc::ServerContext* context, const ::E2::ConfigurationRequest* request, ::E2::ConfigurationReply* response);
     ::grpc::RpcService* service() GRPC_OVERRIDE GRPC_FINAL;
    private:
     ::grpc::RpcService* service_;
@@ -66,6 +78,7 @@ class E2 GRPC_FINAL {
     explicit AsyncService();
     ~AsyncService() {};
     void RequestaddElement(::grpc::ServerContext* context, ::E2::ConfigurationRequest* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
+    void RequestremoveElement(::grpc::ServerContext* context, ::E2::ConfigurationRequest* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
   };
 };
 

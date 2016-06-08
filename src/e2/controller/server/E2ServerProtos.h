@@ -17,5 +17,9 @@ using grpc::ServerContext;
 using grpc::ServerWriter;
 using grpc::Status;
 
+using E2::E2;
+using E2::ConfigurationRequest;
+using E2::ConfigurationReply;
+
 
 #endif /* E2ServerProtos_h */

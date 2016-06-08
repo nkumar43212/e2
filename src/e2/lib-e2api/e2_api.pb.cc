@@ -108,9 +108,11 @@ void protobuf_AddDesc_e2_5fapi_2eproto() {
     "st\022\014\n\004name\030\001 \001(\t\022\017\n\007mgmt_ip\030\002 \001(\t\"D\n\022Con"
     "figurationReply\022\034\n\004code\030\001 \001(\0162\016.E2.Retur"
     "nCode\022\020\n\010code_str\030\002 \001(\t*,\n\nReturnCode\022\013\n"
-    "\007SUCCESS\020\000\022\021\n\rUNKNOWN_ERROR\020\0012F\n\002E2\022@\n\na"
-    "ddElement\022\030.E2.ConfigurationRequest\032\026.E2"
-    ".ConfigurationReply\"\000b\006proto3", 269);
+    "\007SUCCESS\020\000\022\021\n\rUNKNOWN_ERROR\020\0012\213\001\n\002E2\022@\n\n"
+    "addElement\022\030.E2.ConfigurationRequest\032\026.E"
+    "2.ConfigurationReply\"\000\022C\n\rremoveElement\022"
+    "\030.E2.ConfigurationRequest\032\026.E2.Configura"
+    "tionReply\"\000b\006proto3", 339);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "e2_api.proto", &protobuf_RegisterTypes);
   ConfigurationRequest::default_instance_ = new ConfigurationRequest();

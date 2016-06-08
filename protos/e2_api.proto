@@ -39,6 +39,9 @@ package E2;
 service E2 {
     // Add a network element
     rpc addElement(ConfigurationRequest)                     returns (ConfigurationReply) {}
+
+    // Remove a network element
+    rpc removeElement(ConfigurationRequest)                  returns (ConfigurationReply) {}
 }
 
 // Message sent for a configuration request

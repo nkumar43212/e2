@@ -7,3 +7,22 @@
 //
 
 #include "E2Server.hpp"
+
+Status
+E2Server::addElement (ServerContext* context,
+                      const ConfigurationRequest * request,
+                      ConfigurationReply * reply)
+
+{
+    return Status::OK;
+}
+
+Status
+E2Server::removeElement (ServerContext* context,
+                         const ConfigurationRequest * request,
+                         ConfigurationReply * reply)
+
+{
+    return Status::OK;
+}
+

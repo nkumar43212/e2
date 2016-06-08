@@ -12,6 +12,9 @@
 		94EC472E1D0618B500E34A5B /* CmdOptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94EC472C1D0618B500E34A5B /* CmdOptions.cpp */; };
 		94F0019A1D06A86B00EDC9F7 /* E2Server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94F001981D06A86B00EDC9F7 /* E2Server.cpp */; };
 		94F0019F1D0788F000EDC9F7 /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94F0019E1D0788F000EDC9F7 /* Logger.cpp */; };
+		94F001A71D07E09100EDC9F7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94F001A61D07E09100EDC9F7 /* main.cpp */; };
+		94F001AD1D07E24E00EDC9F7 /* E2Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94F001AB1D07E24E00EDC9F7 /* E2Client.cpp */; };
+		94F001B01D07E27400EDC9F7 /* AgentClientParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94F001AE1D07E27400EDC9F7 /* AgentClientParser.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +28,15 @@
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 		94EC471B1D05C52300E34A5B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		94F001A21D07E09100EDC9F7 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -48,6 +60,12 @@
 		94F0019B1D074D3600EDC9F7 /* E2ServerProtos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = E2ServerProtos.h; sourceTree = "<group>"; };
 		94F0019D1D0788F000EDC9F7 /* Logger.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Logger.hpp; sourceTree = "<group>"; };
 		94F0019E1D0788F000EDC9F7 /* Logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Logger.cpp; sourceTree = "<group>"; };
+		94F001A41D07E09100EDC9F7 /* client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = client; sourceTree = BUILT_PRODUCTS_DIR; };
+		94F001A61D07E09100EDC9F7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		94F001AB1D07E24E00EDC9F7 /* E2Client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = E2Client.cpp; sourceTree = "<group>"; };
+		94F001AC1D07E24E00EDC9F7 /* E2Client.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = E2Client.hpp; sourceTree = "<group>"; };
+		94F001AE1D07E27400EDC9F7 /* AgentClientParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AgentClientParser.cpp; sourceTree = "<group>"; };
+		94F001AF1D07E27400EDC9F7 /* AgentClientParser.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AgentClientParser.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +83,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		94F001A11D07E09100EDC9F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -72,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				94EC471E1D05C52300E34A5B /* controller */,
+				94F001A51D07E09100EDC9F7 /* client */,
 				94EC47101D05C50B00E34A5B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -81,6 +107,7 @@
 			children = (
 				94EC470F1D05C50B00E34A5B /* e2 */,
 				94EC471D1D05C52300E34A5B /* controller */,
+				94F001A41D07E09100EDC9F7 /* client */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,6 +153,18 @@
 			path = utils;
 			sourceTree = "<group>";
 		};
+		94F001A51D07E09100EDC9F7 /* client */ = {
+			isa = PBXGroup;
+			children = (
+				94F001A61D07E09100EDC9F7 /* main.cpp */,
+				94F001AB1D07E24E00EDC9F7 /* E2Client.cpp */,
+				94F001AC1D07E24E00EDC9F7 /* E2Client.hpp */,
+				94F001AE1D07E27400EDC9F7 /* AgentClientParser.cpp */,
+				94F001AF1D07E27400EDC9F7 /* AgentClientParser.hpp */,
+			);
+			path = client;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -163,6 +202,23 @@
 			productReference = 94EC471D1D05C52300E34A5B /* controller */;
 			productType = "com.apple.product-type.tool";
 		};
+		94F001A31D07E09100EDC9F7 /* client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94F001A81D07E09100EDC9F7 /* Build configuration list for PBXNativeTarget "client" */;
+			buildPhases = (
+				94F001A01D07E09100EDC9F7 /* Sources */,
+				94F001A11D07E09100EDC9F7 /* Frameworks */,
+				94F001A21D07E09100EDC9F7 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = client;
+			productName = client;
+			productReference = 94F001A41D07E09100EDC9F7 /* client */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -176,6 +232,9 @@
 						CreatedOnToolsVersion = 7.1;
 					};
 					94EC471C1D05C52300E34A5B = {
+						CreatedOnToolsVersion = 7.1;
+					};
+					94F001A31D07E09100EDC9F7 = {
 						CreatedOnToolsVersion = 7.1;
 					};
 				};
@@ -194,6 +253,7 @@
 			targets = (
 				94EC470E1D05C50B00E34A5B /* e2 */,
 				94EC471C1D05C52300E34A5B /* controller */,
+				94F001A31D07E09100EDC9F7 /* client */,
 			);
 		};
 /* End PBXProject section */
@@ -215,6 +275,16 @@
 				94F0019A1D06A86B00EDC9F7 /* E2Server.cpp in Sources */,
 				94EC47271D05D15400E34A5B /* Config.cpp in Sources */,
 				94EC472E1D0618B500E34A5B /* CmdOptions.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94F001A01D07E09100EDC9F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94F001B01D07E27400EDC9F7 /* AgentClientParser.cpp in Sources */,
+				94F001A71D07E09100EDC9F7 /* main.cpp in Sources */,
+				94F001AD1D07E24E00EDC9F7 /* E2Client.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +417,38 @@
 			};
 			name = Release;
 		};
+		94F001A91D07E09100EDC9F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					/usr/local/include,
+					/Users/nitin/e2c/e2/src/e2/lib/h,
+				);
+				"LIBRARY_SEARCH_PATHS[arch=*]" = (
+					/Users/nitin/e2c/e2/src/e2/lib,
+					/usr/local/lib,
+				);
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-lprotos",
+					"-le2_api",
+					"-lpthread",
+					"-ldl",
+					"-lgrpc++_unsecure",
+					"-lgrpc",
+					"-lgpr",
+					"-lprotobuf",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		94F001AA1D07E09100EDC9F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -376,6 +478,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		94F001A81D07E09100EDC9F7 /* Build configuration list for PBXNativeTarget "client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94F001A91D07E09100EDC9F7 /* Debug */,
+				94F001AA1D07E09100EDC9F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

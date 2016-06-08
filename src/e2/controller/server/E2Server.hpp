@@ -23,7 +23,14 @@ public:
     E2Server(const Logger *logger) : _logger(logger)
     {
     }
-    
+
+    // The Interface
+    Status addElement(ServerContext* context,
+                      const ConfigurationRequest * request,
+                      ConfigurationReply * reply) override;
+    Status removeElement(ServerContext* context,
+                         const ConfigurationRequest * request,
+                         ConfigurationReply * reply) override;
 };
 
 #endif /* E2Server_hpp */
