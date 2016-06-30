@@ -16,53 +16,80 @@
 #include "ServiceProtos.h"
 #include "Element.hpp"
 
+// When a subscription is created, the service calls back the client when a value
+// is available.
 class ServiceCallbackKeyValue {
 public:
     std::string key;
     std::string str_value;
-    ServiceCallbackKeyValue(std::string k, std::string v) : key(k), str_value(v)
+    ServiceCallbackKeyValue(std::string k, std::string v)
+    {
+        key = k;
+        str_value = v;
+    }
+};
+
+// When a service subscription is created, this is the set of arguments
+// the caller needs to provide
+class ServiceArgs {
+public:
+    typedef void (*ServiceCallback)(Element *, ServiceCallbackKeyValue *);
+    ServiceCallback _cb;
+    Element        *_element;
+    ServiceArgs (ServiceCallback cb, Element *element) : _cb(cb), _element(element)
     {
     }
 };
 
-typedef void (*ServiceCallback)(Element *, ServiceCallbackKeyValue *);
-
+// Subscription service
 class Service {
     std::string     _name;
-    ServiceCallback _cb;
-    Element *       _arg;
-    pthread_t       *_tid;
-    uint32_t         _subscription_id;
+    ServiceArgs *   _args;
+    pthread_t       _tid;
+    uint32_t        _subscription_id;
+    
+    // Helper routines
+    void subscriptionStart();
+    void subscriptionStop();
+    bool validateSubscriptionPath();
+    
+    // Worker routine for the background thread that polls the subscription channel
+    static void * proc(void *);
     
 public:
+    // The RPC stub invoked to communicate with device
+    std::unique_ptr<OpenConfigTelemetry::Stub> stub_;
+    
     // Accessors
     uint32_t     getSubscriptionId()            { return _subscription_id; }
     void         setSubscriptionId(uint32_t id) { _subscription_id = id;   }
     std::string  getName()                      { return _name;            }
     
-    std::unique_ptr<OpenConfigTelemetry::Stub> stub_;
-    static Service * subscribe(std::string name, ServiceCallback cb, Element *element);
-    Service (std::string path_name, ServiceCallback cb, Element *element) :
-        _name(path_name), _cb(cb), _arg(element),
-        stub_(OpenConfigTelemetry::NewStub(grpc::CreateChannel(element->getTelemetryIp(),
-                                                               grpc::InsecureCredentials())))
-    {
-        subscriptionStart(path_name, cb, element);
-    }
+    // Create a service subscription
+    static Service *createSubscription(std::string subscription_path, ServiceArgs *args);
     ~Service();
-    void subscriptionStart(std::string name, ServiceCallback cb, Element *element);
-    void subscriptionStop();
+    
+    Service (std::string path_name, ServiceArgs *args) : _name(path_name), _args(args)
+    {
+        if (args->_element->getTelemetryIp() != "0.0.0.0") {
+            stub_ = OpenConfigTelemetry::NewStub(grpc::CreateChannel(args->_element->getTelemetryIp(), grpc::InsecureCredentials()));
+        }
+    }
+    
+    // Visibility
+    void description ()
+    {
+    }
 };
 
 class ServiceContext {
-    
 public:
-    ServiceCallback _cb;
-    Service *_service;
-    Element *_element;
+    ServiceArgs * _args;
+    Service *    _service;
     
-    ServiceContext(ServiceCallback cb, Element *element, Service *service) : _cb(cb), _service(service), _element(element)
+    ServiceContext(ServiceArgs * args, Service *service) : _args(args), _service(service)
     {
     }
 };
+
 #endif /* Service_hpp */

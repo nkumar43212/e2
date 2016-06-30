@@ -17,8 +17,9 @@ class ElementInterface {
     time_t      _timev;
     
 public:
-    ElementInterface (std::string name) : _name(name)
+    ElementInterface (std::string name)
     {
+        _name = name;
         time(&_timev);
     }
     

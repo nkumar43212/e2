@@ -21,17 +21,18 @@ using grpc::ClientContext;
 using grpc::ClientReader;
 using grpc::Status;
 
-
-void *proc(void *args);
-
 Service *
-subscribe (std::string path_name, ServiceCallback cb, Element *elementp)
+Service::createSubscription (std::string subscription_path, ServiceArgs *args)
 {
-    Service *servicep = new Service(path_name, NULL, elementp);
+    // Create the handle
+    Service *servicep = new Service(subscription_path, args);
     if (!servicep) {
         return nullptr;
     }
-
+    
+    // Start the subscription
+    servicep->subscriptionStart();
+    
     return servicep;
 }
 
@@ -41,35 +42,51 @@ Service::~Service()
 }
 
 void
-Service::subscriptionStart (std::string name, ServiceCallback cb, Element *element)
+Service::subscriptionStart ()
 {
-    // Create a client
-    ServiceContext *context = new ServiceContext(cb, element, this);
+    // If being used by test client, just return
+    if (_args->_element->getMgmtIp() == "0.0.0.0") {
+        return;
+    }
     
-    pthread_create(_tid, NULL, proc, (void *) context);
+    // Create a client
+    ServiceContext *context = new ServiceContext(_args, this);
+    
+    pthread_create(&_tid, NULL, Service::proc, (void *) context);
 }
 
 void
 Service::subscriptionStop ()
 {
+    // If being used by test client, just return
+    if (_args->_element->getMgmtIp() == "0.0.0.0") {
+        return;
+    }
+    
     // Cancel the subscription
     ClientContext context_cancel;
     CancelSubscriptionRequest cancel_request;
     CancelSubscriptionReply cancel_reply;
     cancel_request.set_subscription_id(_subscription_id);
     stub_->cancelTelemetrySubscription(&context_cancel, cancel_request, &cancel_reply);
-    pthread_cancel(*_tid);
+    pthread_cancel(_tid);
 }
 
 void *
-proc (void *args)
+Service::proc (void *p_args)
 {
-    ServiceContext *contextp = (ServiceContext *) args;
-    Element *element = contextp->_element;
+    ServiceContext *contextp = (ServiceContext *) p_args;
+    ServiceArgs    *args     = contextp->_args;
+    Element *element = args->_element;
     Service *service = contextp->_service;
     
     // Create a reader
     SubscriptionRequest request;
+    Path *path;
+    path = request.add_path_list();
+    path->set_path(service->getName());
+    path->set_sample_frequency(5000);
+    
     ClientContext context;
     std::multimap<grpc::string_ref, grpc::string_ref> server_metadata;
     std::multimap<grpc::string_ref, grpc::string_ref>::iterator metadata_itr;
@@ -96,11 +113,10 @@ proc (void *args)
         for (int i = 0; i < kv.kv_size(); i++) {
             const KeyValue &kv_data = kv.kv(i);
             ServiceCallbackKeyValue key_value(kv_data.key(), kv_data.str_value());
-            contextp->_cb(element, &key_value);
+            args->_cb(element, &key_value);
         }
     }
-    
+
     // We are done.
     return NULL;
 }
-

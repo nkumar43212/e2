@@ -76,7 +76,20 @@ E2Server::getElements (ServerContext* context,
     ElementDbIterator itr;
     
     for (itr = Element::findFirst(); itr != Element::findLast(); itr++) {
-        // NetworkElementOpState *opstate = reply->add_opstate();
+        // Get the operational state for this element
+        ElementOpstateList element_opstate;
+        itr->second->getOperationalState(element_opstate);
+        
+        // Copy it over into the reply
+        NetworkElementOpState *opstate = reply->add_opstate();
+        NetworkElement *element = opstate->mutable_element();
+        element->set_mgmt_ip(itr->second->getMgmtIp());
+        element->set_name(itr->second->getName());
+        for (ElementOpstateListIterator itr1 = element_opstate.begin(); itr1 != element_opstate.end(); itr1++) {
+            NetworkElementProperty *property = opstate->add_properties();
+            property->set_name(itr1->first);
+            property->set_str_value(itr1->second);
+        }
     }
     
     return Status::OK;

@@ -24,6 +24,10 @@ using grpc::Status;
 using E2::E2;
 using E2::ConfigurationRequest;
 using E2::ConfigurationReply;
+using E2::NetworkElement;
+using E2::NetworkElementOpStateList;
+using E2::NetworkElementOpState;
+using E2::NetworkElementProperty;
 
 
 // AGENT_SERVER_ADDRESS
@@ -57,7 +61,9 @@ public:
                             uint32_t id,
                             const std::string& logfile_dir);
     
-    void addElement();
+    void addElement(std::string name, std::string mgmt_ip);
+    void deleteElement(std::string name);
+    void listElements();
 };
 
 

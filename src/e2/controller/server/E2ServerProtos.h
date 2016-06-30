@@ -22,6 +22,7 @@ using E2::NetworkElement;
 using E2::NetworkElementList;
 using E2::NetworkElementOpState;
 using E2::NetworkElementOpStateList;
+using E2::NetworkElementProperty;
 using E2::ConfigurationRequest;
 using E2::ConfigurationReply;
 
