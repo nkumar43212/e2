@@ -449,7 +449,7 @@
 					/Users/nitin/e2c/e2/src/e2/lib,
 				);
 				"OTHER_LDFLAGS[arch=*]" = (
-					/usr/local/lib/gtest_main.a,
+					"-lgtest",
 					"-lpthread",
 					"-ldl",
 					"-lgrpc++_unsecure",

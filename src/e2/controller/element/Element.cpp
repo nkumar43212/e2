@@ -27,7 +27,7 @@ Element::activate()
     ServiceArgs *service_args = new ServiceArgs(inventoryCallback, this);
     
     // Subscribe to the inventory service
-    _inventory_subscription = Service::createSubscription("/components", service_args);
+    _inventory_subscription = Service::createSubscription("/interfaces", service_args);
     if (!_inventory_subscription) {
         return EFAIL;
     }
@@ -60,17 +60,19 @@ Element::inventoryCallback (Element *elementp, ServiceCallbackKeyValue *kv)
     elementp->setLastUpdateTime(t);
     
     // We are only interested in collecting list of interfaces at this time
-    if (kv->str_value != "PORT") {
+    std::string name_str("]/name");
+    if (kv->key.find(name_str) == std::string::npos) {
         return;
     }
+    std::string if_name = kv->str_value;
     
     // If interface already present, we are done
-    if (elementp->isPresentInterface(kv->key)) {
+    if (elementp->isPresentInterface(if_name)) {
         return;
     }
     
     // Absorb this interface
-    ElementInterface *ifp = new ElementInterface(kv->key);
+    ElementInterface *ifp = new ElementInterface(if_name);
     if (ifp) {
         elementp->addInterface(ifp);
     }
