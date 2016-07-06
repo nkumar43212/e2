@@ -16,37 +16,17 @@
 #include "ServiceProtos.h"
 #include "Element.hpp"
 
-// When a subscription is created, the service calls back the client when a value
-// is available.
-class ServiceCallbackKeyValue {
-public:
-    std::string key;
-    std::string str_value;
-    ServiceCallbackKeyValue(std::string k, std::string v)
-    {
-        key = k;
-        str_value = v;
-    }
-};
-
-// When a service subscription is created, this is the set of arguments
-// the caller needs to provide
-class ServiceArgs {
-public:
-    typedef void (*ServiceCallback)(Element *, ServiceCallbackKeyValue *);
-    ServiceCallback _cb;
-    Element        *_element;
-    ServiceArgs (ServiceCallback cb, Element *element) : _cb(cb), _element(element)
-    {
-    }
-};
+// Forwards
+class ServiceInterest;
+typedef std::vector<ServiceInterest *>ServiceInterestList;
+typedef ServiceInterestList::iterator ServiceInterestListIterator;
 
 // Subscription service
 class Service {
-    std::string     _name;
-    ServiceArgs *   _args;
-    pthread_t       _tid;
-    uint32_t        _subscription_id;
+    std::string          _name;
+    ServiceInterestList  _interests;
+    pthread_t            _tid;
+    uint32_t             _subscription_id;
     
     // Helper routines
     void subscriptionStart();
@@ -66,13 +46,18 @@ public:
     std::string  getName()                      { return _name;            }
     
     // Create a service subscription
-    static Service *createSubscription(std::string subscription_path, ServiceArgs *args);
+    static Service *createSubscription(std::string subscription_path, Element *element);
+    void            addInterest(ServiceInterest *interest)
+    {
+        _interests.push_back(interest);
+    }
+    
     ~Service();
     
-    Service (std::string path_name, ServiceArgs *args) : _name(path_name), _args(args)
+    Service (std::string path_name, Element *element) : _name(path_name)
     {
-        if (args->_element->getTelemetryIp() != "0.0.0.0") {
-            stub_ = OpenConfigTelemetry::NewStub(grpc::CreateChannel(args->_element->getTelemetryIp(), grpc::InsecureCredentials()));
+        if (element->getTelemetryIp() != "0.0.0.0") {
+            stub_ = OpenConfigTelemetry::NewStub(grpc::CreateChannel(element->getTelemetryIp(), grpc::InsecureCredentials()));
         }
     }
     
@@ -82,12 +67,41 @@ public:
     }
 };
 
+// When a subscription is created, the service calls back the client when a value
+// is available.
+class ServiceCallbackKeyValue {
+public:
+    std::string key;
+    std::string str_value;
+    ServiceCallbackKeyValue(std::string k, std::string v)
+    {
+        key = k;
+        str_value = v;
+    }
+};
+
+// After a service is created, interests can be created on the service.
+// An interest registers a callback routine which is invoked when any data
+// element is available on the service channel
+class ServiceInterest {
+public:
+    typedef void (*ServiceCallback)(Element *, ServiceCallbackKeyValue *);
+    ServiceCallback _cb;
+    Element        *_element;
+    std::string     _name;
+    ServiceInterest(ServiceCallback cb, Element *element, std::string name = "") : _cb(cb), _element(element), _name(name)
+    {
+    }
+};
+
+
+// Wrapper class used to pass arguments to the subscription thread
 class ServiceContext {
 public:
-    ServiceArgs * _args;
-    Service *    _service;
+    ServiceInterestList * _interests;
+    Service *             _service;
     
-    ServiceContext(ServiceArgs * args, Service *service) : _args(args), _service(service)
+    ServiceContext(ServiceInterestList *interests, Service *service) : _interests(interests), _service(service)
     {
     }
 };

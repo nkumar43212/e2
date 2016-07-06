@@ -18,6 +18,7 @@
 #include "E2Types.h"
 #include "ElementInterface.hpp"
 #include "Metrics.hpp"
+#include "IndexManager.h"
 
 // Types
 class Element;
@@ -53,10 +54,11 @@ class Element {
     ElementStatus _status;
     
     // List of Interfaces on this element
+    IdManager     _interface_id_manager;
     InterfaceList _interface_list;
     
     // List of Connections with the network element
-    Service *     _inventory_subscription;
+    std::map<std::string, Service *> _subscriptions;
     
     // Metrics to measure this element.
     MetricsList   _metrics_list;
@@ -99,6 +101,7 @@ public:
     void         deactivate();
     bool         isActive();
     static void  inventoryCallback(Element *elementp, ServiceCallbackKeyValue *kv);
+    static void  interfacesCallback(Element *elementp, ServiceCallbackKeyValue *kv);
     
     // Interface List Management
     bool         isPresentInterface(std::string name);
@@ -119,7 +122,7 @@ public:
         std::cout << "  State = " << getStatusStr() << "\n";
         std::cout << "  Interfaces:\n";
         for (InterfaceListIterator itr = _interface_list.begin(); itr != _interface_list.end(); itr++) {
-            std::cout << "     " << itr->first << "\n";
+            itr->second->description();
         }
     }
 };

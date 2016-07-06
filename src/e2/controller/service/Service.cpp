@@ -22,10 +22,10 @@ using grpc::ClientReader;
 using grpc::Status;
 
 Service *
-Service::createSubscription (std::string subscription_path, ServiceArgs *args)
+Service::createSubscription (std::string subscription_path, Element *element)
 {
     // Create the handle
-    Service *servicep = new Service(subscription_path, args);
+    Service *servicep = new Service(subscription_path, element);
     if (!servicep) {
         return nullptr;
     }
@@ -44,13 +44,8 @@ Service::~Service()
 void
 Service::subscriptionStart ()
 {
-    // If being used by test client, just return
-    if (_args->_element->getMgmtIp() == "0.0.0.0") {
-        return;
-    }
-    
     // Create a client
-    ServiceContext *context = new ServiceContext(_args, this);
+    ServiceContext *context = new ServiceContext(&_interests, this);
     
     pthread_create(&_tid, NULL, Service::proc, (void *) context);
 }
@@ -58,11 +53,6 @@ Service::subscriptionStart ()
 void
 Service::subscriptionStop ()
 {
-    // If being used by test client, just return
-    if (_args->_element->getMgmtIp() == "0.0.0.0") {
-        return;
-    }
-    
     // Cancel the subscription
     ClientContext context_cancel;
     CancelSubscriptionRequest cancel_request;
@@ -75,9 +65,8 @@ Service::subscriptionStop ()
 void *
 Service::proc (void *p_args)
 {
-    ServiceContext *contextp = (ServiceContext *) p_args;
-    ServiceArgs    *args     = contextp->_args;
-    Element *element = args->_element;
+    ServiceContext       *contextp = (ServiceContext *) p_args;
+    ServiceInterestList  *interests = contextp->_interests;
     Service *service = contextp->_service;
     
     // Create a reader
@@ -113,7 +102,10 @@ Service::proc (void *p_args)
         for (int i = 0; i < kv.kv_size(); i++) {
             const KeyValue &kv_data = kv.kv(i);
             ServiceCallbackKeyValue key_value(kv_data.key(), kv_data.str_value());
-            args->_cb(element, &key_value);
+            for (ServiceInterestListIterator itr = interests->begin(); itr != interests->end(); itr++) {
+                Element *element = (*itr)->_element;
+                (*itr)->_cb(element, &key_value);
+            }
         }
     }
 

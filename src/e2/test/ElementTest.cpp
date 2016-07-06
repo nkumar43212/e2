@@ -46,9 +46,9 @@ TEST_F(ElementTest, inventory) {
    
     elementp->activate();
     
-    ServiceCallbackKeyValue kv("__timestamp__", "vale");
+    ServiceCallbackKeyValue kv("/interfaces/interface[name=if1]/name", "if1");
     Element::inventoryCallback(elementp, &kv);
-    ServiceCallbackKeyValue kv1("if2", "PORT");
+    ServiceCallbackKeyValue kv1("/interfaces/interface[name=if2]/name", "if2");
     Element::inventoryCallback(elementp, &kv1);
     elementp->description();
 }

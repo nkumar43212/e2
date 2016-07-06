@@ -10,7 +10,7 @@
 #include <sstream>
 #include "Element.hpp"
 #include "Service.hpp"
-
+#include "ElementSubscriptions.hpp"
 
 std::string ElementStatusStrings[] = {
     "Init",
@@ -24,12 +24,26 @@ status_t
 Element::activate()
 {
     status_t    status;
-    ServiceArgs *service_args = new ServiceArgs(inventoryCallback, this);
     
-    // Subscribe to the inventory service
-    _inventory_subscription = Service::createSubscription("/interfaces", service_args);
-    if (!_inventory_subscription) {
-        return EFAIL;
+    // Create all subscriptions
+    for (int i = 0; i < subscription_count; i++) {
+        Service *service = Service::createSubscription(subscription_paths[i], this);
+        _subscriptions[subscription_paths[i]] = service;
+    }
+    
+    // Add all interests in the above services
+    for (int i = 0; i < interest_count; i++) {
+        SubscriptionInterest_t *ptr = &interest_list[i];
+       
+        // Find the service of interest
+        for (std::map<std::string, Service *>::iterator itr = _subscriptions.begin(); itr != _subscriptions.end(); itr++) {
+            if (itr->first != ptr->subscription_name) {
+                continue;
+            }
+            Service *service = itr->second;
+            ServiceInterest *interest = new ServiceInterest(ptr->callback, this);
+            service->addInterest(interest);
+        }
     }
     
     // Add the element to our store
@@ -46,36 +60,11 @@ Element::activate()
 void
 Element::deactivate()
 {
-    delete _inventory_subscription;
+    for (std::map<std::string, Service *>::iterator itr = _subscriptions.begin(); itr != _subscriptions.end(); itr++) {
+        delete itr->second;
+    }
     remove(_name, _mgmt_ip);
     _status = ElementStatusInit;
-}
-
-void
-Element::inventoryCallback (Element *elementp, ServiceCallbackKeyValue *kv)
-{
-    // We heard back. So the element is alive
-    time_t t;
-    time(&t);
-    elementp->setLastUpdateTime(t);
-    
-    // We are only interested in collecting list of interfaces at this time
-    std::string name_str("]/name");
-    if (kv->key.find(name_str) == std::string::npos) {
-        return;
-    }
-    std::string if_name = kv->str_value;
-    
-    // If interface already present, we are done
-    if (elementp->isPresentInterface(if_name)) {
-        return;
-    }
-    
-    // Absorb this interface
-    ElementInterface *ifp = new ElementInterface(if_name);
-    if (ifp) {
-        elementp->addInterface(ifp);
-    }
 }
 
 void
@@ -91,9 +80,8 @@ Element::getOperationalState (ElementOpstateList &opstate)
     opstate["opstate/last_update_time"] = ss.str();
     
     // List of Interfaces
-    int count = 0;
     for (InterfaceListIterator itr = _interface_list.begin(); itr != _interface_list.end(); itr++) {
-        opstate["opstate/interface/" + std::to_string(count++)] = itr->second->getName();
+        opstate["opstate/interface/" + std::to_string(itr->second->getIndex())] = itr->second->getName();
     }    
 }
 

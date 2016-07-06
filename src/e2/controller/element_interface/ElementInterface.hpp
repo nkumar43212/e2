@@ -9,17 +9,20 @@
 #ifndef ElementInterface_hpp
 #define ElementInterface_hpp
 
+#include <iostream>
 #include <stdio.h>
 #include <string>
 
 class ElementInterface {
     std::string _name;
+    uint32_t    _index;
     time_t      _timev;
     
 public:
-    ElementInterface (std::string name)
+    ElementInterface (std::string name, uint32_t index)
     {
         _name = name;
+        _index = index;
         time(&_timev);
     }
     
@@ -29,7 +32,16 @@ public:
 
     // Accessors
     std::string getName()         { return _name;  }
+    uint32_t    getIndex()        { return _index; }
     time_t      getCreateTime()   { return _timev; }
+    
+    // Pretty print
+    void description()
+    {
+        std::cout << "Name = " << getName() << "\n";
+        std::cout << "  Id = " << getIndex() << "\n";
+        std::cout << "  Init Time = " << getCreateTime() << "\n";
+    }
 };
 
 #endif /* ElementInterface_hpp */

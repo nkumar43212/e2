@@ -13,6 +13,12 @@
 		94437E201D10FA290079D8F2 /* ElementDb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94F001B71D08AF2100EDC9F7 /* ElementDb.cpp */; };
 		94437E211D10FA330079D8F2 /* Service.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94F001C21D0A1EF900EDC9F7 /* Service.cpp */; };
 		94437EB21D12F6AC0079D8F2 /* Metrics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94437EB01D12F6AC0079D8F2 /* Metrics.cpp */; };
+		94DBD9601D2CA84A00D25957 /* ElementInterfaceSubscription.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD95F1D2CA84A00D25957 /* ElementInterfaceSubscription.cpp */; };
+		94DBD9621D2CAA1400D25957 /* ElementInventorySubscription.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9611D2CAA1400D25957 /* ElementInventorySubscription.cpp */; };
+		94DBD9651D2CD73200D25957 /* ElementSubscriptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9631D2CD73200D25957 /* ElementSubscriptions.cpp */; };
+		94DBD9661D2CDC4E00D25957 /* ElementSubscriptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9631D2CD73200D25957 /* ElementSubscriptions.cpp */; };
+		94DBD9671D2CDC5800D25957 /* ElementInventorySubscription.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9611D2CAA1400D25957 /* ElementInventorySubscription.cpp */; };
+		94DBD9681D2CDC6700D25957 /* ElementInterfaceSubscription.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD95F1D2CA84A00D25957 /* ElementInterfaceSubscription.cpp */; };
 		94EC47201D05C52300E34A5B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94EC471F1D05C52300E34A5B /* main.cpp */; };
 		94EC47271D05D15400E34A5B /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94EC47251D05D15400E34A5B /* Config.cpp */; };
 		94EC472E1D0618B500E34A5B /* CmdOptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94EC472C1D0618B500E34A5B /* CmdOptions.cpp */; };
@@ -76,6 +82,11 @@
 		94437EB01D12F6AC0079D8F2 /* Metrics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Metrics.cpp; sourceTree = "<group>"; };
 		94437EB11D12F6AC0079D8F2 /* Metrics.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Metrics.hpp; sourceTree = "<group>"; };
 		94981DB21D0B803700122E51 /* ServiceProtos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceProtos.h; sourceTree = "<group>"; };
+		94DBD95E1D2C8CAB00D25957 /* IndexManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IndexManager.h; sourceTree = "<group>"; };
+		94DBD95F1D2CA84A00D25957 /* ElementInterfaceSubscription.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElementInterfaceSubscription.cpp; sourceTree = "<group>"; };
+		94DBD9611D2CAA1400D25957 /* ElementInventorySubscription.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElementInventorySubscription.cpp; sourceTree = "<group>"; };
+		94DBD9631D2CD73200D25957 /* ElementSubscriptions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElementSubscriptions.cpp; sourceTree = "<group>"; };
+		94DBD9641D2CD73200D25957 /* ElementSubscriptions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ElementSubscriptions.hpp; sourceTree = "<group>"; };
 		94EC470F1D05C50B00E34A5B /* e2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = e2; sourceTree = BUILT_PRODUCTS_DIR; };
 		94EC471D1D05C52300E34A5B /* controller */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = controller; sourceTree = BUILT_PRODUCTS_DIR; };
 		94EC471F1D05C52300E34A5B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -220,6 +231,7 @@
 			children = (
 				94F0019D1D0788F000EDC9F7 /* Logger.hpp */,
 				94F0019E1D0788F000EDC9F7 /* Logger.cpp */,
+				94DBD95E1D2C8CAB00D25957 /* IndexManager.h */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -240,8 +252,12 @@
 			isa = PBXGroup;
 			children = (
 				94F001B21D08648000EDC9F7 /* Element.cpp */,
+				94DBD9631D2CD73200D25957 /* ElementSubscriptions.cpp */,
+				94DBD9641D2CD73200D25957 /* ElementSubscriptions.hpp */,
 				94F001B71D08AF2100EDC9F7 /* ElementDb.cpp */,
 				94F001B31D08648000EDC9F7 /* Element.hpp */,
+				94DBD95F1D2CA84A00D25957 /* ElementInterfaceSubscription.cpp */,
+				94DBD9611D2CAA1400D25957 /* ElementInventorySubscription.cpp */,
 			);
 			path = element;
 			sourceTree = "<group>";
@@ -393,9 +409,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				94437E1F1D10D4440079D8F2 /* Element.cpp in Sources */,
+				94DBD9661D2CDC4E00D25957 /* ElementSubscriptions.cpp in Sources */,
+				94DBD9681D2CDC6700D25957 /* ElementInterfaceSubscription.cpp in Sources */,
 				94437E1E1D10D39F0079D8F2 /* ElementTest.cpp in Sources */,
 				94437E211D10FA330079D8F2 /* Service.cpp in Sources */,
 				94437E201D10FA290079D8F2 /* ElementDb.cpp in Sources */,
+				94DBD9671D2CDC5800D25957 /* ElementInventorySubscription.cpp in Sources */,
 				94437E1B1D10D08C0079D8F2 /* service_test.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,10 +430,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94DBD9621D2CAA1400D25957 /* ElementInventorySubscription.cpp in Sources */,
 				94F001BC1D094A7800EDC9F7 /* ElementInterface.cpp in Sources */,
 				94F001B41D08648000EDC9F7 /* Element.cpp in Sources */,
+				94DBD9651D2CD73200D25957 /* ElementSubscriptions.cpp in Sources */,
 				94EC47201D05C52300E34A5B /* main.cpp in Sources */,
 				94F0019F1D0788F000EDC9F7 /* Logger.cpp in Sources */,
+				94DBD9601D2CA84A00D25957 /* ElementInterfaceSubscription.cpp in Sources */,
 				94F0019A1D06A86B00EDC9F7 /* E2Server.cpp in Sources */,
 				94F001B81D08AF2100EDC9F7 /* ElementDb.cpp in Sources */,
 				94F001C41D0A1EF900EDC9F7 /* Service.cpp in Sources */,
