@@ -86,6 +86,20 @@ TEST_F(ElementTest, inventory_list) {
     }
 }
 
+TEST_F(ElementTest, find_ops) {
+    Element *element0p = new Element("test-4", 1, "0.0.0.0");
+    element0p->activate();
+  
+    Element *element1p = new Element("test-5", 1, "0.0.0.0");
+    element1p->activate();
+    
+    Element *elementp = Element::find("test-4", "0.0.0.0");
+    EXPECT_TRUE(elementp == element0p);
+    
+    elementp = Element::find("test-5");
+    EXPECT_TRUE(elementp == element1p);
+}
+
 
 
 

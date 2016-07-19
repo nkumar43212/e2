@@ -149,6 +149,28 @@ class NetworkElement : public ::google::protobuf::Message {
   ::std::string* release_mgmt_ip();
   void set_allocated_mgmt_ip(::std::string* mgmt_ip);
 
+  // optional string endpoint_1 = 3;
+  void clear_endpoint_1();
+  static const int kEndpoint1FieldNumber = 3;
+  const ::std::string& endpoint_1() const;
+  void set_endpoint_1(const ::std::string& value);
+  void set_endpoint_1(const char* value);
+  void set_endpoint_1(const char* value, size_t size);
+  ::std::string* mutable_endpoint_1();
+  ::std::string* release_endpoint_1();
+  void set_allocated_endpoint_1(::std::string* endpoint_1);
+
+  // optional string endpoint_2 = 4;
+  void clear_endpoint_2();
+  static const int kEndpoint2FieldNumber = 4;
+  const ::std::string& endpoint_2() const;
+  void set_endpoint_2(const ::std::string& value);
+  void set_endpoint_2(const char* value);
+  void set_endpoint_2(const char* value, size_t size);
+  ::std::string* mutable_endpoint_2();
+  ::std::string* release_endpoint_2();
+  void set_allocated_endpoint_2(::std::string* endpoint_2);
+
   // @@protoc_insertion_point(class_scope:E2.NetworkElement)
  private:
 
@@ -156,6 +178,8 @@ class NetworkElement : public ::google::protobuf::Message {
   bool _is_default_instance_;
   ::google::protobuf::internal::ArenaStringPtr name_;
   ::google::protobuf::internal::ArenaStringPtr mgmt_ip_;
+  ::google::protobuf::internal::ArenaStringPtr endpoint_1_;
+  ::google::protobuf::internal::ArenaStringPtr endpoint_2_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_e2_5fapi_2eproto();
   friend void protobuf_AssignDesc_e2_5fapi_2eproto();
@@ -880,6 +904,92 @@ inline void NetworkElement::set_allocated_mgmt_ip(::std::string* mgmt_ip) {
   }
   mgmt_ip_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), mgmt_ip);
   // @@protoc_insertion_point(field_set_allocated:E2.NetworkElement.mgmt_ip)
+}
+
+// optional string endpoint_1 = 3;
+inline void NetworkElement::clear_endpoint_1() {
+  endpoint_1_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& NetworkElement::endpoint_1() const {
+  // @@protoc_insertion_point(field_get:E2.NetworkElement.endpoint_1)
+  return endpoint_1_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void NetworkElement::set_endpoint_1(const ::std::string& value) {
+  
+  endpoint_1_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:E2.NetworkElement.endpoint_1)
+}
+inline void NetworkElement::set_endpoint_1(const char* value) {
+  
+  endpoint_1_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:E2.NetworkElement.endpoint_1)
+}
+inline void NetworkElement::set_endpoint_1(const char* value, size_t size) {
+  
+  endpoint_1_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:E2.NetworkElement.endpoint_1)
+}
+inline ::std::string* NetworkElement::mutable_endpoint_1() {
+  
+  // @@protoc_insertion_point(field_mutable:E2.NetworkElement.endpoint_1)
+  return endpoint_1_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* NetworkElement::release_endpoint_1() {
+  
+  return endpoint_1_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void NetworkElement::set_allocated_endpoint_1(::std::string* endpoint_1) {
+  if (endpoint_1 != NULL) {
+    
+  } else {
+    
+  }
+  endpoint_1_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), endpoint_1);
+  // @@protoc_insertion_point(field_set_allocated:E2.NetworkElement.endpoint_1)
+}
+
+// optional string endpoint_2 = 4;
+inline void NetworkElement::clear_endpoint_2() {
+  endpoint_2_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& NetworkElement::endpoint_2() const {
+  // @@protoc_insertion_point(field_get:E2.NetworkElement.endpoint_2)
+  return endpoint_2_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void NetworkElement::set_endpoint_2(const ::std::string& value) {
+  
+  endpoint_2_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:E2.NetworkElement.endpoint_2)
+}
+inline void NetworkElement::set_endpoint_2(const char* value) {
+  
+  endpoint_2_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:E2.NetworkElement.endpoint_2)
+}
+inline void NetworkElement::set_endpoint_2(const char* value, size_t size) {
+  
+  endpoint_2_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:E2.NetworkElement.endpoint_2)
+}
+inline ::std::string* NetworkElement::mutable_endpoint_2() {
+  
+  // @@protoc_insertion_point(field_mutable:E2.NetworkElement.endpoint_2)
+  return endpoint_2_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* NetworkElement::release_endpoint_2() {
+  
+  return endpoint_2_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void NetworkElement::set_allocated_endpoint_2(::std::string* endpoint_2) {
+  if (endpoint_2 != NULL) {
+    
+  } else {
+    
+  }
+  endpoint_2_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), endpoint_2);
+  // @@protoc_insertion_point(field_set_allocated:E2.NetworkElement.endpoint_2)
 }
 
 // -------------------------------------------------------------------

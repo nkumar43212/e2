@@ -42,10 +42,20 @@ class E2 GRPC_FINAL {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::E2::NetworkElementOpStateList>> AsyncgetElements(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::E2::NetworkElementOpStateList>>(AsyncgetElementsRaw(context, request, cq));
     }
+    virtual ::grpc::Status addFabricLink(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::E2::ConfigurationReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>> AsyncaddFabricLink(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>>(AsyncaddFabricLinkRaw(context, request, cq));
+    }
+    virtual ::grpc::Status removeFabricLink(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::E2::ConfigurationReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>> AsyncremoveFabricLink(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>>(AsyncremoveFabricLinkRaw(context, request, cq));
+    }
   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>* AsyncaddElementRaw(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>* AsyncremoveElementRaw(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::E2::NetworkElementOpStateList>* AsyncgetElementsRaw(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>* AsyncaddFabricLinkRaw(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>* AsyncremoveFabricLinkRaw(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub GRPC_FINAL : public StubInterface {
    public:
@@ -62,15 +72,27 @@ class E2 GRPC_FINAL {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::E2::NetworkElementOpStateList>> AsyncgetElements(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::E2::NetworkElementOpStateList>>(AsyncgetElementsRaw(context, request, cq));
     }
+    ::grpc::Status addFabricLink(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::E2::ConfigurationReply* response) GRPC_OVERRIDE;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>> AsyncaddFabricLink(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>>(AsyncaddFabricLinkRaw(context, request, cq));
+    }
+    ::grpc::Status removeFabricLink(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::E2::ConfigurationReply* response) GRPC_OVERRIDE;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>> AsyncremoveFabricLink(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>>(AsyncremoveFabricLinkRaw(context, request, cq));
+    }
 
    private:
     std::shared_ptr< ::grpc::Channel> channel_;
     ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* AsyncaddElementRaw(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
     ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* AsyncremoveElementRaw(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
     ::grpc::ClientAsyncResponseReader< ::E2::NetworkElementOpStateList>* AsyncgetElementsRaw(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
+    ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* AsyncaddFabricLinkRaw(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
+    ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* AsyncremoveFabricLinkRaw(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
     const ::grpc::RpcMethod rpcmethod_addElement_;
     const ::grpc::RpcMethod rpcmethod_removeElement_;
     const ::grpc::RpcMethod rpcmethod_getElements_;
+    const ::grpc::RpcMethod rpcmethod_addFabricLink_;
+    const ::grpc::RpcMethod rpcmethod_removeFabricLink_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::Channel>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -81,6 +103,8 @@ class E2 GRPC_FINAL {
     virtual ::grpc::Status addElement(::grpc::ServerContext* context, const ::E2::ConfigurationRequest* request, ::E2::ConfigurationReply* response);
     virtual ::grpc::Status removeElement(::grpc::ServerContext* context, const ::E2::ConfigurationRequest* request, ::E2::ConfigurationReply* response);
     virtual ::grpc::Status getElements(::grpc::ServerContext* context, const ::E2::ConfigurationRequest* request, ::E2::NetworkElementOpStateList* response);
+    virtual ::grpc::Status addFabricLink(::grpc::ServerContext* context, const ::E2::ConfigurationRequest* request, ::E2::ConfigurationReply* response);
+    virtual ::grpc::Status removeFabricLink(::grpc::ServerContext* context, const ::E2::ConfigurationRequest* request, ::E2::ConfigurationReply* response);
     ::grpc::RpcService* service() GRPC_OVERRIDE GRPC_FINAL;
    private:
     ::grpc::RpcService* service_;
@@ -92,6 +116,8 @@ class E2 GRPC_FINAL {
     void RequestaddElement(::grpc::ServerContext* context, ::E2::ConfigurationRequest* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
     void RequestremoveElement(::grpc::ServerContext* context, ::E2::ConfigurationRequest* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
     void RequestgetElements(::grpc::ServerContext* context, ::E2::ConfigurationRequest* request, ::grpc::ServerAsyncResponseWriter< ::E2::NetworkElementOpStateList>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
+    void RequestaddFabricLink(::grpc::ServerContext* context, ::E2::ConfigurationRequest* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
+    void RequestremoveFabricLink(::grpc::ServerContext* context, ::E2::ConfigurationRequest* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
   };
 };
 

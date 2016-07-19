@@ -45,15 +45,23 @@ service E2 {
 
     // Get all registered network elements
     rpc getElements(ConfigurationRequest)                    returns (NetworkElementOpStateList) {}
+
+    // Add/Remove fabric link that connects elements
+    rpc addFabricLink(ConfigurationRequest)                  returns (ConfigurationReply) {}
+    rpc removeFabricLink(ConfigurationRequest)               returns (ConfigurationReply) {}
 }
 
 // A network element
 message NetworkElement {
     // Name of the device
-    string name    = 1;
+    string name       = 1;
 
     // Management IP address of the device
-    string mgmt_ip = 2;
+    string mgmt_ip    = 2;
+
+    // Optional propoerties
+    string endpoint_1 = 3;
+    string endpoint_2 = 4;
 }
 
 message NetworkElementList {
@@ -80,7 +88,6 @@ message NetworkElementProperty {
         bytes  bytes_value                                  =  8;
     } 
 }
-
 
 message NetworkElementOpStateList {
     repeated NetworkElementOpState opstate                  = 1;

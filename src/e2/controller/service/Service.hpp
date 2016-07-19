@@ -27,6 +27,7 @@ class Service {
     ServiceInterestList  _interests;
     pthread_t            _tid;
     uint32_t             _subscription_id;
+    bool                 _is_unit_test;
     
     // Helper routines
     void subscriptionStart();
@@ -44,19 +45,33 @@ public:
     uint32_t     getSubscriptionId()            { return _subscription_id; }
     void         setSubscriptionId(uint32_t id) { _subscription_id = id;   }
     std::string  getName()                      { return _name;            }
+    bool         isUnitTest()                   { return _is_unit_test;    }
     
     // Create a service subscription
     static Service *createSubscription(std::string subscription_path, Element *element);
+   
+    // Manage interests. An interest is chance to get a callback when a record on this
+    // service channel is received
     void            addInterest(ServiceInterest *interest)
     {
         _interests.push_back(interest);
+    }
+    bool            searchInterest(ServiceInterest *interest)
+    {
+        for (ServiceInterestListIterator itr = _interests.begin(); itr != _interests.end(); itr++) {
+            if ((*itr) == interest) {
+                return true;
+            }
+        }
+        return false;
     }
     
     ~Service();
     
     Service (std::string path_name, Element *element) : _name(path_name)
     {
-        if (element->getTelemetryIp() != "0.0.0.0") {
+        _is_unit_test = element->isUnitTest();
+        if (!_is_unit_test) {
             stub_ = OpenConfigTelemetry::NewStub(grpc::CreateChannel(element->getTelemetryIp(), grpc::InsecureCredentials()));
         }
     }

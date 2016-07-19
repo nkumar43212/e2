@@ -19,6 +19,27 @@
 		94DBD9661D2CDC4E00D25957 /* ElementSubscriptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9631D2CD73200D25957 /* ElementSubscriptions.cpp */; };
 		94DBD9671D2CDC5800D25957 /* ElementInventorySubscription.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9611D2CAA1400D25957 /* ElementInventorySubscription.cpp */; };
 		94DBD9681D2CDC6700D25957 /* ElementInterfaceSubscription.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD95F1D2CA84A00D25957 /* ElementInterfaceSubscription.cpp */; };
+		94DBD96A1D2E217D00D25957 /* ElementUtilizationSubscription.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9691D2E217D00D25957 /* ElementUtilizationSubscription.cpp */; };
+		94DBD96B1D2E218F00D25957 /* ElementUtilizationSubscription.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9691D2E217D00D25957 /* ElementUtilizationSubscription.cpp */; };
+		94DBD96E1D2E2D5500D25957 /* Xpath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD96D1D2E2D5500D25957 /* Xpath.cpp */; };
+		94DBD96F1D2E2DA100D25957 /* Xpath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD96D1D2E2D5500D25957 /* Xpath.cpp */; };
+		94DBD9721D2E306100D25957 /* xpath_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9701D2E306100D25957 /* xpath_test.cpp */; };
+		94DBD9741D2F795800D25957 /* ElementMetrics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9731D2F795800D25957 /* ElementMetrics.cpp */; };
+		94DBD9751D2F7A1B00D25957 /* Metrics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94437EB01D12F6AC0079D8F2 /* Metrics.cpp */; };
+		94DBD9761D2F7A1F00D25957 /* ElementMetrics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9731D2F795800D25957 /* ElementMetrics.cpp */; };
+		94DBD9791D3045DF00D25957 /* MetricsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9771D3045DF00D25957 /* MetricsManager.cpp */; };
+		94DBD97E1D3D20A400D25957 /* FabricLink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD97C1D3D20A400D25957 /* FabricLink.cpp */; };
+		94DBD9801D3D24D000D25957 /* FabricManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD97F1D3D24D000D25957 /* FabricManager.cpp */; };
+		94DBD9841D3D42DF00D25957 /* ServiceOrder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9821D3D42DF00D25957 /* ServiceOrder.cpp */; };
+		94DBD9871D3D468100D25957 /* ServiceLag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9851D3D468100D25957 /* ServiceLag.cpp */; };
+		94DBD9881D3D71FD00D25957 /* MetricsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9771D3045DF00D25957 /* MetricsManager.cpp */; };
+		94DBD98A1D3D88A400D25957 /* ElementServiceOrder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9891D3D88A400D25957 /* ElementServiceOrder.cpp */; };
+		94DBD98B1D3D89ED00D25957 /* ElementServiceOrder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9891D3D88A400D25957 /* ElementServiceOrder.cpp */; };
+		94DBD98C1D3D89F100D25957 /* FabricLink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD97C1D3D20A400D25957 /* FabricLink.cpp */; };
+		94DBD98D1D3D89F400D25957 /* FabricManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD97F1D3D24D000D25957 /* FabricManager.cpp */; };
+		94DBD98E1D3D8A0200D25957 /* ServiceLag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9851D3D468100D25957 /* ServiceLag.cpp */; };
+		94DBD98F1D3D8A0600D25957 /* ServiceOrder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9821D3D42DF00D25957 /* ServiceOrder.cpp */; };
+		94DBD9921D3D902300D25957 /* fabric_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9901D3D902200D25957 /* fabric_test.cpp */; };
 		94EC47201D05C52300E34A5B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94EC471F1D05C52300E34A5B /* main.cpp */; };
 		94EC47271D05D15400E34A5B /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94EC47251D05D15400E34A5B /* Config.cpp */; };
 		94EC472E1D0618B500E34A5B /* CmdOptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94EC472C1D0618B500E34A5B /* CmdOptions.cpp */; };
@@ -87,6 +108,24 @@
 		94DBD9611D2CAA1400D25957 /* ElementInventorySubscription.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElementInventorySubscription.cpp; sourceTree = "<group>"; };
 		94DBD9631D2CD73200D25957 /* ElementSubscriptions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElementSubscriptions.cpp; sourceTree = "<group>"; };
 		94DBD9641D2CD73200D25957 /* ElementSubscriptions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ElementSubscriptions.hpp; sourceTree = "<group>"; };
+		94DBD9691D2E217D00D25957 /* ElementUtilizationSubscription.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElementUtilizationSubscription.cpp; sourceTree = "<group>"; };
+		94DBD96C1D2E2C7900D25957 /* Xpath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Xpath.h; sourceTree = "<group>"; };
+		94DBD96D1D2E2D5500D25957 /* Xpath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Xpath.cpp; sourceTree = "<group>"; };
+		94DBD9701D2E306100D25957 /* xpath_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = xpath_test.cpp; sourceTree = "<group>"; };
+		94DBD9711D2E306100D25957 /* xpath_test.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = xpath_test.hpp; sourceTree = "<group>"; };
+		94DBD9731D2F795800D25957 /* ElementMetrics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElementMetrics.cpp; sourceTree = "<group>"; };
+		94DBD9771D3045DF00D25957 /* MetricsManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MetricsManager.cpp; sourceTree = "<group>"; };
+		94DBD9781D3045DF00D25957 /* MetricsManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MetricsManager.hpp; sourceTree = "<group>"; };
+		94DBD97C1D3D20A400D25957 /* FabricLink.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FabricLink.cpp; sourceTree = "<group>"; };
+		94DBD97D1D3D20A400D25957 /* FabricLink.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FabricLink.hpp; sourceTree = "<group>"; };
+		94DBD97F1D3D24D000D25957 /* FabricManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FabricManager.cpp; sourceTree = "<group>"; };
+		94DBD9821D3D42DF00D25957 /* ServiceOrder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServiceOrder.cpp; sourceTree = "<group>"; };
+		94DBD9831D3D42DF00D25957 /* ServiceOrder.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ServiceOrder.hpp; sourceTree = "<group>"; };
+		94DBD9851D3D468100D25957 /* ServiceLag.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServiceLag.cpp; sourceTree = "<group>"; };
+		94DBD9861D3D468100D25957 /* ServiceLag.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ServiceLag.hpp; sourceTree = "<group>"; };
+		94DBD9891D3D88A400D25957 /* ElementServiceOrder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElementServiceOrder.cpp; sourceTree = "<group>"; };
+		94DBD9901D3D902200D25957 /* fabric_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fabric_test.cpp; sourceTree = "<group>"; };
+		94DBD9911D3D902300D25957 /* fabric_test.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fabric_test.hpp; sourceTree = "<group>"; };
 		94EC470F1D05C50B00E34A5B /* e2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = e2; sourceTree = BUILT_PRODUCTS_DIR; };
 		94EC471D1D05C52300E34A5B /* controller */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = controller; sourceTree = BUILT_PRODUCTS_DIR; };
 		94EC471F1D05C52300E34A5B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -153,8 +192,12 @@
 				94437E141D10C9E80079D8F2 /* main.cpp */,
 				94437E1C1D10D39F0079D8F2 /* ElementTest.cpp */,
 				94437E1D1D10D39F0079D8F2 /* ElementTest.hpp */,
+				94DBD9901D3D902200D25957 /* fabric_test.cpp */,
+				94DBD9911D3D902300D25957 /* fabric_test.hpp */,
 				94437E191D10D08C0079D8F2 /* service_test.cpp */,
 				94437E1A1D10D08C0079D8F2 /* service_test.hpp */,
+				94DBD9701D2E306100D25957 /* xpath_test.cpp */,
+				94DBD9711D2E306100D25957 /* xpath_test.hpp */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -164,8 +207,31 @@
 			children = (
 				94437EB01D12F6AC0079D8F2 /* Metrics.cpp */,
 				94437EB11D12F6AC0079D8F2 /* Metrics.hpp */,
+				94DBD9771D3045DF00D25957 /* MetricsManager.cpp */,
+				94DBD9781D3045DF00D25957 /* MetricsManager.hpp */,
 			);
 			path = metrics;
+			sourceTree = "<group>";
+		};
+		94DBD97B1D3D208400D25957 /* Fabric */ = {
+			isa = PBXGroup;
+			children = (
+				94DBD97C1D3D20A400D25957 /* FabricLink.cpp */,
+				94DBD97F1D3D24D000D25957 /* FabricManager.cpp */,
+				94DBD97D1D3D20A400D25957 /* FabricLink.hpp */,
+			);
+			path = Fabric;
+			sourceTree = "<group>";
+		};
+		94DBD9811D3D42B000D25957 /* service_order */ = {
+			isa = PBXGroup;
+			children = (
+				94DBD9821D3D42DF00D25957 /* ServiceOrder.cpp */,
+				94DBD9831D3D42DF00D25957 /* ServiceOrder.hpp */,
+				94DBD9851D3D468100D25957 /* ServiceLag.cpp */,
+				94DBD9861D3D468100D25957 /* ServiceLag.hpp */,
+			);
+			path = service_order;
 			sourceTree = "<group>";
 		};
 		94EC47061D05C50B00E34A5B = {
@@ -193,6 +259,8 @@
 			isa = PBXGroup;
 			children = (
 				94EC471F1D05C52300E34A5B /* main.cpp */,
+				94DBD9811D3D42B000D25957 /* service_order */,
+				94DBD97B1D3D208400D25957 /* Fabric */,
 				94437EAF1D12F6950079D8F2 /* metrics */,
 				94F001C11D0A1EE600EDC9F7 /* service */,
 				94F001B51D08692200EDC9F7 /* include */,
@@ -232,6 +300,8 @@
 				94F0019D1D0788F000EDC9F7 /* Logger.hpp */,
 				94F0019E1D0788F000EDC9F7 /* Logger.cpp */,
 				94DBD95E1D2C8CAB00D25957 /* IndexManager.h */,
+				94DBD96C1D2E2C7900D25957 /* Xpath.h */,
+				94DBD96D1D2E2D5500D25957 /* Xpath.cpp */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -252,12 +322,15 @@
 			isa = PBXGroup;
 			children = (
 				94F001B21D08648000EDC9F7 /* Element.cpp */,
+				94DBD9891D3D88A400D25957 /* ElementServiceOrder.cpp */,
 				94DBD9631D2CD73200D25957 /* ElementSubscriptions.cpp */,
 				94DBD9641D2CD73200D25957 /* ElementSubscriptions.hpp */,
 				94F001B71D08AF2100EDC9F7 /* ElementDb.cpp */,
 				94F001B31D08648000EDC9F7 /* Element.hpp */,
 				94DBD95F1D2CA84A00D25957 /* ElementInterfaceSubscription.cpp */,
 				94DBD9611D2CAA1400D25957 /* ElementInventorySubscription.cpp */,
+				94DBD9691D2E217D00D25957 /* ElementUtilizationSubscription.cpp */,
+				94DBD9731D2F795800D25957 /* ElementMetrics.cpp */,
 			);
 			path = element;
 			sourceTree = "<group>";
@@ -408,14 +481,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94DBD9761D2F7A1F00D25957 /* ElementMetrics.cpp in Sources */,
+				94DBD96B1D2E218F00D25957 /* ElementUtilizationSubscription.cpp in Sources */,
 				94437E1F1D10D4440079D8F2 /* Element.cpp in Sources */,
+				94DBD9721D2E306100D25957 /* xpath_test.cpp in Sources */,
+				94DBD98C1D3D89F100D25957 /* FabricLink.cpp in Sources */,
+				94DBD98D1D3D89F400D25957 /* FabricManager.cpp in Sources */,
+				94DBD98B1D3D89ED00D25957 /* ElementServiceOrder.cpp in Sources */,
+				94DBD98F1D3D8A0600D25957 /* ServiceOrder.cpp in Sources */,
 				94DBD9661D2CDC4E00D25957 /* ElementSubscriptions.cpp in Sources */,
 				94DBD9681D2CDC6700D25957 /* ElementInterfaceSubscription.cpp in Sources */,
 				94437E1E1D10D39F0079D8F2 /* ElementTest.cpp in Sources */,
+				94DBD96F1D2E2DA100D25957 /* Xpath.cpp in Sources */,
 				94437E211D10FA330079D8F2 /* Service.cpp in Sources */,
+				94DBD9881D3D71FD00D25957 /* MetricsManager.cpp in Sources */,
+				94DBD9921D3D902300D25957 /* fabric_test.cpp in Sources */,
 				94437E201D10FA290079D8F2 /* ElementDb.cpp in Sources */,
+				94DBD98E1D3D8A0200D25957 /* ServiceLag.cpp in Sources */,
 				94DBD9671D2CDC5800D25957 /* ElementInventorySubscription.cpp in Sources */,
 				94437E1B1D10D08C0079D8F2 /* service_test.cpp in Sources */,
+				94DBD9751D2F7A1B00D25957 /* Metrics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,18 +515,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94DBD96E1D2E2D5500D25957 /* Xpath.cpp in Sources */,
 				94DBD9621D2CAA1400D25957 /* ElementInventorySubscription.cpp in Sources */,
+				94DBD9871D3D468100D25957 /* ServiceLag.cpp in Sources */,
+				94DBD98A1D3D88A400D25957 /* ElementServiceOrder.cpp in Sources */,
 				94F001BC1D094A7800EDC9F7 /* ElementInterface.cpp in Sources */,
 				94F001B41D08648000EDC9F7 /* Element.cpp in Sources */,
+				94DBD9741D2F795800D25957 /* ElementMetrics.cpp in Sources */,
 				94DBD9651D2CD73200D25957 /* ElementSubscriptions.cpp in Sources */,
+				94DBD9841D3D42DF00D25957 /* ServiceOrder.cpp in Sources */,
+				94DBD9791D3045DF00D25957 /* MetricsManager.cpp in Sources */,
 				94EC47201D05C52300E34A5B /* main.cpp in Sources */,
 				94F0019F1D0788F000EDC9F7 /* Logger.cpp in Sources */,
 				94DBD9601D2CA84A00D25957 /* ElementInterfaceSubscription.cpp in Sources */,
 				94F0019A1D06A86B00EDC9F7 /* E2Server.cpp in Sources */,
 				94F001B81D08AF2100EDC9F7 /* ElementDb.cpp in Sources */,
+				94DBD97E1D3D20A400D25957 /* FabricLink.cpp in Sources */,
+				94DBD9801D3D24D000D25957 /* FabricManager.cpp in Sources */,
 				94F001C41D0A1EF900EDC9F7 /* Service.cpp in Sources */,
 				94EC47271D05D15400E34A5B /* Config.cpp in Sources */,
 				94437EB21D12F6AC0079D8F2 /* Metrics.cpp in Sources */,
+				94DBD96A1D2E217D00D25957 /* ElementUtilizationSubscription.cpp in Sources */,
 				94EC472E1D0618B500E34A5B /* CmdOptions.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

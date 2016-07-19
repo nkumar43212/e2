@@ -50,6 +50,15 @@ handle_list_element (int argc, const char *argv[])
     clientp->listElements();
 }
 
+void
+handle_add_fabric_link (int argc, const char *argv[])
+{
+    std::string e2_name("e2");
+    
+    E2Client *clientp = E2Client::create(grpc::CreateChannel(AGENT_SERVER_IP_PORT, grpc::InsecureCredentials()),
+                                         e2_name, 0, parser->getLogDir());
+    clientp->addFabricLink(argv[1], argv[2], argv[3]);
+}
 
 // Add new commands here
 entry_t agent_client_commands [] = {
@@ -74,6 +83,15 @@ entry_t agent_client_commands [] = {
         .e_usage   = std::string("list-element"),
         .e_handler = handle_list_element
     },
+    
+    {
+        .e_cmd     = std::string("add-fabric-link"),
+        .e_argc    = 4,
+        .e_help    = std::string("Add fabric link connectivity between two elements"),
+        .e_usage   = std::string("add-fabric-link <name> <ep1> <ep2>"),
+        .e_handler = handle_add_fabric_link
+    },
+    
 };
 
 uint32_t agent_client_commands_count =

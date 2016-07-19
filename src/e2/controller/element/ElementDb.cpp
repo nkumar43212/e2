@@ -26,6 +26,22 @@ Element::find (const std::string &name, const std::string &mgmt_ip)
     return element_db[key];
 }
 
+Element *
+Element::find (const std::string &name)
+{
+    std::string key;
+    Element::makeKey(key, name, "");
+    
+    for (ElementDbIterator itr = element_db.begin(); itr != element_db.end(); itr++) {
+        std::size_t pos = itr->first.find(key);
+        if (pos != std::string::npos) {
+            return itr->second;
+        }
+    }
+    
+    return nullptr;
+}
+
 status_t
 Element::add (const std::string &name, const std::string &mgmt_ip, Element *element)
 {

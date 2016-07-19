@@ -66,3 +66,20 @@ E2Client::listElements()
         }
     }
 }
+
+void
+E2Client::addFabricLink (std::string name, std::string ep1, std::string ep2)
+{
+    // Send over the list request
+    ClientContext        context;
+    ConfigurationRequest request;
+    NetworkElement       *element;
+    ConfigurationReply   reply;
+    
+    element = request.mutable_element();
+    element->set_name(name);
+    element->set_mgmt_ip("");
+    element->set_endpoint_1(ep1);
+    element->set_endpoint_2(ep2);
+    stub_->addFabricLink(&context, request, &reply);
+}

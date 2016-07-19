@@ -8,6 +8,7 @@
 
 #include "E2Server.hpp"
 #include "Element.hpp"
+#include "FabricLink.hpp"
 
 Status
 E2Server::addElement (ServerContext* context,
@@ -73,9 +74,8 @@ E2Server::getElements (ServerContext* context,
                        const ConfigurationRequest * request,
                        NetworkElementOpStateList * reply)
 {
-    ElementDbIterator itr;
-    
-    for (itr = Element::findFirst(); itr != Element::findLast(); itr++) {
+    // Retrieve the end node elements
+    for (ElementDbIterator itr = Element::findFirst(); itr != Element::findLast(); itr++) {
         // Get the operational state for this element
         ElementOpstateList element_opstate;
         itr->second->getOperationalState(element_opstate);
@@ -90,6 +90,60 @@ E2Server::getElements (ServerContext* context,
             property->set_name(itr1->first);
             property->set_str_value(itr1->second);
         }
+    }
+    
+    // Retrieve the fabric links
+    for (FabricMapIterator itr = FabricLink::findFirst(); itr != FabricLink::findLast(); itr++) {
+        // Get the operational state for this element
+        ElementOpstateList element_opstate;
+        itr->second->getOperationalState(element_opstate);
+        
+        // Copy it over into the reply
+        NetworkElementOpState *opstate = reply->add_opstate();
+        NetworkElement *element = opstate->mutable_element();
+        element->set_name(itr->second->getName());
+        for (ElementOpstateListIterator itr1 = element_opstate.begin(); itr1 != element_opstate.end(); itr1++) {
+            NetworkElementProperty *property = opstate->add_properties();
+            property->set_name(itr1->first);
+            property->set_str_value(itr1->second);
+        }
+    }
+    
+    return Status::OK;
+}
+
+Status
+E2Server::addFabricLink(ServerContext* context,
+                        const ConfigurationRequest * request,
+                        ConfigurationReply * reply)
+{
+    std::string    err_str;
+    status_t       status;
+    E2::ReturnCode err_code;
+    
+    FabricLink *linkp = new FabricLink(request->element().name(), request->element().endpoint_1(), request->element().endpoint_2());
+    if (!linkp) {
+        err_str  = std::string("Memory Allocation Failure");
+        err_code = E2::MEMORY_ERROR;
+        goto error;
+
+    }
+    
+    status = linkp->activate();
+    if (status != EOK) {
+        err_str  = std::string("Activation Failure:") + std::to_string(status);
+        err_code = E2::ACTIVATE_ERROR;
+        goto error;
+    }
+    
+    reply->set_code(E2::SUCCESS);
+    return Status::OK;
+
+error:
+    reply->set_code(err_code);
+    reply->set_code_str(err_str);
+    if (linkp) {
+        delete linkp;
     }
     
     return Status::OK;

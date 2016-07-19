@@ -64,6 +64,8 @@ public:
     void addElement(std::string name, std::string mgmt_ip);
     void deleteElement(std::string name);
     void listElements();
+    
+    void addFabricLink(std::string name, std::string ep1, std::string ep2);
 };
 
 

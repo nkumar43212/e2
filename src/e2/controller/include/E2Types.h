@@ -14,4 +14,8 @@
 
 typedef int status_t;
 
+
+typedef std::map<std::string, std::string> ElementOpstateList;
+typedef std::map<std::string, std::string>::iterator ElementOpstateListIterator;
+
 #endif /* E2Types_h */

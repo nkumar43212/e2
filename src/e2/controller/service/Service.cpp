@@ -44,15 +44,23 @@ Service::~Service()
 void
 Service::subscriptionStart ()
 {
+    // In a test environment, don't subscribe as there is no remote server
+    if (isUnitTest()) {
+        return;
+    }
+    
     // Create a client
     ServiceContext *context = new ServiceContext(&_interests, this);
-    
     pthread_create(&_tid, NULL, Service::proc, (void *) context);
 }
 
 void
 Service::subscriptionStop ()
 {
+    if (isUnitTest()) {
+        return;
+    }
+    
     // Cancel the subscription
     ClientContext context_cancel;
     CancelSubscriptionRequest cancel_request;

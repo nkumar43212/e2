@@ -62,9 +62,11 @@ void protobuf_AssignDesc_e2_5fapi_2eproto() {
       "e2_api.proto");
   GOOGLE_CHECK(file != NULL);
   NetworkElement_descriptor_ = file->message_type(0);
-  static const int NetworkElement_offsets_[2] = {
+  static const int NetworkElement_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NetworkElement, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NetworkElement, mgmt_ip_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NetworkElement, endpoint_1_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NetworkElement, endpoint_2_),
   };
   NetworkElement_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -235,8 +237,9 @@ void protobuf_AddDesc_e2_5fapi_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\014e2_api.proto\022\002E2\"/\n\016NetworkElement\022\014\n\004"
-    "name\030\001 \001(\t\022\017\n\007mgmt_ip\030\002 \001(\t\"6\n\022NetworkEl"
+    "\n\014e2_api.proto\022\002E2\"W\n\016NetworkElement\022\014\n\004"
+    "name\030\001 \001(\t\022\017\n\007mgmt_ip\030\002 \001(\t\022\022\n\nendpoint_"
+    "1\030\003 \001(\t\022\022\n\nendpoint_2\030\004 \001(\t\"6\n\022NetworkEl"
     "ementList\022 \n\004list\030\001 \003(\0132\022.E2.NetworkElem"
     "ent\"l\n\025NetworkElementOpState\022#\n\007element\030"
     "\001 \001(\0132\022.E2.NetworkElement\022.\n\nproperties\030"
@@ -253,13 +256,16 @@ void protobuf_AddDesc_e2_5fapi_2eproto() {
     "de\030\001 \001(\0162\016.E2.ReturnCode\022\020\n\010code_str\030\002 \001"
     "(\t*o\n\nReturnCode\022\013\n\007SUCCESS\020\000\022\021\n\rUNKNOWN"
     "_ERROR\020\001\022\022\n\016ACTIVATE_ERROR\020\002\022\020\n\014MEMORY_E"
-    "RROR\020\003\022\033\n\027ELEMENT_NOT_FOUND_ERROR\020\0042\325\001\n\002"
+    "RROR\020\003\022\033\n\027ELEMENT_NOT_FOUND_ERROR\020\0042\342\002\n\002"
     "E2\022@\n\naddElement\022\030.E2.ConfigurationReque"
     "st\032\026.E2.ConfigurationReply\"\000\022C\n\rremoveEl"
     "ement\022\030.E2.ConfigurationRequest\032\026.E2.Con"
     "figurationReply\"\000\022H\n\013getElements\022\030.E2.Co"
     "nfigurationRequest\032\035.E2.NetworkElementOp"
-    "StateList\"\000b\006proto3", 979);
+    "StateList\"\000\022C\n\raddFabricLink\022\030.E2.Config"
+    "urationRequest\032\026.E2.ConfigurationReply\"\000"
+    "\022F\n\020removeFabricLink\022\030.E2.ConfigurationR"
+    "equest\032\026.E2.ConfigurationReply\"\000b\006proto3", 1160);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "e2_api.proto", &protobuf_RegisterTypes);
   NetworkElement::default_instance_ = new NetworkElement();
@@ -319,6 +325,8 @@ static void MergeFromFail(int line) {
 #ifndef _MSC_VER
 const int NetworkElement::kNameFieldNumber;
 const int NetworkElement::kMgmtIpFieldNumber;
+const int NetworkElement::kEndpoint1FieldNumber;
+const int NetworkElement::kEndpoint2FieldNumber;
 #endif  // !_MSC_VER
 
 NetworkElement::NetworkElement()
@@ -345,6 +353,8 @@ void NetworkElement::SharedCtor() {
   _cached_size_ = 0;
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   mgmt_ip_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  endpoint_1_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  endpoint_2_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 NetworkElement::~NetworkElement() {
@@ -355,6 +365,8 @@ NetworkElement::~NetworkElement() {
 void NetworkElement::SharedDtor() {
   name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   mgmt_ip_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  endpoint_1_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  endpoint_2_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != default_instance_) {
   }
 }
@@ -387,6 +399,8 @@ NetworkElement* NetworkElement::New(::google::protobuf::Arena* arena) const {
 void NetworkElement::Clear() {
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   mgmt_ip_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  endpoint_1_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  endpoint_2_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 bool NetworkElement::MergePartialFromCodedStream(
@@ -425,6 +439,40 @@ bool NetworkElement::MergePartialFromCodedStream(
             this->mgmt_ip().data(), this->mgmt_ip().length(),
             ::google::protobuf::internal::WireFormatLite::PARSE,
             "E2.NetworkElement.mgmt_ip"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_endpoint_1;
+        break;
+      }
+
+      // optional string endpoint_1 = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_endpoint_1:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_endpoint_1()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->endpoint_1().data(), this->endpoint_1().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "E2.NetworkElement.endpoint_1"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_endpoint_2;
+        break;
+      }
+
+      // optional string endpoint_2 = 4;
+      case 4: {
+        if (tag == 34) {
+         parse_endpoint_2:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_endpoint_2()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->endpoint_2().data(), this->endpoint_2().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "E2.NetworkElement.endpoint_2"));
         } else {
           goto handle_unusual;
         }
@@ -476,6 +524,26 @@ void NetworkElement::SerializeWithCachedSizes(
       2, this->mgmt_ip(), output);
   }
 
+  // optional string endpoint_1 = 3;
+  if (this->endpoint_1().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->endpoint_1().data(), this->endpoint_1().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "E2.NetworkElement.endpoint_1");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->endpoint_1(), output);
+  }
+
+  // optional string endpoint_2 = 4;
+  if (this->endpoint_2().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->endpoint_2().data(), this->endpoint_2().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "E2.NetworkElement.endpoint_2");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      4, this->endpoint_2(), output);
+  }
+
   // @@protoc_insertion_point(serialize_end:E2.NetworkElement)
 }
 
@@ -504,6 +572,28 @@ void NetworkElement::SerializeWithCachedSizes(
         2, this->mgmt_ip(), target);
   }
 
+  // optional string endpoint_1 = 3;
+  if (this->endpoint_1().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->endpoint_1().data(), this->endpoint_1().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "E2.NetworkElement.endpoint_1");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->endpoint_1(), target);
+  }
+
+  // optional string endpoint_2 = 4;
+  if (this->endpoint_2().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->endpoint_2().data(), this->endpoint_2().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "E2.NetworkElement.endpoint_2");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->endpoint_2(), target);
+  }
+
   // @@protoc_insertion_point(serialize_to_array_end:E2.NetworkElement)
   return target;
 }
@@ -523,6 +613,20 @@ int NetworkElement::ByteSize() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->mgmt_ip());
+  }
+
+  // optional string endpoint_1 = 3;
+  if (this->endpoint_1().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->endpoint_1());
+  }
+
+  // optional string endpoint_2 = 4;
+  if (this->endpoint_2().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->endpoint_2());
   }
 
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
@@ -553,6 +657,14 @@ void NetworkElement::MergeFrom(const NetworkElement& from) {
 
     mgmt_ip_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.mgmt_ip_);
   }
+  if (from.endpoint_1().size() > 0) {
+
+    endpoint_1_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.endpoint_1_);
+  }
+  if (from.endpoint_2().size() > 0) {
+
+    endpoint_2_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.endpoint_2_);
+  }
 }
 
 void NetworkElement::CopyFrom(const ::google::protobuf::Message& from) {
@@ -579,6 +691,8 @@ void NetworkElement::Swap(NetworkElement* other) {
 void NetworkElement::InternalSwap(NetworkElement* other) {
   name_.Swap(&other->name_);
   mgmt_ip_.Swap(&other->mgmt_ip_);
+  endpoint_1_.Swap(&other->endpoint_1_);
+  endpoint_2_.Swap(&other->endpoint_2_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
 }
@@ -678,6 +792,92 @@ void NetworkElement::clear_mgmt_ip() {
   }
   mgmt_ip_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), mgmt_ip);
   // @@protoc_insertion_point(field_set_allocated:E2.NetworkElement.mgmt_ip)
+}
+
+// optional string endpoint_1 = 3;
+void NetworkElement::clear_endpoint_1() {
+  endpoint_1_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ const ::std::string& NetworkElement::endpoint_1() const {
+  // @@protoc_insertion_point(field_get:E2.NetworkElement.endpoint_1)
+  return endpoint_1_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void NetworkElement::set_endpoint_1(const ::std::string& value) {
+  
+  endpoint_1_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:E2.NetworkElement.endpoint_1)
+}
+ void NetworkElement::set_endpoint_1(const char* value) {
+  
+  endpoint_1_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:E2.NetworkElement.endpoint_1)
+}
+ void NetworkElement::set_endpoint_1(const char* value, size_t size) {
+  
+  endpoint_1_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:E2.NetworkElement.endpoint_1)
+}
+ ::std::string* NetworkElement::mutable_endpoint_1() {
+  
+  // @@protoc_insertion_point(field_mutable:E2.NetworkElement.endpoint_1)
+  return endpoint_1_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* NetworkElement::release_endpoint_1() {
+  
+  return endpoint_1_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void NetworkElement::set_allocated_endpoint_1(::std::string* endpoint_1) {
+  if (endpoint_1 != NULL) {
+    
+  } else {
+    
+  }
+  endpoint_1_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), endpoint_1);
+  // @@protoc_insertion_point(field_set_allocated:E2.NetworkElement.endpoint_1)
+}
+
+// optional string endpoint_2 = 4;
+void NetworkElement::clear_endpoint_2() {
+  endpoint_2_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ const ::std::string& NetworkElement::endpoint_2() const {
+  // @@protoc_insertion_point(field_get:E2.NetworkElement.endpoint_2)
+  return endpoint_2_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void NetworkElement::set_endpoint_2(const ::std::string& value) {
+  
+  endpoint_2_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:E2.NetworkElement.endpoint_2)
+}
+ void NetworkElement::set_endpoint_2(const char* value) {
+  
+  endpoint_2_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:E2.NetworkElement.endpoint_2)
+}
+ void NetworkElement::set_endpoint_2(const char* value, size_t size) {
+  
+  endpoint_2_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:E2.NetworkElement.endpoint_2)
+}
+ ::std::string* NetworkElement::mutable_endpoint_2() {
+  
+  // @@protoc_insertion_point(field_mutable:E2.NetworkElement.endpoint_2)
+  return endpoint_2_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* NetworkElement::release_endpoint_2() {
+  
+  return endpoint_2_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void NetworkElement::set_allocated_endpoint_2(::std::string* endpoint_2) {
+  if (endpoint_2 != NULL) {
+    
+  } else {
+    
+  }
+  endpoint_2_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), endpoint_2);
+  // @@protoc_insertion_point(field_set_allocated:E2.NetworkElement.endpoint_2)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

@@ -34,6 +34,9 @@ public:
     Status getElements(ServerContext* context,
                        const ConfigurationRequest * request,
                        NetworkElementOpStateList * reply) override;
+    Status addFabricLink(ServerContext* context,
+                         const ConfigurationRequest * request,
+                         ConfigurationReply * reply) override;
 };
 
 #endif /* E2Server_hpp */

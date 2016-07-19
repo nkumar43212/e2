@@ -28,6 +28,16 @@ SubscriptionInterest_t interest_list[] = {
     {
         .subscription_name = std::string("/components"),
         .callback          = Element::inventoryCallback
-    }
+    },
+    
+    {
+        .subscription_name = std::string("/components"),
+        .callback          = Element::utilizationCallback
+    },
+    
+    {
+        .subscription_name = std::string("/lldp"),
+        .callback          = Element::serviceOrderCallback
+    },
 };
-int interest_count = 2;
+int interest_count = 3;

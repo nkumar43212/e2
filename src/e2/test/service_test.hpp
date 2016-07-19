@@ -16,6 +16,9 @@ static int iter;
 // This is a test class
 class ServiceTest: public testing::Test {
 public:
+    static void ServiceCallback(Element *e, ServiceCallbackKeyValue *v)
+    {
+    }
 };
 
 

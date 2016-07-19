@@ -7,3 +7,23 @@
 //
 
 #include "Metrics.hpp"
+
+void
+Metrics::update (uint64_t value)
+{
+    if (value >= _peak_value) {
+        _peak_value = value;
+    }
+    
+    if (value <= _min_value) {
+        _min_value = value;
+    }
+    
+    _current_value = value;
+}
+
+bool
+Metrics::isGreen()
+{
+    return true;
+}

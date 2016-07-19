@@ -80,9 +80,15 @@ Element::getOperationalState (ElementOpstateList &opstate)
     opstate["opstate/last_update_time"] = ss.str();
     
     // List of Interfaces
+    opstate["opstate/interface/count"]  = std::to_string(getInterfaceCount());
     for (InterfaceListIterator itr = _interface_list.begin(); itr != _interface_list.end(); itr++) {
         opstate["opstate/interface/" + std::to_string(itr->second->getIndex())] = itr->second->getName();
-    }    
+    }
+    
+    // List of metrics
+    for (MetricsListIterator itr = _metrics_list.getBegin(); itr != _metrics_list.getEnd(); itr++) {
+        opstate["metrics/" + itr->first] = std::to_string(itr->second.getCurrentValue());
+    }
 }
 
 
@@ -98,6 +104,7 @@ Element::addInterface(ElementInterface *interface)
     
     // Add the new element
     _interface_list[interface->getName()] = interface;
+    ++_interface_count;
 }
 
 void
@@ -108,6 +115,7 @@ Element::removeInterface(std::string name)
     if (itr != _interface_list.end()) {
         delete itr->second;
         _interface_list.erase(itr);
+        --_interface_count;
     }
 }
 
@@ -115,6 +123,18 @@ bool
 Element::isPresentInterface(std::string name)
 {
     return _interface_list.find(name) != _interface_list.end();
+}
+
+u_int32_t
+Element::getInterfaceCount ()
+{
+    return _interface_count;
+}
+
+id_idx_t
+Element::allocateInterfaceIndex ()
+{
+    return _interface_id_manager.allocate();
 }
 
 
