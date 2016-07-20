@@ -148,3 +148,58 @@ error:
     
     return Status::OK;
 }
+
+Status
+E2Server::addServiceEndpoint (ServerContext* context,
+                              const ServiceConfigurationRequest * request,
+                              ConfigurationReply * reply)
+{
+    std::string    err_str;
+    status_t       status;
+    E2::ReturnCode err_code;
+    
+    reply->set_code(E2::SUCCESS);
+    return Status::OK;
+
+error:
+    reply->set_code(err_code);
+    reply->set_code_str(err_str);
+    return Status::OK;
+}
+
+Status
+E2Server::removeServiceEndpoint (ServerContext* context,
+                                 const ServiceConfigurationRequest * request,
+                                 ConfigurationReply * reply)
+{
+    std::string    err_str;
+    status_t       status;
+    E2::ReturnCode err_code;
+    
+    reply->set_code(E2::SUCCESS);
+    return Status::OK;
+    
+error:
+    reply->set_code(err_code);
+    reply->set_code_str(err_str);
+    return Status::OK;
+}
+
+Status
+E2Server::placeService (ServerContext* context,
+                        const ServicePlacementRequest * request,
+                        ConfigurationReply * reply)
+{
+    std::string    err_str;
+    status_t       status;
+    E2::ReturnCode err_code;
+    
+    reply->set_code(E2::SUCCESS);
+    return Status::OK;
+    
+error:
+    reply->set_code(err_code);
+    reply->set_code_str(err_str);
+    return Status::OK;
+}
+

@@ -60,6 +60,44 @@ handle_add_fabric_link (int argc, const char *argv[])
     clientp->addFabricLink(argv[1], argv[2], argv[3]);
 }
 
+void
+handle_place_service (int argc, const char *argv[])
+{
+    std::string e2_name("e2");
+    
+    E2Client *clientp = E2Client::create(grpc::CreateChannel(AGENT_SERVER_IP_PORT, grpc::InsecureCredentials()),
+                                         e2_name, 0, parser->getLogDir());
+    std::vector<std::string> element_list;
+    int n_elements = argc - 2;
+    for (int i = 0; i < n_elements; i++) {
+        element_list.push_back(argv[i+2]);
+    }
+    
+    clientp->placeService(argv[1], element_list);
+}
+
+void
+handle_add_service (int argc, const char *argv[])
+{
+    std::string e2_name("e2");
+    
+    E2Client *clientp = E2Client::create(grpc::CreateChannel(AGENT_SERVER_IP_PORT, grpc::InsecureCredentials()),
+                                         e2_name, 0, parser->getLogDir());
+    
+    clientp->addService(argv[1], atoi(argv[2]));
+}
+
+void
+handle_delete_service (int argc, const char *argv[])
+{
+    std::string e2_name("e2");
+    
+    E2Client *clientp = E2Client::create(grpc::CreateChannel(AGENT_SERVER_IP_PORT, grpc::InsecureCredentials()),
+                                         e2_name, 0, parser->getLogDir());
+    
+    clientp->deleteService(argv[1]);
+}
+
 // Add new commands here
 entry_t agent_client_commands [] = {
     {
@@ -92,6 +130,29 @@ entry_t agent_client_commands [] = {
         .e_handler = handle_add_fabric_link
     },
     
+    {
+        .e_cmd     = std::string("add-service"),
+        .e_argc    = 3,
+        .e_help    = std::string("Add a service to E2"),
+        .e_usage   = std::string("add-service <name> <vlan>"),
+        .e_handler = handle_add_service
+    },
+    
+    {
+        .e_cmd     = std::string("delete-service"),
+        .e_argc    = 2,
+        .e_help    = std::string("Delete a service to E2"),
+        .e_usage   = std::string("delete-service <name>"),
+        .e_handler = handle_delete_service
+    },
+    
+    {
+        .e_cmd     = std::string("place-service"),
+        .e_argc    = 4,
+        .e_help    = std::string("Place a service to E2"),
+        .e_usage   = std::string("add-service <name> <element1> <element2>"),
+        .e_handler = handle_place_service
+    },
 };
 
 uint32_t agent_client_commands_count =

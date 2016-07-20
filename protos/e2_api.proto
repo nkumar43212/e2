@@ -37,18 +37,21 @@ package E2;
 
 // Interface exported by Agent
 service E2 {
-    // Add a network element
+    // Add/Remove network elements
     rpc addElement(ConfigurationRequest)                     returns (ConfigurationReply) {}
-
-    // Remove a network element
     rpc removeElement(ConfigurationRequest)                  returns (ConfigurationReply) {}
-
-    // Get all registered network elements
     rpc getElements(ConfigurationRequest)                    returns (NetworkElementOpStateList) {}
 
     // Add/Remove fabric link that connects elements
     rpc addFabricLink(ConfigurationRequest)                  returns (ConfigurationReply) {}
     rpc removeFabricLink(ConfigurationRequest)               returns (ConfigurationReply) {}
+
+    // Add/Remove a service endpoint (aka a customer)
+    rpc addServiceEndpoint(ServiceConfigurationRequest)      returns (ConfigurationReply) {}
+    rpc removeServiceEndpoint(ServiceConfigurationRequest)   returns (ConfigurationReply) {}
+
+    // Place a service in the system
+    rpc placeService(ServicePlacementRequest)                returns (ConfigurationReply) {}
 }
 
 // A network element
@@ -105,6 +108,33 @@ message ConfigurationReply {
 
     // Return code string
     string     code_str                                     = 2;
+};
+
+// Service Endpoint. This represents an end customer
+message ServiceEndpoint {
+    // Name of the service
+    string     name                                         = 1;
+   
+    // Type
+    uint32     vlan_identifier                              = 2;
+};
+message ServiceEndpointList {
+    repeated ServiceEndpoint list                           = 1;
+};
+
+// Request to configure a service
+message ServiceConfigurationRequest {
+    ServiceEndpointList services                            = 1;
+};
+
+// Request to place a service
+message ServicePlacementRequest {
+    // List of services to place
+    ServiceEndpointList services                            = 1;
+
+    // List of network elements. This list is optional. If not specified
+    // then E2 will place the service dynamically
+    NetworkElementList  element_list                        = 2;
 };
 
 // Result of the operation

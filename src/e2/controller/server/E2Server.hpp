@@ -37,6 +37,16 @@ public:
     Status addFabricLink(ServerContext* context,
                          const ConfigurationRequest * request,
                          ConfigurationReply * reply) override;
+    Status addServiceEndpoint(ServerContext* context,
+                              const ServiceConfigurationRequest * request,
+                              ConfigurationReply * reply) override;
+    Status removeServiceEndpoint(ServerContext* context,
+                                 const ServiceConfigurationRequest * request,
+                                 ConfigurationReply * reply) override;
+    Status placeService(ServerContext* context,
+                        const ServicePlacementRequest * request,
+                        ConfigurationReply * reply) override;
+
 };
 
 #endif /* E2Server_hpp */

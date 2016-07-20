@@ -25,9 +25,15 @@ using E2::E2;
 using E2::ConfigurationRequest;
 using E2::ConfigurationReply;
 using E2::NetworkElement;
+using E2::NetworkElementList;
 using E2::NetworkElementOpStateList;
 using E2::NetworkElementOpState;
 using E2::NetworkElementProperty;
+
+using E2::ServiceConfigurationRequest;
+using E2::ServicePlacementRequest;
+using E2::ServiceEndpoint;
+using E2::ServiceEndpointList;
 
 
 // AGENT_SERVER_ADDRESS
@@ -64,8 +70,10 @@ public:
     void addElement(std::string name, std::string mgmt_ip);
     void deleteElement(std::string name);
     void listElements();
-    
     void addFabricLink(std::string name, std::string ep1, std::string ep2);
+    void addService(std::string name, uint32_t vlan_identifier);
+    void deleteService(std::string name);
+    void placeService(std::string name, std::vector<std::string> element_list);
 };
 
 

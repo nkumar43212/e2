@@ -83,3 +83,58 @@ E2Client::addFabricLink (std::string name, std::string ep1, std::string ep2)
     element->set_endpoint_2(ep2);
     stub_->addFabricLink(&context, request, &reply);
 }
+
+void
+E2Client::addService (std::string name, uint32_t vlan_identifier)
+{
+    // Send over the list request
+    ClientContext               context;
+    ServiceConfigurationRequest request;
+    ConfigurationReply          reply;
+    ServiceEndpointList *       endp;
+    ServiceEndpoint *           servicep;
+   
+    endp = request.mutable_services();
+    servicep = endp->add_list();
+    servicep->set_name(name);
+    servicep->set_vlan_identifier(vlan_identifier);
+    stub_->addServiceEndpoint(&context, request, &reply);
+}
+
+void
+E2Client::deleteService (std::string name)
+{
+    // Send over the list request
+    ClientContext               context;
+    ServiceConfigurationRequest request;
+    ConfigurationReply          reply;
+    ServiceEndpointList *       endp;
+    ServiceEndpoint *           servicep;
+    
+    endp = request.mutable_services();
+    servicep = endp->add_list();
+    servicep->set_name(name);
+    stub_->removeServiceEndpoint(&context, request, &reply);
+}
+
+void
+E2Client::placeService (std::string name, std::vector<std::string> element_list)
+{
+    // Send over the list request
+    ClientContext               context;
+    ServicePlacementRequest     request;
+    ConfigurationReply          reply;
+    ServiceEndpointList *       endp;
+    ServiceEndpoint *           servicep;
+    NetworkElementList *        elements;
+    
+    endp = request.mutable_services();
+    servicep = endp->add_list();
+    servicep->set_name(name);
+    elements = request.mutable_element_list();
+    for (std::vector<std::string>::iterator itr = element_list.begin(); itr != element_list.end(); itr++) {
+        NetworkElement *elementp = elements->add_list();
+        elementp->set_name(*itr);
+    }
+    stub_->placeService(&context, request, &reply);
+}

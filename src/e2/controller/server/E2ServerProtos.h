@@ -25,6 +25,10 @@ using E2::NetworkElementOpStateList;
 using E2::NetworkElementProperty;
 using E2::ConfigurationRequest;
 using E2::ConfigurationReply;
+using E2::ServiceConfigurationRequest;
+using E2::ServicePlacementRequest;
+using E2::ServiceEndpoint;
+using E2::ServiceEndpointList;
 
 
 #endif /* E2ServerProtos_h */

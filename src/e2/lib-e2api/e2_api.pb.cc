@@ -50,6 +50,18 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* ConfigurationReply_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   ConfigurationReply_reflection_ = NULL;
+const ::google::protobuf::Descriptor* ServiceEndpoint_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  ServiceEndpoint_reflection_ = NULL;
+const ::google::protobuf::Descriptor* ServiceEndpointList_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  ServiceEndpointList_reflection_ = NULL;
+const ::google::protobuf::Descriptor* ServiceConfigurationRequest_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  ServiceConfigurationRequest_reflection_ = NULL;
+const ::google::protobuf::Descriptor* ServicePlacementRequest_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  ServicePlacementRequest_reflection_ = NULL;
 const ::google::protobuf::EnumDescriptor* ReturnCode_descriptor_ = NULL;
 
 }  // namespace
@@ -181,6 +193,68 @@ void protobuf_AssignDesc_e2_5fapi_2eproto() {
       sizeof(ConfigurationReply),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ConfigurationReply, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ConfigurationReply, _is_default_instance_));
+  ServiceEndpoint_descriptor_ = file->message_type(7);
+  static const int ServiceEndpoint_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ServiceEndpoint, name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ServiceEndpoint, vlan_identifier_),
+  };
+  ServiceEndpoint_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      ServiceEndpoint_descriptor_,
+      ServiceEndpoint::default_instance_,
+      ServiceEndpoint_offsets_,
+      -1,
+      -1,
+      -1,
+      sizeof(ServiceEndpoint),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ServiceEndpoint, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ServiceEndpoint, _is_default_instance_));
+  ServiceEndpointList_descriptor_ = file->message_type(8);
+  static const int ServiceEndpointList_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ServiceEndpointList, list_),
+  };
+  ServiceEndpointList_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      ServiceEndpointList_descriptor_,
+      ServiceEndpointList::default_instance_,
+      ServiceEndpointList_offsets_,
+      -1,
+      -1,
+      -1,
+      sizeof(ServiceEndpointList),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ServiceEndpointList, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ServiceEndpointList, _is_default_instance_));
+  ServiceConfigurationRequest_descriptor_ = file->message_type(9);
+  static const int ServiceConfigurationRequest_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ServiceConfigurationRequest, services_),
+  };
+  ServiceConfigurationRequest_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      ServiceConfigurationRequest_descriptor_,
+      ServiceConfigurationRequest::default_instance_,
+      ServiceConfigurationRequest_offsets_,
+      -1,
+      -1,
+      -1,
+      sizeof(ServiceConfigurationRequest),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ServiceConfigurationRequest, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ServiceConfigurationRequest, _is_default_instance_));
+  ServicePlacementRequest_descriptor_ = file->message_type(10);
+  static const int ServicePlacementRequest_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ServicePlacementRequest, services_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ServicePlacementRequest, element_list_),
+  };
+  ServicePlacementRequest_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      ServicePlacementRequest_descriptor_,
+      ServicePlacementRequest::default_instance_,
+      ServicePlacementRequest_offsets_,
+      -1,
+      -1,
+      -1,
+      sizeof(ServicePlacementRequest),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ServicePlacementRequest, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ServicePlacementRequest, _is_default_instance_));
   ReturnCode_descriptor_ = file->enum_type(0);
 }
 
@@ -208,6 +282,14 @@ void protobuf_RegisterTypes(const ::std::string&) {
       ConfigurationRequest_descriptor_, &ConfigurationRequest::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       ConfigurationReply_descriptor_, &ConfigurationReply::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      ServiceEndpoint_descriptor_, &ServiceEndpoint::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      ServiceEndpointList_descriptor_, &ServiceEndpointList::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      ServiceConfigurationRequest_descriptor_, &ServiceConfigurationRequest::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      ServicePlacementRequest_descriptor_, &ServicePlacementRequest::default_instance());
 }
 
 }  // namespace
@@ -228,6 +310,14 @@ void protobuf_ShutdownFile_e2_5fapi_2eproto() {
   delete ConfigurationRequest_reflection_;
   delete ConfigurationReply::default_instance_;
   delete ConfigurationReply_reflection_;
+  delete ServiceEndpoint::default_instance_;
+  delete ServiceEndpoint_reflection_;
+  delete ServiceEndpointList::default_instance_;
+  delete ServiceEndpointList_reflection_;
+  delete ServiceConfigurationRequest::default_instance_;
+  delete ServiceConfigurationRequest_reflection_;
+  delete ServicePlacementRequest::default_instance_;
+  delete ServicePlacementRequest_reflection_;
 }
 
 void protobuf_AddDesc_e2_5fapi_2eproto() {
@@ -254,18 +344,32 @@ void protobuf_AddDesc_e2_5fapi_2eproto() {
     "gurationRequest\022#\n\007element\030\001 \001(\0132\022.E2.Ne"
     "tworkElement\"D\n\022ConfigurationReply\022\034\n\004co"
     "de\030\001 \001(\0162\016.E2.ReturnCode\022\020\n\010code_str\030\002 \001"
-    "(\t*o\n\nReturnCode\022\013\n\007SUCCESS\020\000\022\021\n\rUNKNOWN"
-    "_ERROR\020\001\022\022\n\016ACTIVATE_ERROR\020\002\022\020\n\014MEMORY_E"
-    "RROR\020\003\022\033\n\027ELEMENT_NOT_FOUND_ERROR\020\0042\342\002\n\002"
-    "E2\022@\n\naddElement\022\030.E2.ConfigurationReque"
-    "st\032\026.E2.ConfigurationReply\"\000\022C\n\rremoveEl"
-    "ement\022\030.E2.ConfigurationRequest\032\026.E2.Con"
-    "figurationReply\"\000\022H\n\013getElements\022\030.E2.Co"
-    "nfigurationRequest\032\035.E2.NetworkElementOp"
-    "StateList\"\000\022C\n\raddFabricLink\022\030.E2.Config"
-    "urationRequest\032\026.E2.ConfigurationReply\"\000"
-    "\022F\n\020removeFabricLink\022\030.E2.ConfigurationR"
-    "equest\032\026.E2.ConfigurationReply\"\000b\006proto3", 1160);
+    "(\t\"8\n\017ServiceEndpoint\022\014\n\004name\030\001 \001(\t\022\027\n\017v"
+    "lan_identifier\030\002 \001(\r\"8\n\023ServiceEndpointL"
+    "ist\022!\n\004list\030\001 \003(\0132\023.E2.ServiceEndpoint\"H"
+    "\n\033ServiceConfigurationRequest\022)\n\010service"
+    "s\030\001 \001(\0132\027.E2.ServiceEndpointList\"r\n\027Serv"
+    "icePlacementRequest\022)\n\010services\030\001 \001(\0132\027."
+    "E2.ServiceEndpointList\022,\n\014element_list\030\002"
+    " \001(\0132\026.E2.NetworkElementList*o\n\nReturnCo"
+    "de\022\013\n\007SUCCESS\020\000\022\021\n\rUNKNOWN_ERROR\020\001\022\022\n\016AC"
+    "TIVATE_ERROR\020\002\022\020\n\014MEMORY_ERROR\020\003\022\033\n\027ELEM"
+    "ENT_NOT_FOUND_ERROR\020\0042\316\004\n\002E2\022@\n\naddEleme"
+    "nt\022\030.E2.ConfigurationRequest\032\026.E2.Config"
+    "urationReply\"\000\022C\n\rremoveElement\022\030.E2.Con"
+    "figurationRequest\032\026.E2.ConfigurationRepl"
+    "y\"\000\022H\n\013getElements\022\030.E2.ConfigurationReq"
+    "uest\032\035.E2.NetworkElementOpStateList\"\000\022C\n"
+    "\raddFabricLink\022\030.E2.ConfigurationRequest"
+    "\032\026.E2.ConfigurationReply\"\000\022F\n\020removeFabr"
+    "icLink\022\030.E2.ConfigurationRequest\032\026.E2.Co"
+    "nfigurationReply\"\000\022O\n\022addServiceEndpoint"
+    "\022\037.E2.ServiceConfigurationRequest\032\026.E2.C"
+    "onfigurationReply\"\000\022R\n\025removeServiceEndp"
+    "oint\022\037.E2.ServiceConfigurationRequest\032\026."
+    "E2.ConfigurationReply\"\000\022E\n\014placeService\022"
+    "\033.E2.ServicePlacementRequest\032\026.E2.Config"
+    "urationReply\"\000b\006proto3", 1702);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "e2_api.proto", &protobuf_RegisterTypes);
   NetworkElement::default_instance_ = new NetworkElement();
@@ -276,6 +380,10 @@ void protobuf_AddDesc_e2_5fapi_2eproto() {
   NetworkElementOpStateList::default_instance_ = new NetworkElementOpStateList();
   ConfigurationRequest::default_instance_ = new ConfigurationRequest();
   ConfigurationReply::default_instance_ = new ConfigurationReply();
+  ServiceEndpoint::default_instance_ = new ServiceEndpoint();
+  ServiceEndpointList::default_instance_ = new ServiceEndpointList();
+  ServiceConfigurationRequest::default_instance_ = new ServiceConfigurationRequest();
+  ServicePlacementRequest::default_instance_ = new ServicePlacementRequest();
   NetworkElement::default_instance_->InitAsDefaultInstance();
   NetworkElementList::default_instance_->InitAsDefaultInstance();
   NetworkElementOpState::default_instance_->InitAsDefaultInstance();
@@ -283,6 +391,10 @@ void protobuf_AddDesc_e2_5fapi_2eproto() {
   NetworkElementOpStateList::default_instance_->InitAsDefaultInstance();
   ConfigurationRequest::default_instance_->InitAsDefaultInstance();
   ConfigurationReply::default_instance_->InitAsDefaultInstance();
+  ServiceEndpoint::default_instance_->InitAsDefaultInstance();
+  ServiceEndpointList::default_instance_->InitAsDefaultInstance();
+  ServiceConfigurationRequest::default_instance_->InitAsDefaultInstance();
+  ServicePlacementRequest::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_e2_5fapi_2eproto);
 }
 
@@ -3193,6 +3305,1161 @@ void ConfigurationReply::clear_code_str() {
   }
   code_str_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), code_str);
   // @@protoc_insertion_point(field_set_allocated:E2.ConfigurationReply.code_str)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int ServiceEndpoint::kNameFieldNumber;
+const int ServiceEndpoint::kVlanIdentifierFieldNumber;
+#endif  // !_MSC_VER
+
+ServiceEndpoint::ServiceEndpoint()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:E2.ServiceEndpoint)
+}
+
+void ServiceEndpoint::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+}
+
+ServiceEndpoint::ServiceEndpoint(const ServiceEndpoint& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:E2.ServiceEndpoint)
+}
+
+void ServiceEndpoint::SharedCtor() {
+    _is_default_instance_ = false;
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  vlan_identifier_ = 0u;
+}
+
+ServiceEndpoint::~ServiceEndpoint() {
+  // @@protoc_insertion_point(destructor:E2.ServiceEndpoint)
+  SharedDtor();
+}
+
+void ServiceEndpoint::SharedDtor() {
+  name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != default_instance_) {
+  }
+}
+
+void ServiceEndpoint::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ServiceEndpoint::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ServiceEndpoint_descriptor_;
+}
+
+const ServiceEndpoint& ServiceEndpoint::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_e2_5fapi_2eproto();
+  return *default_instance_;
+}
+
+ServiceEndpoint* ServiceEndpoint::default_instance_ = NULL;
+
+ServiceEndpoint* ServiceEndpoint::New(::google::protobuf::Arena* arena) const {
+  ServiceEndpoint* n = new ServiceEndpoint;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void ServiceEndpoint::Clear() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  vlan_identifier_ = 0u;
+}
+
+bool ServiceEndpoint::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:E2.ServiceEndpoint)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional string name = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->name().data(), this->name().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "E2.ServiceEndpoint.name"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_vlan_identifier;
+        break;
+      }
+
+      // optional uint32 vlan_identifier = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_vlan_identifier:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &vlan_identifier_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:E2.ServiceEndpoint)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:E2.ServiceEndpoint)
+  return false;
+#undef DO_
+}
+
+void ServiceEndpoint::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:E2.ServiceEndpoint)
+  // optional string name = 1;
+  if (this->name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "E2.ServiceEndpoint.name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->name(), output);
+  }
+
+  // optional uint32 vlan_identifier = 2;
+  if (this->vlan_identifier() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->vlan_identifier(), output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:E2.ServiceEndpoint)
+}
+
+::google::protobuf::uint8* ServiceEndpoint::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:E2.ServiceEndpoint)
+  // optional string name = 1;
+  if (this->name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "E2.ServiceEndpoint.name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->name(), target);
+  }
+
+  // optional uint32 vlan_identifier = 2;
+  if (this->vlan_identifier() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->vlan_identifier(), target);
+  }
+
+  // @@protoc_insertion_point(serialize_to_array_end:E2.ServiceEndpoint)
+  return target;
+}
+
+int ServiceEndpoint::ByteSize() const {
+  int total_size = 0;
+
+  // optional string name = 1;
+  if (this->name().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->name());
+  }
+
+  // optional uint32 vlan_identifier = 2;
+  if (this->vlan_identifier() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->vlan_identifier());
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ServiceEndpoint::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const ServiceEndpoint* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const ServiceEndpoint>(
+          &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void ServiceEndpoint::MergeFrom(const ServiceEndpoint& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from.name().size() > 0) {
+
+    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+  }
+  if (from.vlan_identifier() != 0) {
+    set_vlan_identifier(from.vlan_identifier());
+  }
+}
+
+void ServiceEndpoint::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ServiceEndpoint::CopyFrom(const ServiceEndpoint& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ServiceEndpoint::IsInitialized() const {
+
+  return true;
+}
+
+void ServiceEndpoint::Swap(ServiceEndpoint* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void ServiceEndpoint::InternalSwap(ServiceEndpoint* other) {
+  name_.Swap(&other->name_);
+  std::swap(vlan_identifier_, other->vlan_identifier_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata ServiceEndpoint::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = ServiceEndpoint_descriptor_;
+  metadata.reflection = ServiceEndpoint_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// ServiceEndpoint
+
+// optional string name = 1;
+void ServiceEndpoint::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ const ::std::string& ServiceEndpoint::name() const {
+  // @@protoc_insertion_point(field_get:E2.ServiceEndpoint.name)
+  return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void ServiceEndpoint::set_name(const ::std::string& value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:E2.ServiceEndpoint.name)
+}
+ void ServiceEndpoint::set_name(const char* value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:E2.ServiceEndpoint.name)
+}
+ void ServiceEndpoint::set_name(const char* value, size_t size) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:E2.ServiceEndpoint.name)
+}
+ ::std::string* ServiceEndpoint::mutable_name() {
+  
+  // @@protoc_insertion_point(field_mutable:E2.ServiceEndpoint.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* ServiceEndpoint::release_name() {
+  
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void ServiceEndpoint::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    
+  } else {
+    
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:E2.ServiceEndpoint.name)
+}
+
+// optional uint32 vlan_identifier = 2;
+void ServiceEndpoint::clear_vlan_identifier() {
+  vlan_identifier_ = 0u;
+}
+ ::google::protobuf::uint32 ServiceEndpoint::vlan_identifier() const {
+  // @@protoc_insertion_point(field_get:E2.ServiceEndpoint.vlan_identifier)
+  return vlan_identifier_;
+}
+ void ServiceEndpoint::set_vlan_identifier(::google::protobuf::uint32 value) {
+  
+  vlan_identifier_ = value;
+  // @@protoc_insertion_point(field_set:E2.ServiceEndpoint.vlan_identifier)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int ServiceEndpointList::kListFieldNumber;
+#endif  // !_MSC_VER
+
+ServiceEndpointList::ServiceEndpointList()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:E2.ServiceEndpointList)
+}
+
+void ServiceEndpointList::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+}
+
+ServiceEndpointList::ServiceEndpointList(const ServiceEndpointList& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:E2.ServiceEndpointList)
+}
+
+void ServiceEndpointList::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+}
+
+ServiceEndpointList::~ServiceEndpointList() {
+  // @@protoc_insertion_point(destructor:E2.ServiceEndpointList)
+  SharedDtor();
+}
+
+void ServiceEndpointList::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void ServiceEndpointList::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ServiceEndpointList::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ServiceEndpointList_descriptor_;
+}
+
+const ServiceEndpointList& ServiceEndpointList::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_e2_5fapi_2eproto();
+  return *default_instance_;
+}
+
+ServiceEndpointList* ServiceEndpointList::default_instance_ = NULL;
+
+ServiceEndpointList* ServiceEndpointList::New(::google::protobuf::Arena* arena) const {
+  ServiceEndpointList* n = new ServiceEndpointList;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void ServiceEndpointList::Clear() {
+  list_.Clear();
+}
+
+bool ServiceEndpointList::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:E2.ServiceEndpointList)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated .E2.ServiceEndpoint list = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(input->IncrementRecursionDepth());
+         parse_loop_list:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
+                input, add_list()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(10)) goto parse_loop_list;
+        input->UnsafeDecrementRecursionDepth();
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:E2.ServiceEndpointList)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:E2.ServiceEndpointList)
+  return false;
+#undef DO_
+}
+
+void ServiceEndpointList::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:E2.ServiceEndpointList)
+  // repeated .E2.ServiceEndpoint list = 1;
+  for (unsigned int i = 0, n = this->list_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->list(i), output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:E2.ServiceEndpointList)
+}
+
+::google::protobuf::uint8* ServiceEndpointList::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:E2.ServiceEndpointList)
+  // repeated .E2.ServiceEndpoint list = 1;
+  for (unsigned int i = 0, n = this->list_size(); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->list(i), target);
+  }
+
+  // @@protoc_insertion_point(serialize_to_array_end:E2.ServiceEndpointList)
+  return target;
+}
+
+int ServiceEndpointList::ByteSize() const {
+  int total_size = 0;
+
+  // repeated .E2.ServiceEndpoint list = 1;
+  total_size += 1 * this->list_size();
+  for (int i = 0; i < this->list_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->list(i));
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ServiceEndpointList::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const ServiceEndpointList* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const ServiceEndpointList>(
+          &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void ServiceEndpointList::MergeFrom(const ServiceEndpointList& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  list_.MergeFrom(from.list_);
+}
+
+void ServiceEndpointList::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ServiceEndpointList::CopyFrom(const ServiceEndpointList& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ServiceEndpointList::IsInitialized() const {
+
+  return true;
+}
+
+void ServiceEndpointList::Swap(ServiceEndpointList* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void ServiceEndpointList::InternalSwap(ServiceEndpointList* other) {
+  list_.UnsafeArenaSwap(&other->list_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata ServiceEndpointList::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = ServiceEndpointList_descriptor_;
+  metadata.reflection = ServiceEndpointList_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// ServiceEndpointList
+
+// repeated .E2.ServiceEndpoint list = 1;
+int ServiceEndpointList::list_size() const {
+  return list_.size();
+}
+void ServiceEndpointList::clear_list() {
+  list_.Clear();
+}
+const ::E2::ServiceEndpoint& ServiceEndpointList::list(int index) const {
+  // @@protoc_insertion_point(field_get:E2.ServiceEndpointList.list)
+  return list_.Get(index);
+}
+::E2::ServiceEndpoint* ServiceEndpointList::mutable_list(int index) {
+  // @@protoc_insertion_point(field_mutable:E2.ServiceEndpointList.list)
+  return list_.Mutable(index);
+}
+::E2::ServiceEndpoint* ServiceEndpointList::add_list() {
+  // @@protoc_insertion_point(field_add:E2.ServiceEndpointList.list)
+  return list_.Add();
+}
+::google::protobuf::RepeatedPtrField< ::E2::ServiceEndpoint >*
+ServiceEndpointList::mutable_list() {
+  // @@protoc_insertion_point(field_mutable_list:E2.ServiceEndpointList.list)
+  return &list_;
+}
+const ::google::protobuf::RepeatedPtrField< ::E2::ServiceEndpoint >&
+ServiceEndpointList::list() const {
+  // @@protoc_insertion_point(field_list:E2.ServiceEndpointList.list)
+  return list_;
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int ServiceConfigurationRequest::kServicesFieldNumber;
+#endif  // !_MSC_VER
+
+ServiceConfigurationRequest::ServiceConfigurationRequest()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:E2.ServiceConfigurationRequest)
+}
+
+void ServiceConfigurationRequest::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+  services_ = const_cast< ::E2::ServiceEndpointList*>(&::E2::ServiceEndpointList::default_instance());
+}
+
+ServiceConfigurationRequest::ServiceConfigurationRequest(const ServiceConfigurationRequest& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:E2.ServiceConfigurationRequest)
+}
+
+void ServiceConfigurationRequest::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+  services_ = NULL;
+}
+
+ServiceConfigurationRequest::~ServiceConfigurationRequest() {
+  // @@protoc_insertion_point(destructor:E2.ServiceConfigurationRequest)
+  SharedDtor();
+}
+
+void ServiceConfigurationRequest::SharedDtor() {
+  if (this != default_instance_) {
+    delete services_;
+  }
+}
+
+void ServiceConfigurationRequest::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ServiceConfigurationRequest::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ServiceConfigurationRequest_descriptor_;
+}
+
+const ServiceConfigurationRequest& ServiceConfigurationRequest::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_e2_5fapi_2eproto();
+  return *default_instance_;
+}
+
+ServiceConfigurationRequest* ServiceConfigurationRequest::default_instance_ = NULL;
+
+ServiceConfigurationRequest* ServiceConfigurationRequest::New(::google::protobuf::Arena* arena) const {
+  ServiceConfigurationRequest* n = new ServiceConfigurationRequest;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void ServiceConfigurationRequest::Clear() {
+  if (GetArenaNoVirtual() == NULL && services_ != NULL) delete services_;
+  services_ = NULL;
+}
+
+bool ServiceConfigurationRequest::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:E2.ServiceConfigurationRequest)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .E2.ServiceEndpointList services = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_services()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:E2.ServiceConfigurationRequest)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:E2.ServiceConfigurationRequest)
+  return false;
+#undef DO_
+}
+
+void ServiceConfigurationRequest::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:E2.ServiceConfigurationRequest)
+  // optional .E2.ServiceEndpointList services = 1;
+  if (this->has_services()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, *this->services_, output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:E2.ServiceConfigurationRequest)
+}
+
+::google::protobuf::uint8* ServiceConfigurationRequest::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:E2.ServiceConfigurationRequest)
+  // optional .E2.ServiceEndpointList services = 1;
+  if (this->has_services()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, *this->services_, target);
+  }
+
+  // @@protoc_insertion_point(serialize_to_array_end:E2.ServiceConfigurationRequest)
+  return target;
+}
+
+int ServiceConfigurationRequest::ByteSize() const {
+  int total_size = 0;
+
+  // optional .E2.ServiceEndpointList services = 1;
+  if (this->has_services()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->services_);
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ServiceConfigurationRequest::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const ServiceConfigurationRequest* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const ServiceConfigurationRequest>(
+          &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void ServiceConfigurationRequest::MergeFrom(const ServiceConfigurationRequest& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from.has_services()) {
+    mutable_services()->::E2::ServiceEndpointList::MergeFrom(from.services());
+  }
+}
+
+void ServiceConfigurationRequest::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ServiceConfigurationRequest::CopyFrom(const ServiceConfigurationRequest& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ServiceConfigurationRequest::IsInitialized() const {
+
+  return true;
+}
+
+void ServiceConfigurationRequest::Swap(ServiceConfigurationRequest* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void ServiceConfigurationRequest::InternalSwap(ServiceConfigurationRequest* other) {
+  std::swap(services_, other->services_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata ServiceConfigurationRequest::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = ServiceConfigurationRequest_descriptor_;
+  metadata.reflection = ServiceConfigurationRequest_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// ServiceConfigurationRequest
+
+// optional .E2.ServiceEndpointList services = 1;
+bool ServiceConfigurationRequest::has_services() const {
+  return !_is_default_instance_ && services_ != NULL;
+}
+void ServiceConfigurationRequest::clear_services() {
+  if (GetArenaNoVirtual() == NULL && services_ != NULL) delete services_;
+  services_ = NULL;
+}
+const ::E2::ServiceEndpointList& ServiceConfigurationRequest::services() const {
+  // @@protoc_insertion_point(field_get:E2.ServiceConfigurationRequest.services)
+  return services_ != NULL ? *services_ : *default_instance_->services_;
+}
+::E2::ServiceEndpointList* ServiceConfigurationRequest::mutable_services() {
+  
+  if (services_ == NULL) {
+    services_ = new ::E2::ServiceEndpointList;
+  }
+  // @@protoc_insertion_point(field_mutable:E2.ServiceConfigurationRequest.services)
+  return services_;
+}
+::E2::ServiceEndpointList* ServiceConfigurationRequest::release_services() {
+  
+  ::E2::ServiceEndpointList* temp = services_;
+  services_ = NULL;
+  return temp;
+}
+void ServiceConfigurationRequest::set_allocated_services(::E2::ServiceEndpointList* services) {
+  delete services_;
+  services_ = services;
+  if (services) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:E2.ServiceConfigurationRequest.services)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int ServicePlacementRequest::kServicesFieldNumber;
+const int ServicePlacementRequest::kElementListFieldNumber;
+#endif  // !_MSC_VER
+
+ServicePlacementRequest::ServicePlacementRequest()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:E2.ServicePlacementRequest)
+}
+
+void ServicePlacementRequest::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+  services_ = const_cast< ::E2::ServiceEndpointList*>(&::E2::ServiceEndpointList::default_instance());
+  element_list_ = const_cast< ::E2::NetworkElementList*>(&::E2::NetworkElementList::default_instance());
+}
+
+ServicePlacementRequest::ServicePlacementRequest(const ServicePlacementRequest& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:E2.ServicePlacementRequest)
+}
+
+void ServicePlacementRequest::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+  services_ = NULL;
+  element_list_ = NULL;
+}
+
+ServicePlacementRequest::~ServicePlacementRequest() {
+  // @@protoc_insertion_point(destructor:E2.ServicePlacementRequest)
+  SharedDtor();
+}
+
+void ServicePlacementRequest::SharedDtor() {
+  if (this != default_instance_) {
+    delete services_;
+    delete element_list_;
+  }
+}
+
+void ServicePlacementRequest::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ServicePlacementRequest::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ServicePlacementRequest_descriptor_;
+}
+
+const ServicePlacementRequest& ServicePlacementRequest::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_e2_5fapi_2eproto();
+  return *default_instance_;
+}
+
+ServicePlacementRequest* ServicePlacementRequest::default_instance_ = NULL;
+
+ServicePlacementRequest* ServicePlacementRequest::New(::google::protobuf::Arena* arena) const {
+  ServicePlacementRequest* n = new ServicePlacementRequest;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void ServicePlacementRequest::Clear() {
+  if (GetArenaNoVirtual() == NULL && services_ != NULL) delete services_;
+  services_ = NULL;
+  if (GetArenaNoVirtual() == NULL && element_list_ != NULL) delete element_list_;
+  element_list_ = NULL;
+}
+
+bool ServicePlacementRequest::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:E2.ServicePlacementRequest)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .E2.ServiceEndpointList services = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_services()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_element_list;
+        break;
+      }
+
+      // optional .E2.NetworkElementList element_list = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_element_list:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_element_list()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:E2.ServicePlacementRequest)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:E2.ServicePlacementRequest)
+  return false;
+#undef DO_
+}
+
+void ServicePlacementRequest::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:E2.ServicePlacementRequest)
+  // optional .E2.ServiceEndpointList services = 1;
+  if (this->has_services()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, *this->services_, output);
+  }
+
+  // optional .E2.NetworkElementList element_list = 2;
+  if (this->has_element_list()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, *this->element_list_, output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:E2.ServicePlacementRequest)
+}
+
+::google::protobuf::uint8* ServicePlacementRequest::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:E2.ServicePlacementRequest)
+  // optional .E2.ServiceEndpointList services = 1;
+  if (this->has_services()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, *this->services_, target);
+  }
+
+  // optional .E2.NetworkElementList element_list = 2;
+  if (this->has_element_list()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        2, *this->element_list_, target);
+  }
+
+  // @@protoc_insertion_point(serialize_to_array_end:E2.ServicePlacementRequest)
+  return target;
+}
+
+int ServicePlacementRequest::ByteSize() const {
+  int total_size = 0;
+
+  // optional .E2.ServiceEndpointList services = 1;
+  if (this->has_services()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->services_);
+  }
+
+  // optional .E2.NetworkElementList element_list = 2;
+  if (this->has_element_list()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->element_list_);
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ServicePlacementRequest::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const ServicePlacementRequest* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const ServicePlacementRequest>(
+          &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void ServicePlacementRequest::MergeFrom(const ServicePlacementRequest& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from.has_services()) {
+    mutable_services()->::E2::ServiceEndpointList::MergeFrom(from.services());
+  }
+  if (from.has_element_list()) {
+    mutable_element_list()->::E2::NetworkElementList::MergeFrom(from.element_list());
+  }
+}
+
+void ServicePlacementRequest::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ServicePlacementRequest::CopyFrom(const ServicePlacementRequest& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ServicePlacementRequest::IsInitialized() const {
+
+  return true;
+}
+
+void ServicePlacementRequest::Swap(ServicePlacementRequest* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void ServicePlacementRequest::InternalSwap(ServicePlacementRequest* other) {
+  std::swap(services_, other->services_);
+  std::swap(element_list_, other->element_list_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata ServicePlacementRequest::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = ServicePlacementRequest_descriptor_;
+  metadata.reflection = ServicePlacementRequest_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// ServicePlacementRequest
+
+// optional .E2.ServiceEndpointList services = 1;
+bool ServicePlacementRequest::has_services() const {
+  return !_is_default_instance_ && services_ != NULL;
+}
+void ServicePlacementRequest::clear_services() {
+  if (GetArenaNoVirtual() == NULL && services_ != NULL) delete services_;
+  services_ = NULL;
+}
+const ::E2::ServiceEndpointList& ServicePlacementRequest::services() const {
+  // @@protoc_insertion_point(field_get:E2.ServicePlacementRequest.services)
+  return services_ != NULL ? *services_ : *default_instance_->services_;
+}
+::E2::ServiceEndpointList* ServicePlacementRequest::mutable_services() {
+  
+  if (services_ == NULL) {
+    services_ = new ::E2::ServiceEndpointList;
+  }
+  // @@protoc_insertion_point(field_mutable:E2.ServicePlacementRequest.services)
+  return services_;
+}
+::E2::ServiceEndpointList* ServicePlacementRequest::release_services() {
+  
+  ::E2::ServiceEndpointList* temp = services_;
+  services_ = NULL;
+  return temp;
+}
+void ServicePlacementRequest::set_allocated_services(::E2::ServiceEndpointList* services) {
+  delete services_;
+  services_ = services;
+  if (services) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:E2.ServicePlacementRequest.services)
+}
+
+// optional .E2.NetworkElementList element_list = 2;
+bool ServicePlacementRequest::has_element_list() const {
+  return !_is_default_instance_ && element_list_ != NULL;
+}
+void ServicePlacementRequest::clear_element_list() {
+  if (GetArenaNoVirtual() == NULL && element_list_ != NULL) delete element_list_;
+  element_list_ = NULL;
+}
+const ::E2::NetworkElementList& ServicePlacementRequest::element_list() const {
+  // @@protoc_insertion_point(field_get:E2.ServicePlacementRequest.element_list)
+  return element_list_ != NULL ? *element_list_ : *default_instance_->element_list_;
+}
+::E2::NetworkElementList* ServicePlacementRequest::mutable_element_list() {
+  
+  if (element_list_ == NULL) {
+    element_list_ = new ::E2::NetworkElementList;
+  }
+  // @@protoc_insertion_point(field_mutable:E2.ServicePlacementRequest.element_list)
+  return element_list_;
+}
+::E2::NetworkElementList* ServicePlacementRequest::release_element_list() {
+  
+  ::E2::NetworkElementList* temp = element_list_;
+  element_list_ = NULL;
+  return temp;
+}
+void ServicePlacementRequest::set_allocated_element_list(::E2::NetworkElementList* element_list) {
+  delete element_list_;
+  element_list_ = element_list;
+  if (element_list) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:E2.ServicePlacementRequest.element_list)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
