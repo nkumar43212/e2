@@ -240,9 +240,11 @@ void protobuf_AssignDesc_e2_5fapi_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ServiceConfigurationRequest, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ServiceConfigurationRequest, _is_default_instance_));
   ServicePlacementRequest_descriptor_ = file->message_type(10);
-  static const int ServicePlacementRequest_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ServicePlacementRequest, services_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ServicePlacementRequest, element_list_),
+  static const int ServicePlacementRequest_offsets_[4] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ServicePlacementRequest, service_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ServicePlacementRequest, access_element_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ServicePlacementRequest, access_port_list_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ServicePlacementRequest, edge_element_list_),
   };
   ServicePlacementRequest_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -348,28 +350,33 @@ void protobuf_AddDesc_e2_5fapi_2eproto() {
     "lan_identifier\030\002 \001(\r\"8\n\023ServiceEndpointL"
     "ist\022!\n\004list\030\001 \003(\0132\023.E2.ServiceEndpoint\"H"
     "\n\033ServiceConfigurationRequest\022)\n\010service"
-    "s\030\001 \001(\0132\027.E2.ServiceEndpointList\"r\n\027Serv"
-    "icePlacementRequest\022)\n\010services\030\001 \001(\0132\027."
-    "E2.ServiceEndpointList\022,\n\014element_list\030\002"
-    " \001(\0132\026.E2.NetworkElementList*o\n\nReturnCo"
-    "de\022\013\n\007SUCCESS\020\000\022\021\n\rUNKNOWN_ERROR\020\001\022\022\n\016AC"
-    "TIVATE_ERROR\020\002\022\020\n\014MEMORY_ERROR\020\003\022\033\n\027ELEM"
-    "ENT_NOT_FOUND_ERROR\020\0042\316\004\n\002E2\022@\n\naddEleme"
-    "nt\022\030.E2.ConfigurationRequest\032\026.E2.Config"
-    "urationReply\"\000\022C\n\rremoveElement\022\030.E2.Con"
-    "figurationRequest\032\026.E2.ConfigurationRepl"
-    "y\"\000\022H\n\013getElements\022\030.E2.ConfigurationReq"
-    "uest\032\035.E2.NetworkElementOpStateList\"\000\022C\n"
-    "\raddFabricLink\022\030.E2.ConfigurationRequest"
-    "\032\026.E2.ConfigurationReply\"\000\022F\n\020removeFabr"
-    "icLink\022\030.E2.ConfigurationRequest\032\026.E2.Co"
-    "nfigurationReply\"\000\022O\n\022addServiceEndpoint"
-    "\022\037.E2.ServiceConfigurationRequest\032\026.E2.C"
-    "onfigurationReply\"\000\022R\n\025removeServiceEndp"
-    "oint\022\037.E2.ServiceConfigurationRequest\032\026."
-    "E2.ConfigurationReply\"\000\022E\n\014placeService\022"
-    "\033.E2.ServicePlacementRequest\032\026.E2.Config"
-    "urationReply\"\000b\006proto3", 1702);
+    "s\030\001 \001(\0132\027.E2.ServiceEndpointList\"\270\001\n\027Ser"
+    "vicePlacementRequest\022$\n\007service\030\001 \001(\0132\023."
+    "E2.ServiceEndpoint\022*\n\016access_element\030\002 \001"
+    "(\0132\022.E2.NetworkElement\022\030\n\020access_port_li"
+    "st\030\003 \003(\t\0221\n\021edge_element_list\030\004 \001(\0132\026.E2"
+    ".NetworkElementList*\251\001\n\nReturnCode\022\013\n\007SU"
+    "CCESS\020\000\022\021\n\rUNKNOWN_ERROR\020\001\022\022\n\016ACTIVATE_E"
+    "RROR\020\002\022\020\n\014MEMORY_ERROR\020\003\022\033\n\027ELEMENT_NOT_"
+    "FOUND_ERROR\020\004\022\033\n\027SERVICE_NOT_FOUND_ERROR"
+    "\020\005\022\033\n\027SERVICE_PLACEMENT_ERROR\020\0062\235\005\n\002E2\022@"
+    "\n\naddElement\022\030.E2.ConfigurationRequest\032\026"
+    ".E2.ConfigurationReply\"\000\022C\n\rremoveElemen"
+    "t\022\030.E2.ConfigurationRequest\032\026.E2.Configu"
+    "rationReply\"\000\022H\n\013getElements\022\030.E2.Config"
+    "urationRequest\032\035.E2.NetworkElementOpStat"
+    "eList\"\000\022C\n\raddFabricLink\022\030.E2.Configurat"
+    "ionRequest\032\026.E2.ConfigurationReply\"\000\022F\n\020"
+    "removeFabricLink\022\030.E2.ConfigurationReque"
+    "st\032\026.E2.ConfigurationReply\"\000\022O\n\022addServi"
+    "ceEndpoint\022\037.E2.ServiceConfigurationRequ"
+    "est\032\026.E2.ConfigurationReply\"\000\022R\n\025removeS"
+    "erviceEndpoint\022\037.E2.ServiceConfiguration"
+    "Request\032\026.E2.ConfigurationReply\"\000\022H\n\017act"
+    "ivateService\022\033.E2.ServicePlacementReques"
+    "t\032\026.E2.ConfigurationReply\"\000\022J\n\021deactivat"
+    "eService\022\033.E2.ServicePlacementRequest\032\026."
+    "E2.ConfigurationReply\"\000b\006proto3", 1911);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "e2_api.proto", &protobuf_RegisterTypes);
   NetworkElement::default_instance_ = new NetworkElement();
@@ -415,6 +422,8 @@ bool ReturnCode_IsValid(int value) {
     case 2:
     case 3:
     case 4:
+    case 5:
+    case 6:
       return true;
     default:
       return false;
@@ -4134,8 +4143,10 @@ void ServiceConfigurationRequest::set_allocated_services(::E2::ServiceEndpointLi
 // ===================================================================
 
 #ifndef _MSC_VER
-const int ServicePlacementRequest::kServicesFieldNumber;
-const int ServicePlacementRequest::kElementListFieldNumber;
+const int ServicePlacementRequest::kServiceFieldNumber;
+const int ServicePlacementRequest::kAccessElementFieldNumber;
+const int ServicePlacementRequest::kAccessPortListFieldNumber;
+const int ServicePlacementRequest::kEdgeElementListFieldNumber;
 #endif  // !_MSC_VER
 
 ServicePlacementRequest::ServicePlacementRequest()
@@ -4146,8 +4157,9 @@ ServicePlacementRequest::ServicePlacementRequest()
 
 void ServicePlacementRequest::InitAsDefaultInstance() {
   _is_default_instance_ = true;
-  services_ = const_cast< ::E2::ServiceEndpointList*>(&::E2::ServiceEndpointList::default_instance());
-  element_list_ = const_cast< ::E2::NetworkElementList*>(&::E2::NetworkElementList::default_instance());
+  service_ = const_cast< ::E2::ServiceEndpoint*>(&::E2::ServiceEndpoint::default_instance());
+  access_element_ = const_cast< ::E2::NetworkElement*>(&::E2::NetworkElement::default_instance());
+  edge_element_list_ = const_cast< ::E2::NetworkElementList*>(&::E2::NetworkElementList::default_instance());
 }
 
 ServicePlacementRequest::ServicePlacementRequest(const ServicePlacementRequest& from)
@@ -4160,9 +4172,11 @@ ServicePlacementRequest::ServicePlacementRequest(const ServicePlacementRequest& 
 
 void ServicePlacementRequest::SharedCtor() {
     _is_default_instance_ = false;
+  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  services_ = NULL;
-  element_list_ = NULL;
+  service_ = NULL;
+  access_element_ = NULL;
+  edge_element_list_ = NULL;
 }
 
 ServicePlacementRequest::~ServicePlacementRequest() {
@@ -4172,8 +4186,9 @@ ServicePlacementRequest::~ServicePlacementRequest() {
 
 void ServicePlacementRequest::SharedDtor() {
   if (this != default_instance_) {
-    delete services_;
-    delete element_list_;
+    delete service_;
+    delete access_element_;
+    delete edge_element_list_;
   }
 }
 
@@ -4203,10 +4218,13 @@ ServicePlacementRequest* ServicePlacementRequest::New(::google::protobuf::Arena*
 }
 
 void ServicePlacementRequest::Clear() {
-  if (GetArenaNoVirtual() == NULL && services_ != NULL) delete services_;
-  services_ = NULL;
-  if (GetArenaNoVirtual() == NULL && element_list_ != NULL) delete element_list_;
-  element_list_ = NULL;
+  if (GetArenaNoVirtual() == NULL && service_ != NULL) delete service_;
+  service_ = NULL;
+  if (GetArenaNoVirtual() == NULL && access_element_ != NULL) delete access_element_;
+  access_element_ = NULL;
+  if (GetArenaNoVirtual() == NULL && edge_element_list_ != NULL) delete edge_element_list_;
+  edge_element_list_ = NULL;
+  access_port_list_.Clear();
 }
 
 bool ServicePlacementRequest::MergePartialFromCodedStream(
@@ -4219,24 +4237,56 @@ bool ServicePlacementRequest::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .E2.ServiceEndpointList services = 1;
+      // optional .E2.ServiceEndpoint service = 1;
       case 1: {
         if (tag == 10) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_services()));
+               input, mutable_service()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(18)) goto parse_element_list;
+        if (input->ExpectTag(18)) goto parse_access_element;
         break;
       }
 
-      // optional .E2.NetworkElementList element_list = 2;
+      // optional .E2.NetworkElement access_element = 2;
       case 2: {
         if (tag == 18) {
-         parse_element_list:
+         parse_access_element:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_element_list()));
+               input, mutable_access_element()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_access_port_list;
+        break;
+      }
+
+      // repeated string access_port_list = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_access_port_list:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_access_port_list()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->access_port_list(this->access_port_list_size() - 1).data(),
+            this->access_port_list(this->access_port_list_size() - 1).length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "E2.ServicePlacementRequest.access_port_list"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_access_port_list;
+        if (input->ExpectTag(34)) goto parse_edge_element_list;
+        break;
+      }
+
+      // optional .E2.NetworkElementList edge_element_list = 4;
+      case 4: {
+        if (tag == 34) {
+         parse_edge_element_list:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_edge_element_list()));
         } else {
           goto handle_unusual;
         }
@@ -4268,16 +4318,32 @@ failure:
 void ServicePlacementRequest::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:E2.ServicePlacementRequest)
-  // optional .E2.ServiceEndpointList services = 1;
-  if (this->has_services()) {
+  // optional .E2.ServiceEndpoint service = 1;
+  if (this->has_service()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, *this->services_, output);
+      1, *this->service_, output);
   }
 
-  // optional .E2.NetworkElementList element_list = 2;
-  if (this->has_element_list()) {
+  // optional .E2.NetworkElement access_element = 2;
+  if (this->has_access_element()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, *this->element_list_, output);
+      2, *this->access_element_, output);
+  }
+
+  // repeated string access_port_list = 3;
+  for (int i = 0; i < this->access_port_list_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->access_port_list(i).data(), this->access_port_list(i).length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "E2.ServicePlacementRequest.access_port_list");
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      3, this->access_port_list(i), output);
+  }
+
+  // optional .E2.NetworkElementList edge_element_list = 4;
+  if (this->has_edge_element_list()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      4, *this->edge_element_list_, output);
   }
 
   // @@protoc_insertion_point(serialize_end:E2.ServicePlacementRequest)
@@ -4286,18 +4352,35 @@ void ServicePlacementRequest::SerializeWithCachedSizes(
 ::google::protobuf::uint8* ServicePlacementRequest::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:E2.ServicePlacementRequest)
-  // optional .E2.ServiceEndpointList services = 1;
-  if (this->has_services()) {
+  // optional .E2.ServiceEndpoint service = 1;
+  if (this->has_service()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        1, *this->services_, target);
+        1, *this->service_, target);
   }
 
-  // optional .E2.NetworkElementList element_list = 2;
-  if (this->has_element_list()) {
+  // optional .E2.NetworkElement access_element = 2;
+  if (this->has_access_element()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        2, *this->element_list_, target);
+        2, *this->access_element_, target);
+  }
+
+  // repeated string access_port_list = 3;
+  for (int i = 0; i < this->access_port_list_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->access_port_list(i).data(), this->access_port_list(i).length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "E2.ServicePlacementRequest.access_port_list");
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteStringToArray(3, this->access_port_list(i), target);
+  }
+
+  // optional .E2.NetworkElementList edge_element_list = 4;
+  if (this->has_edge_element_list()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        4, *this->edge_element_list_, target);
   }
 
   // @@protoc_insertion_point(serialize_to_array_end:E2.ServicePlacementRequest)
@@ -4307,18 +4390,32 @@ void ServicePlacementRequest::SerializeWithCachedSizes(
 int ServicePlacementRequest::ByteSize() const {
   int total_size = 0;
 
-  // optional .E2.ServiceEndpointList services = 1;
-  if (this->has_services()) {
+  // optional .E2.ServiceEndpoint service = 1;
+  if (this->has_service()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        *this->services_);
+        *this->service_);
   }
 
-  // optional .E2.NetworkElementList element_list = 2;
-  if (this->has_element_list()) {
+  // optional .E2.NetworkElement access_element = 2;
+  if (this->has_access_element()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        *this->element_list_);
+        *this->access_element_);
+  }
+
+  // optional .E2.NetworkElementList edge_element_list = 4;
+  if (this->has_edge_element_list()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->edge_element_list_);
+  }
+
+  // repeated string access_port_list = 3;
+  total_size += 1 * this->access_port_list_size();
+  for (int i = 0; i < this->access_port_list_size(); i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->access_port_list(i));
   }
 
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
@@ -4341,11 +4438,15 @@ void ServicePlacementRequest::MergeFrom(const ::google::protobuf::Message& from)
 
 void ServicePlacementRequest::MergeFrom(const ServicePlacementRequest& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  if (from.has_services()) {
-    mutable_services()->::E2::ServiceEndpointList::MergeFrom(from.services());
+  access_port_list_.MergeFrom(from.access_port_list_);
+  if (from.has_service()) {
+    mutable_service()->::E2::ServiceEndpoint::MergeFrom(from.service());
   }
-  if (from.has_element_list()) {
-    mutable_element_list()->::E2::NetworkElementList::MergeFrom(from.element_list());
+  if (from.has_access_element()) {
+    mutable_access_element()->::E2::NetworkElement::MergeFrom(from.access_element());
+  }
+  if (from.has_edge_element_list()) {
+    mutable_edge_element_list()->::E2::NetworkElementList::MergeFrom(from.edge_element_list());
   }
 }
 
@@ -4371,8 +4472,10 @@ void ServicePlacementRequest::Swap(ServicePlacementRequest* other) {
   InternalSwap(other);
 }
 void ServicePlacementRequest::InternalSwap(ServicePlacementRequest* other) {
-  std::swap(services_, other->services_);
-  std::swap(element_list_, other->element_list_);
+  std::swap(service_, other->service_);
+  std::swap(access_element_, other->access_element_);
+  access_port_list_.UnsafeArenaSwap(&other->access_port_list_);
+  std::swap(edge_element_list_, other->edge_element_list_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
 }
@@ -4388,78 +4491,169 @@ void ServicePlacementRequest::InternalSwap(ServicePlacementRequest* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // ServicePlacementRequest
 
-// optional .E2.ServiceEndpointList services = 1;
-bool ServicePlacementRequest::has_services() const {
-  return !_is_default_instance_ && services_ != NULL;
+// optional .E2.ServiceEndpoint service = 1;
+bool ServicePlacementRequest::has_service() const {
+  return !_is_default_instance_ && service_ != NULL;
 }
-void ServicePlacementRequest::clear_services() {
-  if (GetArenaNoVirtual() == NULL && services_ != NULL) delete services_;
-  services_ = NULL;
+void ServicePlacementRequest::clear_service() {
+  if (GetArenaNoVirtual() == NULL && service_ != NULL) delete service_;
+  service_ = NULL;
 }
-const ::E2::ServiceEndpointList& ServicePlacementRequest::services() const {
-  // @@protoc_insertion_point(field_get:E2.ServicePlacementRequest.services)
-  return services_ != NULL ? *services_ : *default_instance_->services_;
+const ::E2::ServiceEndpoint& ServicePlacementRequest::service() const {
+  // @@protoc_insertion_point(field_get:E2.ServicePlacementRequest.service)
+  return service_ != NULL ? *service_ : *default_instance_->service_;
 }
-::E2::ServiceEndpointList* ServicePlacementRequest::mutable_services() {
+::E2::ServiceEndpoint* ServicePlacementRequest::mutable_service() {
   
-  if (services_ == NULL) {
-    services_ = new ::E2::ServiceEndpointList;
+  if (service_ == NULL) {
+    service_ = new ::E2::ServiceEndpoint;
   }
-  // @@protoc_insertion_point(field_mutable:E2.ServicePlacementRequest.services)
-  return services_;
+  // @@protoc_insertion_point(field_mutable:E2.ServicePlacementRequest.service)
+  return service_;
 }
-::E2::ServiceEndpointList* ServicePlacementRequest::release_services() {
+::E2::ServiceEndpoint* ServicePlacementRequest::release_service() {
   
-  ::E2::ServiceEndpointList* temp = services_;
-  services_ = NULL;
+  ::E2::ServiceEndpoint* temp = service_;
+  service_ = NULL;
   return temp;
 }
-void ServicePlacementRequest::set_allocated_services(::E2::ServiceEndpointList* services) {
-  delete services_;
-  services_ = services;
-  if (services) {
+void ServicePlacementRequest::set_allocated_service(::E2::ServiceEndpoint* service) {
+  delete service_;
+  service_ = service;
+  if (service) {
     
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:E2.ServicePlacementRequest.services)
+  // @@protoc_insertion_point(field_set_allocated:E2.ServicePlacementRequest.service)
 }
 
-// optional .E2.NetworkElementList element_list = 2;
-bool ServicePlacementRequest::has_element_list() const {
-  return !_is_default_instance_ && element_list_ != NULL;
+// optional .E2.NetworkElement access_element = 2;
+bool ServicePlacementRequest::has_access_element() const {
+  return !_is_default_instance_ && access_element_ != NULL;
 }
-void ServicePlacementRequest::clear_element_list() {
-  if (GetArenaNoVirtual() == NULL && element_list_ != NULL) delete element_list_;
-  element_list_ = NULL;
+void ServicePlacementRequest::clear_access_element() {
+  if (GetArenaNoVirtual() == NULL && access_element_ != NULL) delete access_element_;
+  access_element_ = NULL;
 }
-const ::E2::NetworkElementList& ServicePlacementRequest::element_list() const {
-  // @@protoc_insertion_point(field_get:E2.ServicePlacementRequest.element_list)
-  return element_list_ != NULL ? *element_list_ : *default_instance_->element_list_;
+const ::E2::NetworkElement& ServicePlacementRequest::access_element() const {
+  // @@protoc_insertion_point(field_get:E2.ServicePlacementRequest.access_element)
+  return access_element_ != NULL ? *access_element_ : *default_instance_->access_element_;
 }
-::E2::NetworkElementList* ServicePlacementRequest::mutable_element_list() {
+::E2::NetworkElement* ServicePlacementRequest::mutable_access_element() {
   
-  if (element_list_ == NULL) {
-    element_list_ = new ::E2::NetworkElementList;
+  if (access_element_ == NULL) {
+    access_element_ = new ::E2::NetworkElement;
   }
-  // @@protoc_insertion_point(field_mutable:E2.ServicePlacementRequest.element_list)
-  return element_list_;
+  // @@protoc_insertion_point(field_mutable:E2.ServicePlacementRequest.access_element)
+  return access_element_;
 }
-::E2::NetworkElementList* ServicePlacementRequest::release_element_list() {
+::E2::NetworkElement* ServicePlacementRequest::release_access_element() {
   
-  ::E2::NetworkElementList* temp = element_list_;
-  element_list_ = NULL;
+  ::E2::NetworkElement* temp = access_element_;
+  access_element_ = NULL;
   return temp;
 }
-void ServicePlacementRequest::set_allocated_element_list(::E2::NetworkElementList* element_list) {
-  delete element_list_;
-  element_list_ = element_list;
-  if (element_list) {
+void ServicePlacementRequest::set_allocated_access_element(::E2::NetworkElement* access_element) {
+  delete access_element_;
+  access_element_ = access_element;
+  if (access_element) {
     
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:E2.ServicePlacementRequest.element_list)
+  // @@protoc_insertion_point(field_set_allocated:E2.ServicePlacementRequest.access_element)
+}
+
+// repeated string access_port_list = 3;
+int ServicePlacementRequest::access_port_list_size() const {
+  return access_port_list_.size();
+}
+void ServicePlacementRequest::clear_access_port_list() {
+  access_port_list_.Clear();
+}
+ const ::std::string& ServicePlacementRequest::access_port_list(int index) const {
+  // @@protoc_insertion_point(field_get:E2.ServicePlacementRequest.access_port_list)
+  return access_port_list_.Get(index);
+}
+ ::std::string* ServicePlacementRequest::mutable_access_port_list(int index) {
+  // @@protoc_insertion_point(field_mutable:E2.ServicePlacementRequest.access_port_list)
+  return access_port_list_.Mutable(index);
+}
+ void ServicePlacementRequest::set_access_port_list(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:E2.ServicePlacementRequest.access_port_list)
+  access_port_list_.Mutable(index)->assign(value);
+}
+ void ServicePlacementRequest::set_access_port_list(int index, const char* value) {
+  access_port_list_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:E2.ServicePlacementRequest.access_port_list)
+}
+ void ServicePlacementRequest::set_access_port_list(int index, const char* value, size_t size) {
+  access_port_list_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:E2.ServicePlacementRequest.access_port_list)
+}
+ ::std::string* ServicePlacementRequest::add_access_port_list() {
+  return access_port_list_.Add();
+}
+ void ServicePlacementRequest::add_access_port_list(const ::std::string& value) {
+  access_port_list_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:E2.ServicePlacementRequest.access_port_list)
+}
+ void ServicePlacementRequest::add_access_port_list(const char* value) {
+  access_port_list_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:E2.ServicePlacementRequest.access_port_list)
+}
+ void ServicePlacementRequest::add_access_port_list(const char* value, size_t size) {
+  access_port_list_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:E2.ServicePlacementRequest.access_port_list)
+}
+ const ::google::protobuf::RepeatedPtrField< ::std::string>&
+ServicePlacementRequest::access_port_list() const {
+  // @@protoc_insertion_point(field_list:E2.ServicePlacementRequest.access_port_list)
+  return access_port_list_;
+}
+ ::google::protobuf::RepeatedPtrField< ::std::string>*
+ServicePlacementRequest::mutable_access_port_list() {
+  // @@protoc_insertion_point(field_mutable_list:E2.ServicePlacementRequest.access_port_list)
+  return &access_port_list_;
+}
+
+// optional .E2.NetworkElementList edge_element_list = 4;
+bool ServicePlacementRequest::has_edge_element_list() const {
+  return !_is_default_instance_ && edge_element_list_ != NULL;
+}
+void ServicePlacementRequest::clear_edge_element_list() {
+  if (GetArenaNoVirtual() == NULL && edge_element_list_ != NULL) delete edge_element_list_;
+  edge_element_list_ = NULL;
+}
+const ::E2::NetworkElementList& ServicePlacementRequest::edge_element_list() const {
+  // @@protoc_insertion_point(field_get:E2.ServicePlacementRequest.edge_element_list)
+  return edge_element_list_ != NULL ? *edge_element_list_ : *default_instance_->edge_element_list_;
+}
+::E2::NetworkElementList* ServicePlacementRequest::mutable_edge_element_list() {
+  
+  if (edge_element_list_ == NULL) {
+    edge_element_list_ = new ::E2::NetworkElementList;
+  }
+  // @@protoc_insertion_point(field_mutable:E2.ServicePlacementRequest.edge_element_list)
+  return edge_element_list_;
+}
+::E2::NetworkElementList* ServicePlacementRequest::release_edge_element_list() {
+  
+  ::E2::NetworkElementList* temp = edge_element_list_;
+  edge_element_list_ = NULL;
+  return temp;
+}
+void ServicePlacementRequest::set_allocated_edge_element_list(::E2::NetworkElementList* edge_element_list) {
+  delete edge_element_list_;
+  edge_element_list_ = edge_element_list;
+  if (edge_element_list) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:E2.ServicePlacementRequest.edge_element_list)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

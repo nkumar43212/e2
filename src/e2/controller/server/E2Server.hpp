@@ -19,6 +19,9 @@
 class E2Server final : public E2::E2::Service {
     const Logger *_logger;
     
+    // Internal helper routine
+    void deactivateService(const ServicePlacementRequest * request);
+    
 public:
     E2Server(const Logger *logger) : _logger(logger)
     {
@@ -43,9 +46,12 @@ public:
     Status removeServiceEndpoint(ServerContext* context,
                                  const ServiceConfigurationRequest * request,
                                  ConfigurationReply * reply) override;
-    Status placeService(ServerContext* context,
-                        const ServicePlacementRequest * request,
-                        ConfigurationReply * reply) override;
+    Status activateService(ServerContext* context,
+                           const ServicePlacementRequest * request,
+                           ConfigurationReply * reply) override;
+    Status deactivateService(ServerContext* context,
+                             const ServicePlacementRequest * request,
+                             ConfigurationReply * reply) override;
 
 };
 

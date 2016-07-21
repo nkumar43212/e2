@@ -155,8 +155,20 @@ E2Server::addServiceEndpoint (ServerContext* context,
                               ConfigurationReply * reply)
 {
     std::string    err_str;
-    status_t       status;
+    status_t       status = EOK;
     E2::ReturnCode err_code;
+    
+    // Go through all the services that have been sent in this request
+    const ServiceEndpointList &services = request->services();
+    for (int i = 0; i < services.list_size(); i++) {
+        const E2::ServiceEndpoint &ep = services.list(i);
+        
+        // Absorb this customer
+        CustomerProfile profile(ep.vlan_identifier());
+        status = Customer::add(ep.name(), profile);
+        if (status != EOK) {
+        }
+    }
     
     reply->set_code(E2::SUCCESS);
     return Status::OK;
@@ -172,34 +184,122 @@ E2Server::removeServiceEndpoint (ServerContext* context,
                                  const ServiceConfigurationRequest * request,
                                  ConfigurationReply * reply)
 {
-    std::string    err_str;
-    status_t       status;
-    E2::ReturnCode err_code;
+    // Go through all the services that have been sent in this request
+    const ServiceEndpointList &services = request->services();
+    for (int i = 0; i < services.list_size(); i++) {
+        const E2::ServiceEndpoint &ep = services.list(i);
+        
+        // Absorb this customer
+        Customer::remove(ep.name());
+    }
     
     reply->set_code(E2::SUCCESS);
-    return Status::OK;
-    
-error:
-    reply->set_code(err_code);
-    reply->set_code_str(err_str);
     return Status::OK;
 }
 
 Status
-E2Server::placeService (ServerContext* context,
-                        const ServicePlacementRequest * request,
-                        ConfigurationReply * reply)
+E2Server::activateService (ServerContext* context,
+                           const ServicePlacementRequest *request,
+                           ConfigurationReply * reply)
 {
-    std::string    err_str;
-    status_t       status;
-    E2::ReturnCode err_code;
+    std::string    err_str = "";
+    status_t       status = EOK;
+    
+    // Do we know about the service
+    if (!Customer::isPresent(request->service().name())) {
+        err_str  = "Service Not Found:" + request->service().name();
+        reply->set_code(E2::SERVICE_NOT_FOUND_ERROR);
+        reply->set_code_str(err_str);
+        return Status::OK;
+    }
+    
+    // Do we know about the access element
+    Element *access_elementp = Element::find(request->access_element().name());
+    if (!access_elementp) {
+        reply->set_code(E2::ELEMENT_NOT_FOUND_ERROR);
+        err_str = "Failed to find access element" + request->access_element().name();
+        reply->set_code_str(err_str);
+        return Status::OK;
+    }
+    
+    // Do we know all the edge elements
+    std::vector<Element *>edge_elements;
+    const NetworkElementList& edge_list = request->edge_element_list();
+    for (int i = 0; i < edge_list.list_size(); i++) {
+        const NetworkElement &elt = edge_list.list(i);
+        Element *element = Element::find(elt.name());
+        if (!element) {
+            reply->set_code(E2::ELEMENT_NOT_FOUND_ERROR);
+            err_str = "Failed to find service element" + elt.name();
+            reply->set_code_str(err_str);
+            return Status::OK;
+        }
+        edge_elements.push_back(element);
+    }
+    
+    // Place on the service edge
+    Element *element;
+    for (std::vector<Element *>::iterator itr = edge_elements.begin(); itr != edge_elements.end(); itr++) {
+        element = *itr;
+        status = element->addCustomer(request->service().name());
+        if (status != EOK) {
+            err_str  = "Service Placement Error on Element:" + request->service().name() + "/" + element->getName();
+            reply->set_code(E2::SERVICE_PLACEMENT_ERROR);
+            reply->set_code_str(err_str);
+            deactivateService(request);
+            return Status::OK;
+        }
+    }
+    
+    // Place on the access edge
+    std::vector<std::string> port_list;
+    for (int i = 0; i < request->access_port_list_size(); i++) {
+        port_list.push_back(request->access_port_list(i));
+    }
+    status = access_elementp->addCustomer(request->service().name(), port_list);
+    if (status != EOK) {
+        err_str  = "Service Placement Error on Element:" + request->service().name() + "/" + access_elementp->getName();
+        reply->set_code(E2::SERVICE_PLACEMENT_ERROR);
+        reply->set_code_str(err_str);
+        deactivateService(request);
+        return Status::OK;
+    }
     
     reply->set_code(E2::SUCCESS);
     return Status::OK;
-    
-error:
-    reply->set_code(err_code);
-    reply->set_code_str(err_str);
+}
+
+Status
+E2Server::deactivateService (ServerContext* context,
+                             const ServicePlacementRequest *request,
+                             ConfigurationReply * reply)
+{
+    deactivateService(request);
+    reply->set_code(E2::SUCCESS);
     return Status::OK;
 }
 
+void
+E2Server::deactivateService (const ServicePlacementRequest *request)
+{
+    // Do we know about the service
+    if (!Customer::isPresent(request->service().name())) {
+        return;
+    }
+    
+    // Do we know about the access element
+    Element *access_elementp = Element::find(request->access_element().name());
+    if (access_elementp) {
+        access_elementp->removeCustomer(request->service().name());
+    }
+    
+    // Do we know all the edge elements
+    const NetworkElementList& edge_list = request->edge_element_list();
+    for (int i = 0; i < edge_list.list_size(); i++) {
+        const NetworkElement &elt = edge_list.list(i);
+        Element *element = Element::find(elt.name());
+        if (element) {
+            element->removeCustomer(request->service().name());
+        }
+    }
+}

@@ -21,15 +21,9 @@
 #include "MetricsManager.hpp"
 #include "IndexManager.h"
 #include "ServiceOrder.hpp"
+#include "Customer.hpp"
 
 // Types
-class Element;
-class Service;
-class ServiceCallbackKeyValue;
-typedef std::map<std::string, Element *>::iterator ElementDbIterator;
-typedef std::map<std::string, ElementInterface *> InterfaceList;
-typedef std::map<std::string, ElementInterface *>::iterator InterfaceListIterator;
-
 // Status
 typedef enum {
     ElementStatusInit        = 0,
@@ -38,6 +32,15 @@ typedef enum {
     ElementStatusDown        = 3
 } ElementStatus;
 extern std::string ElementStatusStrings[];
+
+class Element;
+class Service;
+class ServiceCallbackKeyValue;
+typedef std::map<std::string, Element *>::iterator ElementDbIterator;
+typedef std::map<std::string, ElementInterface *> InterfaceList;
+typedef std::map<std::string, ElementInterface *>::iterator InterfaceListIterator;
+typedef std::map<std::string, ElementStatus> ElementCustomerList;
+typedef std::map<std::string, ElementStatus>::iterator ElementCustomerListIterator;
 
 
 // Representation of a networking node in the domain managed by the E2 controller
@@ -61,6 +64,9 @@ class Element {
     
     // List of Connections with the network element
     std::map<std::string, Service *> _subscriptions;
+    
+    // List of Customers
+    ElementCustomerList _customer_list;
     
     // Metrics to measure this element.
     MetricsManager   _metrics_list;
@@ -127,6 +133,12 @@ public:
     status_t     removeServiceOrder(ServiceOrder *order);
     static void  serviceOrderCallback(Element *elementp, ServiceCallbackKeyValue *kv);
     
+    // Customers provisioned on the element
+    status_t     addCustomer(std::string name);
+    status_t     addCustomer(std::string name, const std::vector<std::string> port_list);
+    void         removeCustomer(std::string name);
+    uint32_t     getCustomerCount();
+    
     // Pretty print contents
     void        description()
     {
@@ -138,6 +150,10 @@ public:
         std::cout << "  Interfaces:\n";
         for (InterfaceListIterator itr = _interface_list.begin(); itr != _interface_list.end(); itr++) {
             itr->second->description();
+        }
+        std::cout << "Customers:\n";
+        for (ElementCustomerListIterator itr = _customer_list.begin(); itr != _customer_list.end(); itr++) {
+            std::cout << "  " << itr->first << "(" << ElementStatusStrings[itr->second] << "\n";
         }
     }
 };

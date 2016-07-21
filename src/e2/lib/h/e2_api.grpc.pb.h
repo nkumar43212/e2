@@ -58,9 +58,13 @@ class E2 GRPC_FINAL {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>> AsyncremoveServiceEndpoint(::grpc::ClientContext* context, const ::E2::ServiceConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>>(AsyncremoveServiceEndpointRaw(context, request, cq));
     }
-    virtual ::grpc::Status placeService(::grpc::ClientContext* context, const ::E2::ServicePlacementRequest& request, ::E2::ConfigurationReply* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>> AsyncplaceService(::grpc::ClientContext* context, const ::E2::ServicePlacementRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>>(AsyncplaceServiceRaw(context, request, cq));
+    virtual ::grpc::Status activateService(::grpc::ClientContext* context, const ::E2::ServicePlacementRequest& request, ::E2::ConfigurationReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>> AsyncactivateService(::grpc::ClientContext* context, const ::E2::ServicePlacementRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>>(AsyncactivateServiceRaw(context, request, cq));
+    }
+    virtual ::grpc::Status deactivateService(::grpc::ClientContext* context, const ::E2::ServicePlacementRequest& request, ::E2::ConfigurationReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>> AsyncdeactivateService(::grpc::ClientContext* context, const ::E2::ServicePlacementRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>>(AsyncdeactivateServiceRaw(context, request, cq));
     }
   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>* AsyncaddElementRaw(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) = 0;
@@ -70,7 +74,8 @@ class E2 GRPC_FINAL {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>* AsyncremoveFabricLinkRaw(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>* AsyncaddServiceEndpointRaw(::grpc::ClientContext* context, const ::E2::ServiceConfigurationRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>* AsyncremoveServiceEndpointRaw(::grpc::ClientContext* context, const ::E2::ServiceConfigurationRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>* AsyncplaceServiceRaw(::grpc::ClientContext* context, const ::E2::ServicePlacementRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>* AsyncactivateServiceRaw(::grpc::ClientContext* context, const ::E2::ServicePlacementRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>* AsyncdeactivateServiceRaw(::grpc::ClientContext* context, const ::E2::ServicePlacementRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub GRPC_FINAL : public StubInterface {
    public:
@@ -103,9 +108,13 @@ class E2 GRPC_FINAL {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>> AsyncremoveServiceEndpoint(::grpc::ClientContext* context, const ::E2::ServiceConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>>(AsyncremoveServiceEndpointRaw(context, request, cq));
     }
-    ::grpc::Status placeService(::grpc::ClientContext* context, const ::E2::ServicePlacementRequest& request, ::E2::ConfigurationReply* response) GRPC_OVERRIDE;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>> AsyncplaceService(::grpc::ClientContext* context, const ::E2::ServicePlacementRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>>(AsyncplaceServiceRaw(context, request, cq));
+    ::grpc::Status activateService(::grpc::ClientContext* context, const ::E2::ServicePlacementRequest& request, ::E2::ConfigurationReply* response) GRPC_OVERRIDE;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>> AsyncactivateService(::grpc::ClientContext* context, const ::E2::ServicePlacementRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>>(AsyncactivateServiceRaw(context, request, cq));
+    }
+    ::grpc::Status deactivateService(::grpc::ClientContext* context, const ::E2::ServicePlacementRequest& request, ::E2::ConfigurationReply* response) GRPC_OVERRIDE;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>> AsyncdeactivateService(::grpc::ClientContext* context, const ::E2::ServicePlacementRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>>(AsyncdeactivateServiceRaw(context, request, cq));
     }
 
    private:
@@ -117,7 +126,8 @@ class E2 GRPC_FINAL {
     ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* AsyncremoveFabricLinkRaw(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
     ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* AsyncaddServiceEndpointRaw(::grpc::ClientContext* context, const ::E2::ServiceConfigurationRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
     ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* AsyncremoveServiceEndpointRaw(::grpc::ClientContext* context, const ::E2::ServiceConfigurationRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
-    ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* AsyncplaceServiceRaw(::grpc::ClientContext* context, const ::E2::ServicePlacementRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
+    ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* AsyncactivateServiceRaw(::grpc::ClientContext* context, const ::E2::ServicePlacementRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
+    ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* AsyncdeactivateServiceRaw(::grpc::ClientContext* context, const ::E2::ServicePlacementRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
     const ::grpc::RpcMethod rpcmethod_addElement_;
     const ::grpc::RpcMethod rpcmethod_removeElement_;
     const ::grpc::RpcMethod rpcmethod_getElements_;
@@ -125,7 +135,8 @@ class E2 GRPC_FINAL {
     const ::grpc::RpcMethod rpcmethod_removeFabricLink_;
     const ::grpc::RpcMethod rpcmethod_addServiceEndpoint_;
     const ::grpc::RpcMethod rpcmethod_removeServiceEndpoint_;
-    const ::grpc::RpcMethod rpcmethod_placeService_;
+    const ::grpc::RpcMethod rpcmethod_activateService_;
+    const ::grpc::RpcMethod rpcmethod_deactivateService_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::Channel>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -140,7 +151,8 @@ class E2 GRPC_FINAL {
     virtual ::grpc::Status removeFabricLink(::grpc::ServerContext* context, const ::E2::ConfigurationRequest* request, ::E2::ConfigurationReply* response);
     virtual ::grpc::Status addServiceEndpoint(::grpc::ServerContext* context, const ::E2::ServiceConfigurationRequest* request, ::E2::ConfigurationReply* response);
     virtual ::grpc::Status removeServiceEndpoint(::grpc::ServerContext* context, const ::E2::ServiceConfigurationRequest* request, ::E2::ConfigurationReply* response);
-    virtual ::grpc::Status placeService(::grpc::ServerContext* context, const ::E2::ServicePlacementRequest* request, ::E2::ConfigurationReply* response);
+    virtual ::grpc::Status activateService(::grpc::ServerContext* context, const ::E2::ServicePlacementRequest* request, ::E2::ConfigurationReply* response);
+    virtual ::grpc::Status deactivateService(::grpc::ServerContext* context, const ::E2::ServicePlacementRequest* request, ::E2::ConfigurationReply* response);
     ::grpc::RpcService* service() GRPC_OVERRIDE GRPC_FINAL;
    private:
     ::grpc::RpcService* service_;
@@ -156,7 +168,8 @@ class E2 GRPC_FINAL {
     void RequestremoveFabricLink(::grpc::ServerContext* context, ::E2::ConfigurationRequest* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
     void RequestaddServiceEndpoint(::grpc::ServerContext* context, ::E2::ServiceConfigurationRequest* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
     void RequestremoveServiceEndpoint(::grpc::ServerContext* context, ::E2::ServiceConfigurationRequest* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
-    void RequestplaceService(::grpc::ServerContext* context, ::E2::ServicePlacementRequest* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
+    void RequestactivateService(::grpc::ServerContext* context, ::E2::ServicePlacementRequest* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
+    void RequestdeactivateService(::grpc::ServerContext* context, ::E2::ServicePlacementRequest* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
   };
 };
 

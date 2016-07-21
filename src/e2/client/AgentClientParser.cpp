@@ -73,7 +73,23 @@ handle_place_service (int argc, const char *argv[])
         element_list.push_back(argv[i+2]);
     }
     
-    clientp->placeService(argv[1], element_list);
+    clientp->placeService(argv[1], argv[2], argv[3], argv[4], argv[5]);
+}
+
+void
+handle_deplace_service (int argc, const char *argv[])
+{
+    std::string e2_name("e2");
+    
+    E2Client *clientp = E2Client::create(grpc::CreateChannel(AGENT_SERVER_IP_PORT, grpc::InsecureCredentials()),
+                                         e2_name, 0, parser->getLogDir());
+    std::vector<std::string> element_list;
+    int n_elements = argc - 2;
+    for (int i = 0; i < n_elements; i++) {
+        element_list.push_back(argv[i+2]);
+    }
+    
+    clientp->deplaceService(argv[1], argv[2], argv[3], argv[4]);
 }
 
 void
@@ -148,10 +164,18 @@ entry_t agent_client_commands [] = {
     
     {
         .e_cmd     = std::string("place-service"),
-        .e_argc    = 4,
+        .e_argc    = 6,
         .e_help    = std::string("Place a service to E2"),
-        .e_usage   = std::string("add-service <name> <element1> <element2>"),
+        .e_usage   = std::string("place-service <name> <element1> <element2> <access_element> <access_port>"),
         .e_handler = handle_place_service
+    },
+    
+    {
+        .e_cmd     = std::string("deplace-service"),
+        .e_argc    = 5,
+        .e_help    = std::string("Displace Place a service to E2"),
+        .e_usage   = std::string("deplace-service <name> <element1> <element2> <access_element>"),
+        .e_handler = handle_deplace_service
     },
 };
 

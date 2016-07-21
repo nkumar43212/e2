@@ -632,12 +632,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "client/E2Client.cpp"
-            timestampString = "490677110.224256"
+            timestampString = "490688440.683222"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "E2Client::placeService (std::string name, std::vector&lt;std::string&gt; element_list)"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "E2Client::placeService (std::string name, std::string pe_1, std::string pe_2, std::string access_element, std::string access_port)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -648,28 +648,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "controller/server/E2Server.cpp"
-            timestampString = "490676996.349195"
+            timestampString = "490832889.103958"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "E2Server::addServiceEndpoint (ServerContext* context, const ServiceConfigurationRequest * request, ConfigurationReply * reply)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "controller/server/E2Server.cpp"
-            timestampString = "490677098.482076"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
-            landmarkName = "E2Server::removeServiceEndpoint (ServerContext* context, const ServiceConfigurationRequest * request, ConfigurationReply * reply)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -680,12 +664,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "controller/server/E2Server.cpp"
-            timestampString = "490677102.709443"
+            timestampString = "490832889.103958"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
-            landmarkName = "E2Server::placeService (ServerContext* context, const ServicePlacementRequest * request, ConfigurationReply * reply)"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
+            landmarkName = "E2Server::activateService (ServerContext* context, const ServicePlacementRequest *request, ConfigurationReply * reply)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -696,12 +680,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "controller/server/E2Server.cpp"
-            timestampString = "490677104.896077"
+            timestampString = "490832877.912197"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
-            landmarkName = "E2Server::placeService (ServerContext* context, const ServicePlacementRequest * request, ConfigurationReply * reply)"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
+            landmarkName = "E2Server::activateService (ServerContext* context, const ServicePlacementRequest *request, ConfigurationReply * reply)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

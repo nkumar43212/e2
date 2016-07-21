@@ -73,7 +73,12 @@ public:
     void addFabricLink(std::string name, std::string ep1, std::string ep2);
     void addService(std::string name, uint32_t vlan_identifier);
     void deleteService(std::string name);
-    void placeService(std::string name, std::vector<std::string> element_list);
+    void placeService(std::string name,
+                      std::string pe_1, std::string pe_2,
+                      std::string access_element, std::string access_port);
+    void deplaceService(std::string name,
+                        std::string pe_1, std::string pe_2,
+                        std::string access_element);
 };
 
 

@@ -55,12 +55,14 @@ enum ReturnCode {
   ACTIVATE_ERROR = 2,
   MEMORY_ERROR = 3,
   ELEMENT_NOT_FOUND_ERROR = 4,
+  SERVICE_NOT_FOUND_ERROR = 5,
+  SERVICE_PLACEMENT_ERROR = 6,
   ReturnCode_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   ReturnCode_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool ReturnCode_IsValid(int value);
 const ReturnCode ReturnCode_MIN = SUCCESS;
-const ReturnCode ReturnCode_MAX = ELEMENT_NOT_FOUND_ERROR;
+const ReturnCode ReturnCode_MAX = SERVICE_PLACEMENT_ERROR;
 const int ReturnCode_ARRAYSIZE = ReturnCode_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* ReturnCode_descriptor();
@@ -1129,31 +1131,58 @@ class ServicePlacementRequest : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional .E2.ServiceEndpointList services = 1;
-  bool has_services() const;
-  void clear_services();
-  static const int kServicesFieldNumber = 1;
-  const ::E2::ServiceEndpointList& services() const;
-  ::E2::ServiceEndpointList* mutable_services();
-  ::E2::ServiceEndpointList* release_services();
-  void set_allocated_services(::E2::ServiceEndpointList* services);
+  // optional .E2.ServiceEndpoint service = 1;
+  bool has_service() const;
+  void clear_service();
+  static const int kServiceFieldNumber = 1;
+  const ::E2::ServiceEndpoint& service() const;
+  ::E2::ServiceEndpoint* mutable_service();
+  ::E2::ServiceEndpoint* release_service();
+  void set_allocated_service(::E2::ServiceEndpoint* service);
 
-  // optional .E2.NetworkElementList element_list = 2;
-  bool has_element_list() const;
-  void clear_element_list();
-  static const int kElementListFieldNumber = 2;
-  const ::E2::NetworkElementList& element_list() const;
-  ::E2::NetworkElementList* mutable_element_list();
-  ::E2::NetworkElementList* release_element_list();
-  void set_allocated_element_list(::E2::NetworkElementList* element_list);
+  // optional .E2.NetworkElement access_element = 2;
+  bool has_access_element() const;
+  void clear_access_element();
+  static const int kAccessElementFieldNumber = 2;
+  const ::E2::NetworkElement& access_element() const;
+  ::E2::NetworkElement* mutable_access_element();
+  ::E2::NetworkElement* release_access_element();
+  void set_allocated_access_element(::E2::NetworkElement* access_element);
+
+  // repeated string access_port_list = 3;
+  int access_port_list_size() const;
+  void clear_access_port_list();
+  static const int kAccessPortListFieldNumber = 3;
+  const ::std::string& access_port_list(int index) const;
+  ::std::string* mutable_access_port_list(int index);
+  void set_access_port_list(int index, const ::std::string& value);
+  void set_access_port_list(int index, const char* value);
+  void set_access_port_list(int index, const char* value, size_t size);
+  ::std::string* add_access_port_list();
+  void add_access_port_list(const ::std::string& value);
+  void add_access_port_list(const char* value);
+  void add_access_port_list(const char* value, size_t size);
+  const ::google::protobuf::RepeatedPtrField< ::std::string>& access_port_list() const;
+  ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_access_port_list();
+
+  // optional .E2.NetworkElementList edge_element_list = 4;
+  bool has_edge_element_list() const;
+  void clear_edge_element_list();
+  static const int kEdgeElementListFieldNumber = 4;
+  const ::E2::NetworkElementList& edge_element_list() const;
+  ::E2::NetworkElementList* mutable_edge_element_list();
+  ::E2::NetworkElementList* release_edge_element_list();
+  void set_allocated_edge_element_list(::E2::NetworkElementList* edge_element_list);
 
   // @@protoc_insertion_point(class_scope:E2.ServicePlacementRequest)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
-  ::E2::ServiceEndpointList* services_;
-  ::E2::NetworkElementList* element_list_;
+  ::E2::ServiceEndpoint* service_;
+  ::E2::NetworkElement* access_element_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> access_port_list_;
+  ::E2::NetworkElementList* edge_element_list_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_e2_5fapi_2eproto();
   friend void protobuf_AssignDesc_e2_5fapi_2eproto();
@@ -2084,78 +2113,169 @@ inline void ServiceConfigurationRequest::set_allocated_services(::E2::ServiceEnd
 
 // ServicePlacementRequest
 
-// optional .E2.ServiceEndpointList services = 1;
-inline bool ServicePlacementRequest::has_services() const {
-  return !_is_default_instance_ && services_ != NULL;
+// optional .E2.ServiceEndpoint service = 1;
+inline bool ServicePlacementRequest::has_service() const {
+  return !_is_default_instance_ && service_ != NULL;
 }
-inline void ServicePlacementRequest::clear_services() {
-  if (GetArenaNoVirtual() == NULL && services_ != NULL) delete services_;
-  services_ = NULL;
+inline void ServicePlacementRequest::clear_service() {
+  if (GetArenaNoVirtual() == NULL && service_ != NULL) delete service_;
+  service_ = NULL;
 }
-inline const ::E2::ServiceEndpointList& ServicePlacementRequest::services() const {
-  // @@protoc_insertion_point(field_get:E2.ServicePlacementRequest.services)
-  return services_ != NULL ? *services_ : *default_instance_->services_;
+inline const ::E2::ServiceEndpoint& ServicePlacementRequest::service() const {
+  // @@protoc_insertion_point(field_get:E2.ServicePlacementRequest.service)
+  return service_ != NULL ? *service_ : *default_instance_->service_;
 }
-inline ::E2::ServiceEndpointList* ServicePlacementRequest::mutable_services() {
+inline ::E2::ServiceEndpoint* ServicePlacementRequest::mutable_service() {
   
-  if (services_ == NULL) {
-    services_ = new ::E2::ServiceEndpointList;
+  if (service_ == NULL) {
+    service_ = new ::E2::ServiceEndpoint;
   }
-  // @@protoc_insertion_point(field_mutable:E2.ServicePlacementRequest.services)
-  return services_;
+  // @@protoc_insertion_point(field_mutable:E2.ServicePlacementRequest.service)
+  return service_;
 }
-inline ::E2::ServiceEndpointList* ServicePlacementRequest::release_services() {
+inline ::E2::ServiceEndpoint* ServicePlacementRequest::release_service() {
   
-  ::E2::ServiceEndpointList* temp = services_;
-  services_ = NULL;
+  ::E2::ServiceEndpoint* temp = service_;
+  service_ = NULL;
   return temp;
 }
-inline void ServicePlacementRequest::set_allocated_services(::E2::ServiceEndpointList* services) {
-  delete services_;
-  services_ = services;
-  if (services) {
+inline void ServicePlacementRequest::set_allocated_service(::E2::ServiceEndpoint* service) {
+  delete service_;
+  service_ = service;
+  if (service) {
     
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:E2.ServicePlacementRequest.services)
+  // @@protoc_insertion_point(field_set_allocated:E2.ServicePlacementRequest.service)
 }
 
-// optional .E2.NetworkElementList element_list = 2;
-inline bool ServicePlacementRequest::has_element_list() const {
-  return !_is_default_instance_ && element_list_ != NULL;
+// optional .E2.NetworkElement access_element = 2;
+inline bool ServicePlacementRequest::has_access_element() const {
+  return !_is_default_instance_ && access_element_ != NULL;
 }
-inline void ServicePlacementRequest::clear_element_list() {
-  if (GetArenaNoVirtual() == NULL && element_list_ != NULL) delete element_list_;
-  element_list_ = NULL;
+inline void ServicePlacementRequest::clear_access_element() {
+  if (GetArenaNoVirtual() == NULL && access_element_ != NULL) delete access_element_;
+  access_element_ = NULL;
 }
-inline const ::E2::NetworkElementList& ServicePlacementRequest::element_list() const {
-  // @@protoc_insertion_point(field_get:E2.ServicePlacementRequest.element_list)
-  return element_list_ != NULL ? *element_list_ : *default_instance_->element_list_;
+inline const ::E2::NetworkElement& ServicePlacementRequest::access_element() const {
+  // @@protoc_insertion_point(field_get:E2.ServicePlacementRequest.access_element)
+  return access_element_ != NULL ? *access_element_ : *default_instance_->access_element_;
 }
-inline ::E2::NetworkElementList* ServicePlacementRequest::mutable_element_list() {
+inline ::E2::NetworkElement* ServicePlacementRequest::mutable_access_element() {
   
-  if (element_list_ == NULL) {
-    element_list_ = new ::E2::NetworkElementList;
+  if (access_element_ == NULL) {
+    access_element_ = new ::E2::NetworkElement;
   }
-  // @@protoc_insertion_point(field_mutable:E2.ServicePlacementRequest.element_list)
-  return element_list_;
+  // @@protoc_insertion_point(field_mutable:E2.ServicePlacementRequest.access_element)
+  return access_element_;
 }
-inline ::E2::NetworkElementList* ServicePlacementRequest::release_element_list() {
+inline ::E2::NetworkElement* ServicePlacementRequest::release_access_element() {
   
-  ::E2::NetworkElementList* temp = element_list_;
-  element_list_ = NULL;
+  ::E2::NetworkElement* temp = access_element_;
+  access_element_ = NULL;
   return temp;
 }
-inline void ServicePlacementRequest::set_allocated_element_list(::E2::NetworkElementList* element_list) {
-  delete element_list_;
-  element_list_ = element_list;
-  if (element_list) {
+inline void ServicePlacementRequest::set_allocated_access_element(::E2::NetworkElement* access_element) {
+  delete access_element_;
+  access_element_ = access_element;
+  if (access_element) {
     
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:E2.ServicePlacementRequest.element_list)
+  // @@protoc_insertion_point(field_set_allocated:E2.ServicePlacementRequest.access_element)
+}
+
+// repeated string access_port_list = 3;
+inline int ServicePlacementRequest::access_port_list_size() const {
+  return access_port_list_.size();
+}
+inline void ServicePlacementRequest::clear_access_port_list() {
+  access_port_list_.Clear();
+}
+inline const ::std::string& ServicePlacementRequest::access_port_list(int index) const {
+  // @@protoc_insertion_point(field_get:E2.ServicePlacementRequest.access_port_list)
+  return access_port_list_.Get(index);
+}
+inline ::std::string* ServicePlacementRequest::mutable_access_port_list(int index) {
+  // @@protoc_insertion_point(field_mutable:E2.ServicePlacementRequest.access_port_list)
+  return access_port_list_.Mutable(index);
+}
+inline void ServicePlacementRequest::set_access_port_list(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:E2.ServicePlacementRequest.access_port_list)
+  access_port_list_.Mutable(index)->assign(value);
+}
+inline void ServicePlacementRequest::set_access_port_list(int index, const char* value) {
+  access_port_list_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:E2.ServicePlacementRequest.access_port_list)
+}
+inline void ServicePlacementRequest::set_access_port_list(int index, const char* value, size_t size) {
+  access_port_list_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:E2.ServicePlacementRequest.access_port_list)
+}
+inline ::std::string* ServicePlacementRequest::add_access_port_list() {
+  return access_port_list_.Add();
+}
+inline void ServicePlacementRequest::add_access_port_list(const ::std::string& value) {
+  access_port_list_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:E2.ServicePlacementRequest.access_port_list)
+}
+inline void ServicePlacementRequest::add_access_port_list(const char* value) {
+  access_port_list_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:E2.ServicePlacementRequest.access_port_list)
+}
+inline void ServicePlacementRequest::add_access_port_list(const char* value, size_t size) {
+  access_port_list_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:E2.ServicePlacementRequest.access_port_list)
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+ServicePlacementRequest::access_port_list() const {
+  // @@protoc_insertion_point(field_list:E2.ServicePlacementRequest.access_port_list)
+  return access_port_list_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+ServicePlacementRequest::mutable_access_port_list() {
+  // @@protoc_insertion_point(field_mutable_list:E2.ServicePlacementRequest.access_port_list)
+  return &access_port_list_;
+}
+
+// optional .E2.NetworkElementList edge_element_list = 4;
+inline bool ServicePlacementRequest::has_edge_element_list() const {
+  return !_is_default_instance_ && edge_element_list_ != NULL;
+}
+inline void ServicePlacementRequest::clear_edge_element_list() {
+  if (GetArenaNoVirtual() == NULL && edge_element_list_ != NULL) delete edge_element_list_;
+  edge_element_list_ = NULL;
+}
+inline const ::E2::NetworkElementList& ServicePlacementRequest::edge_element_list() const {
+  // @@protoc_insertion_point(field_get:E2.ServicePlacementRequest.edge_element_list)
+  return edge_element_list_ != NULL ? *edge_element_list_ : *default_instance_->edge_element_list_;
+}
+inline ::E2::NetworkElementList* ServicePlacementRequest::mutable_edge_element_list() {
+  
+  if (edge_element_list_ == NULL) {
+    edge_element_list_ = new ::E2::NetworkElementList;
+  }
+  // @@protoc_insertion_point(field_mutable:E2.ServicePlacementRequest.edge_element_list)
+  return edge_element_list_;
+}
+inline ::E2::NetworkElementList* ServicePlacementRequest::release_edge_element_list() {
+  
+  ::E2::NetworkElementList* temp = edge_element_list_;
+  edge_element_list_ = NULL;
+  return temp;
+}
+inline void ServicePlacementRequest::set_allocated_edge_element_list(::E2::NetworkElementList* edge_element_list) {
+  delete edge_element_list_;
+  edge_element_list_ = edge_element_list;
+  if (edge_element_list) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:E2.ServicePlacementRequest.edge_element_list)
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS

@@ -111,6 +111,7 @@ E2Client::deleteService (std::string name)
     ServiceEndpointList *       endp;
     ServiceEndpoint *           servicep;
     
+    // Remove the service from the server
     endp = request.mutable_services();
     servicep = endp->add_list();
     servicep->set_name(name);
@@ -118,23 +119,68 @@ E2Client::deleteService (std::string name)
 }
 
 void
-E2Client::placeService (std::string name, std::vector<std::string> element_list)
+E2Client::placeService (std::string name,
+                        std::string pe_1, std::string pe_2,
+                        std::string access_element, std::string access_port)
 {
     // Send over the list request
     ClientContext               context;
     ServicePlacementRequest     request;
     ConfigurationReply          reply;
-    ServiceEndpointList *       endp;
     ServiceEndpoint *           servicep;
-    NetworkElementList *        elements;
+    NetworkElementList *        pe_elements;
     
-    endp = request.mutable_services();
-    servicep = endp->add_list();
+    // Name of the service
+    servicep = request.mutable_service();
     servicep->set_name(name);
-    elements = request.mutable_element_list();
-    for (std::vector<std::string>::iterator itr = element_list.begin(); itr != element_list.end(); itr++) {
-        NetworkElement *elementp = elements->add_list();
-        elementp->set_name(*itr);
-    }
-    stub_->placeService(&context, request, &reply);
+    
+    // The elements where the service should be placed
+    NetworkElement *elementp;
+    pe_elements = request.mutable_edge_element_list();
+    elementp    = pe_elements->add_list();
+    elementp->set_name(pe_1);
+    elementp    = pe_elements->add_list();
+    elementp->set_name(pe_2);
+    
+    // Access Element
+    elementp    = request.mutable_access_element();
+    elementp->set_name(access_element);
+    std::string *port;
+    port = request.add_access_port_list();
+    *port = access_port;
+    
+    stub_->activateService(&context, request, &reply);
+}
+
+void
+E2Client::deplaceService (std::string name,
+                        std::string pe_1, std::string pe_2,
+                        std::string access_element)
+{
+    // Send over the list request
+    ClientContext               context;
+    ServicePlacementRequest     request;
+    ConfigurationReply          reply;
+    ServiceEndpoint *           servicep;
+    NetworkElementList *        pe_elements;
+    
+    // Name of the service
+    servicep = request.mutable_service();
+    servicep->set_name(name);
+    
+    // The elements where the service should be placed
+    NetworkElement *elementp;
+    pe_elements = request.mutable_edge_element_list();
+    elementp    = pe_elements->add_list();
+    elementp->set_name(pe_1);
+    elementp    = pe_elements->add_list();
+    elementp->set_name(pe_2);
+    
+    // Access Element
+    elementp    = request.mutable_access_element();
+    elementp->set_name(access_element);
+    std::string *port;
+    port = request.add_access_port_list();
+    
+    stub_->deactivateService(&context, request, &reply);
 }

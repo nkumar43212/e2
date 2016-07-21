@@ -89,6 +89,12 @@ Element::getOperationalState (ElementOpstateList &opstate)
     for (MetricsListIterator itr = _metrics_list.getBegin(); itr != _metrics_list.getEnd(); itr++) {
         opstate["metrics/" + itr->first] = std::to_string(itr->second.getCurrentValue());
     }
+    
+    // List of customers
+    opstate["opstate/customer/count"] = std::to_string(getCustomerCount());
+    for (ElementCustomerListIterator itr = _customer_list.begin(); itr != _customer_list.end(); itr++) {
+        opstate["opstate/customer/" + itr->first] = ElementStatusStrings[itr->second];
+    }
 }
 
 
