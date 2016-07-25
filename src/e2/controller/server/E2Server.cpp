@@ -22,7 +22,7 @@ E2Server::addElement (ServerContext* context,
     E2::ReturnCode err_code;
     
     // Create a new element
-    elementp = new Element(request->element().name(), 0, request->element().mgmt_ip());
+    elementp = new Element(request->element().name(), 0, request->element().mgmt_ip(), _logger);
     if (!elementp) {
         err_str  = std::string("Memory Allocation Failure");
         err_code = E2::MEMORY_ERROR;
@@ -136,6 +136,7 @@ E2Server::addFabricLink(ServerContext* context,
         goto error;
     }
     
+    traceLog("Added Fabric Link" + request->element().name() + ":" + request->element().endpoint_1() + "<->" + request->element().endpoint_2());
     reply->set_code(E2::SUCCESS);
     return Status::OK;
 
@@ -168,6 +169,7 @@ E2Server::addServiceEndpoint (ServerContext* context,
         status = Customer::add(ep.name(), profile);
         if (status != EOK) {
         }
+        traceLog("Add Service Endpoint:" + ep.name());
     }
     
     reply->set_code(E2::SUCCESS);
@@ -191,6 +193,7 @@ E2Server::removeServiceEndpoint (ServerContext* context,
         
         // Absorb this customer
         Customer::remove(ep.name());
+        traceLog("Remove Service Endpoint:" + ep.name());
     }
     
     reply->set_code(E2::SUCCESS);
@@ -204,9 +207,15 @@ E2Server::activateService (ServerContext* context,
 {
     std::string    err_str = "";
     status_t       status = EOK;
+    Customer       *customer;
+    
+    // Make a note
+    traceLog("ActivateService:ServiceName = " + request->service().name());
+    traceLog("ActivateService:Access      = " + request->access_element().name());
     
     // Do we know about the service
-    if (!Customer::isPresent(request->service().name())) {
+    customer = Customer::find(request->service().name());
+    if (!customer) {
         err_str  = "Service Not Found:" + request->service().name();
         reply->set_code(E2::SERVICE_NOT_FOUND_ERROR);
         reply->set_code_str(err_str);
@@ -235,6 +244,20 @@ E2Server::activateService (ServerContext* context,
             return Status::OK;
         }
         edge_elements.push_back(element);
+        traceLog("ActivateService:Service      = " + elt.name());
+    }
+    
+    // Activate the customer
+    for (std::vector<Element *>::iterator itr = edge_elements.begin(); itr != edge_elements.end(); itr++) {
+        status = customer->activate(request->access_element().name(), (*itr)->getName());
+        if (status != EOK) {
+            // Unwind
+            err_str  = "Service Placement Error on Element:" + request->service().name() + "/" + (*itr)->getName();
+            reply->set_code(E2::SERVICE_PLACEMENT_ERROR);
+            reply->set_code_str(err_str);
+            deactivateService(request);
+            return Status::OK;
+        }
     }
     
     // Place on the service edge
@@ -282,6 +305,7 @@ E2Server::deactivateService (ServerContext* context,
 void
 E2Server::deactivateService (const ServicePlacementRequest *request)
 {
+    traceLog("ActivateService:ServiceName = " + request->service().name());
     // Do we know about the service
     if (!Customer::isPresent(request->service().name())) {
         return;

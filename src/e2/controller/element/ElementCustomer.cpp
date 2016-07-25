@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include "Element.hpp"
+#include "ServiceVlan.hpp"
 
 uint32_t
 Element::getCustomerCount()
@@ -20,11 +21,13 @@ Element::getCustomerCount()
 status_t
 Element::addCustomer(std::string name)
 {
+    // If already added, skip
     if (_customer_list.count(name) != 0) {
         return EOK;
     }
-    _customer_list[name] = ElementStatusInit;
     
+    // We are good
+    _customer_list[name] = ElementStatusInit;
     return EOK;
 }
 
@@ -40,5 +43,40 @@ Element::removeCustomer(std::string name)
 {
     if (_customer_list.count(name) != 0) {
         _customer_list.erase(name);
+    }
+}
+
+status_t
+Element::addCustomerFabric (uint32_t circuit_id, std::string peer_element)
+{
+    // Iterate through all the LAG interfaces
+    for (InterfaceListIterator itr = _interface_list.begin(); itr != _interface_list.end(); itr++) {
+        // Skip non fabric interfaces
+        if (!itr->second->isFabric()) {
+            continue;
+        }
+        
+        // Punch in the service order
+        ServiceOrder *vlan_order = ServiceOrderVlan::create(itr->first, circuit_id);
+        addServiceOrder(vlan_order);
+        return EOK;
+    }
+    
+    return ENOENT;
+}
+
+void
+Element::deleteCustomerFabric (uint32_t circuit_id, std::string peer_element)
+{
+    // Iterate through all the LAG interfaces
+    for (InterfaceListIterator itr = _interface_list.begin(); itr != _interface_list.end(); itr++) {
+        // Skip non fabric interfaces
+        if (!itr->second->isFabric()) {
+            continue;
+        }
+        
+        // Punch in the service order
+        ServiceOrder *vlan_order = ServiceOrderVlan::create(itr->first, circuit_id);
+        removeServiceOrder(vlan_order);
     }
 }

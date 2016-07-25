@@ -16,7 +16,7 @@
 
 typedef uint32_t id_idx_t;
 
-#define ID_SPACE_SIZE                2000
+#define ID_SPACE_SIZE                5000
 #define INTERNAL_ID_SPACE_SIZE       8196
 #define INTERNAL_ID_SPACE_MIN        1000
 

@@ -114,6 +114,60 @@ handle_delete_service (int argc, const char *argv[])
     clientp->deleteService(argv[1]);
 }
 
+void
+handle_basic_test (int argc, const char *argv[])
+{
+    // Create elements
+    argc = 3;
+    argv[0] = "add-element", argv[1] = "access1", argv[2] = "0.0.0.0";
+    handle_add_element(argc, argv);
+    
+    argc = 3;
+    argv[0] = "add-element", argv[1] = "access2", argv[2] = "0.0.0.0";
+    handle_add_element(argc, argv);
+    
+    argc = 3;
+    argv[0] = "add-element", argv[1] = "edge1", argv[2] = "0.0.0.0";
+    handle_add_element(argc, argv);
+    
+    argc = 3;
+    argv[0] = "add-element", argv[1] = "edge2", argv[2] = "0.0.0.0";
+    handle_add_element(argc, argv);
+    
+    argc = 4;
+    argv[0] = "add-fabric-link", argv[1] = "f1", argv[2] = "access1", argv[3] = "edge1";
+    handle_add_fabric_link(argc, argv);
+    
+    argc = 4;
+    argv[0] = "add-fabric-link", argv[1] = "f1", argv[2] = "access1", argv[3] = "edge2";
+    handle_add_fabric_link(argc, argv);
+  
+    argc = 4;
+    argv[0] = "add-fabric-link", argv[1] = "f1", argv[2] = "access2", argv[3] = "edge1";
+    handle_add_fabric_link(argc, argv);
+    
+    argc = 4;
+    argv[0] = "add-fabric-link", argv[1] = "f1", argv[2] = "access2", argv[3] = "edge2";
+    handle_add_fabric_link(argc, argv);
+    
+    argc = 2;
+    argv[0] = "add-service", argv[1] = "s1";
+    handle_add_service(argc, argv);
+    
+    argc = 2;
+    argv[0] = "add-service", argv[1] = "s2";
+    handle_add_service(argc, argv);
+    
+    argc = 6;
+    argv[0] = "place-service", argv[1] = "s1", argv[2] = "edge1", argv[3] = "edge2", argv[4] = "access1", argv[5] = "xe-0/0/0";
+    handle_place_service(argc, argv);
+    
+    argc = 6;
+    argv[0] = "place-service", argv[1] = "s2", argv[2] = "edge1", argv[3] = "edge2", argv[4] = "access2", argv[5] = "xe-0/0/0";
+    handle_place_service(argc, argv);
+}
+
+
 // Add new commands here
 entry_t agent_client_commands [] = {
     {
@@ -177,6 +231,15 @@ entry_t agent_client_commands [] = {
         .e_usage   = std::string("deplace-service <name> <element1> <element2> <access_element>"),
         .e_handler = handle_deplace_service
     },
+    
+    {
+        .e_cmd     = std::string("basic-test"),
+        .e_argc    = 1,
+        .e_help    = std::string("Basic Test"),
+        .e_usage   = std::string("basic-test"),
+        .e_handler = handle_basic_test
+    },
+    
 };
 
 uint32_t agent_client_commands_count =

@@ -12,7 +12,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <vector>
-
+#include "Logger.hpp"
 
 class ServiceOrderParameter {
     std::string _name;
@@ -29,7 +29,8 @@ public:
     
     std::string getName()  { return _name; }
     std::string getValue() { return _value; }
-};
+    
+    };
 
 typedef std::vector<ServiceOrderParameter> ServiceOrderParameterList;
 class ServiceOrder {
@@ -39,6 +40,7 @@ public:
     ServiceOrder(ServiceOrderParameterList list) : _list(list)
     {
     }
+    void traceLog(Logger *logger, std::string log_prefix = "");
 };
 
 

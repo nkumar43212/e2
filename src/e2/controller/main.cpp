@@ -13,7 +13,7 @@
 #include "E2Server.hpp"
 
 void
-RunServer (const Logger *logger,
+RunServer (Logger *logger,
            const std::string server_address)
 {
     E2Server service(logger);

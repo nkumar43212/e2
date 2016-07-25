@@ -13,6 +13,7 @@
 #include <iostream>
 #include <map>
 #include "E2Types.h"
+#include "IndexManager.h"
 
 class FabricLink;
 typedef std::map<std::string, FabricLink *>::iterator FabricMapIterator;
@@ -21,6 +22,7 @@ class FabricLink {
     std::string _name;
     std::string _ep1;
     std::string _ep2;
+    IdManager   _circuit_manager;
     
     // Provision LAGs on the fabric link
     status_t    addLagBundle(const std::string& element_name);
@@ -54,6 +56,10 @@ public:
     // Manage link
     status_t           activate();
     void               deactivate();
+    
+    // Manage circuit IDs on a link
+    id_idx_t           allocateCircuitId()              { return _circuit_manager.allocate(); }
+    void               deallocateCircuitId(id_idx_t id) { _circuit_manager.deallocate(id);    }
 };
 
 #endif /* FabricLink_hpp */

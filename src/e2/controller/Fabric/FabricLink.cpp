@@ -53,7 +53,7 @@ FabricLink::addLagBundle (const std::string &element_name)
     
     // Create an interface on the element
     std::string lag_name = "AE:" + getEndPoint1() + ":" + getEndPoint2();
-    ElementInterface *lag = new ElementInterface(lag_name, element->allocateInterfaceIndex());
+    ElementInterface *lag = new ElementInterface(lag_name, element->allocateInterfaceIndex(), true);
     element->addInterface(lag);
     
     // Add the LAG service on these elements
@@ -61,6 +61,9 @@ FabricLink::addLagBundle (const std::string &element_name)
     if (status != EOK) {
         return status;
     }
+    
+    // Any customers that are present on this element, need to be provisioned on the LAG
+    // element->addCustomerLag(lag_name);
                                       
     return EOK;
 }

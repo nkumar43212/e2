@@ -10,6 +10,10 @@
 		9439578F1D404324008F202E /* Customer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9439578D1D404324008F202E /* Customer.cpp */; };
 		943957921D411914008F202E /* CustomerProfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943957901D411914008F202E /* CustomerProfile.cpp */; };
 		943957941D411C30008F202E /* ElementCustomer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943957931D411C30008F202E /* ElementCustomer.cpp */; };
+		943957971D41EE02008F202E /* ServiceVlan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943957951D41EE02008F202E /* ServiceVlan.cpp */; };
+		9439579A1D42D64A008F202E /* CustomerContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943957981D42D64A008F202E /* CustomerContext.cpp */; };
+		9439579C1D46717B008F202E /* ElementLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9439579B1D46717B008F202E /* ElementLog.cpp */; };
+		9439579E1D467994008F202E /* ErServerLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9439579D1D467994008F202E /* ErServerLog.cpp */; };
 		94437E1B1D10D08C0079D8F2 /* service_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94437E191D10D08C0079D8F2 /* service_test.cpp */; };
 		94437E1E1D10D39F0079D8F2 /* ElementTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94437E1C1D10D39F0079D8F2 /* ElementTest.cpp */; };
 		94437E1F1D10D4440079D8F2 /* Element.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94F001B21D08648000EDC9F7 /* Element.cpp */; };
@@ -102,6 +106,12 @@
 		943957901D411914008F202E /* CustomerProfile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CustomerProfile.cpp; sourceTree = "<group>"; };
 		943957911D411914008F202E /* CustomerProfile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CustomerProfile.hpp; sourceTree = "<group>"; };
 		943957931D411C30008F202E /* ElementCustomer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElementCustomer.cpp; sourceTree = "<group>"; };
+		943957951D41EE02008F202E /* ServiceVlan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServiceVlan.cpp; sourceTree = "<group>"; };
+		943957961D41EE02008F202E /* ServiceVlan.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ServiceVlan.hpp; sourceTree = "<group>"; };
+		943957981D42D64A008F202E /* CustomerContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CustomerContext.cpp; sourceTree = "<group>"; };
+		943957991D42D64A008F202E /* CustomerContext.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CustomerContext.hpp; sourceTree = "<group>"; };
+		9439579B1D46717B008F202E /* ElementLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElementLog.cpp; sourceTree = "<group>"; };
+		9439579D1D467994008F202E /* ErServerLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ErServerLog.cpp; sourceTree = "<group>"; };
 		94437E121D10C9E80079D8F2 /* test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test; sourceTree = BUILT_PRODUCTS_DIR; };
 		94437E141D10C9E80079D8F2 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		94437E191D10D08C0079D8F2 /* service_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = service_test.cpp; sourceTree = "<group>"; };
@@ -198,6 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				9439578D1D404324008F202E /* Customer.cpp */,
+				943957981D42D64A008F202E /* CustomerContext.cpp */,
+				943957991D42D64A008F202E /* CustomerContext.hpp */,
 				943957901D411914008F202E /* CustomerProfile.cpp */,
 				943957911D411914008F202E /* CustomerProfile.hpp */,
 				9439578E1D404324008F202E /* Customer.hpp */,
@@ -249,6 +261,8 @@
 				94DBD9831D3D42DF00D25957 /* ServiceOrder.hpp */,
 				94DBD9851D3D468100D25957 /* ServiceLag.cpp */,
 				94DBD9861D3D468100D25957 /* ServiceLag.hpp */,
+				943957951D41EE02008F202E /* ServiceVlan.cpp */,
+				943957961D41EE02008F202E /* ServiceVlan.hpp */,
 			);
 			path = service_order;
 			sourceTree = "<group>";
@@ -308,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				94F001981D06A86B00EDC9F7 /* E2Server.cpp */,
+				9439579D1D467994008F202E /* ErServerLog.cpp */,
 				94F001991D06A86B00EDC9F7 /* E2Server.hpp */,
 				94F0019B1D074D3600EDC9F7 /* E2ServerProtos.h */,
 			);
@@ -348,6 +363,7 @@
 				94DBD9641D2CD73200D25957 /* ElementSubscriptions.hpp */,
 				94F001B71D08AF2100EDC9F7 /* ElementDb.cpp */,
 				94F001B31D08648000EDC9F7 /* Element.hpp */,
+				9439579B1D46717B008F202E /* ElementLog.cpp */,
 				94DBD95F1D2CA84A00D25957 /* ElementInterfaceSubscription.cpp */,
 				94DBD9611D2CAA1400D25957 /* ElementInventorySubscription.cpp */,
 				94DBD9691D2E217D00D25957 /* ElementUtilizationSubscription.cpp */,
@@ -536,6 +552,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				943957971D41EE02008F202E /* ServiceVlan.cpp in Sources */,
 				94DBD96E1D2E2D5500D25957 /* Xpath.cpp in Sources */,
 				94DBD9621D2CAA1400D25957 /* ElementInventorySubscription.cpp in Sources */,
 				94DBD9871D3D468100D25957 /* ServiceLag.cpp in Sources */,
@@ -545,6 +562,7 @@
 				94DBD9741D2F795800D25957 /* ElementMetrics.cpp in Sources */,
 				943957921D411914008F202E /* CustomerProfile.cpp in Sources */,
 				9439578F1D404324008F202E /* Customer.cpp in Sources */,
+				9439579E1D467994008F202E /* ErServerLog.cpp in Sources */,
 				94DBD9651D2CD73200D25957 /* ElementSubscriptions.cpp in Sources */,
 				94DBD9841D3D42DF00D25957 /* ServiceOrder.cpp in Sources */,
 				94DBD9791D3045DF00D25957 /* MetricsManager.cpp in Sources */,
@@ -561,6 +579,8 @@
 				94437EB21D12F6AC0079D8F2 /* Metrics.cpp in Sources */,
 				94DBD96A1D2E217D00D25957 /* ElementUtilizationSubscription.cpp in Sources */,
 				94EC472E1D0618B500E34A5B /* CmdOptions.cpp in Sources */,
+				9439579A1D42D64A008F202E /* CustomerContext.cpp in Sources */,
+				9439579C1D46717B008F202E /* ElementLog.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

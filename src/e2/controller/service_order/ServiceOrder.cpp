@@ -7,3 +7,11 @@
 //
 
 #include "ServiceOrder.hpp"
+
+void
+ServiceOrder::traceLog (Logger *logger, std::string log_prefix)
+{
+    for (ServiceOrderParameterList::iterator itr = _list.begin(); itr != _list.end(); itr++) {
+        logger->log(log_prefix + (*itr).getName() + ":" + (*itr).getValue());
+    }
+}

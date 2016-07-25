@@ -29,6 +29,7 @@ Element::activate()
     for (int i = 0; i < subscription_count; i++) {
         Service *service = Service::createSubscription(subscription_paths[i], this);
         _subscriptions[subscription_paths[i]] = service;
+        traceLog("Subscribing service: " + subscription_paths[i]);
     }
     
     // Add all interests in the above services
@@ -54,6 +55,7 @@ Element::activate()
     
     // The element is operational
     _status = ElementStatusOperational;
+    traceLog("Activated");
     return EOK;
 }
 
@@ -65,6 +67,7 @@ Element::deactivate()
     }
     remove(_name, _mgmt_ip);
     _status = ElementStatusInit;
+    traceLog("Deactivated");
 }
 
 void

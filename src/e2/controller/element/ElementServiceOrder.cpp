@@ -12,6 +12,9 @@
 status_t
 Element::addServiceOrder(ServiceOrder *order)
 {
+    // Make a note
+    order->traceLog(_logger, "AddServiceOrder:");
+    
     // Call the provisioning system to punch in the order
     return EOK;
 }
@@ -19,6 +22,9 @@ Element::addServiceOrder(ServiceOrder *order)
 status_t
 Element::removeServiceOrder(ServiceOrder *order)
 {
+    // Make a note
+    order->traceLog(_logger, "DelServiceOrder:");
+    
     // Call the provisioning system to punch in the order
     return EOK;
 }
@@ -27,4 +33,3 @@ void
 Element::serviceOrderCallback (Element *elementp, ServiceCallbackKeyValue *kv)
 {
 }
-

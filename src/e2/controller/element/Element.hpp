@@ -22,6 +22,7 @@
 #include "IndexManager.h"
 #include "ServiceOrder.hpp"
 #include "Customer.hpp"
+#include "Logger.hpp"
 
 // Types
 // Status
@@ -71,12 +72,16 @@ class Element {
     // Metrics to measure this element.
     MetricsManager   _metrics_list;
     
+    // Logging service
+    Logger           *_logger;
+    
 public:
     // Object life cycle
-    Element (const std::string &name, uint64_t id, std::string mgmt_ip) : _name(name), _id(id), _mgmt_ip(mgmt_ip)
+    Element (const std::string &name, uint64_t id, std::string mgmt_ip, Logger *logger) :
+        _name(name), _id(id), _mgmt_ip(mgmt_ip), _logger(logger)
     {
-        _status = ElementStatusInit;
-        _is_unit_test = (mgmt_ip == "0.0.0.0") ? true : false;
+        _status          = ElementStatusInit;
+        _is_unit_test    = (mgmt_ip == "0.0.0.0") ? true : false;
         _interface_count = 0;
     }
     
@@ -94,6 +99,11 @@ public:
     time_t      getLastUpdateTime()           { return _last_update_time;                      }
     void        setLastUpdateTime(time_t val) { _last_update_time = val;                       }
     bool        isUnitTest()                  { return _is_unit_test;                          }
+    
+    // Debug/Logging Interface
+    void        enableLog();
+    void        disableLog();
+    void        traceLog(const std::string msg);
     
     // Lookup
     static void              makeKey(std::string &key, const std::string &name, const std::string &mgmt_ip);
@@ -136,6 +146,9 @@ public:
     // Customers provisioned on the element
     status_t     addCustomer(std::string name);
     status_t     addCustomer(std::string name, const std::vector<std::string> port_list);
+    status_t     addCustomerFabric(uint32_t circuit_id, std::string peer_element);
+    void         deleteCustomerFabric(uint32_t circuit_id, std::string peer_element);
+    
     void         removeCustomer(std::string name);
     uint32_t     getCustomerCount();
     

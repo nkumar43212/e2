@@ -17,13 +17,13 @@
 
 
 class E2Server final : public E2::E2::Service {
-    const Logger *_logger;
+    Logger *_logger;
     
     // Internal helper routine
     void deactivateService(const ServicePlacementRequest * request);
     
 public:
-    E2Server(const Logger *logger) : _logger(logger)
+    E2Server(Logger *logger) : _logger(logger)
     {
     }
 
@@ -52,7 +52,11 @@ public:
     Status deactivateService(ServerContext* context,
                              const ServicePlacementRequest * request,
                              ConfigurationReply * reply) override;
-
+    
+    // Trace/Debug Interface
+    void        enableLog();
+    void        disableLog();
+    void        traceLog(const std::string msg);
 };
 
 #endif /* E2Server_hpp */
