@@ -33,7 +33,7 @@ using E2::NetworkElementType;
 using E2::FabricLink;
 using E2::FabricLinkList;
 
-using E2::ServicePlacementRequest;
+using E2::ServiceBinding;
 using E2::ServiceEndpoint;
 using E2::ServiceEndpointList;
 

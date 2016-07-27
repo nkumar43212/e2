@@ -235,7 +235,7 @@ E2Server::removeServiceEndpoint (ServerContext* context,
 
 Status
 E2Server::activateService (ServerContext* context,
-                           const ServicePlacementRequest *request,
+                           const ServiceBinding *request,
                            ConfigurationReply * reply)
 {
     std::string    err_str = "";
@@ -330,7 +330,7 @@ E2Server::activateService (ServerContext* context,
 
 Status
 E2Server::deactivateService (ServerContext* context,
-                             const ServicePlacementRequest *request,
+                             const ServiceBinding *request,
                              ConfigurationReply * reply)
 {
     // Make a note
@@ -342,7 +342,7 @@ E2Server::deactivateService (ServerContext* context,
 }
 
 void
-E2Server::deactivateService (const ServicePlacementRequest *request)
+E2Server::deactivateService (const ServiceBinding *request)
 {
     traceLog("ActivateService:ServiceName = " + request->service().name());
     // Do we know about the service

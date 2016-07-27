@@ -45,9 +45,9 @@ class NetworkElementList;
 class NetworkElementOpState;
 class NetworkElementOpStateList;
 class NetworkElementProperty;
+class ServiceBinding;
 class ServiceEndpoint;
 class ServiceEndpointList;
-class ServicePlacementRequest;
 
 enum NetworkElementType {
   ACCESS_NODE = 0,
@@ -1109,32 +1109,32 @@ class ServiceEndpointList : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class ServicePlacementRequest : public ::google::protobuf::Message {
+class ServiceBinding : public ::google::protobuf::Message {
  public:
-  ServicePlacementRequest();
-  virtual ~ServicePlacementRequest();
+  ServiceBinding();
+  virtual ~ServiceBinding();
 
-  ServicePlacementRequest(const ServicePlacementRequest& from);
+  ServiceBinding(const ServiceBinding& from);
 
-  inline ServicePlacementRequest& operator=(const ServicePlacementRequest& from) {
+  inline ServiceBinding& operator=(const ServiceBinding& from) {
     CopyFrom(from);
     return *this;
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const ServicePlacementRequest& default_instance();
+  static const ServiceBinding& default_instance();
 
-  void Swap(ServicePlacementRequest* other);
+  void Swap(ServiceBinding* other);
 
   // implements Message ----------------------------------------------
 
-  inline ServicePlacementRequest* New() const { return New(NULL); }
+  inline ServiceBinding* New() const { return New(NULL); }
 
-  ServicePlacementRequest* New(::google::protobuf::Arena* arena) const;
+  ServiceBinding* New(::google::protobuf::Arena* arena) const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const ServicePlacementRequest& from);
-  void MergeFrom(const ServicePlacementRequest& from);
+  void CopyFrom(const ServiceBinding& from);
+  void MergeFrom(const ServiceBinding& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -1149,7 +1149,7 @@ class ServicePlacementRequest : public ::google::protobuf::Message {
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const;
-  void InternalSwap(ServicePlacementRequest* other);
+  void InternalSwap(ServiceBinding* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return _internal_metadata_.arena();
@@ -1208,7 +1208,7 @@ class ServicePlacementRequest : public ::google::protobuf::Message {
   ::E2::NetworkElementList* release_edge_element_list();
   void set_allocated_edge_element_list(::E2::NetworkElementList* edge_element_list);
 
-  // @@protoc_insertion_point(class_scope:E2.ServicePlacementRequest)
+  // @@protoc_insertion_point(class_scope:E2.ServiceBinding)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -1223,7 +1223,7 @@ class ServicePlacementRequest : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_e2_5fapi_2eproto();
 
   void InitAsDefaultInstance();
-  static ServicePlacementRequest* default_instance_;
+  static ServiceBinding* default_instance_;
 };
 // ===================================================================
 
@@ -2158,35 +2158,35 @@ ServiceEndpointList::list() const {
 
 // -------------------------------------------------------------------
 
-// ServicePlacementRequest
+// ServiceBinding
 
 // optional .E2.ServiceEndpoint service = 1;
-inline bool ServicePlacementRequest::has_service() const {
+inline bool ServiceBinding::has_service() const {
   return !_is_default_instance_ && service_ != NULL;
 }
-inline void ServicePlacementRequest::clear_service() {
+inline void ServiceBinding::clear_service() {
   if (GetArenaNoVirtual() == NULL && service_ != NULL) delete service_;
   service_ = NULL;
 }
-inline const ::E2::ServiceEndpoint& ServicePlacementRequest::service() const {
-  // @@protoc_insertion_point(field_get:E2.ServicePlacementRequest.service)
+inline const ::E2::ServiceEndpoint& ServiceBinding::service() const {
+  // @@protoc_insertion_point(field_get:E2.ServiceBinding.service)
   return service_ != NULL ? *service_ : *default_instance_->service_;
 }
-inline ::E2::ServiceEndpoint* ServicePlacementRequest::mutable_service() {
+inline ::E2::ServiceEndpoint* ServiceBinding::mutable_service() {
   
   if (service_ == NULL) {
     service_ = new ::E2::ServiceEndpoint;
   }
-  // @@protoc_insertion_point(field_mutable:E2.ServicePlacementRequest.service)
+  // @@protoc_insertion_point(field_mutable:E2.ServiceBinding.service)
   return service_;
 }
-inline ::E2::ServiceEndpoint* ServicePlacementRequest::release_service() {
+inline ::E2::ServiceEndpoint* ServiceBinding::release_service() {
   
   ::E2::ServiceEndpoint* temp = service_;
   service_ = NULL;
   return temp;
 }
-inline void ServicePlacementRequest::set_allocated_service(::E2::ServiceEndpoint* service) {
+inline void ServiceBinding::set_allocated_service(::E2::ServiceEndpoint* service) {
   delete service_;
   service_ = service;
   if (service) {
@@ -2194,36 +2194,36 @@ inline void ServicePlacementRequest::set_allocated_service(::E2::ServiceEndpoint
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:E2.ServicePlacementRequest.service)
+  // @@protoc_insertion_point(field_set_allocated:E2.ServiceBinding.service)
 }
 
 // optional .E2.NetworkElement access_element = 2;
-inline bool ServicePlacementRequest::has_access_element() const {
+inline bool ServiceBinding::has_access_element() const {
   return !_is_default_instance_ && access_element_ != NULL;
 }
-inline void ServicePlacementRequest::clear_access_element() {
+inline void ServiceBinding::clear_access_element() {
   if (GetArenaNoVirtual() == NULL && access_element_ != NULL) delete access_element_;
   access_element_ = NULL;
 }
-inline const ::E2::NetworkElement& ServicePlacementRequest::access_element() const {
-  // @@protoc_insertion_point(field_get:E2.ServicePlacementRequest.access_element)
+inline const ::E2::NetworkElement& ServiceBinding::access_element() const {
+  // @@protoc_insertion_point(field_get:E2.ServiceBinding.access_element)
   return access_element_ != NULL ? *access_element_ : *default_instance_->access_element_;
 }
-inline ::E2::NetworkElement* ServicePlacementRequest::mutable_access_element() {
+inline ::E2::NetworkElement* ServiceBinding::mutable_access_element() {
   
   if (access_element_ == NULL) {
     access_element_ = new ::E2::NetworkElement;
   }
-  // @@protoc_insertion_point(field_mutable:E2.ServicePlacementRequest.access_element)
+  // @@protoc_insertion_point(field_mutable:E2.ServiceBinding.access_element)
   return access_element_;
 }
-inline ::E2::NetworkElement* ServicePlacementRequest::release_access_element() {
+inline ::E2::NetworkElement* ServiceBinding::release_access_element() {
   
   ::E2::NetworkElement* temp = access_element_;
   access_element_ = NULL;
   return temp;
 }
-inline void ServicePlacementRequest::set_allocated_access_element(::E2::NetworkElement* access_element) {
+inline void ServiceBinding::set_allocated_access_element(::E2::NetworkElement* access_element) {
   delete access_element_;
   access_element_ = access_element;
   if (access_element) {
@@ -2231,90 +2231,90 @@ inline void ServicePlacementRequest::set_allocated_access_element(::E2::NetworkE
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:E2.ServicePlacementRequest.access_element)
+  // @@protoc_insertion_point(field_set_allocated:E2.ServiceBinding.access_element)
 }
 
 // repeated string access_port_list = 3;
-inline int ServicePlacementRequest::access_port_list_size() const {
+inline int ServiceBinding::access_port_list_size() const {
   return access_port_list_.size();
 }
-inline void ServicePlacementRequest::clear_access_port_list() {
+inline void ServiceBinding::clear_access_port_list() {
   access_port_list_.Clear();
 }
-inline const ::std::string& ServicePlacementRequest::access_port_list(int index) const {
-  // @@protoc_insertion_point(field_get:E2.ServicePlacementRequest.access_port_list)
+inline const ::std::string& ServiceBinding::access_port_list(int index) const {
+  // @@protoc_insertion_point(field_get:E2.ServiceBinding.access_port_list)
   return access_port_list_.Get(index);
 }
-inline ::std::string* ServicePlacementRequest::mutable_access_port_list(int index) {
-  // @@protoc_insertion_point(field_mutable:E2.ServicePlacementRequest.access_port_list)
+inline ::std::string* ServiceBinding::mutable_access_port_list(int index) {
+  // @@protoc_insertion_point(field_mutable:E2.ServiceBinding.access_port_list)
   return access_port_list_.Mutable(index);
 }
-inline void ServicePlacementRequest::set_access_port_list(int index, const ::std::string& value) {
-  // @@protoc_insertion_point(field_set:E2.ServicePlacementRequest.access_port_list)
+inline void ServiceBinding::set_access_port_list(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:E2.ServiceBinding.access_port_list)
   access_port_list_.Mutable(index)->assign(value);
 }
-inline void ServicePlacementRequest::set_access_port_list(int index, const char* value) {
+inline void ServiceBinding::set_access_port_list(int index, const char* value) {
   access_port_list_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:E2.ServicePlacementRequest.access_port_list)
+  // @@protoc_insertion_point(field_set_char:E2.ServiceBinding.access_port_list)
 }
-inline void ServicePlacementRequest::set_access_port_list(int index, const char* value, size_t size) {
+inline void ServiceBinding::set_access_port_list(int index, const char* value, size_t size) {
   access_port_list_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:E2.ServicePlacementRequest.access_port_list)
+  // @@protoc_insertion_point(field_set_pointer:E2.ServiceBinding.access_port_list)
 }
-inline ::std::string* ServicePlacementRequest::add_access_port_list() {
+inline ::std::string* ServiceBinding::add_access_port_list() {
   return access_port_list_.Add();
 }
-inline void ServicePlacementRequest::add_access_port_list(const ::std::string& value) {
+inline void ServiceBinding::add_access_port_list(const ::std::string& value) {
   access_port_list_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:E2.ServicePlacementRequest.access_port_list)
+  // @@protoc_insertion_point(field_add:E2.ServiceBinding.access_port_list)
 }
-inline void ServicePlacementRequest::add_access_port_list(const char* value) {
+inline void ServiceBinding::add_access_port_list(const char* value) {
   access_port_list_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:E2.ServicePlacementRequest.access_port_list)
+  // @@protoc_insertion_point(field_add_char:E2.ServiceBinding.access_port_list)
 }
-inline void ServicePlacementRequest::add_access_port_list(const char* value, size_t size) {
+inline void ServiceBinding::add_access_port_list(const char* value, size_t size) {
   access_port_list_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:E2.ServicePlacementRequest.access_port_list)
+  // @@protoc_insertion_point(field_add_pointer:E2.ServiceBinding.access_port_list)
 }
 inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
-ServicePlacementRequest::access_port_list() const {
-  // @@protoc_insertion_point(field_list:E2.ServicePlacementRequest.access_port_list)
+ServiceBinding::access_port_list() const {
+  // @@protoc_insertion_point(field_list:E2.ServiceBinding.access_port_list)
   return access_port_list_;
 }
 inline ::google::protobuf::RepeatedPtrField< ::std::string>*
-ServicePlacementRequest::mutable_access_port_list() {
-  // @@protoc_insertion_point(field_mutable_list:E2.ServicePlacementRequest.access_port_list)
+ServiceBinding::mutable_access_port_list() {
+  // @@protoc_insertion_point(field_mutable_list:E2.ServiceBinding.access_port_list)
   return &access_port_list_;
 }
 
 // optional .E2.NetworkElementList edge_element_list = 4;
-inline bool ServicePlacementRequest::has_edge_element_list() const {
+inline bool ServiceBinding::has_edge_element_list() const {
   return !_is_default_instance_ && edge_element_list_ != NULL;
 }
-inline void ServicePlacementRequest::clear_edge_element_list() {
+inline void ServiceBinding::clear_edge_element_list() {
   if (GetArenaNoVirtual() == NULL && edge_element_list_ != NULL) delete edge_element_list_;
   edge_element_list_ = NULL;
 }
-inline const ::E2::NetworkElementList& ServicePlacementRequest::edge_element_list() const {
-  // @@protoc_insertion_point(field_get:E2.ServicePlacementRequest.edge_element_list)
+inline const ::E2::NetworkElementList& ServiceBinding::edge_element_list() const {
+  // @@protoc_insertion_point(field_get:E2.ServiceBinding.edge_element_list)
   return edge_element_list_ != NULL ? *edge_element_list_ : *default_instance_->edge_element_list_;
 }
-inline ::E2::NetworkElementList* ServicePlacementRequest::mutable_edge_element_list() {
+inline ::E2::NetworkElementList* ServiceBinding::mutable_edge_element_list() {
   
   if (edge_element_list_ == NULL) {
     edge_element_list_ = new ::E2::NetworkElementList;
   }
-  // @@protoc_insertion_point(field_mutable:E2.ServicePlacementRequest.edge_element_list)
+  // @@protoc_insertion_point(field_mutable:E2.ServiceBinding.edge_element_list)
   return edge_element_list_;
 }
-inline ::E2::NetworkElementList* ServicePlacementRequest::release_edge_element_list() {
+inline ::E2::NetworkElementList* ServiceBinding::release_edge_element_list() {
   
   ::E2::NetworkElementList* temp = edge_element_list_;
   edge_element_list_ = NULL;
   return temp;
 }
-inline void ServicePlacementRequest::set_allocated_edge_element_list(::E2::NetworkElementList* edge_element_list) {
+inline void ServiceBinding::set_allocated_edge_element_list(::E2::NetworkElementList* edge_element_list) {
   delete edge_element_list_;
   edge_element_list_ = edge_element_list;
   if (edge_element_list) {
@@ -2322,7 +2322,7 @@ inline void ServicePlacementRequest::set_allocated_edge_element_list(::E2::Netwo
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:E2.ServicePlacementRequest.edge_element_list)
+  // @@protoc_insertion_point(field_set_allocated:E2.ServiceBinding.edge_element_list)
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS

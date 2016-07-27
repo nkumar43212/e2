@@ -110,7 +110,6 @@ E2Client::deleteService (std::string name)
     ClientContext               context;
     ServiceEndpointList         service_list;
     ConfigurationReply          reply;
-    ServiceEndpointList *       endp;
     ServiceEndpoint *           servicep;
     
     // Remove the service from the server
@@ -126,7 +125,7 @@ E2Client::placeService (std::string name,
 {
     // Send over the list request
     ClientContext               context;
-    ServicePlacementRequest     request;
+    ServiceBinding              request;
     ConfigurationReply          reply;
     ServiceEndpoint *           servicep;
     NetworkElementList *        pe_elements;
@@ -160,7 +159,7 @@ E2Client::deplaceService (std::string name,
 {
     // Send over the list request
     ClientContext               context;
-    ServicePlacementRequest     request;
+    ServiceBinding              request;
     ConfigurationReply          reply;
     ServiceEndpoint *           servicep;
     NetworkElementList *        pe_elements;

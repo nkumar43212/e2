@@ -51,8 +51,8 @@ service E2 {
     rpc removeServiceEndpoint(ServiceEndpointList)           returns (ConfigurationReply) {}
 
     // Place a service in the system
-    rpc activateService(ServicePlacementRequest)             returns (ConfigurationReply) {}
-    rpc deactivateService(ServicePlacementRequest)           returns (ConfigurationReply) {}
+    rpc activateService(ServiceBinding)                      returns (ConfigurationReply) {}
+    rpc deactivateService(ServiceBinding)                    returns (ConfigurationReply) {}
 }
 
 // A network element. Basic building block of the cluster of network nodes managed
@@ -139,17 +139,19 @@ message ServiceEndpointList {
     repeated ServiceEndpoint list                           = 1;
 };
 
-// Request to place a service
-message ServicePlacementRequest {
-    // List of services to place
+// An instantiation of a service on a set of network elements. 
+// In order to realize a service for the end customer, it needs to 
+// be bound to the physical elements in the E2 cluster. 
+message ServiceBinding {
+    // The service to be bound
     ServiceEndpoint service                                 = 1;
 
-    // Access elements where the service is brought in
-    NetworkElement   access_element                         = 2;
-    repeated  string access_port_list                       = 3;
-
-    // List of network elements. This list is optional. If not specified
-    // then E2 will place the service dynamically
+    // The network elements where the service should be placed. The
+    // point to point binding has two end points. The access is where
+    // the customer comes in, and the edge where the actual service
+    // function is implemented
+    NetworkElement      access_element                      = 2;
+    repeated  string    access_port_list                    = 3;
     NetworkElementList  edge_element_list                   = 4;
 };
 

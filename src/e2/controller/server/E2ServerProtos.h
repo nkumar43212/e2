@@ -26,7 +26,7 @@ using E2::NetworkElementOpStateList;
 using E2::NetworkElementProperty;
 
 using E2::ConfigurationReply;
-using E2::ServicePlacementRequest;
+using E2::ServiceBinding;
 using E2::ServiceEndpoint;
 using E2::ServiceEndpointList;
 
