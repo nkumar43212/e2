@@ -26,25 +26,27 @@ public:
     E2Server(Logger *logger) : _logger(logger)
     {
     }
+    
+    Logger *getLogger()      { return _logger; }
 
     // The Interface
     Status addElement(ServerContext* context,
-                      const ConfigurationRequest * request,
+                      const NetworkElementList * request,
                       ConfigurationReply * reply) override;
     Status removeElement(ServerContext* context,
-                         const ConfigurationRequest * request,
+                         const NetworkElementList * request,
                          ConfigurationReply * reply) override;
     Status getElements(ServerContext* context,
-                       const ConfigurationRequest * request,
+                       const NetworkElement * request,
                        NetworkElementOpStateList * reply) override;
     Status addFabricLink(ServerContext* context,
-                         const ConfigurationRequest * request,
+                         const FabricLinkList * request,
                          ConfigurationReply * reply) override;
     Status addServiceEndpoint(ServerContext* context,
-                              const ServiceConfigurationRequest * request,
+                              const ServiceEndpointList * request,
                               ConfigurationReply * reply) override;
     Status removeServiceEndpoint(ServerContext* context,
-                                 const ServiceConfigurationRequest * request,
+                                 const ServiceEndpointList * request,
                                  ConfigurationReply * reply) override;
     Status activateService(ServerContext* context,
                            const ServicePlacementRequest * request,
@@ -57,6 +59,7 @@ public:
     void        enableLog();
     void        disableLog();
     void        traceLog(const std::string msg);
+    void        traceLogRPC(const std::string rpc_name);
 };
 
 #endif /* E2Server_hpp */

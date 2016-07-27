@@ -38,17 +38,39 @@ void protobuf_AssignDesc_e2_5fapi_2eproto();
 void protobuf_ShutdownFile_e2_5fapi_2eproto();
 
 class ConfigurationReply;
-class ConfigurationRequest;
+class FabricLink;
+class FabricLinkList;
 class NetworkElement;
 class NetworkElementList;
 class NetworkElementOpState;
 class NetworkElementOpStateList;
 class NetworkElementProperty;
-class ServiceConfigurationRequest;
 class ServiceEndpoint;
 class ServiceEndpointList;
 class ServicePlacementRequest;
 
+enum NetworkElementType {
+  ACCESS_NODE = 0,
+  SERVICE_NODE = 1,
+  INTERNAL_NODE = 2,
+  NetworkElementType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  NetworkElementType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool NetworkElementType_IsValid(int value);
+const NetworkElementType NetworkElementType_MIN = ACCESS_NODE;
+const NetworkElementType NetworkElementType_MAX = INTERNAL_NODE;
+const int NetworkElementType_ARRAYSIZE = NetworkElementType_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* NetworkElementType_descriptor();
+inline const ::std::string& NetworkElementType_Name(NetworkElementType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    NetworkElementType_descriptor(), value);
+}
+inline bool NetworkElementType_Parse(
+    const ::std::string& name, NetworkElementType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<NetworkElementType>(
+    NetworkElementType_descriptor(), name, value);
+}
 enum ReturnCode {
   SUCCESS = 0,
   UNKNOWN_ERROR = 1,
@@ -155,27 +177,11 @@ class NetworkElement : public ::google::protobuf::Message {
   ::std::string* release_mgmt_ip();
   void set_allocated_mgmt_ip(::std::string* mgmt_ip);
 
-  // optional string endpoint_1 = 3;
-  void clear_endpoint_1();
-  static const int kEndpoint1FieldNumber = 3;
-  const ::std::string& endpoint_1() const;
-  void set_endpoint_1(const ::std::string& value);
-  void set_endpoint_1(const char* value);
-  void set_endpoint_1(const char* value, size_t size);
-  ::std::string* mutable_endpoint_1();
-  ::std::string* release_endpoint_1();
-  void set_allocated_endpoint_1(::std::string* endpoint_1);
-
-  // optional string endpoint_2 = 4;
-  void clear_endpoint_2();
-  static const int kEndpoint2FieldNumber = 4;
-  const ::std::string& endpoint_2() const;
-  void set_endpoint_2(const ::std::string& value);
-  void set_endpoint_2(const char* value);
-  void set_endpoint_2(const char* value, size_t size);
-  ::std::string* mutable_endpoint_2();
-  ::std::string* release_endpoint_2();
-  void set_allocated_endpoint_2(::std::string* endpoint_2);
+  // optional .E2.NetworkElementType persona = 3;
+  void clear_persona();
+  static const int kPersonaFieldNumber = 3;
+  ::E2::NetworkElementType persona() const;
+  void set_persona(::E2::NetworkElementType value);
 
   // @@protoc_insertion_point(class_scope:E2.NetworkElement)
  private:
@@ -184,8 +190,7 @@ class NetworkElement : public ::google::protobuf::Message {
   bool _is_default_instance_;
   ::google::protobuf::internal::ArenaStringPtr name_;
   ::google::protobuf::internal::ArenaStringPtr mgmt_ip_;
-  ::google::protobuf::internal::ArenaStringPtr endpoint_1_;
-  ::google::protobuf::internal::ArenaStringPtr endpoint_2_;
+  int persona_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_e2_5fapi_2eproto();
   friend void protobuf_AssignDesc_e2_5fapi_2eproto();
@@ -277,6 +282,197 @@ class NetworkElementList : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static NetworkElementList* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class FabricLink : public ::google::protobuf::Message {
+ public:
+  FabricLink();
+  virtual ~FabricLink();
+
+  FabricLink(const FabricLink& from);
+
+  inline FabricLink& operator=(const FabricLink& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const FabricLink& default_instance();
+
+  void Swap(FabricLink* other);
+
+  // implements Message ----------------------------------------------
+
+  inline FabricLink* New() const { return New(NULL); }
+
+  FabricLink* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const FabricLink& from);
+  void MergeFrom(const FabricLink& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(FabricLink* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string name = 1;
+  void clear_name();
+  static const int kNameFieldNumber = 1;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
+
+  // optional string endpoint_1 = 2;
+  void clear_endpoint_1();
+  static const int kEndpoint1FieldNumber = 2;
+  const ::std::string& endpoint_1() const;
+  void set_endpoint_1(const ::std::string& value);
+  void set_endpoint_1(const char* value);
+  void set_endpoint_1(const char* value, size_t size);
+  ::std::string* mutable_endpoint_1();
+  ::std::string* release_endpoint_1();
+  void set_allocated_endpoint_1(::std::string* endpoint_1);
+
+  // optional string endpoint_2 = 3;
+  void clear_endpoint_2();
+  static const int kEndpoint2FieldNumber = 3;
+  const ::std::string& endpoint_2() const;
+  void set_endpoint_2(const ::std::string& value);
+  void set_endpoint_2(const char* value);
+  void set_endpoint_2(const char* value, size_t size);
+  ::std::string* mutable_endpoint_2();
+  ::std::string* release_endpoint_2();
+  void set_allocated_endpoint_2(::std::string* endpoint_2);
+
+  // @@protoc_insertion_point(class_scope:E2.FabricLink)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
+  ::google::protobuf::internal::ArenaStringPtr endpoint_1_;
+  ::google::protobuf::internal::ArenaStringPtr endpoint_2_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_e2_5fapi_2eproto();
+  friend void protobuf_AssignDesc_e2_5fapi_2eproto();
+  friend void protobuf_ShutdownFile_e2_5fapi_2eproto();
+
+  void InitAsDefaultInstance();
+  static FabricLink* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class FabricLinkList : public ::google::protobuf::Message {
+ public:
+  FabricLinkList();
+  virtual ~FabricLinkList();
+
+  FabricLinkList(const FabricLinkList& from);
+
+  inline FabricLinkList& operator=(const FabricLinkList& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const FabricLinkList& default_instance();
+
+  void Swap(FabricLinkList* other);
+
+  // implements Message ----------------------------------------------
+
+  inline FabricLinkList* New() const { return New(NULL); }
+
+  FabricLinkList* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const FabricLinkList& from);
+  void MergeFrom(const FabricLinkList& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(FabricLinkList* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .E2.FabricLink list = 1;
+  int list_size() const;
+  void clear_list();
+  static const int kListFieldNumber = 1;
+  const ::E2::FabricLink& list(int index) const;
+  ::E2::FabricLink* mutable_list(int index);
+  ::E2::FabricLink* add_list();
+  ::google::protobuf::RepeatedPtrField< ::E2::FabricLink >*
+      mutable_list();
+  const ::google::protobuf::RepeatedPtrField< ::E2::FabricLink >&
+      list() const;
+
+  // @@protoc_insertion_point(class_scope:E2.FabricLinkList)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::google::protobuf::RepeatedPtrField< ::E2::FabricLink > list_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_e2_5fapi_2eproto();
+  friend void protobuf_AssignDesc_e2_5fapi_2eproto();
+  friend void protobuf_ShutdownFile_e2_5fapi_2eproto();
+
+  void InitAsDefaultInstance();
+  static FabricLinkList* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -649,87 +845,6 @@ class NetworkElementOpStateList : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class ConfigurationRequest : public ::google::protobuf::Message {
- public:
-  ConfigurationRequest();
-  virtual ~ConfigurationRequest();
-
-  ConfigurationRequest(const ConfigurationRequest& from);
-
-  inline ConfigurationRequest& operator=(const ConfigurationRequest& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const ConfigurationRequest& default_instance();
-
-  void Swap(ConfigurationRequest* other);
-
-  // implements Message ----------------------------------------------
-
-  inline ConfigurationRequest* New() const { return New(NULL); }
-
-  ConfigurationRequest* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const ConfigurationRequest& from);
-  void MergeFrom(const ConfigurationRequest& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  void InternalSwap(ConfigurationRequest* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
-  }
-  inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional .E2.NetworkElement element = 1;
-  bool has_element() const;
-  void clear_element();
-  static const int kElementFieldNumber = 1;
-  const ::E2::NetworkElement& element() const;
-  ::E2::NetworkElement* mutable_element();
-  ::E2::NetworkElement* release_element();
-  void set_allocated_element(::E2::NetworkElement* element);
-
-  // @@protoc_insertion_point(class_scope:E2.ConfigurationRequest)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  bool _is_default_instance_;
-  ::E2::NetworkElement* element_;
-  mutable int _cached_size_;
-  friend void  protobuf_AddDesc_e2_5fapi_2eproto();
-  friend void protobuf_AssignDesc_e2_5fapi_2eproto();
-  friend void protobuf_ShutdownFile_e2_5fapi_2eproto();
-
-  void InitAsDefaultInstance();
-  static ConfigurationRequest* default_instance_;
-};
-// -------------------------------------------------------------------
-
 class ConfigurationReply : public ::google::protobuf::Message {
  public:
   ConfigurationReply();
@@ -994,87 +1109,6 @@ class ServiceEndpointList : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class ServiceConfigurationRequest : public ::google::protobuf::Message {
- public:
-  ServiceConfigurationRequest();
-  virtual ~ServiceConfigurationRequest();
-
-  ServiceConfigurationRequest(const ServiceConfigurationRequest& from);
-
-  inline ServiceConfigurationRequest& operator=(const ServiceConfigurationRequest& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const ServiceConfigurationRequest& default_instance();
-
-  void Swap(ServiceConfigurationRequest* other);
-
-  // implements Message ----------------------------------------------
-
-  inline ServiceConfigurationRequest* New() const { return New(NULL); }
-
-  ServiceConfigurationRequest* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const ServiceConfigurationRequest& from);
-  void MergeFrom(const ServiceConfigurationRequest& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  void InternalSwap(ServiceConfigurationRequest* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
-  }
-  inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional .E2.ServiceEndpointList services = 1;
-  bool has_services() const;
-  void clear_services();
-  static const int kServicesFieldNumber = 1;
-  const ::E2::ServiceEndpointList& services() const;
-  ::E2::ServiceEndpointList* mutable_services();
-  ::E2::ServiceEndpointList* release_services();
-  void set_allocated_services(::E2::ServiceEndpointList* services);
-
-  // @@protoc_insertion_point(class_scope:E2.ServiceConfigurationRequest)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  bool _is_default_instance_;
-  ::E2::ServiceEndpointList* services_;
-  mutable int _cached_size_;
-  friend void  protobuf_AddDesc_e2_5fapi_2eproto();
-  friend void protobuf_AssignDesc_e2_5fapi_2eproto();
-  friend void protobuf_ShutdownFile_e2_5fapi_2eproto();
-
-  void InitAsDefaultInstance();
-  static ServiceConfigurationRequest* default_instance_;
-};
-// -------------------------------------------------------------------
-
 class ServicePlacementRequest : public ::google::protobuf::Message {
  public:
   ServicePlacementRequest();
@@ -1285,90 +1319,18 @@ inline void NetworkElement::set_allocated_mgmt_ip(::std::string* mgmt_ip) {
   // @@protoc_insertion_point(field_set_allocated:E2.NetworkElement.mgmt_ip)
 }
 
-// optional string endpoint_1 = 3;
-inline void NetworkElement::clear_endpoint_1() {
-  endpoint_1_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// optional .E2.NetworkElementType persona = 3;
+inline void NetworkElement::clear_persona() {
+  persona_ = 0;
 }
-inline const ::std::string& NetworkElement::endpoint_1() const {
-  // @@protoc_insertion_point(field_get:E2.NetworkElement.endpoint_1)
-  return endpoint_1_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline ::E2::NetworkElementType NetworkElement::persona() const {
+  // @@protoc_insertion_point(field_get:E2.NetworkElement.persona)
+  return static_cast< ::E2::NetworkElementType >(persona_);
 }
-inline void NetworkElement::set_endpoint_1(const ::std::string& value) {
+inline void NetworkElement::set_persona(::E2::NetworkElementType value) {
   
-  endpoint_1_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:E2.NetworkElement.endpoint_1)
-}
-inline void NetworkElement::set_endpoint_1(const char* value) {
-  
-  endpoint_1_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:E2.NetworkElement.endpoint_1)
-}
-inline void NetworkElement::set_endpoint_1(const char* value, size_t size) {
-  
-  endpoint_1_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:E2.NetworkElement.endpoint_1)
-}
-inline ::std::string* NetworkElement::mutable_endpoint_1() {
-  
-  // @@protoc_insertion_point(field_mutable:E2.NetworkElement.endpoint_1)
-  return endpoint_1_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* NetworkElement::release_endpoint_1() {
-  
-  return endpoint_1_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void NetworkElement::set_allocated_endpoint_1(::std::string* endpoint_1) {
-  if (endpoint_1 != NULL) {
-    
-  } else {
-    
-  }
-  endpoint_1_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), endpoint_1);
-  // @@protoc_insertion_point(field_set_allocated:E2.NetworkElement.endpoint_1)
-}
-
-// optional string endpoint_2 = 4;
-inline void NetworkElement::clear_endpoint_2() {
-  endpoint_2_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& NetworkElement::endpoint_2() const {
-  // @@protoc_insertion_point(field_get:E2.NetworkElement.endpoint_2)
-  return endpoint_2_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void NetworkElement::set_endpoint_2(const ::std::string& value) {
-  
-  endpoint_2_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:E2.NetworkElement.endpoint_2)
-}
-inline void NetworkElement::set_endpoint_2(const char* value) {
-  
-  endpoint_2_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:E2.NetworkElement.endpoint_2)
-}
-inline void NetworkElement::set_endpoint_2(const char* value, size_t size) {
-  
-  endpoint_2_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:E2.NetworkElement.endpoint_2)
-}
-inline ::std::string* NetworkElement::mutable_endpoint_2() {
-  
-  // @@protoc_insertion_point(field_mutable:E2.NetworkElement.endpoint_2)
-  return endpoint_2_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* NetworkElement::release_endpoint_2() {
-  
-  return endpoint_2_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void NetworkElement::set_allocated_endpoint_2(::std::string* endpoint_2) {
-  if (endpoint_2 != NULL) {
-    
-  } else {
-    
-  }
-  endpoint_2_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), endpoint_2);
-  // @@protoc_insertion_point(field_set_allocated:E2.NetworkElement.endpoint_2)
+  persona_ = value;
+  // @@protoc_insertion_point(field_set:E2.NetworkElement.persona)
 }
 
 // -------------------------------------------------------------------
@@ -1402,6 +1364,173 @@ NetworkElementList::mutable_list() {
 inline const ::google::protobuf::RepeatedPtrField< ::E2::NetworkElement >&
 NetworkElementList::list() const {
   // @@protoc_insertion_point(field_list:E2.NetworkElementList.list)
+  return list_;
+}
+
+// -------------------------------------------------------------------
+
+// FabricLink
+
+// optional string name = 1;
+inline void FabricLink::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& FabricLink::name() const {
+  // @@protoc_insertion_point(field_get:E2.FabricLink.name)
+  return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void FabricLink::set_name(const ::std::string& value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:E2.FabricLink.name)
+}
+inline void FabricLink::set_name(const char* value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:E2.FabricLink.name)
+}
+inline void FabricLink::set_name(const char* value, size_t size) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:E2.FabricLink.name)
+}
+inline ::std::string* FabricLink::mutable_name() {
+  
+  // @@protoc_insertion_point(field_mutable:E2.FabricLink.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* FabricLink::release_name() {
+  
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void FabricLink::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    
+  } else {
+    
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:E2.FabricLink.name)
+}
+
+// optional string endpoint_1 = 2;
+inline void FabricLink::clear_endpoint_1() {
+  endpoint_1_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& FabricLink::endpoint_1() const {
+  // @@protoc_insertion_point(field_get:E2.FabricLink.endpoint_1)
+  return endpoint_1_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void FabricLink::set_endpoint_1(const ::std::string& value) {
+  
+  endpoint_1_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:E2.FabricLink.endpoint_1)
+}
+inline void FabricLink::set_endpoint_1(const char* value) {
+  
+  endpoint_1_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:E2.FabricLink.endpoint_1)
+}
+inline void FabricLink::set_endpoint_1(const char* value, size_t size) {
+  
+  endpoint_1_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:E2.FabricLink.endpoint_1)
+}
+inline ::std::string* FabricLink::mutable_endpoint_1() {
+  
+  // @@protoc_insertion_point(field_mutable:E2.FabricLink.endpoint_1)
+  return endpoint_1_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* FabricLink::release_endpoint_1() {
+  
+  return endpoint_1_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void FabricLink::set_allocated_endpoint_1(::std::string* endpoint_1) {
+  if (endpoint_1 != NULL) {
+    
+  } else {
+    
+  }
+  endpoint_1_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), endpoint_1);
+  // @@protoc_insertion_point(field_set_allocated:E2.FabricLink.endpoint_1)
+}
+
+// optional string endpoint_2 = 3;
+inline void FabricLink::clear_endpoint_2() {
+  endpoint_2_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& FabricLink::endpoint_2() const {
+  // @@protoc_insertion_point(field_get:E2.FabricLink.endpoint_2)
+  return endpoint_2_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void FabricLink::set_endpoint_2(const ::std::string& value) {
+  
+  endpoint_2_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:E2.FabricLink.endpoint_2)
+}
+inline void FabricLink::set_endpoint_2(const char* value) {
+  
+  endpoint_2_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:E2.FabricLink.endpoint_2)
+}
+inline void FabricLink::set_endpoint_2(const char* value, size_t size) {
+  
+  endpoint_2_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:E2.FabricLink.endpoint_2)
+}
+inline ::std::string* FabricLink::mutable_endpoint_2() {
+  
+  // @@protoc_insertion_point(field_mutable:E2.FabricLink.endpoint_2)
+  return endpoint_2_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* FabricLink::release_endpoint_2() {
+  
+  return endpoint_2_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void FabricLink::set_allocated_endpoint_2(::std::string* endpoint_2) {
+  if (endpoint_2 != NULL) {
+    
+  } else {
+    
+  }
+  endpoint_2_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), endpoint_2);
+  // @@protoc_insertion_point(field_set_allocated:E2.FabricLink.endpoint_2)
+}
+
+// -------------------------------------------------------------------
+
+// FabricLinkList
+
+// repeated .E2.FabricLink list = 1;
+inline int FabricLinkList::list_size() const {
+  return list_.size();
+}
+inline void FabricLinkList::clear_list() {
+  list_.Clear();
+}
+inline const ::E2::FabricLink& FabricLinkList::list(int index) const {
+  // @@protoc_insertion_point(field_get:E2.FabricLinkList.list)
+  return list_.Get(index);
+}
+inline ::E2::FabricLink* FabricLinkList::mutable_list(int index) {
+  // @@protoc_insertion_point(field_mutable:E2.FabricLinkList.list)
+  return list_.Mutable(index);
+}
+inline ::E2::FabricLink* FabricLinkList::add_list() {
+  // @@protoc_insertion_point(field_add:E2.FabricLinkList.list)
+  return list_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::E2::FabricLink >*
+FabricLinkList::mutable_list() {
+  // @@protoc_insertion_point(field_mutable_list:E2.FabricLinkList.list)
+  return &list_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::E2::FabricLink >&
+FabricLinkList::list() const {
+  // @@protoc_insertion_point(field_list:E2.FabricLinkList.list)
   return list_;
 }
 
@@ -1873,47 +2002,6 @@ NetworkElementOpStateList::opstate() const {
 
 // -------------------------------------------------------------------
 
-// ConfigurationRequest
-
-// optional .E2.NetworkElement element = 1;
-inline bool ConfigurationRequest::has_element() const {
-  return !_is_default_instance_ && element_ != NULL;
-}
-inline void ConfigurationRequest::clear_element() {
-  if (GetArenaNoVirtual() == NULL && element_ != NULL) delete element_;
-  element_ = NULL;
-}
-inline const ::E2::NetworkElement& ConfigurationRequest::element() const {
-  // @@protoc_insertion_point(field_get:E2.ConfigurationRequest.element)
-  return element_ != NULL ? *element_ : *default_instance_->element_;
-}
-inline ::E2::NetworkElement* ConfigurationRequest::mutable_element() {
-  
-  if (element_ == NULL) {
-    element_ = new ::E2::NetworkElement;
-  }
-  // @@protoc_insertion_point(field_mutable:E2.ConfigurationRequest.element)
-  return element_;
-}
-inline ::E2::NetworkElement* ConfigurationRequest::release_element() {
-  
-  ::E2::NetworkElement* temp = element_;
-  element_ = NULL;
-  return temp;
-}
-inline void ConfigurationRequest::set_allocated_element(::E2::NetworkElement* element) {
-  delete element_;
-  element_ = element;
-  if (element) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_set_allocated:E2.ConfigurationRequest.element)
-}
-
-// -------------------------------------------------------------------
-
 // ConfigurationReply
 
 // optional .E2.ReturnCode code = 1;
@@ -2066,47 +2154,6 @@ inline const ::google::protobuf::RepeatedPtrField< ::E2::ServiceEndpoint >&
 ServiceEndpointList::list() const {
   // @@protoc_insertion_point(field_list:E2.ServiceEndpointList.list)
   return list_;
-}
-
-// -------------------------------------------------------------------
-
-// ServiceConfigurationRequest
-
-// optional .E2.ServiceEndpointList services = 1;
-inline bool ServiceConfigurationRequest::has_services() const {
-  return !_is_default_instance_ && services_ != NULL;
-}
-inline void ServiceConfigurationRequest::clear_services() {
-  if (GetArenaNoVirtual() == NULL && services_ != NULL) delete services_;
-  services_ = NULL;
-}
-inline const ::E2::ServiceEndpointList& ServiceConfigurationRequest::services() const {
-  // @@protoc_insertion_point(field_get:E2.ServiceConfigurationRequest.services)
-  return services_ != NULL ? *services_ : *default_instance_->services_;
-}
-inline ::E2::ServiceEndpointList* ServiceConfigurationRequest::mutable_services() {
-  
-  if (services_ == NULL) {
-    services_ = new ::E2::ServiceEndpointList;
-  }
-  // @@protoc_insertion_point(field_mutable:E2.ServiceConfigurationRequest.services)
-  return services_;
-}
-inline ::E2::ServiceEndpointList* ServiceConfigurationRequest::release_services() {
-  
-  ::E2::ServiceEndpointList* temp = services_;
-  services_ = NULL;
-  return temp;
-}
-inline void ServiceConfigurationRequest::set_allocated_services(::E2::ServiceEndpointList* services) {
-  delete services_;
-  services_ = services;
-  if (services) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_set_allocated:E2.ServiceConfigurationRequest.services)
 }
 
 // -------------------------------------------------------------------
@@ -2308,6 +2355,11 @@ inline void ServicePlacementRequest::set_allocated_edge_element_list(::E2::Netwo
 namespace google {
 namespace protobuf {
 
+template <> struct is_proto_enum< ::E2::NetworkElementType> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::E2::NetworkElementType>() {
+  return ::E2::NetworkElementType_descriptor();
+}
 template <> struct is_proto_enum< ::E2::ReturnCode> : ::google::protobuf::internal::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::E2::ReturnCode>() {

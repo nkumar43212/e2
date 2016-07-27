@@ -35,41 +35,62 @@ syntax = "proto3";
 
 package E2;
 
-// Interface exported by Agent
+// Elastic Edge API
 service E2 {
     // Add/Remove network elements
-    rpc addElement(ConfigurationRequest)                     returns (ConfigurationReply) {}
-    rpc removeElement(ConfigurationRequest)                  returns (ConfigurationReply) {}
-    rpc getElements(ConfigurationRequest)                    returns (NetworkElementOpStateList) {}
+    rpc addElement(NetworkElementList)                       returns (ConfigurationReply) {}
+    rpc removeElement(NetworkElementList)                    returns (ConfigurationReply) {}
+    rpc getElements(NetworkElement)                          returns (NetworkElementOpStateList) {}
 
     // Add/Remove fabric link that connects elements
-    rpc addFabricLink(ConfigurationRequest)                  returns (ConfigurationReply) {}
-    rpc removeFabricLink(ConfigurationRequest)               returns (ConfigurationReply) {}
+    rpc addFabricLink(FabricLinkList)                        returns (ConfigurationReply) {}
+    rpc removeFabricLink(FabricLinkList)                     returns (ConfigurationReply) {}
 
     // Add/Remove a service endpoint (aka a customer)
-    rpc addServiceEndpoint(ServiceConfigurationRequest)      returns (ConfigurationReply) {}
-    rpc removeServiceEndpoint(ServiceConfigurationRequest)   returns (ConfigurationReply) {}
+    rpc addServiceEndpoint(ServiceEndpointList)              returns (ConfigurationReply) {}
+    rpc removeServiceEndpoint(ServiceEndpointList)           returns (ConfigurationReply) {}
 
     // Place a service in the system
     rpc activateService(ServicePlacementRequest)             returns (ConfigurationReply) {}
     rpc deactivateService(ServicePlacementRequest)           returns (ConfigurationReply) {}
 }
 
-// A network element
+// A network element. Basic building block of the cluster of network nodes managed
+// by E2
 message NetworkElement {
     // Name of the device
-    string name       = 1;
+    string name                = 1;
 
     // Management IP address of the device
-    string mgmt_ip    = 2;
+    string mgmt_ip             = 2;
 
-    // Optional propoerties
-    string endpoint_1 = 3;
-    string endpoint_2 = 4;
+    // Persona of the element
+    NetworkElementType persona = 3;
 }
-
 message NetworkElementList {
     repeated NetworkElement list                            = 1;
+}
+
+// Types of network elements
+enum NetworkElementType {
+    // Node facing the client
+    ACCESS_NODE                                             = 0;
+
+    // Node hosting all the E2 services
+    SERVICE_NODE                                            = 1;
+
+    // Internal node that connects all the edges
+    INTERNAL_NODE                                           = 2;
+}
+    
+// A point to point adjacency between two edge nodes
+message FabricLink {
+    string name                                             = 1;
+    string endpoint_1                                       = 2;
+    string endpoint_2                                       = 3;
+}
+message FabricLinkList {
+    repeated FabricLink list                                = 1;
 }
 
 // Operational State for a network element
@@ -97,11 +118,6 @@ message NetworkElementOpStateList {
     repeated NetworkElementOpState opstate                  = 1;
 }
 
-// Message sent for a configuration request
-message ConfigurationRequest {
-    NetworkElement element                                  = 1;
-}
-
 // Response from the controller
 message ConfigurationReply {
     // Return code
@@ -121,11 +137,6 @@ message ServiceEndpoint {
 };
 message ServiceEndpointList {
     repeated ServiceEndpoint list                           = 1;
-};
-
-// Request to configure a service
-message ServiceConfigurationRequest {
-    ServiceEndpointList services                            = 1;
 };
 
 // Request to place a service

@@ -16,6 +16,7 @@ class ServiceOrderLag : public ServiceOrder {
 public:
     
     static ServiceOrder *create(const std::string name);
+    static ServiceOrder *create(const std::string name, const std::string member_name);
 };
 
 

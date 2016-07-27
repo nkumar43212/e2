@@ -24,6 +24,7 @@ public:
     CustomerProfile (u_int32_t vlan_id) : _vlan_id(vlan_id)
     {
     }
+    u_int32_t getVlanId() { return _vlan_id; }
     
     void description()
     {

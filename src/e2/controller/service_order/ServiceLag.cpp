@@ -26,3 +26,23 @@ ServiceOrderLag::create (const std::string name)
     
     return order;
 }
+
+ServiceOrder *
+ServiceOrderLag::create (const std::string name, const std::string member_name)
+{
+    ServiceOrderParameterList list;
+    
+    // Build the parameter list
+    ServiceOrderParameter interface_name("name", member_name);
+    ServiceOrderParameter interface_ae("parent_ae", name);
+    list.push_back(interface_name);
+    list.push_back(interface_ae);
+    
+    ServiceOrder *order = new ServiceOrder(list);
+    if (!order) {
+        return nullptr;
+    }
+    
+    return order;
+}
+

@@ -43,59 +43,59 @@ E2::Stub::Stub(const std::shared_ptr< ::grpc::Channel>& channel)
   , rpcmethod_deactivateService_(E2_method_names[8], ::grpc::RpcMethod::NORMAL_RPC, channel)
   {}
 
-::grpc::Status E2::Stub::addElement(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::E2::ConfigurationReply* response) {
+::grpc::Status E2::Stub::addElement(::grpc::ClientContext* context, const ::E2::NetworkElementList& request, ::E2::ConfigurationReply* response) {
   return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_addElement_, context, request, response);
 }
 
-::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* E2::Stub::AsyncaddElementRaw(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* E2::Stub::AsyncaddElementRaw(::grpc::ClientContext* context, const ::E2::NetworkElementList& request, ::grpc::CompletionQueue* cq) {
   return new ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>(channel_.get(), cq, rpcmethod_addElement_, context, request);
 }
 
-::grpc::Status E2::Stub::removeElement(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::E2::ConfigurationReply* response) {
+::grpc::Status E2::Stub::removeElement(::grpc::ClientContext* context, const ::E2::NetworkElementList& request, ::E2::ConfigurationReply* response) {
   return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_removeElement_, context, request, response);
 }
 
-::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* E2::Stub::AsyncremoveElementRaw(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* E2::Stub::AsyncremoveElementRaw(::grpc::ClientContext* context, const ::E2::NetworkElementList& request, ::grpc::CompletionQueue* cq) {
   return new ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>(channel_.get(), cq, rpcmethod_removeElement_, context, request);
 }
 
-::grpc::Status E2::Stub::getElements(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::E2::NetworkElementOpStateList* response) {
+::grpc::Status E2::Stub::getElements(::grpc::ClientContext* context, const ::E2::NetworkElement& request, ::E2::NetworkElementOpStateList* response) {
   return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_getElements_, context, request, response);
 }
 
-::grpc::ClientAsyncResponseReader< ::E2::NetworkElementOpStateList>* E2::Stub::AsyncgetElementsRaw(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::E2::NetworkElementOpStateList>* E2::Stub::AsyncgetElementsRaw(::grpc::ClientContext* context, const ::E2::NetworkElement& request, ::grpc::CompletionQueue* cq) {
   return new ::grpc::ClientAsyncResponseReader< ::E2::NetworkElementOpStateList>(channel_.get(), cq, rpcmethod_getElements_, context, request);
 }
 
-::grpc::Status E2::Stub::addFabricLink(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::E2::ConfigurationReply* response) {
+::grpc::Status E2::Stub::addFabricLink(::grpc::ClientContext* context, const ::E2::FabricLinkList& request, ::E2::ConfigurationReply* response) {
   return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_addFabricLink_, context, request, response);
 }
 
-::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* E2::Stub::AsyncaddFabricLinkRaw(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* E2::Stub::AsyncaddFabricLinkRaw(::grpc::ClientContext* context, const ::E2::FabricLinkList& request, ::grpc::CompletionQueue* cq) {
   return new ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>(channel_.get(), cq, rpcmethod_addFabricLink_, context, request);
 }
 
-::grpc::Status E2::Stub::removeFabricLink(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::E2::ConfigurationReply* response) {
+::grpc::Status E2::Stub::removeFabricLink(::grpc::ClientContext* context, const ::E2::FabricLinkList& request, ::E2::ConfigurationReply* response) {
   return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_removeFabricLink_, context, request, response);
 }
 
-::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* E2::Stub::AsyncremoveFabricLinkRaw(::grpc::ClientContext* context, const ::E2::ConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* E2::Stub::AsyncremoveFabricLinkRaw(::grpc::ClientContext* context, const ::E2::FabricLinkList& request, ::grpc::CompletionQueue* cq) {
   return new ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>(channel_.get(), cq, rpcmethod_removeFabricLink_, context, request);
 }
 
-::grpc::Status E2::Stub::addServiceEndpoint(::grpc::ClientContext* context, const ::E2::ServiceConfigurationRequest& request, ::E2::ConfigurationReply* response) {
+::grpc::Status E2::Stub::addServiceEndpoint(::grpc::ClientContext* context, const ::E2::ServiceEndpointList& request, ::E2::ConfigurationReply* response) {
   return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_addServiceEndpoint_, context, request, response);
 }
 
-::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* E2::Stub::AsyncaddServiceEndpointRaw(::grpc::ClientContext* context, const ::E2::ServiceConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* E2::Stub::AsyncaddServiceEndpointRaw(::grpc::ClientContext* context, const ::E2::ServiceEndpointList& request, ::grpc::CompletionQueue* cq) {
   return new ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>(channel_.get(), cq, rpcmethod_addServiceEndpoint_, context, request);
 }
 
-::grpc::Status E2::Stub::removeServiceEndpoint(::grpc::ClientContext* context, const ::E2::ServiceConfigurationRequest& request, ::E2::ConfigurationReply* response) {
+::grpc::Status E2::Stub::removeServiceEndpoint(::grpc::ClientContext* context, const ::E2::ServiceEndpointList& request, ::E2::ConfigurationReply* response) {
   return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_removeServiceEndpoint_, context, request, response);
 }
 
-::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* E2::Stub::AsyncremoveServiceEndpointRaw(::grpc::ClientContext* context, const ::E2::ServiceConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* E2::Stub::AsyncremoveServiceEndpointRaw(::grpc::ClientContext* context, const ::E2::ServiceEndpointList& request, ::grpc::CompletionQueue* cq) {
   return new ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>(channel_.get(), cq, rpcmethod_removeServiceEndpoint_, context, request);
 }
 
@@ -121,80 +121,80 @@ E2::Service::~Service() {
   delete service_;
 }
 
-::grpc::Status E2::Service::addElement(::grpc::ServerContext* context, const ::E2::ConfigurationRequest* request, ::E2::ConfigurationReply* response) {
+::grpc::Status E2::Service::addElement(::grpc::ServerContext* context, const ::E2::NetworkElementList* request, ::E2::ConfigurationReply* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-void E2::AsyncService::RequestaddElement(::grpc::ServerContext* context, ::E2::ConfigurationRequest* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+void E2::AsyncService::RequestaddElement(::grpc::ServerContext* context, ::E2::NetworkElementList* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
   AsynchronousService::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
 }
 
-::grpc::Status E2::Service::removeElement(::grpc::ServerContext* context, const ::E2::ConfigurationRequest* request, ::E2::ConfigurationReply* response) {
+::grpc::Status E2::Service::removeElement(::grpc::ServerContext* context, const ::E2::NetworkElementList* request, ::E2::ConfigurationReply* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-void E2::AsyncService::RequestremoveElement(::grpc::ServerContext* context, ::E2::ConfigurationRequest* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+void E2::AsyncService::RequestremoveElement(::grpc::ServerContext* context, ::E2::NetworkElementList* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
   AsynchronousService::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
 }
 
-::grpc::Status E2::Service::getElements(::grpc::ServerContext* context, const ::E2::ConfigurationRequest* request, ::E2::NetworkElementOpStateList* response) {
+::grpc::Status E2::Service::getElements(::grpc::ServerContext* context, const ::E2::NetworkElement* request, ::E2::NetworkElementOpStateList* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-void E2::AsyncService::RequestgetElements(::grpc::ServerContext* context, ::E2::ConfigurationRequest* request, ::grpc::ServerAsyncResponseWriter< ::E2::NetworkElementOpStateList>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+void E2::AsyncService::RequestgetElements(::grpc::ServerContext* context, ::E2::NetworkElement* request, ::grpc::ServerAsyncResponseWriter< ::E2::NetworkElementOpStateList>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
   AsynchronousService::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
 }
 
-::grpc::Status E2::Service::addFabricLink(::grpc::ServerContext* context, const ::E2::ConfigurationRequest* request, ::E2::ConfigurationReply* response) {
+::grpc::Status E2::Service::addFabricLink(::grpc::ServerContext* context, const ::E2::FabricLinkList* request, ::E2::ConfigurationReply* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-void E2::AsyncService::RequestaddFabricLink(::grpc::ServerContext* context, ::E2::ConfigurationRequest* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+void E2::AsyncService::RequestaddFabricLink(::grpc::ServerContext* context, ::E2::FabricLinkList* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
   AsynchronousService::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
 }
 
-::grpc::Status E2::Service::removeFabricLink(::grpc::ServerContext* context, const ::E2::ConfigurationRequest* request, ::E2::ConfigurationReply* response) {
+::grpc::Status E2::Service::removeFabricLink(::grpc::ServerContext* context, const ::E2::FabricLinkList* request, ::E2::ConfigurationReply* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-void E2::AsyncService::RequestremoveFabricLink(::grpc::ServerContext* context, ::E2::ConfigurationRequest* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+void E2::AsyncService::RequestremoveFabricLink(::grpc::ServerContext* context, ::E2::FabricLinkList* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
   AsynchronousService::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
 }
 
-::grpc::Status E2::Service::addServiceEndpoint(::grpc::ServerContext* context, const ::E2::ServiceConfigurationRequest* request, ::E2::ConfigurationReply* response) {
+::grpc::Status E2::Service::addServiceEndpoint(::grpc::ServerContext* context, const ::E2::ServiceEndpointList* request, ::E2::ConfigurationReply* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-void E2::AsyncService::RequestaddServiceEndpoint(::grpc::ServerContext* context, ::E2::ServiceConfigurationRequest* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+void E2::AsyncService::RequestaddServiceEndpoint(::grpc::ServerContext* context, ::E2::ServiceEndpointList* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
   AsynchronousService::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
 }
 
-::grpc::Status E2::Service::removeServiceEndpoint(::grpc::ServerContext* context, const ::E2::ServiceConfigurationRequest* request, ::E2::ConfigurationReply* response) {
+::grpc::Status E2::Service::removeServiceEndpoint(::grpc::ServerContext* context, const ::E2::ServiceEndpointList* request, ::E2::ConfigurationReply* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-void E2::AsyncService::RequestremoveServiceEndpoint(::grpc::ServerContext* context, ::E2::ServiceConfigurationRequest* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+void E2::AsyncService::RequestremoveServiceEndpoint(::grpc::ServerContext* context, ::E2::ServiceEndpointList* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
   AsynchronousService::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
 }
 
@@ -228,37 +228,37 @@ void E2::AsyncService::RequestdeactivateService(::grpc::ServerContext* context, 
   service_->AddMethod(new ::grpc::RpcServiceMethod(
       E2_method_names[0],
       ::grpc::RpcMethod::NORMAL_RPC,
-      new ::grpc::RpcMethodHandler< E2::Service, ::E2::ConfigurationRequest, ::E2::ConfigurationReply>(
+      new ::grpc::RpcMethodHandler< E2::Service, ::E2::NetworkElementList, ::E2::ConfigurationReply>(
           std::mem_fn(&E2::Service::addElement), this)));
   service_->AddMethod(new ::grpc::RpcServiceMethod(
       E2_method_names[1],
       ::grpc::RpcMethod::NORMAL_RPC,
-      new ::grpc::RpcMethodHandler< E2::Service, ::E2::ConfigurationRequest, ::E2::ConfigurationReply>(
+      new ::grpc::RpcMethodHandler< E2::Service, ::E2::NetworkElementList, ::E2::ConfigurationReply>(
           std::mem_fn(&E2::Service::removeElement), this)));
   service_->AddMethod(new ::grpc::RpcServiceMethod(
       E2_method_names[2],
       ::grpc::RpcMethod::NORMAL_RPC,
-      new ::grpc::RpcMethodHandler< E2::Service, ::E2::ConfigurationRequest, ::E2::NetworkElementOpStateList>(
+      new ::grpc::RpcMethodHandler< E2::Service, ::E2::NetworkElement, ::E2::NetworkElementOpStateList>(
           std::mem_fn(&E2::Service::getElements), this)));
   service_->AddMethod(new ::grpc::RpcServiceMethod(
       E2_method_names[3],
       ::grpc::RpcMethod::NORMAL_RPC,
-      new ::grpc::RpcMethodHandler< E2::Service, ::E2::ConfigurationRequest, ::E2::ConfigurationReply>(
+      new ::grpc::RpcMethodHandler< E2::Service, ::E2::FabricLinkList, ::E2::ConfigurationReply>(
           std::mem_fn(&E2::Service::addFabricLink), this)));
   service_->AddMethod(new ::grpc::RpcServiceMethod(
       E2_method_names[4],
       ::grpc::RpcMethod::NORMAL_RPC,
-      new ::grpc::RpcMethodHandler< E2::Service, ::E2::ConfigurationRequest, ::E2::ConfigurationReply>(
+      new ::grpc::RpcMethodHandler< E2::Service, ::E2::FabricLinkList, ::E2::ConfigurationReply>(
           std::mem_fn(&E2::Service::removeFabricLink), this)));
   service_->AddMethod(new ::grpc::RpcServiceMethod(
       E2_method_names[5],
       ::grpc::RpcMethod::NORMAL_RPC,
-      new ::grpc::RpcMethodHandler< E2::Service, ::E2::ServiceConfigurationRequest, ::E2::ConfigurationReply>(
+      new ::grpc::RpcMethodHandler< E2::Service, ::E2::ServiceEndpointList, ::E2::ConfigurationReply>(
           std::mem_fn(&E2::Service::addServiceEndpoint), this)));
   service_->AddMethod(new ::grpc::RpcServiceMethod(
       E2_method_names[6],
       ::grpc::RpcMethod::NORMAL_RPC,
-      new ::grpc::RpcMethodHandler< E2::Service, ::E2::ServiceConfigurationRequest, ::E2::ConfigurationReply>(
+      new ::grpc::RpcMethodHandler< E2::Service, ::E2::ServiceEndpointList, ::E2::ConfigurationReply>(
           std::mem_fn(&E2::Service::removeServiceEndpoint), this)));
   service_->AddMethod(new ::grpc::RpcServiceMethod(
       E2_method_names[7],

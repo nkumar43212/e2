@@ -21,14 +21,35 @@ extern AgentParser *parser;
 std::atomic_int some_id(0);
 
 void
-handle_add_element (int argc, const char *argv[])
+handle_add_element_access (int argc, const char *argv[])
 {
     std::string e2_name("e2");
     
     E2Client *clientp = E2Client::create(grpc::CreateChannel(AGENT_SERVER_IP_PORT, grpc::InsecureCredentials()),
                                          e2_name, 0, parser->getLogDir());
-    clientp->addElement(argv[1], argv[2]);
+    clientp->addElement(argv[1], argv[2], 0);
 }
+
+void
+handle_add_element_service (int argc, const char *argv[])
+{
+    std::string e2_name("e2");
+    
+    E2Client *clientp = E2Client::create(grpc::CreateChannel(AGENT_SERVER_IP_PORT, grpc::InsecureCredentials()),
+                                         e2_name, 0, parser->getLogDir());
+    clientp->addElement(argv[1], argv[2], 1);
+}
+
+void
+handle_add_element_internal (int argc, const char *argv[])
+{
+    std::string e2_name("e2");
+    
+    E2Client *clientp = E2Client::create(grpc::CreateChannel(AGENT_SERVER_IP_PORT, grpc::InsecureCredentials()),
+                                         e2_name, 0, parser->getLogDir());
+    clientp->addElement(argv[1], argv[2], 2);
+}
+
 
 void
 handle_delete_element (int argc, const char *argv[])
@@ -120,42 +141,46 @@ handle_basic_test (int argc, const char *argv[])
     // Create elements
     argc = 3;
     argv[0] = "add-element", argv[1] = "access1", argv[2] = "0.0.0.0";
-    handle_add_element(argc, argv);
+    handle_add_element_access(argc, argv);
     
     argc = 3;
     argv[0] = "add-element", argv[1] = "access2", argv[2] = "0.0.0.0";
-    handle_add_element(argc, argv);
+    handle_add_element_access(argc, argv);
     
     argc = 3;
     argv[0] = "add-element", argv[1] = "edge1", argv[2] = "0.0.0.0";
-    handle_add_element(argc, argv);
+    handle_add_element_service(argc, argv);
     
     argc = 3;
     argv[0] = "add-element", argv[1] = "edge2", argv[2] = "0.0.0.0";
-    handle_add_element(argc, argv);
+    handle_add_element_service(argc, argv);
     
     argc = 4;
     argv[0] = "add-fabric-link", argv[1] = "f1", argv[2] = "access1", argv[3] = "edge1";
     handle_add_fabric_link(argc, argv);
     
     argc = 4;
-    argv[0] = "add-fabric-link", argv[1] = "f1", argv[2] = "access1", argv[3] = "edge2";
+    argv[0] = "add-fabric-link", argv[1] = "f2", argv[2] = "access1", argv[3] = "edge2";
     handle_add_fabric_link(argc, argv);
   
     argc = 4;
-    argv[0] = "add-fabric-link", argv[1] = "f1", argv[2] = "access2", argv[3] = "edge1";
+    argv[0] = "add-fabric-link", argv[1] = "f3", argv[2] = "access2", argv[3] = "edge1";
     handle_add_fabric_link(argc, argv);
     
     argc = 4;
-    argv[0] = "add-fabric-link", argv[1] = "f1", argv[2] = "access2", argv[3] = "edge2";
+    argv[0] = "add-fabric-link", argv[1] = "f4", argv[2] = "access2", argv[3] = "edge2";
     handle_add_fabric_link(argc, argv);
     
-    argc = 2;
-    argv[0] = "add-service", argv[1] = "s1";
+    argc = 3;
+    argv[0] = "add-service", argv[1] = "s1", argv[2] = "100";
     handle_add_service(argc, argv);
     
-    argc = 2;
-    argv[0] = "add-service", argv[1] = "s2";
+    argc = 3;
+    argv[0] = "add-service", argv[1] = "s2", argv[2] = "200";
+    handle_add_service(argc, argv);
+    
+    argc = 3;
+    argv[0] = "add-service", argv[1] = "s3", argv[3] = "300";
     handle_add_service(argc, argv);
     
     argc = 6;
@@ -163,7 +188,11 @@ handle_basic_test (int argc, const char *argv[])
     handle_place_service(argc, argv);
     
     argc = 6;
-    argv[0] = "place-service", argv[1] = "s2", argv[2] = "edge1", argv[3] = "edge2", argv[4] = "access2", argv[5] = "xe-0/0/0";
+    argv[0] = "place-service", argv[1] = "s2", argv[2] = "edge1", argv[3] = "edge2", argv[4] = "access2", argv[5] = "xe-0/0/1";
+    handle_place_service(argc, argv);
+    
+    argc = 6;
+    argv[0] = "place-service", argv[1] = "s3", argv[2] = "edge1", argv[3] = "edge2", argv[4] = "access1", argv[5] = "xe-0/0/2";
     handle_place_service(argc, argv);
 }
 
@@ -171,12 +200,21 @@ handle_basic_test (int argc, const char *argv[])
 // Add new commands here
 entry_t agent_client_commands [] = {
     {
-        .e_cmd     = std::string("add-element"),
+        .e_cmd     = std::string("add-element-access"),
         .e_argc    = 3,
         .e_help    = std::string("Add an element to E2"),
         .e_usage   = std::string("add-element <name> <mgmt-ip>"),
-        .e_handler = handle_add_element
+        .e_handler = handle_add_element_access
     },
+  
+    {
+        .e_cmd     = std::string("add-element-service"),
+        .e_argc    = 3,
+        .e_help    = std::string("Add an element to E2"),
+        .e_usage   = std::string("add-element <name> <mgmt-ip>"),
+        .e_handler = handle_add_element_service
+    },
+
     {
         .e_cmd     = std::string("delete-element"),
         .e_argc    = 2,

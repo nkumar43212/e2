@@ -22,15 +22,17 @@ using grpc::ClientReader;
 using grpc::Status;
 
 using E2::E2;
-using E2::ConfigurationRequest;
 using E2::ConfigurationReply;
 using E2::NetworkElement;
 using E2::NetworkElementList;
 using E2::NetworkElementOpStateList;
 using E2::NetworkElementOpState;
 using E2::NetworkElementProperty;
+using E2::NetworkElementType;
 
-using E2::ServiceConfigurationRequest;
+using E2::FabricLink;
+using E2::FabricLinkList;
+
 using E2::ServicePlacementRequest;
 using E2::ServiceEndpoint;
 using E2::ServiceEndpointList;
@@ -67,7 +69,7 @@ public:
                             uint32_t id,
                             const std::string& logfile_dir);
     
-    void addElement(std::string name, std::string mgmt_ip);
+    void addElement(std::string name, std::string mgmt_ip, uint8_t persona);
     void deleteElement(std::string name);
     void listElements();
     void addFabricLink(std::string name, std::string ep1, std::string ep2);

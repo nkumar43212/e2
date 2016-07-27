@@ -26,3 +26,9 @@ E2Server::traceLog(const std::string msg)
 {
     _logger->log(msg);
 }
+
+void
+E2Server::traceLogRPC(const std::string rpc_name)
+{
+    _logger->log("\n\nRPC:" + rpc_name);
+}

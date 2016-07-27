@@ -18,18 +18,23 @@ E2Client::create (std::shared_ptr<Channel> channel,
 }
 
 void
-E2Client::addElement (std::string name, std::string mgmt_ip)
+E2Client::addElement (std::string name, std::string mgmt_ip, uint8_t persona)
 {
     // Send over the list request
     ClientContext        context;
-    ConfigurationRequest request;
+    NetworkElementList   elements;
     NetworkElement       *element;
     ConfigurationReply   reply;
     
-    element = request.mutable_element();
+    element = elements.add_list();
     element->set_name(name);
     element->set_mgmt_ip(mgmt_ip);
-    stub_->addElement(&context, request, &reply);
+    switch (persona) {
+        case 0: element->set_persona(NetworkElementType::ACCESS_NODE); break;
+        case 1: element->set_persona(NetworkElementType::SERVICE_NODE); break;
+        case 2: element->set_persona(NetworkElementType::INTERNAL_NODE); break;
+    }
+    stub_->addElement(&context, elements, &reply);
 }
 
 void
@@ -37,13 +42,13 @@ E2Client::deleteElement(std::string name)
 {
     // Send over the list request
     ClientContext        context;
-    ConfigurationRequest request;
+    NetworkElementList   elements;
     NetworkElement       *element;
     ConfigurationReply   reply;
     
-    element = request.mutable_element();
+    element = elements.add_list();
     element->set_name(name);
-    stub_->removeElement(&context, request, &reply);
+    stub_->removeElement(&context, elements, &reply);
 }
 
 void
@@ -51,11 +56,11 @@ E2Client::listElements()
 {
     // Send over the list request
     ClientContext        context;
-    ConfigurationRequest request;
+    NetworkElement       element;
     ConfigurationReply   reply;
     NetworkElementOpStateList elementList;
     
-    stub_->getElements(&context, request, &elementList);
+    stub_->getElements(&context, element, &elementList);
     for (int i = 0; i < elementList.opstate_size(); i++) {
         const NetworkElementOpState& opstate = elementList.opstate(i);
         
@@ -72,16 +77,15 @@ E2Client::addFabricLink (std::string name, std::string ep1, std::string ep2)
 {
     // Send over the list request
     ClientContext        context;
-    ConfigurationRequest request;
-    NetworkElement       *element;
+    FabricLinkList       fabric_list;
+    FabricLink           *element;
     ConfigurationReply   reply;
     
-    element = request.mutable_element();
+    element = fabric_list.add_list();
     element->set_name(name);
-    element->set_mgmt_ip("");
     element->set_endpoint_1(ep1);
     element->set_endpoint_2(ep2);
-    stub_->addFabricLink(&context, request, &reply);
+    stub_->addFabricLink(&context, fabric_list, &reply);
 }
 
 void
@@ -89,16 +93,14 @@ E2Client::addService (std::string name, uint32_t vlan_identifier)
 {
     // Send over the list request
     ClientContext               context;
-    ServiceConfigurationRequest request;
     ConfigurationReply          reply;
-    ServiceEndpointList *       endp;
+    ServiceEndpointList         service_list;
     ServiceEndpoint *           servicep;
    
-    endp = request.mutable_services();
-    servicep = endp->add_list();
+    servicep = service_list.add_list();
     servicep->set_name(name);
     servicep->set_vlan_identifier(vlan_identifier);
-    stub_->addServiceEndpoint(&context, request, &reply);
+    stub_->addServiceEndpoint(&context, service_list, &reply);
 }
 
 void
@@ -106,16 +108,15 @@ E2Client::deleteService (std::string name)
 {
     // Send over the list request
     ClientContext               context;
-    ServiceConfigurationRequest request;
+    ServiceEndpointList         service_list;
     ConfigurationReply          reply;
     ServiceEndpointList *       endp;
     ServiceEndpoint *           servicep;
     
     // Remove the service from the server
-    endp = request.mutable_services();
-    servicep = endp->add_list();
+    servicep = service_list.add_list();
     servicep->set_name(name);
-    stub_->removeServiceEndpoint(&context, request, &reply);
+    stub_->removeServiceEndpoint(&context, service_list, &reply);
 }
 
 void

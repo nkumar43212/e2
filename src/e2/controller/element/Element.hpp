@@ -34,6 +34,13 @@ typedef enum {
 } ElementStatus;
 extern std::string ElementStatusStrings[];
 
+typedef enum {
+    ElementPersonaNone       = 0,
+    ElementPersonaAccess     = 1,
+    ElementPersonaService    = 2,
+    ElementPersonaInternal   = 3
+} ElementPersona;
+
 class Element;
 class Service;
 class ServiceCallbackKeyValue;
@@ -54,6 +61,9 @@ class Element {
     std::string _mgmt_ip;
     time_t      _last_update_time;
     bool        _is_unit_test;
+    
+    // Personality
+    ElementPersona _persona;
     
     // Where is the element in its lifecycle
     ElementStatus _status;
@@ -77,8 +87,8 @@ class Element {
     
 public:
     // Object life cycle
-    Element (const std::string &name, uint64_t id, std::string mgmt_ip, Logger *logger) :
-        _name(name), _id(id), _mgmt_ip(mgmt_ip), _logger(logger)
+    Element (const std::string &name, uint64_t id, std::string mgmt_ip, ElementPersona persona, Logger *logger) :
+        _name(name), _id(id), _mgmt_ip(mgmt_ip), _persona(persona), _logger(logger)
     {
         _status          = ElementStatusInit;
         _is_unit_test    = (mgmt_ip == "0.0.0.0") ? true : false;
@@ -99,6 +109,8 @@ public:
     time_t      getLastUpdateTime()           { return _last_update_time;                      }
     void        setLastUpdateTime(time_t val) { _last_update_time = val;                       }
     bool        isUnitTest()                  { return _is_unit_test;                          }
+    bool        isService()                   { return _persona == ElementPersonaService;      }
+    ElementPersona getPersona()               { return _persona;                               }
     
     // Debug/Logging Interface
     void        enableLog();

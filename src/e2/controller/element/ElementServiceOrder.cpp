@@ -13,7 +13,7 @@ status_t
 Element::addServiceOrder(ServiceOrder *order)
 {
     // Make a note
-    order->traceLog(_logger, "AddServiceOrder:");
+    order->traceLog(_logger, getName() + ":AddServiceOrder:");
     
     // Call the provisioning system to punch in the order
     return EOK;
@@ -23,7 +23,7 @@ status_t
 Element::removeServiceOrder(ServiceOrder *order)
 {
     // Make a note
-    order->traceLog(_logger, "DelServiceOrder:");
+    order->traceLog(_logger, getName() + ":DelServiceOrder:");
     
     // Call the provisioning system to punch in the order
     return EOK;

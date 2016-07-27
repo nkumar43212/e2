@@ -12,7 +12,7 @@
 
 Status
 E2Server::addElement (ServerContext* context,
-                      const ConfigurationRequest * request,
+                      const NetworkElementList *request,
                       ConfigurationReply * reply)
 
 {
@@ -21,20 +21,36 @@ E2Server::addElement (ServerContext* context,
     status_t       status;
     E2::ReturnCode err_code;
     
-    // Create a new element
-    elementp = new Element(request->element().name(), 0, request->element().mgmt_ip(), _logger);
-    if (!elementp) {
-        err_str  = std::string("Memory Allocation Failure");
-        err_code = E2::MEMORY_ERROR;
-        goto error;
-    }
+    for (int i = 0; i < request->list_size(); i++) {
+        const NetworkElement& element = request->list(i);
+        
+        // Make a note
+        traceLogRPC("AddElement:" + element.name());
+        
+        // Map the persona value
+        ElementPersona persona;
+        switch (element.persona()) {
+            case E2::NetworkElementType::ACCESS_NODE:  persona = ElementPersonaAccess; break;
+            case E2::NetworkElementType::SERVICE_NODE: persona = ElementPersonaService; break;
+            case E2::NetworkElementType::INTERNAL_NODE: persona = ElementPersonaInternal; break;
+            default: persona = ElementPersonaNone;
+        }
+        
+        // Create a new element
+        elementp = new Element(element.name(), 0, element.mgmt_ip(), persona, _logger);
+        if (!elementp) {
+            err_str  = std::string("Memory Allocation Failure");
+            err_code = E2::MEMORY_ERROR;
+            goto error;
+        }
     
-    // Activate it
-    status = elementp->activate();
-    if (status != EOK) {
-        err_str  = std::string("Activation Failure:") + std::to_string(status);
-        err_code = E2::ACTIVATE_ERROR;
-        goto error;
+        // Activate it
+        status = elementp->activate();
+        if (status != EOK) {
+            err_str  = std::string("Activation Failure:") + std::to_string(status);
+            err_code = E2::ACTIVATE_ERROR;
+            goto error;
+        }
     }
     
     reply->set_code(E2::SUCCESS);
@@ -51,29 +67,40 @@ error:
 
 Status
 E2Server::removeElement (ServerContext* context,
-                         const ConfigurationRequest * request,
+                         const NetworkElementList * request,
                          ConfigurationReply * reply)
 
 {
-    Element *elementp = Element::find(request->element().name(), request->element().mgmt_ip());
+    for (int i = 0; i < request->list_size(); i++) {
+        const NetworkElement& element = request->list(i);
+    
+        // Make a note
+        traceLogRPC("RemoveElement" + element.name());
+        Element *elementp = Element::find(element.name(), element.mgmt_ip());
    
-    if (!elementp) {
-        reply->set_code(E2::ELEMENT_NOT_FOUND_ERROR);
-        reply->set_code_str("Failed to find element");
-        return Status::OK;
+    
+        if (!elementp) {
+            reply->set_code(E2::ELEMENT_NOT_FOUND_ERROR);
+            reply->set_code_str("Failed to find element");
+            return Status::OK;
+        }
+    
+        elementp->deactivate();
+        delete elementp;
     }
     
-    elementp->deactivate();
-    delete elementp;
     reply->set_code(E2::SUCCESS);
     return Status::OK;
 }
 
 Status
 E2Server::getElements (ServerContext* context,
-                       const ConfigurationRequest * request,
+                       const NetworkElement * request,
                        NetworkElementOpStateList * reply)
 {
+    // Make a note
+    traceLogRPC("GetElement");
+    
     // Retrieve the end node elements
     for (ElementDbIterator itr = Element::findFirst(); itr != Element::findLast(); itr++) {
         // Get the operational state for this element
@@ -114,59 +141,63 @@ E2Server::getElements (ServerContext* context,
 
 Status
 E2Server::addFabricLink(ServerContext* context,
-                        const ConfigurationRequest * request,
+                        const FabricLinkList * request,
                         ConfigurationReply * reply)
 {
     std::string    err_str;
     status_t       status;
     E2::ReturnCode err_code;
     
-    FabricLink *linkp = new FabricLink(request->element().name(), request->element().endpoint_1(), request->element().endpoint_2());
-    if (!linkp) {
-        err_str  = std::string("Memory Allocation Failure");
-        err_code = E2::MEMORY_ERROR;
-        goto error;
-
+    // Make a note
+    traceLogRPC("AddFabricLink");
+    
+    for (int i = 0; i < request->list_size(); i++) {
+        const E2::FabricLink& element = request->list(i);
+        FabricLink *linkp = new FabricLink(element.name(), element.endpoint_1(), element.endpoint_2());
+        if (!linkp) {
+            err_str  = std::string("Memory Allocation Failure");
+            err_code = E2::MEMORY_ERROR;
+            goto error;
+        }
+    
+        status = linkp->activate();
+        if (status != EOK) {
+            err_str  = std::string("Activation Failure:") + std::to_string(status);
+            err_code = E2::ACTIVATE_ERROR;
+            goto error;
+        }
+    
+        traceLog("Added Fabric Link" + element.name() + ":" + element.endpoint_1() + "<->" + element.endpoint_2());
     }
     
-    status = linkp->activate();
-    if (status != EOK) {
-        err_str  = std::string("Activation Failure:") + std::to_string(status);
-        err_code = E2::ACTIVATE_ERROR;
-        goto error;
-    }
-    
-    traceLog("Added Fabric Link" + request->element().name() + ":" + request->element().endpoint_1() + "<->" + request->element().endpoint_2());
     reply->set_code(E2::SUCCESS);
     return Status::OK;
 
 error:
     reply->set_code(err_code);
     reply->set_code_str(err_str);
-    if (linkp) {
-        delete linkp;
-    }
-    
     return Status::OK;
 }
 
 Status
 E2Server::addServiceEndpoint (ServerContext* context,
-                              const ServiceConfigurationRequest * request,
+                              const ServiceEndpointList * request,
                               ConfigurationReply * reply)
 {
     std::string    err_str;
     status_t       status = EOK;
     E2::ReturnCode err_code;
     
+    // Make a note
+    traceLogRPC("AddServiceEndPoint");
+    
     // Go through all the services that have been sent in this request
-    const ServiceEndpointList &services = request->services();
-    for (int i = 0; i < services.list_size(); i++) {
-        const E2::ServiceEndpoint &ep = services.list(i);
+    for (int i = 0; i < request->list_size(); i++) {
+        const E2::ServiceEndpoint &ep = request->list(i);
         
         // Absorb this customer
         CustomerProfile profile(ep.vlan_identifier());
-        status = Customer::add(ep.name(), profile);
+        status = Customer::add(ep.name(), profile, _logger);
         if (status != EOK) {
         }
         traceLog("Add Service Endpoint:" + ep.name());
@@ -183,14 +214,16 @@ error:
 
 Status
 E2Server::removeServiceEndpoint (ServerContext* context,
-                                 const ServiceConfigurationRequest * request,
+                                 const ServiceEndpointList * request,
                                  ConfigurationReply * reply)
 {
+    // Make a note
+    traceLogRPC("RemoveServiceEndPoint");
+    
     // Go through all the services that have been sent in this request
-    const ServiceEndpointList &services = request->services();
-    for (int i = 0; i < services.list_size(); i++) {
-        const E2::ServiceEndpoint &ep = services.list(i);
-        
+    for (int i = 0; i < request->list_size(); i++) {
+        const E2::ServiceEndpoint &ep = request->list(i);
+
         // Absorb this customer
         Customer::remove(ep.name());
         traceLog("Remove Service Endpoint:" + ep.name());
@@ -208,6 +241,9 @@ E2Server::activateService (ServerContext* context,
     std::string    err_str = "";
     status_t       status = EOK;
     Customer       *customer;
+    
+    // Make a note
+    traceLogRPC("ActivateService");
     
     // Make a note
     traceLog("ActivateService:ServiceName = " + request->service().name());
@@ -297,6 +333,9 @@ E2Server::deactivateService (ServerContext* context,
                              const ServicePlacementRequest *request,
                              ConfigurationReply * reply)
 {
+    // Make a note
+    traceLogRPC("TerminateService");
+    
     deactivateService(request);
     reply->set_code(E2::SUCCESS);
     return Status::OK;
