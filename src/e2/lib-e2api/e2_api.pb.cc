@@ -26,12 +26,12 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* NetworkElementList_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   NetworkElementList_reflection_ = NULL;
-const ::google::protobuf::Descriptor* FabricLink_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* FabricAdjacency_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  FabricLink_reflection_ = NULL;
-const ::google::protobuf::Descriptor* FabricLinkList_descriptor_ = NULL;
+  FabricAdjacency_reflection_ = NULL;
+const ::google::protobuf::Descriptor* FabricAdjacencyList_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  FabricLinkList_reflection_ = NULL;
+  FabricAdjacencyList_reflection_ = NULL;
 const ::google::protobuf::Descriptor* NetworkElementOpState_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   NetworkElementOpState_reflection_ = NULL;
@@ -106,38 +106,38 @@ void protobuf_AssignDesc_e2_5fapi_2eproto() {
       sizeof(NetworkElementList),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NetworkElementList, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NetworkElementList, _is_default_instance_));
-  FabricLink_descriptor_ = file->message_type(2);
-  static const int FabricLink_offsets_[3] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FabricLink, name_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FabricLink, endpoint_1_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FabricLink, endpoint_2_),
+  FabricAdjacency_descriptor_ = file->message_type(2);
+  static const int FabricAdjacency_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FabricAdjacency, name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FabricAdjacency, endpoint_1_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FabricAdjacency, endpoint_2_),
   };
-  FabricLink_reflection_ =
+  FabricAdjacency_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      FabricLink_descriptor_,
-      FabricLink::default_instance_,
-      FabricLink_offsets_,
+      FabricAdjacency_descriptor_,
+      FabricAdjacency::default_instance_,
+      FabricAdjacency_offsets_,
       -1,
       -1,
       -1,
-      sizeof(FabricLink),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FabricLink, _internal_metadata_),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FabricLink, _is_default_instance_));
-  FabricLinkList_descriptor_ = file->message_type(3);
-  static const int FabricLinkList_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FabricLinkList, list_),
+      sizeof(FabricAdjacency),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FabricAdjacency, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FabricAdjacency, _is_default_instance_));
+  FabricAdjacencyList_descriptor_ = file->message_type(3);
+  static const int FabricAdjacencyList_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FabricAdjacencyList, list_),
   };
-  FabricLinkList_reflection_ =
+  FabricAdjacencyList_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      FabricLinkList_descriptor_,
-      FabricLinkList::default_instance_,
-      FabricLinkList_offsets_,
+      FabricAdjacencyList_descriptor_,
+      FabricAdjacencyList::default_instance_,
+      FabricAdjacencyList_offsets_,
       -1,
       -1,
       -1,
-      sizeof(FabricLinkList),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FabricLinkList, _internal_metadata_),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FabricLinkList, _is_default_instance_));
+      sizeof(FabricAdjacencyList),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FabricAdjacencyList, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FabricAdjacencyList, _is_default_instance_));
   NetworkElementOpState_descriptor_ = file->message_type(4);
   static const int NetworkElementOpState_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NetworkElementOpState, element_),
@@ -278,9 +278,9 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       NetworkElementList_descriptor_, &NetworkElementList::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      FabricLink_descriptor_, &FabricLink::default_instance());
+      FabricAdjacency_descriptor_, &FabricAdjacency::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      FabricLinkList_descriptor_, &FabricLinkList::default_instance());
+      FabricAdjacencyList_descriptor_, &FabricAdjacencyList::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       NetworkElementOpState_descriptor_, &NetworkElementOpState::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
@@ -304,10 +304,10 @@ void protobuf_ShutdownFile_e2_5fapi_2eproto() {
   delete NetworkElement_reflection_;
   delete NetworkElementList::default_instance_;
   delete NetworkElementList_reflection_;
-  delete FabricLink::default_instance_;
-  delete FabricLink_reflection_;
-  delete FabricLinkList::default_instance_;
-  delete FabricLinkList_reflection_;
+  delete FabricAdjacency::default_instance_;
+  delete FabricAdjacency_reflection_;
+  delete FabricAdjacencyList::default_instance_;
+  delete FabricAdjacencyList_reflection_;
   delete NetworkElementOpState::default_instance_;
   delete NetworkElementOpState_reflection_;
   delete NetworkElementProperty::default_instance_;
@@ -336,56 +336,57 @@ void protobuf_AddDesc_e2_5fapi_2eproto() {
     "name\030\001 \001(\t\022\017\n\007mgmt_ip\030\002 \001(\t\022\'\n\007persona\030\003"
     " \001(\0162\026.E2.NetworkElementType\"6\n\022NetworkE"
     "lementList\022 \n\004list\030\001 \003(\0132\022.E2.NetworkEle"
-    "ment\"B\n\nFabricLink\022\014\n\004name\030\001 \001(\t\022\022\n\nendp"
-    "oint_1\030\002 \001(\t\022\022\n\nendpoint_2\030\003 \001(\t\".\n\016Fabr"
-    "icLinkList\022\034\n\004list\030\001 \003(\0132\016.E2.FabricLink"
-    "\"l\n\025NetworkElementOpState\022#\n\007element\030\001 \001"
-    "(\0132\022.E2.NetworkElement\022.\n\nproperties\030\002 \003"
-    "(\0132\032.E2.NetworkElementProperty\"\312\001\n\026Netwo"
-    "rkElementProperty\022\014\n\004name\030\001 \001(\t\022\026\n\014doubl"
-    "e_value\030\002 \001(\001H\000\022\023\n\tint_value\030\003 \001(\003H\000\022\024\n\n"
-    "uint_value\030\004 \001(\004H\000\022\024\n\nsint_value\030\005 \001(\022H\000"
-    "\022\024\n\nbool_value\030\006 \001(\010H\000\022\023\n\tstr_value\030\007 \001("
-    "\tH\000\022\025\n\013bytes_value\030\010 \001(\014H\000B\007\n\005value\"G\n\031N"
-    "etworkElementOpStateList\022*\n\007opstate\030\001 \003("
-    "\0132\031.E2.NetworkElementOpState\"D\n\022Configur"
-    "ationReply\022\034\n\004code\030\001 \001(\0162\016.E2.ReturnCode"
-    "\022\020\n\010code_str\030\002 \001(\t\"8\n\017ServiceEndpoint\022\014\n"
-    "\004name\030\001 \001(\t\022\027\n\017vlan_identifier\030\002 \001(\r\"8\n\023"
-    "ServiceEndpointList\022!\n\004list\030\001 \003(\0132\023.E2.S"
-    "erviceEndpoint\"\257\001\n\016ServiceBinding\022$\n\007ser"
-    "vice\030\001 \001(\0132\023.E2.ServiceEndpoint\022*\n\016acces"
-    "s_element\030\002 \001(\0132\022.E2.NetworkElement\022\030\n\020a"
-    "ccess_port_list\030\003 \003(\t\0221\n\021edge_element_li"
-    "st\030\004 \001(\0132\026.E2.NetworkElementList*J\n\022Netw"
-    "orkElementType\022\017\n\013ACCESS_NODE\020\000\022\020\n\014SERVI"
-    "CE_NODE\020\001\022\021\n\rINTERNAL_NODE\020\002*\251\001\n\nReturnC"
-    "ode\022\013\n\007SUCCESS\020\000\022\021\n\rUNKNOWN_ERROR\020\001\022\022\n\016A"
-    "CTIVATE_ERROR\020\002\022\020\n\014MEMORY_ERROR\020\003\022\033\n\027ELE"
-    "MENT_NOT_FOUND_ERROR\020\004\022\033\n\027SERVICE_NOT_FO"
-    "UND_ERROR\020\005\022\033\n\027SERVICE_PLACEMENT_ERROR\020\006"
-    "2\345\004\n\002E2\022>\n\naddElement\022\026.E2.NetworkElemen"
-    "tList\032\026.E2.ConfigurationReply\"\000\022A\n\rremov"
-    "eElement\022\026.E2.NetworkElementList\032\026.E2.Co"
-    "nfigurationReply\"\000\022B\n\013getElements\022\022.E2.N"
-    "etworkElement\032\035.E2.NetworkElementOpState"
-    "List\"\000\022=\n\raddFabricLink\022\022.E2.FabricLinkL"
-    "ist\032\026.E2.ConfigurationReply\"\000\022@\n\020removeF"
-    "abricLink\022\022.E2.FabricLinkList\032\026.E2.Confi"
-    "gurationReply\"\000\022G\n\022addServiceEndpoint\022\027."
-    "E2.ServiceEndpointList\032\026.E2.Configuratio"
-    "nReply\"\000\022J\n\025removeServiceEndpoint\022\027.E2.S"
-    "erviceEndpointList\032\026.E2.ConfigurationRep"
-    "ly\"\000\022\?\n\017activateService\022\022.E2.ServiceBind"
-    "ing\032\026.E2.ConfigurationReply\"\000\022A\n\021deactiv"
-    "ateService\022\022.E2.ServiceBinding\032\026.E2.Conf"
-    "igurationReply\"\000b\006proto3", 1904);
+    "ment\"G\n\017FabricAdjacency\022\014\n\004name\030\001 \001(\t\022\022\n"
+    "\nendpoint_1\030\002 \001(\t\022\022\n\nendpoint_2\030\003 \001(\t\"8\n"
+    "\023FabricAdjacencyList\022!\n\004list\030\001 \003(\0132\023.E2."
+    "FabricAdjacency\"l\n\025NetworkElementOpState"
+    "\022#\n\007element\030\001 \001(\0132\022.E2.NetworkElement\022.\n"
+    "\nproperties\030\002 \003(\0132\032.E2.NetworkElementPro"
+    "perty\"\312\001\n\026NetworkElementProperty\022\014\n\004name"
+    "\030\001 \001(\t\022\026\n\014double_value\030\002 \001(\001H\000\022\023\n\tint_va"
+    "lue\030\003 \001(\003H\000\022\024\n\nuint_value\030\004 \001(\004H\000\022\024\n\nsin"
+    "t_value\030\005 \001(\022H\000\022\024\n\nbool_value\030\006 \001(\010H\000\022\023\n"
+    "\tstr_value\030\007 \001(\tH\000\022\025\n\013bytes_value\030\010 \001(\014H"
+    "\000B\007\n\005value\"G\n\031NetworkElementOpStateList\022"
+    "*\n\007opstate\030\001 \003(\0132\031.E2.NetworkElementOpSt"
+    "ate\"D\n\022ConfigurationReply\022\034\n\004code\030\001 \001(\0162"
+    "\016.E2.ReturnCode\022\020\n\010code_str\030\002 \001(\t\"8\n\017Ser"
+    "viceEndpoint\022\014\n\004name\030\001 \001(\t\022\027\n\017vlan_ident"
+    "ifier\030\002 \001(\r\"8\n\023ServiceEndpointList\022!\n\004li"
+    "st\030\001 \003(\0132\023.E2.ServiceEndpoint\"\257\001\n\016Servic"
+    "eBinding\022$\n\007service\030\001 \001(\0132\023.E2.ServiceEn"
+    "dpoint\022*\n\016access_element\030\002 \001(\0132\022.E2.Netw"
+    "orkElement\022\030\n\020access_port_list\030\003 \003(\t\0221\n\021"
+    "edge_element_list\030\004 \001(\0132\026.E2.NetworkElem"
+    "entList*J\n\022NetworkElementType\022\017\n\013ACCESS_"
+    "NODE\020\000\022\020\n\014SERVICE_NODE\020\001\022\021\n\rINTERNAL_NOD"
+    "E\020\002*\251\001\n\nReturnCode\022\013\n\007SUCCESS\020\000\022\021\n\rUNKNO"
+    "WN_ERROR\020\001\022\022\n\016ACTIVATE_ERROR\020\002\022\020\n\014MEMORY"
+    "_ERROR\020\003\022\033\n\027ELEMENT_NOT_FOUND_ERROR\020\004\022\033\n"
+    "\027SERVICE_NOT_FOUND_ERROR\020\005\022\033\n\027SERVICE_PL"
+    "ACEMENT_ERROR\020\0062\371\004\n\002E2\022>\n\naddElement\022\026.E"
+    "2.NetworkElementList\032\026.E2.ConfigurationR"
+    "eply\"\000\022A\n\rremoveElement\022\026.E2.NetworkElem"
+    "entList\032\026.E2.ConfigurationReply\"\000\022B\n\013get"
+    "Elements\022\022.E2.NetworkElement\032\035.E2.Networ"
+    "kElementOpStateList\"\000\022G\n\022addFabricAdjace"
+    "ncy\022\027.E2.FabricAdjacencyList\032\026.E2.Config"
+    "urationReply\"\000\022J\n\025removeFabricAdjacency\022"
+    "\027.E2.FabricAdjacencyList\032\026.E2.Configurat"
+    "ionReply\"\000\022G\n\022addServiceEndpoint\022\027.E2.Se"
+    "rviceEndpointList\032\026.E2.ConfigurationRepl"
+    "y\"\000\022J\n\025removeServiceEndpoint\022\027.E2.Servic"
+    "eEndpointList\032\026.E2.ConfigurationReply\"\000\022"
+    "\?\n\017activateService\022\022.E2.ServiceBinding\032\026"
+    ".E2.ConfigurationReply\"\000\022A\n\021deactivateSe"
+    "rvice\022\022.E2.ServiceBinding\032\026.E2.Configura"
+    "tionReply\"\000b\006proto3", 1939);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "e2_api.proto", &protobuf_RegisterTypes);
   NetworkElement::default_instance_ = new NetworkElement();
   NetworkElementList::default_instance_ = new NetworkElementList();
-  FabricLink::default_instance_ = new FabricLink();
-  FabricLinkList::default_instance_ = new FabricLinkList();
+  FabricAdjacency::default_instance_ = new FabricAdjacency();
+  FabricAdjacencyList::default_instance_ = new FabricAdjacencyList();
   NetworkElementOpState::default_instance_ = new NetworkElementOpState();
   NetworkElementProperty::default_instance_ = new NetworkElementProperty();
   NetworkElementProperty_default_oneof_instance_ = new NetworkElementPropertyOneofInstance();
@@ -396,8 +397,8 @@ void protobuf_AddDesc_e2_5fapi_2eproto() {
   ServiceBinding::default_instance_ = new ServiceBinding();
   NetworkElement::default_instance_->InitAsDefaultInstance();
   NetworkElementList::default_instance_->InitAsDefaultInstance();
-  FabricLink::default_instance_->InitAsDefaultInstance();
-  FabricLinkList::default_instance_->InitAsDefaultInstance();
+  FabricAdjacency::default_instance_->InitAsDefaultInstance();
+  FabricAdjacencyList::default_instance_->InitAsDefaultInstance();
   NetworkElementOpState::default_instance_->InitAsDefaultInstance();
   NetworkElementProperty::default_instance_->InitAsDefaultInstance();
   NetworkElementOpStateList::default_instance_->InitAsDefaultInstance();
@@ -1130,30 +1131,30 @@ NetworkElementList::list() const {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int FabricLink::kNameFieldNumber;
-const int FabricLink::kEndpoint1FieldNumber;
-const int FabricLink::kEndpoint2FieldNumber;
+const int FabricAdjacency::kNameFieldNumber;
+const int FabricAdjacency::kEndpoint1FieldNumber;
+const int FabricAdjacency::kEndpoint2FieldNumber;
 #endif  // !_MSC_VER
 
-FabricLink::FabricLink()
+FabricAdjacency::FabricAdjacency()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:E2.FabricLink)
+  // @@protoc_insertion_point(constructor:E2.FabricAdjacency)
 }
 
-void FabricLink::InitAsDefaultInstance() {
+void FabricAdjacency::InitAsDefaultInstance() {
   _is_default_instance_ = true;
 }
 
-FabricLink::FabricLink(const FabricLink& from)
+FabricAdjacency::FabricAdjacency(const FabricAdjacency& from)
   : ::google::protobuf::Message(),
     _internal_metadata_(NULL) {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:E2.FabricLink)
+  // @@protoc_insertion_point(copy_constructor:E2.FabricAdjacency)
 }
 
-void FabricLink::SharedCtor() {
+void FabricAdjacency::SharedCtor() {
     _is_default_instance_ = false;
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
@@ -1162,12 +1163,12 @@ void FabricLink::SharedCtor() {
   endpoint_2_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
-FabricLink::~FabricLink() {
-  // @@protoc_insertion_point(destructor:E2.FabricLink)
+FabricAdjacency::~FabricAdjacency() {
+  // @@protoc_insertion_point(destructor:E2.FabricAdjacency)
   SharedDtor();
 }
 
-void FabricLink::SharedDtor() {
+void FabricAdjacency::SharedDtor() {
   name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   endpoint_1_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   endpoint_2_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -1175,42 +1176,42 @@ void FabricLink::SharedDtor() {
   }
 }
 
-void FabricLink::SetCachedSize(int size) const {
+void FabricAdjacency::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* FabricLink::descriptor() {
+const ::google::protobuf::Descriptor* FabricAdjacency::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return FabricLink_descriptor_;
+  return FabricAdjacency_descriptor_;
 }
 
-const FabricLink& FabricLink::default_instance() {
+const FabricAdjacency& FabricAdjacency::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_e2_5fapi_2eproto();
   return *default_instance_;
 }
 
-FabricLink* FabricLink::default_instance_ = NULL;
+FabricAdjacency* FabricAdjacency::default_instance_ = NULL;
 
-FabricLink* FabricLink::New(::google::protobuf::Arena* arena) const {
-  FabricLink* n = new FabricLink;
+FabricAdjacency* FabricAdjacency::New(::google::protobuf::Arena* arena) const {
+  FabricAdjacency* n = new FabricAdjacency;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void FabricLink::Clear() {
+void FabricAdjacency::Clear() {
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   endpoint_1_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   endpoint_2_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
-bool FabricLink::MergePartialFromCodedStream(
+bool FabricAdjacency::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:E2.FabricLink)
+  // @@protoc_insertion_point(parse_start:E2.FabricAdjacency)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -1224,7 +1225,7 @@ bool FabricLink::MergePartialFromCodedStream(
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->name().data(), this->name().length(),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "E2.FabricLink.name"));
+            "E2.FabricAdjacency.name"));
         } else {
           goto handle_unusual;
         }
@@ -1241,7 +1242,7 @@ bool FabricLink::MergePartialFromCodedStream(
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->endpoint_1().data(), this->endpoint_1().length(),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "E2.FabricLink.endpoint_1"));
+            "E2.FabricAdjacency.endpoint_1"));
         } else {
           goto handle_unusual;
         }
@@ -1258,7 +1259,7 @@ bool FabricLink::MergePartialFromCodedStream(
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->endpoint_2().data(), this->endpoint_2().length(),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "E2.FabricLink.endpoint_2"));
+            "E2.FabricAdjacency.endpoint_2"));
         } else {
           goto handle_unusual;
         }
@@ -1279,23 +1280,23 @@ bool FabricLink::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:E2.FabricLink)
+  // @@protoc_insertion_point(parse_success:E2.FabricAdjacency)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:E2.FabricLink)
+  // @@protoc_insertion_point(parse_failure:E2.FabricAdjacency)
   return false;
 #undef DO_
 }
 
-void FabricLink::SerializeWithCachedSizes(
+void FabricAdjacency::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:E2.FabricLink)
+  // @@protoc_insertion_point(serialize_start:E2.FabricAdjacency)
   // optional string name = 1;
   if (this->name().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->name().data(), this->name().length(),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "E2.FabricLink.name");
+      "E2.FabricAdjacency.name");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       1, this->name(), output);
   }
@@ -1305,7 +1306,7 @@ void FabricLink::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->endpoint_1().data(), this->endpoint_1().length(),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "E2.FabricLink.endpoint_1");
+      "E2.FabricAdjacency.endpoint_1");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       2, this->endpoint_1(), output);
   }
@@ -1315,23 +1316,23 @@ void FabricLink::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->endpoint_2().data(), this->endpoint_2().length(),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "E2.FabricLink.endpoint_2");
+      "E2.FabricAdjacency.endpoint_2");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       3, this->endpoint_2(), output);
   }
 
-  // @@protoc_insertion_point(serialize_end:E2.FabricLink)
+  // @@protoc_insertion_point(serialize_end:E2.FabricAdjacency)
 }
 
-::google::protobuf::uint8* FabricLink::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* FabricAdjacency::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:E2.FabricLink)
+  // @@protoc_insertion_point(serialize_to_array_start:E2.FabricAdjacency)
   // optional string name = 1;
   if (this->name().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->name().data(), this->name().length(),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "E2.FabricLink.name");
+      "E2.FabricAdjacency.name");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         1, this->name(), target);
@@ -1342,7 +1343,7 @@ void FabricLink::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->endpoint_1().data(), this->endpoint_1().length(),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "E2.FabricLink.endpoint_1");
+      "E2.FabricAdjacency.endpoint_1");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         2, this->endpoint_1(), target);
@@ -1353,17 +1354,17 @@ void FabricLink::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->endpoint_2().data(), this->endpoint_2().length(),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "E2.FabricLink.endpoint_2");
+      "E2.FabricAdjacency.endpoint_2");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         3, this->endpoint_2(), target);
   }
 
-  // @@protoc_insertion_point(serialize_to_array_end:E2.FabricLink)
+  // @@protoc_insertion_point(serialize_to_array_end:E2.FabricAdjacency)
   return target;
 }
 
-int FabricLink::ByteSize() const {
+int FabricAdjacency::ByteSize() const {
   int total_size = 0;
 
   // optional string name = 1;
@@ -1393,10 +1394,10 @@ int FabricLink::ByteSize() const {
   return total_size;
 }
 
-void FabricLink::MergeFrom(const ::google::protobuf::Message& from) {
+void FabricAdjacency::MergeFrom(const ::google::protobuf::Message& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  const FabricLink* source = 
-      ::google::protobuf::internal::DynamicCastToGenerated<const FabricLink>(
+  const FabricAdjacency* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const FabricAdjacency>(
           &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -1405,7 +1406,7 @@ void FabricLink::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void FabricLink::MergeFrom(const FabricLink& from) {
+void FabricAdjacency::MergeFrom(const FabricAdjacency& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   if (from.name().size() > 0) {
 
@@ -1421,28 +1422,28 @@ void FabricLink::MergeFrom(const FabricLink& from) {
   }
 }
 
-void FabricLink::CopyFrom(const ::google::protobuf::Message& from) {
+void FabricAdjacency::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void FabricLink::CopyFrom(const FabricLink& from) {
+void FabricAdjacency::CopyFrom(const FabricAdjacency& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool FabricLink::IsInitialized() const {
+bool FabricAdjacency::IsInitialized() const {
 
   return true;
 }
 
-void FabricLink::Swap(FabricLink* other) {
+void FabricAdjacency::Swap(FabricAdjacency* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void FabricLink::InternalSwap(FabricLink* other) {
+void FabricAdjacency::InternalSwap(FabricAdjacency* other) {
   name_.Swap(&other->name_);
   endpoint_1_.Swap(&other->endpoint_1_);
   endpoint_2_.Swap(&other->endpoint_2_);
@@ -1450,144 +1451,144 @@ void FabricLink::InternalSwap(FabricLink* other) {
   std::swap(_cached_size_, other->_cached_size_);
 }
 
-::google::protobuf::Metadata FabricLink::GetMetadata() const {
+::google::protobuf::Metadata FabricAdjacency::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = FabricLink_descriptor_;
-  metadata.reflection = FabricLink_reflection_;
+  metadata.descriptor = FabricAdjacency_descriptor_;
+  metadata.reflection = FabricAdjacency_reflection_;
   return metadata;
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
-// FabricLink
+// FabricAdjacency
 
 // optional string name = 1;
-void FabricLink::clear_name() {
+void FabricAdjacency::clear_name() {
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& FabricLink::name() const {
-  // @@protoc_insertion_point(field_get:E2.FabricLink.name)
+ const ::std::string& FabricAdjacency::name() const {
+  // @@protoc_insertion_point(field_get:E2.FabricAdjacency.name)
   return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void FabricLink::set_name(const ::std::string& value) {
+ void FabricAdjacency::set_name(const ::std::string& value) {
   
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:E2.FabricLink.name)
+  // @@protoc_insertion_point(field_set:E2.FabricAdjacency.name)
 }
- void FabricLink::set_name(const char* value) {
+ void FabricAdjacency::set_name(const char* value) {
   
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:E2.FabricLink.name)
+  // @@protoc_insertion_point(field_set_char:E2.FabricAdjacency.name)
 }
- void FabricLink::set_name(const char* value, size_t size) {
+ void FabricAdjacency::set_name(const char* value, size_t size) {
   
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:E2.FabricLink.name)
+  // @@protoc_insertion_point(field_set_pointer:E2.FabricAdjacency.name)
 }
- ::std::string* FabricLink::mutable_name() {
+ ::std::string* FabricAdjacency::mutable_name() {
   
-  // @@protoc_insertion_point(field_mutable:E2.FabricLink.name)
+  // @@protoc_insertion_point(field_mutable:E2.FabricAdjacency.name)
   return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* FabricLink::release_name() {
+ ::std::string* FabricAdjacency::release_name() {
   
   return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void FabricLink::set_allocated_name(::std::string* name) {
+ void FabricAdjacency::set_allocated_name(::std::string* name) {
   if (name != NULL) {
     
   } else {
     
   }
   name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
-  // @@protoc_insertion_point(field_set_allocated:E2.FabricLink.name)
+  // @@protoc_insertion_point(field_set_allocated:E2.FabricAdjacency.name)
 }
 
 // optional string endpoint_1 = 2;
-void FabricLink::clear_endpoint_1() {
+void FabricAdjacency::clear_endpoint_1() {
   endpoint_1_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& FabricLink::endpoint_1() const {
-  // @@protoc_insertion_point(field_get:E2.FabricLink.endpoint_1)
+ const ::std::string& FabricAdjacency::endpoint_1() const {
+  // @@protoc_insertion_point(field_get:E2.FabricAdjacency.endpoint_1)
   return endpoint_1_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void FabricLink::set_endpoint_1(const ::std::string& value) {
+ void FabricAdjacency::set_endpoint_1(const ::std::string& value) {
   
   endpoint_1_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:E2.FabricLink.endpoint_1)
+  // @@protoc_insertion_point(field_set:E2.FabricAdjacency.endpoint_1)
 }
- void FabricLink::set_endpoint_1(const char* value) {
+ void FabricAdjacency::set_endpoint_1(const char* value) {
   
   endpoint_1_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:E2.FabricLink.endpoint_1)
+  // @@protoc_insertion_point(field_set_char:E2.FabricAdjacency.endpoint_1)
 }
- void FabricLink::set_endpoint_1(const char* value, size_t size) {
+ void FabricAdjacency::set_endpoint_1(const char* value, size_t size) {
   
   endpoint_1_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:E2.FabricLink.endpoint_1)
+  // @@protoc_insertion_point(field_set_pointer:E2.FabricAdjacency.endpoint_1)
 }
- ::std::string* FabricLink::mutable_endpoint_1() {
+ ::std::string* FabricAdjacency::mutable_endpoint_1() {
   
-  // @@protoc_insertion_point(field_mutable:E2.FabricLink.endpoint_1)
+  // @@protoc_insertion_point(field_mutable:E2.FabricAdjacency.endpoint_1)
   return endpoint_1_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* FabricLink::release_endpoint_1() {
+ ::std::string* FabricAdjacency::release_endpoint_1() {
   
   return endpoint_1_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void FabricLink::set_allocated_endpoint_1(::std::string* endpoint_1) {
+ void FabricAdjacency::set_allocated_endpoint_1(::std::string* endpoint_1) {
   if (endpoint_1 != NULL) {
     
   } else {
     
   }
   endpoint_1_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), endpoint_1);
-  // @@protoc_insertion_point(field_set_allocated:E2.FabricLink.endpoint_1)
+  // @@protoc_insertion_point(field_set_allocated:E2.FabricAdjacency.endpoint_1)
 }
 
 // optional string endpoint_2 = 3;
-void FabricLink::clear_endpoint_2() {
+void FabricAdjacency::clear_endpoint_2() {
   endpoint_2_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& FabricLink::endpoint_2() const {
-  // @@protoc_insertion_point(field_get:E2.FabricLink.endpoint_2)
+ const ::std::string& FabricAdjacency::endpoint_2() const {
+  // @@protoc_insertion_point(field_get:E2.FabricAdjacency.endpoint_2)
   return endpoint_2_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void FabricLink::set_endpoint_2(const ::std::string& value) {
+ void FabricAdjacency::set_endpoint_2(const ::std::string& value) {
   
   endpoint_2_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:E2.FabricLink.endpoint_2)
+  // @@protoc_insertion_point(field_set:E2.FabricAdjacency.endpoint_2)
 }
- void FabricLink::set_endpoint_2(const char* value) {
+ void FabricAdjacency::set_endpoint_2(const char* value) {
   
   endpoint_2_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:E2.FabricLink.endpoint_2)
+  // @@protoc_insertion_point(field_set_char:E2.FabricAdjacency.endpoint_2)
 }
- void FabricLink::set_endpoint_2(const char* value, size_t size) {
+ void FabricAdjacency::set_endpoint_2(const char* value, size_t size) {
   
   endpoint_2_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:E2.FabricLink.endpoint_2)
+  // @@protoc_insertion_point(field_set_pointer:E2.FabricAdjacency.endpoint_2)
 }
- ::std::string* FabricLink::mutable_endpoint_2() {
+ ::std::string* FabricAdjacency::mutable_endpoint_2() {
   
-  // @@protoc_insertion_point(field_mutable:E2.FabricLink.endpoint_2)
+  // @@protoc_insertion_point(field_mutable:E2.FabricAdjacency.endpoint_2)
   return endpoint_2_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* FabricLink::release_endpoint_2() {
+ ::std::string* FabricAdjacency::release_endpoint_2() {
   
   return endpoint_2_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void FabricLink::set_allocated_endpoint_2(::std::string* endpoint_2) {
+ void FabricAdjacency::set_allocated_endpoint_2(::std::string* endpoint_2) {
   if (endpoint_2 != NULL) {
     
   } else {
     
   }
   endpoint_2_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), endpoint_2);
-  // @@protoc_insertion_point(field_set_allocated:E2.FabricLink.endpoint_2)
+  // @@protoc_insertion_point(field_set_allocated:E2.FabricAdjacency.endpoint_2)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -1595,82 +1596,82 @@ void FabricLink::clear_endpoint_2() {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int FabricLinkList::kListFieldNumber;
+const int FabricAdjacencyList::kListFieldNumber;
 #endif  // !_MSC_VER
 
-FabricLinkList::FabricLinkList()
+FabricAdjacencyList::FabricAdjacencyList()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:E2.FabricLinkList)
+  // @@protoc_insertion_point(constructor:E2.FabricAdjacencyList)
 }
 
-void FabricLinkList::InitAsDefaultInstance() {
+void FabricAdjacencyList::InitAsDefaultInstance() {
   _is_default_instance_ = true;
 }
 
-FabricLinkList::FabricLinkList(const FabricLinkList& from)
+FabricAdjacencyList::FabricAdjacencyList(const FabricAdjacencyList& from)
   : ::google::protobuf::Message(),
     _internal_metadata_(NULL) {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:E2.FabricLinkList)
+  // @@protoc_insertion_point(copy_constructor:E2.FabricAdjacencyList)
 }
 
-void FabricLinkList::SharedCtor() {
+void FabricAdjacencyList::SharedCtor() {
     _is_default_instance_ = false;
   _cached_size_ = 0;
 }
 
-FabricLinkList::~FabricLinkList() {
-  // @@protoc_insertion_point(destructor:E2.FabricLinkList)
+FabricAdjacencyList::~FabricAdjacencyList() {
+  // @@protoc_insertion_point(destructor:E2.FabricAdjacencyList)
   SharedDtor();
 }
 
-void FabricLinkList::SharedDtor() {
+void FabricAdjacencyList::SharedDtor() {
   if (this != default_instance_) {
   }
 }
 
-void FabricLinkList::SetCachedSize(int size) const {
+void FabricAdjacencyList::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* FabricLinkList::descriptor() {
+const ::google::protobuf::Descriptor* FabricAdjacencyList::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return FabricLinkList_descriptor_;
+  return FabricAdjacencyList_descriptor_;
 }
 
-const FabricLinkList& FabricLinkList::default_instance() {
+const FabricAdjacencyList& FabricAdjacencyList::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_e2_5fapi_2eproto();
   return *default_instance_;
 }
 
-FabricLinkList* FabricLinkList::default_instance_ = NULL;
+FabricAdjacencyList* FabricAdjacencyList::default_instance_ = NULL;
 
-FabricLinkList* FabricLinkList::New(::google::protobuf::Arena* arena) const {
-  FabricLinkList* n = new FabricLinkList;
+FabricAdjacencyList* FabricAdjacencyList::New(::google::protobuf::Arena* arena) const {
+  FabricAdjacencyList* n = new FabricAdjacencyList;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void FabricLinkList::Clear() {
+void FabricAdjacencyList::Clear() {
   list_.Clear();
 }
 
-bool FabricLinkList::MergePartialFromCodedStream(
+bool FabricAdjacencyList::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:E2.FabricLinkList)
+  // @@protoc_insertion_point(parse_start:E2.FabricAdjacencyList)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .E2.FabricLink list = 1;
+      // repeated .E2.FabricAdjacency list = 1;
       case 1: {
         if (tag == 10) {
           DO_(input->IncrementRecursionDepth());
@@ -1699,44 +1700,44 @@ bool FabricLinkList::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:E2.FabricLinkList)
+  // @@protoc_insertion_point(parse_success:E2.FabricAdjacencyList)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:E2.FabricLinkList)
+  // @@protoc_insertion_point(parse_failure:E2.FabricAdjacencyList)
   return false;
 #undef DO_
 }
 
-void FabricLinkList::SerializeWithCachedSizes(
+void FabricAdjacencyList::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:E2.FabricLinkList)
-  // repeated .E2.FabricLink list = 1;
+  // @@protoc_insertion_point(serialize_start:E2.FabricAdjacencyList)
+  // repeated .E2.FabricAdjacency list = 1;
   for (unsigned int i = 0, n = this->list_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->list(i), output);
   }
 
-  // @@protoc_insertion_point(serialize_end:E2.FabricLinkList)
+  // @@protoc_insertion_point(serialize_end:E2.FabricAdjacencyList)
 }
 
-::google::protobuf::uint8* FabricLinkList::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* FabricAdjacencyList::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:E2.FabricLinkList)
-  // repeated .E2.FabricLink list = 1;
+  // @@protoc_insertion_point(serialize_to_array_start:E2.FabricAdjacencyList)
+  // repeated .E2.FabricAdjacency list = 1;
   for (unsigned int i = 0, n = this->list_size(); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         1, this->list(i), target);
   }
 
-  // @@protoc_insertion_point(serialize_to_array_end:E2.FabricLinkList)
+  // @@protoc_insertion_point(serialize_to_array_end:E2.FabricAdjacencyList)
   return target;
 }
 
-int FabricLinkList::ByteSize() const {
+int FabricAdjacencyList::ByteSize() const {
   int total_size = 0;
 
-  // repeated .E2.FabricLink list = 1;
+  // repeated .E2.FabricAdjacency list = 1;
   total_size += 1 * this->list_size();
   for (int i = 0; i < this->list_size(); i++) {
     total_size +=
@@ -1750,10 +1751,10 @@ int FabricLinkList::ByteSize() const {
   return total_size;
 }
 
-void FabricLinkList::MergeFrom(const ::google::protobuf::Message& from) {
+void FabricAdjacencyList::MergeFrom(const ::google::protobuf::Message& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  const FabricLinkList* source = 
-      ::google::protobuf::internal::DynamicCastToGenerated<const FabricLinkList>(
+  const FabricAdjacencyList* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const FabricAdjacencyList>(
           &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -1762,76 +1763,76 @@ void FabricLinkList::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void FabricLinkList::MergeFrom(const FabricLinkList& from) {
+void FabricAdjacencyList::MergeFrom(const FabricAdjacencyList& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   list_.MergeFrom(from.list_);
 }
 
-void FabricLinkList::CopyFrom(const ::google::protobuf::Message& from) {
+void FabricAdjacencyList::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void FabricLinkList::CopyFrom(const FabricLinkList& from) {
+void FabricAdjacencyList::CopyFrom(const FabricAdjacencyList& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool FabricLinkList::IsInitialized() const {
+bool FabricAdjacencyList::IsInitialized() const {
 
   return true;
 }
 
-void FabricLinkList::Swap(FabricLinkList* other) {
+void FabricAdjacencyList::Swap(FabricAdjacencyList* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void FabricLinkList::InternalSwap(FabricLinkList* other) {
+void FabricAdjacencyList::InternalSwap(FabricAdjacencyList* other) {
   list_.UnsafeArenaSwap(&other->list_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
 }
 
-::google::protobuf::Metadata FabricLinkList::GetMetadata() const {
+::google::protobuf::Metadata FabricAdjacencyList::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = FabricLinkList_descriptor_;
-  metadata.reflection = FabricLinkList_reflection_;
+  metadata.descriptor = FabricAdjacencyList_descriptor_;
+  metadata.reflection = FabricAdjacencyList_reflection_;
   return metadata;
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
-// FabricLinkList
+// FabricAdjacencyList
 
-// repeated .E2.FabricLink list = 1;
-int FabricLinkList::list_size() const {
+// repeated .E2.FabricAdjacency list = 1;
+int FabricAdjacencyList::list_size() const {
   return list_.size();
 }
-void FabricLinkList::clear_list() {
+void FabricAdjacencyList::clear_list() {
   list_.Clear();
 }
-const ::E2::FabricLink& FabricLinkList::list(int index) const {
-  // @@protoc_insertion_point(field_get:E2.FabricLinkList.list)
+const ::E2::FabricAdjacency& FabricAdjacencyList::list(int index) const {
+  // @@protoc_insertion_point(field_get:E2.FabricAdjacencyList.list)
   return list_.Get(index);
 }
-::E2::FabricLink* FabricLinkList::mutable_list(int index) {
-  // @@protoc_insertion_point(field_mutable:E2.FabricLinkList.list)
+::E2::FabricAdjacency* FabricAdjacencyList::mutable_list(int index) {
+  // @@protoc_insertion_point(field_mutable:E2.FabricAdjacencyList.list)
   return list_.Mutable(index);
 }
-::E2::FabricLink* FabricLinkList::add_list() {
-  // @@protoc_insertion_point(field_add:E2.FabricLinkList.list)
+::E2::FabricAdjacency* FabricAdjacencyList::add_list() {
+  // @@protoc_insertion_point(field_add:E2.FabricAdjacencyList.list)
   return list_.Add();
 }
-::google::protobuf::RepeatedPtrField< ::E2::FabricLink >*
-FabricLinkList::mutable_list() {
-  // @@protoc_insertion_point(field_mutable_list:E2.FabricLinkList.list)
+::google::protobuf::RepeatedPtrField< ::E2::FabricAdjacency >*
+FabricAdjacencyList::mutable_list() {
+  // @@protoc_insertion_point(field_mutable_list:E2.FabricAdjacencyList.list)
   return &list_;
 }
-const ::google::protobuf::RepeatedPtrField< ::E2::FabricLink >&
-FabricLinkList::list() const {
-  // @@protoc_insertion_point(field_list:E2.FabricLinkList.list)
+const ::google::protobuf::RepeatedPtrField< ::E2::FabricAdjacency >&
+FabricAdjacencyList::list() const {
+  // @@protoc_insertion_point(field_list:E2.FabricAdjacencyList.list)
   return list_;
 }
 

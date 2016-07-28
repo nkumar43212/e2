@@ -39,13 +39,13 @@
 		94DBD9751D2F7A1B00D25957 /* Metrics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94437EB01D12F6AC0079D8F2 /* Metrics.cpp */; };
 		94DBD9761D2F7A1F00D25957 /* ElementMetrics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9731D2F795800D25957 /* ElementMetrics.cpp */; };
 		94DBD9791D3045DF00D25957 /* MetricsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9771D3045DF00D25957 /* MetricsManager.cpp */; };
-		94DBD97E1D3D20A400D25957 /* FabricLink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD97C1D3D20A400D25957 /* FabricLink.cpp */; };
+		94DBD97E1D3D20A400D25957 /* FabricAdjacency.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD97C1D3D20A400D25957 /* FabricAdjacency.cpp */; };
 		94DBD9841D3D42DF00D25957 /* ServiceOrder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9821D3D42DF00D25957 /* ServiceOrder.cpp */; };
 		94DBD9871D3D468100D25957 /* ServiceLag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9851D3D468100D25957 /* ServiceLag.cpp */; };
 		94DBD9881D3D71FD00D25957 /* MetricsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9771D3045DF00D25957 /* MetricsManager.cpp */; };
 		94DBD98A1D3D88A400D25957 /* ElementServiceOrder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9891D3D88A400D25957 /* ElementServiceOrder.cpp */; };
 		94DBD98B1D3D89ED00D25957 /* ElementServiceOrder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9891D3D88A400D25957 /* ElementServiceOrder.cpp */; };
-		94DBD98C1D3D89F100D25957 /* FabricLink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD97C1D3D20A400D25957 /* FabricLink.cpp */; };
+		94DBD98C1D3D89F100D25957 /* FabricAdjacency.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD97C1D3D20A400D25957 /* FabricAdjacency.cpp */; };
 		94DBD98E1D3D8A0200D25957 /* ServiceLag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9851D3D468100D25957 /* ServiceLag.cpp */; };
 		94DBD98F1D3D8A0600D25957 /* ServiceOrder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9821D3D42DF00D25957 /* ServiceOrder.cpp */; };
 		94DBD9921D3D902300D25957 /* fabric_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94DBD9901D3D902200D25957 /* fabric_test.cpp */; };
@@ -143,8 +143,8 @@
 		94DBD9731D2F795800D25957 /* ElementMetrics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElementMetrics.cpp; sourceTree = "<group>"; };
 		94DBD9771D3045DF00D25957 /* MetricsManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MetricsManager.cpp; sourceTree = "<group>"; };
 		94DBD9781D3045DF00D25957 /* MetricsManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MetricsManager.hpp; sourceTree = "<group>"; };
-		94DBD97C1D3D20A400D25957 /* FabricLink.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FabricLink.cpp; sourceTree = "<group>"; };
-		94DBD97D1D3D20A400D25957 /* FabricLink.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FabricLink.hpp; sourceTree = "<group>"; };
+		94DBD97C1D3D20A400D25957 /* FabricAdjacency.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FabricAdjacency.cpp; sourceTree = "<group>"; };
+		94DBD97D1D3D20A400D25957 /* FabricAdjacency.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FabricAdjacency.hpp; sourceTree = "<group>"; };
 		94DBD9821D3D42DF00D25957 /* ServiceOrder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServiceOrder.cpp; sourceTree = "<group>"; };
 		94DBD9831D3D42DF00D25957 /* ServiceOrder.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ServiceOrder.hpp; sourceTree = "<group>"; };
 		94DBD9851D3D468100D25957 /* ServiceLag.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServiceLag.cpp; sourceTree = "<group>"; };
@@ -255,11 +255,11 @@
 		94DBD97B1D3D208400D25957 /* Fabric */ = {
 			isa = PBXGroup;
 			children = (
-				94DBD97C1D3D20A400D25957 /* FabricLink.cpp */,
+				94DBD97C1D3D20A400D25957 /* FabricAdjacency.cpp */,
 				944E2D1E1D4965E300CBE17A /* Fabric.cpp */,
 				944E2D211D4966E900CBE17A /* FabricCircuit.cpp */,
 				944E2D1F1D4965E300CBE17A /* Fabric.hpp */,
-				94DBD97D1D3D20A400D25957 /* FabricLink.hpp */,
+				94DBD97D1D3D20A400D25957 /* FabricAdjacency.hpp */,
 			);
 			path = Fabric;
 			sourceTree = "<group>";
@@ -536,7 +536,7 @@
 				94DBD96B1D2E218F00D25957 /* ElementUtilizationSubscription.cpp in Sources */,
 				94437E1F1D10D4440079D8F2 /* Element.cpp in Sources */,
 				94DBD9721D2E306100D25957 /* xpath_test.cpp in Sources */,
-				94DBD98C1D3D89F100D25957 /* FabricLink.cpp in Sources */,
+				94DBD98C1D3D89F100D25957 /* FabricAdjacency.cpp in Sources */,
 				94DBD98B1D3D89ED00D25957 /* ElementServiceOrder.cpp in Sources */,
 				94DBD98F1D3D8A0600D25957 /* ServiceOrder.cpp in Sources */,
 				94DBD9661D2CDC4E00D25957 /* ElementSubscriptions.cpp in Sources */,
@@ -589,7 +589,7 @@
 				944E2D251D49A2C500CBE17A /* ServiceCC.cpp in Sources */,
 				94F001B81D08AF2100EDC9F7 /* ElementDb.cpp in Sources */,
 				94151C2F1D4731DD0064D34F /* ServicePS.cpp in Sources */,
-				94DBD97E1D3D20A400D25957 /* FabricLink.cpp in Sources */,
+				94DBD97E1D3D20A400D25957 /* FabricAdjacency.cpp in Sources */,
 				94F001C41D0A1EF900EDC9F7 /* Service.cpp in Sources */,
 				94EC47271D05D15400E34A5B /* Config.cpp in Sources */,
 				94437EB21D12F6AC0079D8F2 /* Metrics.cpp in Sources */,

@@ -78,7 +78,7 @@ handle_add_fabric_link (int argc, const char *argv[])
     
     E2Client *clientp = E2Client::create(grpc::CreateChannel(AGENT_SERVER_IP_PORT, grpc::InsecureCredentials()),
                                          e2_name, 0, parser->getLogDir());
-    clientp->addFabricLink(argv[1], argv[2], argv[3]);
+    clientp->addFabricAdjacency(argv[1], argv[2], argv[3]);
 }
 
 void

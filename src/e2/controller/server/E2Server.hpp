@@ -44,8 +44,8 @@ public:
     Status getElements(ServerContext* context,
                        const NetworkElement * request,
                        NetworkElementOpStateList * reply) override;
-    Status addFabricLink(ServerContext* context,
-                         const FabricLinkList * request,
+    Status addFabricAdjacency(ServerContext* context,
+                         const FabricAdjacencyList * request,
                          ConfigurationReply * reply) override;
     Status addServiceEndpoint(ServerContext* context,
                               const ServiceEndpointList * request,

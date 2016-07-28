@@ -8,7 +8,7 @@
 
 #include "E2Server.hpp"
 #include "Element.hpp"
-#include "FabricLink.hpp"
+#include "FabricAdjacency.hpp"
 #include "Fabric.hpp"
 
 Status
@@ -141,8 +141,8 @@ E2Server::getElements (ServerContext* context,
 }
 
 Status
-E2Server::addFabricLink(ServerContext* context,
-                        const FabricLinkList * request,
+E2Server::addFabricAdjacency(ServerContext* context,
+                        const FabricAdjacencyList * request,
                         ConfigurationReply * reply)
 {
     std::string    err_str;
@@ -150,11 +150,11 @@ E2Server::addFabricLink(ServerContext* context,
     E2::ReturnCode err_code;
     
     // Make a note
-    traceLogRPC("AddFabricLink");
+    traceLogRPC("AddFabricAdjacency");
     
     for (int i = 0; i < request->list_size(); i++) {
-        const E2::FabricLink& element = request->list(i);
-        FabricLink *linkp = new FabricLink(element.name(), element.endpoint_1(), element.endpoint_2());
+        const E2::FabricAdjacency& element = request->list(i);
+        FabricAdjacency *linkp = new FabricAdjacency(element.name(), element.endpoint_1(), element.endpoint_2());
         if (!linkp) {
             err_str  = std::string("Memory Allocation Failure");
             err_code = E2::MEMORY_ERROR;
@@ -312,7 +312,7 @@ E2Server::activateService (ServerContext* context,
     
     // Bind on Fabric. Traverse all the fabric links
     for (std::vector<Element *>::iterator itr = edge_elements.begin(); itr != edge_elements.end(); itr++) {
-        FabricLink *link = Fabric::findMap(access_elementp->getName(), (*itr)->getName());
+        FabricAdjacency *link = Fabric::findMap(access_elementp->getName(), (*itr)->getName());
         if (!link) {
             continue;
         }
@@ -366,7 +366,7 @@ E2Server::deactivateService (const ServiceBinding *request)
         const NetworkElement &elt = edge_list.list(i);
         Element *element = Element::find(elt.name());
         if (element) {
-            FabricLink *link = Fabric::findMap(access_elementp->getName(), element->getName());
+            FabricAdjacency *link = Fabric::findMap(access_elementp->getName(), element->getName());
             if (!link) {
                 continue;
             }

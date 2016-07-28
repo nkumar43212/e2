@@ -38,8 +38,8 @@ void protobuf_AssignDesc_e2_5fapi_2eproto();
 void protobuf_ShutdownFile_e2_5fapi_2eproto();
 
 class ConfigurationReply;
-class FabricLink;
-class FabricLinkList;
+class FabricAdjacency;
+class FabricAdjacencyList;
 class NetworkElement;
 class NetworkElementList;
 class NetworkElementOpState;
@@ -285,32 +285,32 @@ class NetworkElementList : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class FabricLink : public ::google::protobuf::Message {
+class FabricAdjacency : public ::google::protobuf::Message {
  public:
-  FabricLink();
-  virtual ~FabricLink();
+  FabricAdjacency();
+  virtual ~FabricAdjacency();
 
-  FabricLink(const FabricLink& from);
+  FabricAdjacency(const FabricAdjacency& from);
 
-  inline FabricLink& operator=(const FabricLink& from) {
+  inline FabricAdjacency& operator=(const FabricAdjacency& from) {
     CopyFrom(from);
     return *this;
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const FabricLink& default_instance();
+  static const FabricAdjacency& default_instance();
 
-  void Swap(FabricLink* other);
+  void Swap(FabricAdjacency* other);
 
   // implements Message ----------------------------------------------
 
-  inline FabricLink* New() const { return New(NULL); }
+  inline FabricAdjacency* New() const { return New(NULL); }
 
-  FabricLink* New(::google::protobuf::Arena* arena) const;
+  FabricAdjacency* New(::google::protobuf::Arena* arena) const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const FabricLink& from);
-  void MergeFrom(const FabricLink& from);
+  void CopyFrom(const FabricAdjacency& from);
+  void MergeFrom(const FabricAdjacency& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -325,7 +325,7 @@ class FabricLink : public ::google::protobuf::Message {
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const;
-  void InternalSwap(FabricLink* other);
+  void InternalSwap(FabricAdjacency* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return _internal_metadata_.arena();
@@ -374,7 +374,7 @@ class FabricLink : public ::google::protobuf::Message {
   ::std::string* release_endpoint_2();
   void set_allocated_endpoint_2(::std::string* endpoint_2);
 
-  // @@protoc_insertion_point(class_scope:E2.FabricLink)
+  // @@protoc_insertion_point(class_scope:E2.FabricAdjacency)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -388,36 +388,36 @@ class FabricLink : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_e2_5fapi_2eproto();
 
   void InitAsDefaultInstance();
-  static FabricLink* default_instance_;
+  static FabricAdjacency* default_instance_;
 };
 // -------------------------------------------------------------------
 
-class FabricLinkList : public ::google::protobuf::Message {
+class FabricAdjacencyList : public ::google::protobuf::Message {
  public:
-  FabricLinkList();
-  virtual ~FabricLinkList();
+  FabricAdjacencyList();
+  virtual ~FabricAdjacencyList();
 
-  FabricLinkList(const FabricLinkList& from);
+  FabricAdjacencyList(const FabricAdjacencyList& from);
 
-  inline FabricLinkList& operator=(const FabricLinkList& from) {
+  inline FabricAdjacencyList& operator=(const FabricAdjacencyList& from) {
     CopyFrom(from);
     return *this;
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const FabricLinkList& default_instance();
+  static const FabricAdjacencyList& default_instance();
 
-  void Swap(FabricLinkList* other);
+  void Swap(FabricAdjacencyList* other);
 
   // implements Message ----------------------------------------------
 
-  inline FabricLinkList* New() const { return New(NULL); }
+  inline FabricAdjacencyList* New() const { return New(NULL); }
 
-  FabricLinkList* New(::google::protobuf::Arena* arena) const;
+  FabricAdjacencyList* New(::google::protobuf::Arena* arena) const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const FabricLinkList& from);
-  void MergeFrom(const FabricLinkList& from);
+  void CopyFrom(const FabricAdjacencyList& from);
+  void MergeFrom(const FabricAdjacencyList& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -432,7 +432,7 @@ class FabricLinkList : public ::google::protobuf::Message {
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const;
-  void InternalSwap(FabricLinkList* other);
+  void InternalSwap(FabricAdjacencyList* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return _internal_metadata_.arena();
@@ -448,31 +448,31 @@ class FabricLinkList : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated .E2.FabricLink list = 1;
+  // repeated .E2.FabricAdjacency list = 1;
   int list_size() const;
   void clear_list();
   static const int kListFieldNumber = 1;
-  const ::E2::FabricLink& list(int index) const;
-  ::E2::FabricLink* mutable_list(int index);
-  ::E2::FabricLink* add_list();
-  ::google::protobuf::RepeatedPtrField< ::E2::FabricLink >*
+  const ::E2::FabricAdjacency& list(int index) const;
+  ::E2::FabricAdjacency* mutable_list(int index);
+  ::E2::FabricAdjacency* add_list();
+  ::google::protobuf::RepeatedPtrField< ::E2::FabricAdjacency >*
       mutable_list();
-  const ::google::protobuf::RepeatedPtrField< ::E2::FabricLink >&
+  const ::google::protobuf::RepeatedPtrField< ::E2::FabricAdjacency >&
       list() const;
 
-  // @@protoc_insertion_point(class_scope:E2.FabricLinkList)
+  // @@protoc_insertion_point(class_scope:E2.FabricAdjacencyList)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
-  ::google::protobuf::RepeatedPtrField< ::E2::FabricLink > list_;
+  ::google::protobuf::RepeatedPtrField< ::E2::FabricAdjacency > list_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_e2_5fapi_2eproto();
   friend void protobuf_AssignDesc_e2_5fapi_2eproto();
   friend void protobuf_ShutdownFile_e2_5fapi_2eproto();
 
   void InitAsDefaultInstance();
-  static FabricLinkList* default_instance_;
+  static FabricAdjacencyList* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -1369,168 +1369,168 @@ NetworkElementList::list() const {
 
 // -------------------------------------------------------------------
 
-// FabricLink
+// FabricAdjacency
 
 // optional string name = 1;
-inline void FabricLink::clear_name() {
+inline void FabricAdjacency::clear_name() {
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& FabricLink::name() const {
-  // @@protoc_insertion_point(field_get:E2.FabricLink.name)
+inline const ::std::string& FabricAdjacency::name() const {
+  // @@protoc_insertion_point(field_get:E2.FabricAdjacency.name)
   return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void FabricLink::set_name(const ::std::string& value) {
+inline void FabricAdjacency::set_name(const ::std::string& value) {
   
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:E2.FabricLink.name)
+  // @@protoc_insertion_point(field_set:E2.FabricAdjacency.name)
 }
-inline void FabricLink::set_name(const char* value) {
+inline void FabricAdjacency::set_name(const char* value) {
   
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:E2.FabricLink.name)
+  // @@protoc_insertion_point(field_set_char:E2.FabricAdjacency.name)
 }
-inline void FabricLink::set_name(const char* value, size_t size) {
+inline void FabricAdjacency::set_name(const char* value, size_t size) {
   
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:E2.FabricLink.name)
+  // @@protoc_insertion_point(field_set_pointer:E2.FabricAdjacency.name)
 }
-inline ::std::string* FabricLink::mutable_name() {
+inline ::std::string* FabricAdjacency::mutable_name() {
   
-  // @@protoc_insertion_point(field_mutable:E2.FabricLink.name)
+  // @@protoc_insertion_point(field_mutable:E2.FabricAdjacency.name)
   return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* FabricLink::release_name() {
+inline ::std::string* FabricAdjacency::release_name() {
   
   return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void FabricLink::set_allocated_name(::std::string* name) {
+inline void FabricAdjacency::set_allocated_name(::std::string* name) {
   if (name != NULL) {
     
   } else {
     
   }
   name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
-  // @@protoc_insertion_point(field_set_allocated:E2.FabricLink.name)
+  // @@protoc_insertion_point(field_set_allocated:E2.FabricAdjacency.name)
 }
 
 // optional string endpoint_1 = 2;
-inline void FabricLink::clear_endpoint_1() {
+inline void FabricAdjacency::clear_endpoint_1() {
   endpoint_1_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& FabricLink::endpoint_1() const {
-  // @@protoc_insertion_point(field_get:E2.FabricLink.endpoint_1)
+inline const ::std::string& FabricAdjacency::endpoint_1() const {
+  // @@protoc_insertion_point(field_get:E2.FabricAdjacency.endpoint_1)
   return endpoint_1_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void FabricLink::set_endpoint_1(const ::std::string& value) {
+inline void FabricAdjacency::set_endpoint_1(const ::std::string& value) {
   
   endpoint_1_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:E2.FabricLink.endpoint_1)
+  // @@protoc_insertion_point(field_set:E2.FabricAdjacency.endpoint_1)
 }
-inline void FabricLink::set_endpoint_1(const char* value) {
+inline void FabricAdjacency::set_endpoint_1(const char* value) {
   
   endpoint_1_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:E2.FabricLink.endpoint_1)
+  // @@protoc_insertion_point(field_set_char:E2.FabricAdjacency.endpoint_1)
 }
-inline void FabricLink::set_endpoint_1(const char* value, size_t size) {
+inline void FabricAdjacency::set_endpoint_1(const char* value, size_t size) {
   
   endpoint_1_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:E2.FabricLink.endpoint_1)
+  // @@protoc_insertion_point(field_set_pointer:E2.FabricAdjacency.endpoint_1)
 }
-inline ::std::string* FabricLink::mutable_endpoint_1() {
+inline ::std::string* FabricAdjacency::mutable_endpoint_1() {
   
-  // @@protoc_insertion_point(field_mutable:E2.FabricLink.endpoint_1)
+  // @@protoc_insertion_point(field_mutable:E2.FabricAdjacency.endpoint_1)
   return endpoint_1_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* FabricLink::release_endpoint_1() {
+inline ::std::string* FabricAdjacency::release_endpoint_1() {
   
   return endpoint_1_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void FabricLink::set_allocated_endpoint_1(::std::string* endpoint_1) {
+inline void FabricAdjacency::set_allocated_endpoint_1(::std::string* endpoint_1) {
   if (endpoint_1 != NULL) {
     
   } else {
     
   }
   endpoint_1_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), endpoint_1);
-  // @@protoc_insertion_point(field_set_allocated:E2.FabricLink.endpoint_1)
+  // @@protoc_insertion_point(field_set_allocated:E2.FabricAdjacency.endpoint_1)
 }
 
 // optional string endpoint_2 = 3;
-inline void FabricLink::clear_endpoint_2() {
+inline void FabricAdjacency::clear_endpoint_2() {
   endpoint_2_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& FabricLink::endpoint_2() const {
-  // @@protoc_insertion_point(field_get:E2.FabricLink.endpoint_2)
+inline const ::std::string& FabricAdjacency::endpoint_2() const {
+  // @@protoc_insertion_point(field_get:E2.FabricAdjacency.endpoint_2)
   return endpoint_2_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void FabricLink::set_endpoint_2(const ::std::string& value) {
+inline void FabricAdjacency::set_endpoint_2(const ::std::string& value) {
   
   endpoint_2_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:E2.FabricLink.endpoint_2)
+  // @@protoc_insertion_point(field_set:E2.FabricAdjacency.endpoint_2)
 }
-inline void FabricLink::set_endpoint_2(const char* value) {
+inline void FabricAdjacency::set_endpoint_2(const char* value) {
   
   endpoint_2_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:E2.FabricLink.endpoint_2)
+  // @@protoc_insertion_point(field_set_char:E2.FabricAdjacency.endpoint_2)
 }
-inline void FabricLink::set_endpoint_2(const char* value, size_t size) {
+inline void FabricAdjacency::set_endpoint_2(const char* value, size_t size) {
   
   endpoint_2_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:E2.FabricLink.endpoint_2)
+  // @@protoc_insertion_point(field_set_pointer:E2.FabricAdjacency.endpoint_2)
 }
-inline ::std::string* FabricLink::mutable_endpoint_2() {
+inline ::std::string* FabricAdjacency::mutable_endpoint_2() {
   
-  // @@protoc_insertion_point(field_mutable:E2.FabricLink.endpoint_2)
+  // @@protoc_insertion_point(field_mutable:E2.FabricAdjacency.endpoint_2)
   return endpoint_2_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* FabricLink::release_endpoint_2() {
+inline ::std::string* FabricAdjacency::release_endpoint_2() {
   
   return endpoint_2_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void FabricLink::set_allocated_endpoint_2(::std::string* endpoint_2) {
+inline void FabricAdjacency::set_allocated_endpoint_2(::std::string* endpoint_2) {
   if (endpoint_2 != NULL) {
     
   } else {
     
   }
   endpoint_2_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), endpoint_2);
-  // @@protoc_insertion_point(field_set_allocated:E2.FabricLink.endpoint_2)
+  // @@protoc_insertion_point(field_set_allocated:E2.FabricAdjacency.endpoint_2)
 }
 
 // -------------------------------------------------------------------
 
-// FabricLinkList
+// FabricAdjacencyList
 
-// repeated .E2.FabricLink list = 1;
-inline int FabricLinkList::list_size() const {
+// repeated .E2.FabricAdjacency list = 1;
+inline int FabricAdjacencyList::list_size() const {
   return list_.size();
 }
-inline void FabricLinkList::clear_list() {
+inline void FabricAdjacencyList::clear_list() {
   list_.Clear();
 }
-inline const ::E2::FabricLink& FabricLinkList::list(int index) const {
-  // @@protoc_insertion_point(field_get:E2.FabricLinkList.list)
+inline const ::E2::FabricAdjacency& FabricAdjacencyList::list(int index) const {
+  // @@protoc_insertion_point(field_get:E2.FabricAdjacencyList.list)
   return list_.Get(index);
 }
-inline ::E2::FabricLink* FabricLinkList::mutable_list(int index) {
-  // @@protoc_insertion_point(field_mutable:E2.FabricLinkList.list)
+inline ::E2::FabricAdjacency* FabricAdjacencyList::mutable_list(int index) {
+  // @@protoc_insertion_point(field_mutable:E2.FabricAdjacencyList.list)
   return list_.Mutable(index);
 }
-inline ::E2::FabricLink* FabricLinkList::add_list() {
-  // @@protoc_insertion_point(field_add:E2.FabricLinkList.list)
+inline ::E2::FabricAdjacency* FabricAdjacencyList::add_list() {
+  // @@protoc_insertion_point(field_add:E2.FabricAdjacencyList.list)
   return list_.Add();
 }
-inline ::google::protobuf::RepeatedPtrField< ::E2::FabricLink >*
-FabricLinkList::mutable_list() {
-  // @@protoc_insertion_point(field_mutable_list:E2.FabricLinkList.list)
+inline ::google::protobuf::RepeatedPtrField< ::E2::FabricAdjacency >*
+FabricAdjacencyList::mutable_list() {
+  // @@protoc_insertion_point(field_mutable_list:E2.FabricAdjacencyList.list)
   return &list_;
 }
-inline const ::google::protobuf::RepeatedPtrField< ::E2::FabricLink >&
-FabricLinkList::list() const {
-  // @@protoc_insertion_point(field_list:E2.FabricLinkList.list)
+inline const ::google::protobuf::RepeatedPtrField< ::E2::FabricAdjacency >&
+FabricAdjacencyList::list() const {
+  // @@protoc_insertion_point(field_list:E2.FabricAdjacencyList.list)
   return list_;
 }
 

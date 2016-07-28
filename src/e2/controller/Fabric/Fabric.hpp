@@ -15,8 +15,8 @@
 #include "E2Types.h"
 #include "IndexManager.h"
 
-class FabricLink;
-typedef std::map<std::string, FabricLink *>::iterator FabricMapIterator;
+class FabricAdjacency;
+typedef std::map<std::string, FabricAdjacency *>::iterator FabricMapIterator;
 
 class Fabric {
     
@@ -26,15 +26,15 @@ class Fabric {
     
 public:
     // Manage map database
-    static FabricLink *findMap(const std::string& name);
-    static FabricLink *findMap(const std::string& ep1, const std::string ep2);
-    static status_t    addMap(FabricLink *);
-    static void        removeMap(FabricLink *);
+    static FabricAdjacency *findMap(const std::string& name);
+    static FabricAdjacency *findMap(const std::string& ep1, const std::string ep2);
+    static status_t    addMap(FabricAdjacency *);
+    static void        removeMap(FabricAdjacency *);
     static             FabricMapIterator findFirst(void);
     static             FabricMapIterator findLast(void);
     
     // Provision circuits on the fabric
-    static status_t    bindCircuit(uint32_t circuit_id, FabricLink& fabric_link);
+    static status_t    bindCircuit(uint32_t circuit_id, FabricAdjacency& fabric_link);
     static void        unBindCircuit(uint32_t circuit_id);
 };
 

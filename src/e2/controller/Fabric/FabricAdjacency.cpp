@@ -1,5 +1,5 @@
 //
-//  FabricLink.cpp
+//  FabricAdjacency.cpp
 //  e2
 //
 //  Created by NITIN KUMAR on 7/18/16.
@@ -7,12 +7,12 @@
 //
 
 #include "Element.hpp"
-#include "FabricLink.hpp"
+#include "FabricAdjacency.hpp"
 #include "ServiceLag.hpp"
 #include "Fabric.hpp"
 
 status_t
-FabricLink::activate()
+FabricAdjacency::activate()
 {
     status_t status;
  
@@ -33,7 +33,7 @@ error:
 }
 
 void
-FabricLink::deactivate()
+FabricAdjacency::deactivate()
 {
     removeLagBundle(getEndPoint1());
     removeLagBundle(getEndPoint2());
@@ -41,7 +41,7 @@ FabricLink::deactivate()
 }
 
 status_t
-FabricLink::addLagBundle (const std::string &element_name)
+FabricAdjacency::addLagBundle (const std::string &element_name)
 {
     Element *element = nullptr;
     status_t status;
@@ -70,7 +70,7 @@ FabricLink::addLagBundle (const std::string &element_name)
 }
 
 void
-FabricLink::removeLagBundle (const std::string &element_name)
+FabricAdjacency::removeLagBundle (const std::string &element_name)
 {
     Element *element = nullptr;
     
@@ -89,7 +89,7 @@ FabricLink::removeLagBundle (const std::string &element_name)
 }
 
 void
-FabricLink::getOperationalState (ElementOpstateList &opstate)
+FabricAdjacency::getOperationalState (ElementOpstateList &opstate)
 {
     // Connectivity details
     opstate["element/fabric/name"] = _name;

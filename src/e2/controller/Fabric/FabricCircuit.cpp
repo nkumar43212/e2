@@ -9,14 +9,14 @@
 #include <stdio.h>
 #include <stdio.h>
 #include "Fabric.hpp"
-#include "FabricLink.hpp"
+#include "FabricAdjacency.hpp"
 #include "Element.hpp"
 #include "IndexManager.h"
 #include "ServiceVlan.hpp"
 #include "ServiceCC.hpp"
 
 status_t
-FabricLink::addCircuit (id_idx_t circuit_id)
+FabricAdjacency::addCircuit (id_idx_t circuit_id)
 {
     // Both sides of the link
     Element *e1, *e2;
@@ -47,6 +47,6 @@ FabricLink::addCircuit (id_idx_t circuit_id)
 }
 
 void
-FabricLink::deleteCircuit (uint32_t circuit_id)
+FabricAdjacency::deleteCircuit (uint32_t circuit_id)
 {
 }

@@ -30,7 +30,7 @@ using E2::ServiceBinding;
 using E2::ServiceEndpoint;
 using E2::ServiceEndpointList;
 
-using E2::FabricLinkList;
+using E2::FabricAdjacencyList;
 
 
 

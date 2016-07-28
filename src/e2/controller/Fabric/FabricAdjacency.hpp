@@ -1,13 +1,13 @@
 //
-//  FabricLink.hpp
+//  FabricAdjacency.hpp
 //  e2
 //
 //  Created by NITIN KUMAR on 7/18/16.
 //  Copyright © 2016 Juniper Networks. All rights reserved.
 //
 
-#ifndef FabricLink_hpp
-#define FabricLink_hpp
+#ifndef FabricAdjacency_hpp
+#define FabricAdjacency_hpp
 
 #include <stdio.h>
 #include <iostream>
@@ -15,10 +15,10 @@
 #include "E2Types.h"
 #include "IndexManager.h"
 
-class FabricLink;
-typedef std::map<std::string, FabricLink *>::iterator FabricMapIterator;
+class FabricAdjacency;
+typedef std::map<std::string, FabricAdjacency *>::iterator FabricMapIterator;
 
-class FabricLink {
+class FabricAdjacency {
     std::string _name;
     std::string _ep1;
     std::string _ep2;
@@ -29,10 +29,10 @@ class FabricLink {
     void        removeLagBundle(const std::string& element_name);
 
 public:
-    FabricLink()
+    FabricAdjacency()
     {
     }
-    FabricLink(const std::string name, const std::string ep1, const std::string ep2)
+    FabricAdjacency(const std::string name, const std::string ep1, const std::string ep2)
     : _name(name), _ep1(ep1), _ep2(ep2)
     {
     }
@@ -58,4 +58,4 @@ public:
     void               deallocateCircuitId(id_idx_t id) { _circuit_manager.deallocate(id);    }
 };
 
-#endif /* FabricLink_hpp */
+#endif /* FabricAdjacency_hpp */

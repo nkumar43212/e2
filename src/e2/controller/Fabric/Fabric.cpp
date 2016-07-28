@@ -8,13 +8,13 @@
 
 #include <stdio.h>
 #include "Fabric.hpp"
-#include "FabricLink.hpp"
+#include "FabricAdjacency.hpp"
 #include <map>
 
-// Store all the FabricLinks
-std::map<std::string, FabricLink *> fabric_map;
+// Store all the FabricAdjacencys
+std::map<std::string, FabricAdjacency *> fabric_map;
 
-FabricLink *
+FabricAdjacency *
 Fabric::findMap (const std::string &name)
 {
     std::string key = name;
@@ -26,7 +26,7 @@ Fabric::findMap (const std::string &name)
     return fabric_map[key];
 }
 
-FabricLink *
+FabricAdjacency *
 Fabric::findMap (const std::string &ep1, const std::string ep2)
 {
     for (FabricMapIterator itr = fabric_map.begin(); itr != fabric_map.end(); itr++) {
@@ -39,7 +39,7 @@ Fabric::findMap (const std::string &ep1, const std::string ep2)
 }
 
 status_t
-Fabric::addMap (FabricLink *link)
+Fabric::addMap (FabricAdjacency *link)
 {
     if (fabric_map.count(link->getName()) != 0) {
         return EFAIL;
@@ -50,7 +50,7 @@ Fabric::addMap (FabricLink *link)
 }
 
 void
-Fabric::removeMap (FabricLink *link)
+Fabric::removeMap (FabricAdjacency *link)
 {
     FabricMapIterator itr = fabric_map.find(link->getName());
     if (itr != fabric_map.end()) {

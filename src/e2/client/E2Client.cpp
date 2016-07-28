@@ -73,19 +73,19 @@ E2Client::listElements()
 }
 
 void
-E2Client::addFabricLink (std::string name, std::string ep1, std::string ep2)
+E2Client::addFabricAdjacency (std::string name, std::string ep1, std::string ep2)
 {
     // Send over the list request
     ClientContext        context;
-    FabricLinkList       fabric_list;
-    FabricLink           *element;
+    FabricAdjacencyList       fabric_list;
+    FabricAdjacency           *element;
     ConfigurationReply   reply;
     
     element = fabric_list.add_list();
     element->set_name(name);
     element->set_endpoint_1(ep1);
     element->set_endpoint_2(ep2);
-    stub_->addFabricLink(&context, fabric_list, &reply);
+    stub_->addFabricAdjacency(&context, fabric_list, &reply);
 }
 
 void

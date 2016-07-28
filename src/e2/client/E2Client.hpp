@@ -30,8 +30,8 @@ using E2::NetworkElementOpState;
 using E2::NetworkElementProperty;
 using E2::NetworkElementType;
 
-using E2::FabricLink;
-using E2::FabricLinkList;
+using E2::FabricAdjacency;
+using E2::FabricAdjacencyList;
 
 using E2::ServiceBinding;
 using E2::ServiceEndpoint;
@@ -72,7 +72,7 @@ public:
     void addElement(std::string name, std::string mgmt_ip, uint8_t persona);
     void deleteElement(std::string name);
     void listElements();
-    void addFabricLink(std::string name, std::string ep1, std::string ep2);
+    void addFabricAdjacency(std::string name, std::string ep1, std::string ep2);
     void addService(std::string name, uint32_t vlan_identifier);
     void deleteService(std::string name);
     void placeService(std::string name,

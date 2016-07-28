@@ -8,7 +8,7 @@
 
 #include "Customer.hpp"
 #include "Element.hpp"
-#include "FabricLink.hpp"
+#include "FabricAdjacency.hpp"
 #include "IndexManager.h"
 #include "E2Server.hpp"
 #include "Fabric.hpp"
