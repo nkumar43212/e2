@@ -43,8 +43,8 @@ service E2 {
     rpc getElements(NetworkElement)                          returns (NetworkElementOpStateList) {}
 
     // Add/Remove fabric link that connects elements
-    rpc addFabricAdjacency(FabricAdjacencyList)                        returns (ConfigurationReply) {}
-    rpc removeFabricAdjacency(FabricAdjacencyList)                     returns (ConfigurationReply) {}
+    rpc addFabricAdjacency(FabricAdjacencyList)              returns (ConfigurationReply) {}
+    rpc removeFabricAdjacency(FabricAdjacencyList)           returns (ConfigurationReply) {}
 
     // Add/Remove a service endpoint (aka a customer)
     rpc addServiceEndpoint(ServiceEndpointList)              returns (ConfigurationReply) {}
