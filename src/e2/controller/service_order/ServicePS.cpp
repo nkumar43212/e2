@@ -9,12 +9,12 @@
 #include "ServicePS.hpp"
 
 ServiceOrder *
-ServiceOrderPS::create (uint32_t unit, std::string description_str)
+ServiceOrderPS::create (std::string interface_name_prefix, uint32_t unit, std::string description_str)
 {
     ServiceOrderParameterList list;
     
     // Build the parameter list
-    ServiceOrderParameter interface_name("name", "ps" + std::to_string(unit));
+    ServiceOrderParameter interface_name("name", interface_name_prefix + std::to_string(unit));
     ServiceOrderParameter description("description", description_str);
     list.push_back(interface_name);
     list.push_back(description);

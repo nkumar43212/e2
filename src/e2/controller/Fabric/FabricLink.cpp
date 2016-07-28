@@ -9,6 +9,7 @@
 #include "Element.hpp"
 #include "FabricLink.hpp"
 #include "ServiceLag.hpp"
+#include "Fabric.hpp"
 
 status_t
 FabricLink::activate()
@@ -20,7 +21,7 @@ FabricLink::activate()
     addLagBundle(getEndPoint2());
     
     // Update the map
-    status = addMap(this);
+    status = Fabric::addMap(this);
     if (status != EOK) {
         goto error;
     }
@@ -36,7 +37,7 @@ FabricLink::deactivate()
 {
     removeLagBundle(getEndPoint1());
     removeLagBundle(getEndPoint2());
-    removeMap(this);
+    Fabric::removeMap(this);
 }
 
 status_t

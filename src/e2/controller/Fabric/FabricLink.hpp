@@ -42,20 +42,16 @@ public:
     std::string getEndPoint1()  { return _ep1;  }
     std::string getEndPoint2()  { return _ep2;  }
     
-    // Manage map database
-    static FabricLink *findMap(const std::string& name);
-    static FabricLink *findMap(const std::string& ep1, const std::string ep2);
-    static status_t    addMap(FabricLink *);
-    static void        removeMap(FabricLink *);
-    static             FabricMapIterator findFirst(void);
-    static             FabricMapIterator findLast(void);
-    
     // Get a list of operational state values for this element
     void               getOperationalState(ElementOpstateList &list);
 
     // Manage link
     status_t           activate();
     void               deactivate();
+    
+    // Manage circuit (logical sessions) on a link
+    status_t           addCircuit(id_idx_t id);
+    void               deleteCircuit(id_idx_t id);
     
     // Manage circuit IDs on a link
     id_idx_t           allocateCircuitId()              { return _circuit_manager.allocate(); }

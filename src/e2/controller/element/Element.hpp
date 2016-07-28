@@ -85,6 +85,10 @@ class Element {
     // Logging service
     Logger           *_logger;
     
+    // Helper routines
+    std::string getServiceInterfaceNamePrefix() { return "ps"; }
+    std::string getAccessInterfaceNamePrefix()  { return "ae"; }
+    
 public:
     // Object life cycle
     Element (const std::string &name, uint64_t id, std::string mgmt_ip, ElementPersona persona, Logger *logger) :
@@ -156,13 +160,14 @@ public:
     static void  serviceOrderCallback(Element *elementp, ServiceCallbackKeyValue *kv);
     
     // Customers provisioned on the element
-    status_t     addCustomer(std::string name);
-    status_t     addCustomer(std::string name, const std::vector<std::string> port_list);
+    status_t     bindCustomer(std::string name, std::vector<std::string> port_list);
+    status_t     bindCustomerService(std::string name);
+    status_t     bindCustomerAccess(std::string name, const std::vector<std::string> port_list);
+    void         unBindCustomer(std::string name);
     status_t     addCustomerFabric(uint32_t circuit_id, std::string peer_element);
     void         deleteCustomerFabric(uint32_t circuit_id, std::string peer_element);
-    
-    void         removeCustomer(std::string name);
     uint32_t     getCustomerCount();
+    std::string  getCustomerContextName(uint32_t customer_id);
     
     // Pretty print contents
     void        description()

@@ -11,6 +11,7 @@
 #include "FabricLink.hpp"
 #include "IndexManager.h"
 #include "E2Server.hpp"
+#include "Fabric.hpp"
 
 std::string CustomerStatusStrings[] = {
     "Null",
@@ -79,48 +80,6 @@ bool
 Customer::isPresent(const std::string& name)
 {
     return (find(name) != nullptr) ? true : false;
-}
-
-status_t
-Customer::activate(const std::string& access, const std::string &service)
-{
-    traceLog("Activate on Access = " + access + ", service = " + service);
-    
-    // Locate the fabric link that connects these two end points
-    FabricLink *fp = FabricLink::findMap(access, service);
-    if (!fp) {
-        traceLog("Failed to find fabric link");
-        return ENOENT;
-    }
-    
-    // Allocate a context
-    id_idx_t circuit_id = fp->allocateCircuitId();
-    CustomerContext context(circuit_id);
-    _placement[fp->getName()] = context;
-    traceLog("Allocated circuit id = " + std::to_string(circuit_id));
-    
-    // Provision Context on Access
-    Element *element = Element::find(access);
-    if (!element) {
-        deactivate();
-        return ENOENT;
-    }
-    element->addCustomerFabric(context.getVlanId(), service);
-    
-    // Provision Context on Service
-    element = Element::find(service);
-    if (!element) {
-        deactivate();
-        return ENOENT;
-    }
-    element->addCustomerFabric(context.getVlanId(), access);
-    
-    return EOK;
-}
-
-void
-Customer::deactivate ()
-{
 }
 
 void

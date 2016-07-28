@@ -14,7 +14,7 @@
 
 class ServiceOrderPS : public ServiceOrder {
 public:
-    static ServiceOrder *create(uint32_t unit, std::string description);
+    static ServiceOrder *create(std::string interface_name_prefix, uint32_t unit, std::string description);
 };
 
 #endif /* ServicePS_hpp */

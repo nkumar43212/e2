@@ -19,9 +19,14 @@
 class E2Server final : public E2::E2::Service {
     Logger *_logger;
     
-    // Internal helper routine
-    void deactivateService(const ServiceBinding * request);
-    
+    void     deactivateService(const ServiceBinding * request);
+
+    // Trace/Debug Interface
+    void        enableLog();
+    void        disableLog();
+    void        traceLog(const std::string msg);
+    void        traceLogRPC(const std::string rpc_name);
+
 public:
     E2Server(Logger *logger) : _logger(logger)
     {
@@ -54,12 +59,6 @@ public:
     Status deactivateService(ServerContext* context,
                              const ServiceBinding * request,
                              ConfigurationReply * reply) override;
-    
-    // Trace/Debug Interface
-    void        enableLog();
-    void        disableLog();
-    void        traceLog(const std::string msg);
-    void        traceLogRPC(const std::string rpc_name);
 };
 
 #endif /* E2Server_hpp */

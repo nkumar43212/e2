@@ -1,12 +1,13 @@
 //
-//  FabricManager.cpp
+//  Fabric.cpp
 //  e2
 //
-//  Created by NITIN KUMAR on 7/18/16.
+//  Created by NITIN KUMAR on 7/27/16.
 //  Copyright © 2016 Juniper Networks. All rights reserved.
 //
 
 #include <stdio.h>
+#include "Fabric.hpp"
 #include "FabricLink.hpp"
 #include <map>
 
@@ -14,7 +15,7 @@
 std::map<std::string, FabricLink *> fabric_map;
 
 FabricLink *
-FabricLink::findMap (const std::string &name)
+Fabric::findMap (const std::string &name)
 {
     std::string key = name;
     
@@ -26,7 +27,7 @@ FabricLink::findMap (const std::string &name)
 }
 
 FabricLink *
-FabricLink::findMap (const std::string &ep1, const std::string ep2)
+Fabric::findMap (const std::string &ep1, const std::string ep2)
 {
     for (FabricMapIterator itr = fabric_map.begin(); itr != fabric_map.end(); itr++) {
         if ((itr->second->getEndPoint1() == ep1) && (itr->second->getEndPoint2() == ep2)) {
@@ -38,7 +39,7 @@ FabricLink::findMap (const std::string &ep1, const std::string ep2)
 }
 
 status_t
-FabricLink::addMap (FabricLink *link)
+Fabric::addMap (FabricLink *link)
 {
     if (fabric_map.count(link->getName()) != 0) {
         return EFAIL;
@@ -49,7 +50,7 @@ FabricLink::addMap (FabricLink *link)
 }
 
 void
-FabricLink::removeMap (FabricLink *link)
+Fabric::removeMap (FabricLink *link)
 {
     FabricMapIterator itr = fabric_map.find(link->getName());
     if (itr != fabric_map.end()) {
@@ -58,14 +59,13 @@ FabricLink::removeMap (FabricLink *link)
 }
 
 FabricMapIterator
-FabricLink::findFirst (void)
+Fabric::findFirst (void)
 {
     return fabric_map.begin();
 }
 
 FabricMapIterator
-FabricLink::findLast(void)
+Fabric::findLast(void)
 {
     return fabric_map.end();
 }
-

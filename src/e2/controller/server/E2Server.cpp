@@ -9,6 +9,7 @@
 #include "E2Server.hpp"
 #include "Element.hpp"
 #include "FabricLink.hpp"
+#include "Fabric.hpp"
 
 Status
 E2Server::addElement (ServerContext* context,
@@ -120,7 +121,7 @@ E2Server::getElements (ServerContext* context,
     }
     
     // Retrieve the fabric links
-    for (FabricMapIterator itr = FabricLink::findFirst(); itr != FabricLink::findLast(); itr++) {
+    for (FabricMapIterator itr = Fabric::findFirst(); itr != Fabric::findLast(); itr++) {
         // Get the operational state for this element
         ElementOpstateList element_opstate;
         itr->second->getOperationalState(element_opstate);
@@ -244,8 +245,7 @@ E2Server::activateService (ServerContext* context,
     
     // Make a note
     traceLogRPC("ActivateService");
-    
-    // Make a note
+  
     traceLog("ActivateService:ServiceName = " + request->service().name());
     traceLog("ActivateService:Access      = " + request->access_element().name());
     
@@ -283,11 +283,25 @@ E2Server::activateService (ServerContext* context,
         traceLog("ActivateService:Service      = " + elt.name());
     }
     
-    // Activate the customer
+    // Bind on Access element
+    std::vector<std::string> port_list;
+    for (int i = 0; i < request->access_port_list_size(); i++) {
+        port_list.push_back(request->access_port_list(i));
+    }
+    status = access_elementp->bindCustomer(customer->getName(), port_list);
+    if (status != EOK) {
+        err_str  = "Service Placement Error on Element:" + request->service().name() + "/" + access_elementp->getName();
+        reply->set_code(E2::SERVICE_PLACEMENT_ERROR);
+        reply->set_code_str(err_str);
+        deactivateService(request);
+        return Status::OK;
+    }
+    
+    // Bind on Service Edge element
+    port_list.clear();
     for (std::vector<Element *>::iterator itr = edge_elements.begin(); itr != edge_elements.end(); itr++) {
-        status = customer->activate(request->access_element().name(), (*itr)->getName());
+        status = (*itr)->bindCustomer(customer->getName(), port_list);
         if (status != EOK) {
-            // Unwind
             err_str  = "Service Placement Error on Element:" + request->service().name() + "/" + (*itr)->getName();
             reply->set_code(E2::SERVICE_PLACEMENT_ERROR);
             reply->set_code_str(err_str);
@@ -296,32 +310,20 @@ E2Server::activateService (ServerContext* context,
         }
     }
     
-    // Place on the service edge
-    Element *element;
+    // Bind on Fabric. Traverse all the fabric links
     for (std::vector<Element *>::iterator itr = edge_elements.begin(); itr != edge_elements.end(); itr++) {
-        element = *itr;
-        status = element->addCustomer(request->service().name());
+        FabricLink *link = Fabric::findMap(access_elementp->getName(), (*itr)->getName());
+        if (!link) {
+            continue;
+        }
+        status = link->addCircuit(customer->getId());
         if (status != EOK) {
-            err_str  = "Service Placement Error on Element:" + request->service().name() + "/" + element->getName();
+            err_str  = "Service Placement Error on Fabric:" + request->service().name();
             reply->set_code(E2::SERVICE_PLACEMENT_ERROR);
             reply->set_code_str(err_str);
             deactivateService(request);
             return Status::OK;
         }
-    }
-    
-    // Place on the access edge
-    std::vector<std::string> port_list;
-    for (int i = 0; i < request->access_port_list_size(); i++) {
-        port_list.push_back(request->access_port_list(i));
-    }
-    status = access_elementp->addCustomer(request->service().name(), port_list);
-    if (status != EOK) {
-        err_str  = "Service Placement Error on Element:" + request->service().name() + "/" + access_elementp->getName();
-        reply->set_code(E2::SERVICE_PLACEMENT_ERROR);
-        reply->set_code_str(err_str);
-        deactivateService(request);
-        return Status::OK;
     }
     
     reply->set_code(E2::SUCCESS);
@@ -345,15 +347,17 @@ void
 E2Server::deactivateService (const ServiceBinding *request)
 {
     traceLog("ActivateService:ServiceName = " + request->service().name());
+  
     // Do we know about the service
-    if (!Customer::isPresent(request->service().name())) {
+    Customer *customer = Customer::find(request->service().name());
+    if (!customer) {
         return;
     }
     
     // Do we know about the access element
     Element *access_elementp = Element::find(request->access_element().name());
     if (access_elementp) {
-        access_elementp->removeCustomer(request->service().name());
+        access_elementp->unBindCustomer(request->service().name());
     }
     
     // Do we know all the edge elements
@@ -362,7 +366,11 @@ E2Server::deactivateService (const ServiceBinding *request)
         const NetworkElement &elt = edge_list.list(i);
         Element *element = Element::find(elt.name());
         if (element) {
-            element->removeCustomer(request->service().name());
+            FabricLink *link = Fabric::findMap(access_elementp->getName(), element->getName());
+            if (!link) {
+                continue;
+            }
+            link->deleteCircuit(customer->getId());
         }
     }
 }

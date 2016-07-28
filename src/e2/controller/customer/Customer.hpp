@@ -67,10 +67,6 @@ public:
     static bool      isPresent(const std::string& name);
     static Customer* find(const std::string& name);
     
-    // Activate a customer
-    status_t         activate(const std::string& access, const std::string& service);
-    void             deactivate();
-    
     // Attrributes on a customer profile
     
     // Debug/Log Interface

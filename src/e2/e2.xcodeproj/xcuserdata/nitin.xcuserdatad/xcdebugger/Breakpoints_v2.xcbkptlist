@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "controller/server/E2Server.cpp"
-            timestampString = "491282773.632181"
+            timestampString = "491383721.957147"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "E2Server::getElements (ServerContext* context, const NetworkElement * request, NetworkElementOpStateList * reply)"
             landmarkType = "5">
          </BreakpointContent>
@@ -424,11 +424,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "controller/Fabric/FabricLink.cpp"
-            timestampString = "490566154.669526"
+            timestampString = "491383721.957147"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "FabricLink::activate()"
             landmarkType = "5">
          </BreakpointContent>
@@ -632,28 +632,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "controller/server/E2Server.cpp"
-            timestampString = "491282773.632181"
+            timestampString = "491383721.957147"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
             landmarkName = "E2Server::addServiceEndpoint (ServerContext* context, const ServiceEndpointList * request, ConfigurationReply * reply)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "controller/server/E2Server.cpp"
-            timestampString = "491282773.632181"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "299"
-            endingLineNumber = "299"
-            landmarkName = "E2Server::activateService (ServerContext* context, const ServiceBinding *request, ConfigurationReply * reply)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -683,22 +667,6 @@
             timestampString = "491282773.632181"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "303"
-            endingLineNumber = "303"
-            landmarkName = "E2Server::activateService (ServerContext* context, const ServiceBinding *request, ConfigurationReply * reply)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "controller/server/E2Server.cpp"
-            timestampString = "491282773.632181"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
             startingLineNumber = "253"
             endingLineNumber = "253"
             landmarkName = "E2Server::activateService (ServerContext* context, const ServiceBinding *request, ConfigurationReply * reply)"
@@ -712,59 +680,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "controller/server/E2Server.cpp"
-            timestampString = "491282773.632181"
+            timestampString = "491383721.957147"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "288"
-            endingLineNumber = "288"
-            landmarkName = "E2Server::activateService (ServerContext* context, const ServiceBinding *request, ConfigurationReply * reply)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "controller/customer/Customer.cpp"
-            timestampString = "491253711.741442"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "Customer::activate(const std::string&amp; access, const std::string &amp;service)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "controller/element/ElementCustomer.cpp"
-            timestampString = "491282773.632181"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "Element::addCustomerFabric (uint32_t circuit_id, std::string peer_element)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "controller/server/E2Server.cpp"
-            timestampString = "491292536.768155"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
             landmarkName = "E2Server::addElement (ServerContext* context, const NetworkElementList *request, ConfigurationReply * reply)"
             landmarkType = "5">
          </BreakpointContent>
@@ -776,12 +696,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "controller/server/E2Server.cpp"
-            timestampString = "491292567.90232"
+            timestampString = "491383721.957147"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "E2Server::addElement (ServerContext* context, const NetworkElementList *request, ConfigurationReply * reply)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "controller/Fabric/FabricCircuit.cpp"
+            timestampString = "491383721.957147"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "FabricLink::addCircuit (id_idx_t circuit_id)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
