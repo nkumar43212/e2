@@ -46,6 +46,10 @@ service E2 {
     rpc addFabricAdjacency(FabricAdjacencyList)              returns (ConfigurationReply) {}
     rpc removeFabricAdjacency(FabricAdjacencyList)           returns (ConfigurationReply) {}
 
+    // Add/Remove physical service access
+    rpc addServiceAccess(ServicePhysicalEndpointList)        returns (ConfigurationReply) {}
+    rpc removeServiceAccess(ServicePhysicalEndpointList)     returns (ConfigurationReply) {}
+
     // Add/Remove a service endpoint (aka a customer)
     rpc addServiceEndpoint(ServiceEndpointList)              returns (ConfigurationReply) {}
     rpc removeServiceEndpoint(ServiceEndpointList)           returns (ConfigurationReply) {}
@@ -127,6 +131,18 @@ message ConfigurationReply {
     string     code_str                                     = 2;
 };
 
+// Physical Service endpoint. This represents the physical connection
+// over which a service is brought in
+message ServicePhysicalEndpoint {
+    string          name                                    = 1;
+    string          element_name                            = 2;
+    repeated string port_list                               = 3;
+};
+
+message ServicePhysicalEndpointList {
+    repeated ServicePhysicalEndpoint list                   = 1;
+};
+
 // Service Endpoint. This represents an end customer
 message ServiceEndpoint {
     // Name of the service
@@ -150,9 +166,8 @@ message ServiceBinding {
     // point to point binding has two end points. The access is where
     // the customer comes in, and the edge where the actual service
     // function is implemented
-    NetworkElement      access_element                      = 2;
-    repeated  string    access_port_list                    = 3;
-    NetworkElementList  edge_element_list                   = 4;
+    ServicePhysicalEndpoint access_element                  = 2;
+    NetworkElementList      edge_element_list               = 3;
 };
 
 // Result of the operation

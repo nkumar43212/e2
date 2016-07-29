@@ -119,9 +119,20 @@ E2Client::deleteService (std::string name)
 }
 
 void
+E2Client::addPhysicalAccess(std::string name, std::string element_name, std::string access_port)
+{
+    
+}
+
+void
+E2Client::removePhysicalAccess(std::string name)
+{
+}
+
+void
 E2Client::placeService (std::string name,
                         std::string pe_1, std::string pe_2,
-                        std::string access_element, std::string access_port)
+                        std::string access)
 {
     // Send over the list request
     ClientContext               context;
@@ -129,6 +140,7 @@ E2Client::placeService (std::string name,
     ConfigurationReply          reply;
     ServiceEndpoint *           servicep;
     NetworkElementList *        pe_elements;
+    ServicePhysicalEndpoint *   accessp;
     
     // Name of the service
     servicep = request.mutable_service();
@@ -142,20 +154,16 @@ E2Client::placeService (std::string name,
     elementp    = pe_elements->add_list();
     elementp->set_name(pe_2);
     
-    // Access Element
-    elementp    = request.mutable_access_element();
-    elementp->set_name(access_element);
-    std::string *port;
-    port = request.add_access_port_list();
-    *port = access_port;
-    
+    // Access attachment
+    accessp    = request.mutable_access_element();
+    accessp->set_name(access);
     stub_->activateService(&context, request, &reply);
 }
 
 void
 E2Client::deplaceService (std::string name,
                         std::string pe_1, std::string pe_2,
-                        std::string access_element)
+                        std::string access)
 {
     // Send over the list request
     ClientContext               context;
@@ -163,6 +171,7 @@ E2Client::deplaceService (std::string name,
     ConfigurationReply          reply;
     ServiceEndpoint *           servicep;
     NetworkElementList *        pe_elements;
+    ServicePhysicalEndpoint *   accessp;
     
     // Name of the service
     servicep = request.mutable_service();
@@ -177,10 +186,7 @@ E2Client::deplaceService (std::string name,
     elementp->set_name(pe_2);
     
     // Access Element
-    elementp    = request.mutable_access_element();
-    elementp->set_name(access_element);
-    std::string *port;
-    port = request.add_access_port_list();
-    
+    accessp    = request.mutable_access_element();
+    accessp->set_name(access);
     stub_->deactivateService(&context, request, &reply);
 }

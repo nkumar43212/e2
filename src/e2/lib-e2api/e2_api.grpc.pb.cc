@@ -20,6 +20,8 @@ static const char* E2_method_names[] = {
   "/E2.E2/getElements",
   "/E2.E2/addFabricAdjacency",
   "/E2.E2/removeFabricAdjacency",
+  "/E2.E2/addServiceAccess",
+  "/E2.E2/removeServiceAccess",
   "/E2.E2/addServiceEndpoint",
   "/E2.E2/removeServiceEndpoint",
   "/E2.E2/activateService",
@@ -37,10 +39,12 @@ E2::Stub::Stub(const std::shared_ptr< ::grpc::Channel>& channel)
   , rpcmethod_getElements_(E2_method_names[2], ::grpc::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_addFabricAdjacency_(E2_method_names[3], ::grpc::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_removeFabricAdjacency_(E2_method_names[4], ::grpc::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_addServiceEndpoint_(E2_method_names[5], ::grpc::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_removeServiceEndpoint_(E2_method_names[6], ::grpc::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_activateService_(E2_method_names[7], ::grpc::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_deactivateService_(E2_method_names[8], ::grpc::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_addServiceAccess_(E2_method_names[5], ::grpc::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_removeServiceAccess_(E2_method_names[6], ::grpc::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_addServiceEndpoint_(E2_method_names[7], ::grpc::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_removeServiceEndpoint_(E2_method_names[8], ::grpc::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_activateService_(E2_method_names[9], ::grpc::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_deactivateService_(E2_method_names[10], ::grpc::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status E2::Stub::addElement(::grpc::ClientContext* context, const ::E2::NetworkElementList& request, ::E2::ConfigurationReply* response) {
@@ -83,6 +87,22 @@ E2::Stub::Stub(const std::shared_ptr< ::grpc::Channel>& channel)
   return new ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>(channel_.get(), cq, rpcmethod_removeFabricAdjacency_, context, request);
 }
 
+::grpc::Status E2::Stub::addServiceAccess(::grpc::ClientContext* context, const ::E2::ServicePhysicalEndpointList& request, ::E2::ConfigurationReply* response) {
+  return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_addServiceAccess_, context, request, response);
+}
+
+::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* E2::Stub::AsyncaddServiceAccessRaw(::grpc::ClientContext* context, const ::E2::ServicePhysicalEndpointList& request, ::grpc::CompletionQueue* cq) {
+  return new ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>(channel_.get(), cq, rpcmethod_addServiceAccess_, context, request);
+}
+
+::grpc::Status E2::Stub::removeServiceAccess(::grpc::ClientContext* context, const ::E2::ServicePhysicalEndpointList& request, ::E2::ConfigurationReply* response) {
+  return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_removeServiceAccess_, context, request, response);
+}
+
+::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* E2::Stub::AsyncremoveServiceAccessRaw(::grpc::ClientContext* context, const ::E2::ServicePhysicalEndpointList& request, ::grpc::CompletionQueue* cq) {
+  return new ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>(channel_.get(), cq, rpcmethod_removeServiceAccess_, context, request);
+}
+
 ::grpc::Status E2::Stub::addServiceEndpoint(::grpc::ClientContext* context, const ::E2::ServiceEndpointList& request, ::E2::ConfigurationReply* response) {
   return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_addServiceEndpoint_, context, request, response);
 }
@@ -115,7 +135,7 @@ E2::Stub::Stub(const std::shared_ptr< ::grpc::Channel>& channel)
   return new ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>(channel_.get(), cq, rpcmethod_deactivateService_, context, request);
 }
 
-E2::AsyncService::AsyncService() : ::grpc::AsynchronousService(E2_method_names, 9) {}
+E2::AsyncService::AsyncService() : ::grpc::AsynchronousService(E2_method_names, 11) {}
 
 E2::Service::~Service() {
   delete service_;
@@ -176,6 +196,28 @@ void E2::AsyncService::RequestremoveFabricAdjacency(::grpc::ServerContext* conte
   AsynchronousService::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
 }
 
+::grpc::Status E2::Service::addServiceAccess(::grpc::ServerContext* context, const ::E2::ServicePhysicalEndpointList* request, ::E2::ConfigurationReply* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+void E2::AsyncService::RequestaddServiceAccess(::grpc::ServerContext* context, ::E2::ServicePhysicalEndpointList* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+  AsynchronousService::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
+}
+
+::grpc::Status E2::Service::removeServiceAccess(::grpc::ServerContext* context, const ::E2::ServicePhysicalEndpointList* request, ::E2::ConfigurationReply* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+void E2::AsyncService::RequestremoveServiceAccess(::grpc::ServerContext* context, ::E2::ServicePhysicalEndpointList* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+  AsynchronousService::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+}
+
 ::grpc::Status E2::Service::addServiceEndpoint(::grpc::ServerContext* context, const ::E2::ServiceEndpointList* request, ::E2::ConfigurationReply* response) {
   (void) context;
   (void) request;
@@ -184,7 +226,7 @@ void E2::AsyncService::RequestremoveFabricAdjacency(::grpc::ServerContext* conte
 }
 
 void E2::AsyncService::RequestaddServiceEndpoint(::grpc::ServerContext* context, ::E2::ServiceEndpointList* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-  AsynchronousService::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
+  AsynchronousService::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
 }
 
 ::grpc::Status E2::Service::removeServiceEndpoint(::grpc::ServerContext* context, const ::E2::ServiceEndpointList* request, ::E2::ConfigurationReply* response) {
@@ -195,7 +237,7 @@ void E2::AsyncService::RequestaddServiceEndpoint(::grpc::ServerContext* context,
 }
 
 void E2::AsyncService::RequestremoveServiceEndpoint(::grpc::ServerContext* context, ::E2::ServiceEndpointList* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-  AsynchronousService::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+  AsynchronousService::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
 }
 
 ::grpc::Status E2::Service::activateService(::grpc::ServerContext* context, const ::E2::ServiceBinding* request, ::E2::ConfigurationReply* response) {
@@ -206,7 +248,7 @@ void E2::AsyncService::RequestremoveServiceEndpoint(::grpc::ServerContext* conte
 }
 
 void E2::AsyncService::RequestactivateService(::grpc::ServerContext* context, ::E2::ServiceBinding* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-  AsynchronousService::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+  AsynchronousService::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
 }
 
 ::grpc::Status E2::Service::deactivateService(::grpc::ServerContext* context, const ::E2::ServiceBinding* request, ::E2::ConfigurationReply* response) {
@@ -217,7 +259,7 @@ void E2::AsyncService::RequestactivateService(::grpc::ServerContext* context, ::
 }
 
 void E2::AsyncService::RequestdeactivateService(::grpc::ServerContext* context, ::E2::ServiceBinding* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-  AsynchronousService::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
+  AsynchronousService::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
 }
 
 ::grpc::RpcService* E2::Service::service() {
@@ -253,20 +295,30 @@ void E2::AsyncService::RequestdeactivateService(::grpc::ServerContext* context, 
   service_->AddMethod(new ::grpc::RpcServiceMethod(
       E2_method_names[5],
       ::grpc::RpcMethod::NORMAL_RPC,
+      new ::grpc::RpcMethodHandler< E2::Service, ::E2::ServicePhysicalEndpointList, ::E2::ConfigurationReply>(
+          std::mem_fn(&E2::Service::addServiceAccess), this)));
+  service_->AddMethod(new ::grpc::RpcServiceMethod(
+      E2_method_names[6],
+      ::grpc::RpcMethod::NORMAL_RPC,
+      new ::grpc::RpcMethodHandler< E2::Service, ::E2::ServicePhysicalEndpointList, ::E2::ConfigurationReply>(
+          std::mem_fn(&E2::Service::removeServiceAccess), this)));
+  service_->AddMethod(new ::grpc::RpcServiceMethod(
+      E2_method_names[7],
+      ::grpc::RpcMethod::NORMAL_RPC,
       new ::grpc::RpcMethodHandler< E2::Service, ::E2::ServiceEndpointList, ::E2::ConfigurationReply>(
           std::mem_fn(&E2::Service::addServiceEndpoint), this)));
   service_->AddMethod(new ::grpc::RpcServiceMethod(
-      E2_method_names[6],
+      E2_method_names[8],
       ::grpc::RpcMethod::NORMAL_RPC,
       new ::grpc::RpcMethodHandler< E2::Service, ::E2::ServiceEndpointList, ::E2::ConfigurationReply>(
           std::mem_fn(&E2::Service::removeServiceEndpoint), this)));
   service_->AddMethod(new ::grpc::RpcServiceMethod(
-      E2_method_names[7],
+      E2_method_names[9],
       ::grpc::RpcMethod::NORMAL_RPC,
       new ::grpc::RpcMethodHandler< E2::Service, ::E2::ServiceBinding, ::E2::ConfigurationReply>(
           std::mem_fn(&E2::Service::activateService), this)));
   service_->AddMethod(new ::grpc::RpcServiceMethod(
-      E2_method_names[8],
+      E2_method_names[10],
       ::grpc::RpcMethod::NORMAL_RPC,
       new ::grpc::RpcMethodHandler< E2::Service, ::E2::ServiceBinding, ::E2::ConfigurationReply>(
           std::mem_fn(&E2::Service::deactivateService), this)));

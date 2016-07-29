@@ -34,6 +34,8 @@ using E2::FabricAdjacency;
 using E2::FabricAdjacencyList;
 
 using E2::ServiceBinding;
+using E2::ServicePhysicalEndpoint;
+using E2::ServicePhysicalEndpointList;
 using E2::ServiceEndpoint;
 using E2::ServiceEndpointList;
 
@@ -73,14 +75,17 @@ public:
     void deleteElement(std::string name);
     void listElements();
     void addFabricAdjacency(std::string name, std::string ep1, std::string ep2);
+    void removeFabricAdjacency(std::string name);
     void addService(std::string name, uint32_t vlan_identifier);
     void deleteService(std::string name);
+    void addPhysicalAccess(std::string name, std::string element_name, std::string access_port);
+    void removePhysicalAccess(std::string name);
     void placeService(std::string name,
                       std::string pe_1, std::string pe_2,
-                      std::string access_element, std::string access_port);
+                      std::string physical_access);
     void deplaceService(std::string name,
                         std::string pe_1, std::string pe_2,
-                        std::string access_element);
+                        std::string physical_access);
 };
 
 

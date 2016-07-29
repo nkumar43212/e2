@@ -50,6 +50,14 @@ class E2 GRPC_FINAL {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>> AsyncremoveFabricAdjacency(::grpc::ClientContext* context, const ::E2::FabricAdjacencyList& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>>(AsyncremoveFabricAdjacencyRaw(context, request, cq));
     }
+    virtual ::grpc::Status addServiceAccess(::grpc::ClientContext* context, const ::E2::ServicePhysicalEndpointList& request, ::E2::ConfigurationReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>> AsyncaddServiceAccess(::grpc::ClientContext* context, const ::E2::ServicePhysicalEndpointList& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>>(AsyncaddServiceAccessRaw(context, request, cq));
+    }
+    virtual ::grpc::Status removeServiceAccess(::grpc::ClientContext* context, const ::E2::ServicePhysicalEndpointList& request, ::E2::ConfigurationReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>> AsyncremoveServiceAccess(::grpc::ClientContext* context, const ::E2::ServicePhysicalEndpointList& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>>(AsyncremoveServiceAccessRaw(context, request, cq));
+    }
     virtual ::grpc::Status addServiceEndpoint(::grpc::ClientContext* context, const ::E2::ServiceEndpointList& request, ::E2::ConfigurationReply* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>> AsyncaddServiceEndpoint(::grpc::ClientContext* context, const ::E2::ServiceEndpointList& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>>(AsyncaddServiceEndpointRaw(context, request, cq));
@@ -72,6 +80,8 @@ class E2 GRPC_FINAL {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::E2::NetworkElementOpStateList>* AsyncgetElementsRaw(::grpc::ClientContext* context, const ::E2::NetworkElement& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>* AsyncaddFabricAdjacencyRaw(::grpc::ClientContext* context, const ::E2::FabricAdjacencyList& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>* AsyncremoveFabricAdjacencyRaw(::grpc::ClientContext* context, const ::E2::FabricAdjacencyList& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>* AsyncaddServiceAccessRaw(::grpc::ClientContext* context, const ::E2::ServicePhysicalEndpointList& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>* AsyncremoveServiceAccessRaw(::grpc::ClientContext* context, const ::E2::ServicePhysicalEndpointList& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>* AsyncaddServiceEndpointRaw(::grpc::ClientContext* context, const ::E2::ServiceEndpointList& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>* AsyncremoveServiceEndpointRaw(::grpc::ClientContext* context, const ::E2::ServiceEndpointList& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::E2::ConfigurationReply>* AsyncactivateServiceRaw(::grpc::ClientContext* context, const ::E2::ServiceBinding& request, ::grpc::CompletionQueue* cq) = 0;
@@ -100,6 +110,14 @@ class E2 GRPC_FINAL {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>> AsyncremoveFabricAdjacency(::grpc::ClientContext* context, const ::E2::FabricAdjacencyList& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>>(AsyncremoveFabricAdjacencyRaw(context, request, cq));
     }
+    ::grpc::Status addServiceAccess(::grpc::ClientContext* context, const ::E2::ServicePhysicalEndpointList& request, ::E2::ConfigurationReply* response) GRPC_OVERRIDE;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>> AsyncaddServiceAccess(::grpc::ClientContext* context, const ::E2::ServicePhysicalEndpointList& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>>(AsyncaddServiceAccessRaw(context, request, cq));
+    }
+    ::grpc::Status removeServiceAccess(::grpc::ClientContext* context, const ::E2::ServicePhysicalEndpointList& request, ::E2::ConfigurationReply* response) GRPC_OVERRIDE;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>> AsyncremoveServiceAccess(::grpc::ClientContext* context, const ::E2::ServicePhysicalEndpointList& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>>(AsyncremoveServiceAccessRaw(context, request, cq));
+    }
     ::grpc::Status addServiceEndpoint(::grpc::ClientContext* context, const ::E2::ServiceEndpointList& request, ::E2::ConfigurationReply* response) GRPC_OVERRIDE;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>> AsyncaddServiceEndpoint(::grpc::ClientContext* context, const ::E2::ServiceEndpointList& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>>(AsyncaddServiceEndpointRaw(context, request, cq));
@@ -124,6 +142,8 @@ class E2 GRPC_FINAL {
     ::grpc::ClientAsyncResponseReader< ::E2::NetworkElementOpStateList>* AsyncgetElementsRaw(::grpc::ClientContext* context, const ::E2::NetworkElement& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
     ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* AsyncaddFabricAdjacencyRaw(::grpc::ClientContext* context, const ::E2::FabricAdjacencyList& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
     ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* AsyncremoveFabricAdjacencyRaw(::grpc::ClientContext* context, const ::E2::FabricAdjacencyList& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
+    ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* AsyncaddServiceAccessRaw(::grpc::ClientContext* context, const ::E2::ServicePhysicalEndpointList& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
+    ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* AsyncremoveServiceAccessRaw(::grpc::ClientContext* context, const ::E2::ServicePhysicalEndpointList& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
     ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* AsyncaddServiceEndpointRaw(::grpc::ClientContext* context, const ::E2::ServiceEndpointList& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
     ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* AsyncremoveServiceEndpointRaw(::grpc::ClientContext* context, const ::E2::ServiceEndpointList& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
     ::grpc::ClientAsyncResponseReader< ::E2::ConfigurationReply>* AsyncactivateServiceRaw(::grpc::ClientContext* context, const ::E2::ServiceBinding& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
@@ -133,6 +153,8 @@ class E2 GRPC_FINAL {
     const ::grpc::RpcMethod rpcmethod_getElements_;
     const ::grpc::RpcMethod rpcmethod_addFabricAdjacency_;
     const ::grpc::RpcMethod rpcmethod_removeFabricAdjacency_;
+    const ::grpc::RpcMethod rpcmethod_addServiceAccess_;
+    const ::grpc::RpcMethod rpcmethod_removeServiceAccess_;
     const ::grpc::RpcMethod rpcmethod_addServiceEndpoint_;
     const ::grpc::RpcMethod rpcmethod_removeServiceEndpoint_;
     const ::grpc::RpcMethod rpcmethod_activateService_;
@@ -149,6 +171,8 @@ class E2 GRPC_FINAL {
     virtual ::grpc::Status getElements(::grpc::ServerContext* context, const ::E2::NetworkElement* request, ::E2::NetworkElementOpStateList* response);
     virtual ::grpc::Status addFabricAdjacency(::grpc::ServerContext* context, const ::E2::FabricAdjacencyList* request, ::E2::ConfigurationReply* response);
     virtual ::grpc::Status removeFabricAdjacency(::grpc::ServerContext* context, const ::E2::FabricAdjacencyList* request, ::E2::ConfigurationReply* response);
+    virtual ::grpc::Status addServiceAccess(::grpc::ServerContext* context, const ::E2::ServicePhysicalEndpointList* request, ::E2::ConfigurationReply* response);
+    virtual ::grpc::Status removeServiceAccess(::grpc::ServerContext* context, const ::E2::ServicePhysicalEndpointList* request, ::E2::ConfigurationReply* response);
     virtual ::grpc::Status addServiceEndpoint(::grpc::ServerContext* context, const ::E2::ServiceEndpointList* request, ::E2::ConfigurationReply* response);
     virtual ::grpc::Status removeServiceEndpoint(::grpc::ServerContext* context, const ::E2::ServiceEndpointList* request, ::E2::ConfigurationReply* response);
     virtual ::grpc::Status activateService(::grpc::ServerContext* context, const ::E2::ServiceBinding* request, ::E2::ConfigurationReply* response);
@@ -166,6 +190,8 @@ class E2 GRPC_FINAL {
     void RequestgetElements(::grpc::ServerContext* context, ::E2::NetworkElement* request, ::grpc::ServerAsyncResponseWriter< ::E2::NetworkElementOpStateList>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
     void RequestaddFabricAdjacency(::grpc::ServerContext* context, ::E2::FabricAdjacencyList* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
     void RequestremoveFabricAdjacency(::grpc::ServerContext* context, ::E2::FabricAdjacencyList* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
+    void RequestaddServiceAccess(::grpc::ServerContext* context, ::E2::ServicePhysicalEndpointList* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
+    void RequestremoveServiceAccess(::grpc::ServerContext* context, ::E2::ServicePhysicalEndpointList* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
     void RequestaddServiceEndpoint(::grpc::ServerContext* context, ::E2::ServiceEndpointList* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
     void RequestremoveServiceEndpoint(::grpc::ServerContext* context, ::E2::ServiceEndpointList* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
     void RequestactivateService(::grpc::ServerContext* context, ::E2::ServiceBinding* request, ::grpc::ServerAsyncResponseWriter< ::E2::ConfigurationReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);

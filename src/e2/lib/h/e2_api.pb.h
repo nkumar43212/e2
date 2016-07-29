@@ -48,6 +48,8 @@ class NetworkElementProperty;
 class ServiceBinding;
 class ServiceEndpoint;
 class ServiceEndpointList;
+class ServicePhysicalEndpoint;
+class ServicePhysicalEndpointList;
 
 enum NetworkElementType {
   ACCESS_NODE = 0,
@@ -935,6 +937,202 @@ class ConfigurationReply : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
+class ServicePhysicalEndpoint : public ::google::protobuf::Message {
+ public:
+  ServicePhysicalEndpoint();
+  virtual ~ServicePhysicalEndpoint();
+
+  ServicePhysicalEndpoint(const ServicePhysicalEndpoint& from);
+
+  inline ServicePhysicalEndpoint& operator=(const ServicePhysicalEndpoint& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ServicePhysicalEndpoint& default_instance();
+
+  void Swap(ServicePhysicalEndpoint* other);
+
+  // implements Message ----------------------------------------------
+
+  inline ServicePhysicalEndpoint* New() const { return New(NULL); }
+
+  ServicePhysicalEndpoint* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ServicePhysicalEndpoint& from);
+  void MergeFrom(const ServicePhysicalEndpoint& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(ServicePhysicalEndpoint* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string name = 1;
+  void clear_name();
+  static const int kNameFieldNumber = 1;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
+
+  // optional string element_name = 2;
+  void clear_element_name();
+  static const int kElementNameFieldNumber = 2;
+  const ::std::string& element_name() const;
+  void set_element_name(const ::std::string& value);
+  void set_element_name(const char* value);
+  void set_element_name(const char* value, size_t size);
+  ::std::string* mutable_element_name();
+  ::std::string* release_element_name();
+  void set_allocated_element_name(::std::string* element_name);
+
+  // repeated string port_list = 3;
+  int port_list_size() const;
+  void clear_port_list();
+  static const int kPortListFieldNumber = 3;
+  const ::std::string& port_list(int index) const;
+  ::std::string* mutable_port_list(int index);
+  void set_port_list(int index, const ::std::string& value);
+  void set_port_list(int index, const char* value);
+  void set_port_list(int index, const char* value, size_t size);
+  ::std::string* add_port_list();
+  void add_port_list(const ::std::string& value);
+  void add_port_list(const char* value);
+  void add_port_list(const char* value, size_t size);
+  const ::google::protobuf::RepeatedPtrField< ::std::string>& port_list() const;
+  ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_port_list();
+
+  // @@protoc_insertion_point(class_scope:E2.ServicePhysicalEndpoint)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
+  ::google::protobuf::internal::ArenaStringPtr element_name_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> port_list_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_e2_5fapi_2eproto();
+  friend void protobuf_AssignDesc_e2_5fapi_2eproto();
+  friend void protobuf_ShutdownFile_e2_5fapi_2eproto();
+
+  void InitAsDefaultInstance();
+  static ServicePhysicalEndpoint* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ServicePhysicalEndpointList : public ::google::protobuf::Message {
+ public:
+  ServicePhysicalEndpointList();
+  virtual ~ServicePhysicalEndpointList();
+
+  ServicePhysicalEndpointList(const ServicePhysicalEndpointList& from);
+
+  inline ServicePhysicalEndpointList& operator=(const ServicePhysicalEndpointList& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ServicePhysicalEndpointList& default_instance();
+
+  void Swap(ServicePhysicalEndpointList* other);
+
+  // implements Message ----------------------------------------------
+
+  inline ServicePhysicalEndpointList* New() const { return New(NULL); }
+
+  ServicePhysicalEndpointList* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ServicePhysicalEndpointList& from);
+  void MergeFrom(const ServicePhysicalEndpointList& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(ServicePhysicalEndpointList* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .E2.ServicePhysicalEndpoint list = 1;
+  int list_size() const;
+  void clear_list();
+  static const int kListFieldNumber = 1;
+  const ::E2::ServicePhysicalEndpoint& list(int index) const;
+  ::E2::ServicePhysicalEndpoint* mutable_list(int index);
+  ::E2::ServicePhysicalEndpoint* add_list();
+  ::google::protobuf::RepeatedPtrField< ::E2::ServicePhysicalEndpoint >*
+      mutable_list();
+  const ::google::protobuf::RepeatedPtrField< ::E2::ServicePhysicalEndpoint >&
+      list() const;
+
+  // @@protoc_insertion_point(class_scope:E2.ServicePhysicalEndpointList)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::google::protobuf::RepeatedPtrField< ::E2::ServicePhysicalEndpoint > list_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_e2_5fapi_2eproto();
+  friend void protobuf_AssignDesc_e2_5fapi_2eproto();
+  friend void protobuf_ShutdownFile_e2_5fapi_2eproto();
+
+  void InitAsDefaultInstance();
+  static ServicePhysicalEndpointList* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class ServiceEndpoint : public ::google::protobuf::Message {
  public:
   ServiceEndpoint();
@@ -1174,35 +1372,19 @@ class ServiceBinding : public ::google::protobuf::Message {
   ::E2::ServiceEndpoint* release_service();
   void set_allocated_service(::E2::ServiceEndpoint* service);
 
-  // optional .E2.NetworkElement access_element = 2;
+  // optional .E2.ServicePhysicalEndpoint access_element = 2;
   bool has_access_element() const;
   void clear_access_element();
   static const int kAccessElementFieldNumber = 2;
-  const ::E2::NetworkElement& access_element() const;
-  ::E2::NetworkElement* mutable_access_element();
-  ::E2::NetworkElement* release_access_element();
-  void set_allocated_access_element(::E2::NetworkElement* access_element);
+  const ::E2::ServicePhysicalEndpoint& access_element() const;
+  ::E2::ServicePhysicalEndpoint* mutable_access_element();
+  ::E2::ServicePhysicalEndpoint* release_access_element();
+  void set_allocated_access_element(::E2::ServicePhysicalEndpoint* access_element);
 
-  // repeated string access_port_list = 3;
-  int access_port_list_size() const;
-  void clear_access_port_list();
-  static const int kAccessPortListFieldNumber = 3;
-  const ::std::string& access_port_list(int index) const;
-  ::std::string* mutable_access_port_list(int index);
-  void set_access_port_list(int index, const ::std::string& value);
-  void set_access_port_list(int index, const char* value);
-  void set_access_port_list(int index, const char* value, size_t size);
-  ::std::string* add_access_port_list();
-  void add_access_port_list(const ::std::string& value);
-  void add_access_port_list(const char* value);
-  void add_access_port_list(const char* value, size_t size);
-  const ::google::protobuf::RepeatedPtrField< ::std::string>& access_port_list() const;
-  ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_access_port_list();
-
-  // optional .E2.NetworkElementList edge_element_list = 4;
+  // optional .E2.NetworkElementList edge_element_list = 3;
   bool has_edge_element_list() const;
   void clear_edge_element_list();
-  static const int kEdgeElementListFieldNumber = 4;
+  static const int kEdgeElementListFieldNumber = 3;
   const ::E2::NetworkElementList& edge_element_list() const;
   ::E2::NetworkElementList* mutable_edge_element_list();
   ::E2::NetworkElementList* release_edge_element_list();
@@ -1214,8 +1396,7 @@ class ServiceBinding : public ::google::protobuf::Message {
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
   ::E2::ServiceEndpoint* service_;
-  ::E2::NetworkElement* access_element_;
-  ::google::protobuf::RepeatedPtrField< ::std::string> access_port_list_;
+  ::E2::ServicePhysicalEndpoint* access_element_;
   ::E2::NetworkElementList* edge_element_list_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_e2_5fapi_2eproto();
@@ -2063,6 +2244,184 @@ inline void ConfigurationReply::set_allocated_code_str(::std::string* code_str) 
 
 // -------------------------------------------------------------------
 
+// ServicePhysicalEndpoint
+
+// optional string name = 1;
+inline void ServicePhysicalEndpoint::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& ServicePhysicalEndpoint::name() const {
+  // @@protoc_insertion_point(field_get:E2.ServicePhysicalEndpoint.name)
+  return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void ServicePhysicalEndpoint::set_name(const ::std::string& value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:E2.ServicePhysicalEndpoint.name)
+}
+inline void ServicePhysicalEndpoint::set_name(const char* value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:E2.ServicePhysicalEndpoint.name)
+}
+inline void ServicePhysicalEndpoint::set_name(const char* value, size_t size) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:E2.ServicePhysicalEndpoint.name)
+}
+inline ::std::string* ServicePhysicalEndpoint::mutable_name() {
+  
+  // @@protoc_insertion_point(field_mutable:E2.ServicePhysicalEndpoint.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* ServicePhysicalEndpoint::release_name() {
+  
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void ServicePhysicalEndpoint::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    
+  } else {
+    
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:E2.ServicePhysicalEndpoint.name)
+}
+
+// optional string element_name = 2;
+inline void ServicePhysicalEndpoint::clear_element_name() {
+  element_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& ServicePhysicalEndpoint::element_name() const {
+  // @@protoc_insertion_point(field_get:E2.ServicePhysicalEndpoint.element_name)
+  return element_name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void ServicePhysicalEndpoint::set_element_name(const ::std::string& value) {
+  
+  element_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:E2.ServicePhysicalEndpoint.element_name)
+}
+inline void ServicePhysicalEndpoint::set_element_name(const char* value) {
+  
+  element_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:E2.ServicePhysicalEndpoint.element_name)
+}
+inline void ServicePhysicalEndpoint::set_element_name(const char* value, size_t size) {
+  
+  element_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:E2.ServicePhysicalEndpoint.element_name)
+}
+inline ::std::string* ServicePhysicalEndpoint::mutable_element_name() {
+  
+  // @@protoc_insertion_point(field_mutable:E2.ServicePhysicalEndpoint.element_name)
+  return element_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* ServicePhysicalEndpoint::release_element_name() {
+  
+  return element_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void ServicePhysicalEndpoint::set_allocated_element_name(::std::string* element_name) {
+  if (element_name != NULL) {
+    
+  } else {
+    
+  }
+  element_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), element_name);
+  // @@protoc_insertion_point(field_set_allocated:E2.ServicePhysicalEndpoint.element_name)
+}
+
+// repeated string port_list = 3;
+inline int ServicePhysicalEndpoint::port_list_size() const {
+  return port_list_.size();
+}
+inline void ServicePhysicalEndpoint::clear_port_list() {
+  port_list_.Clear();
+}
+inline const ::std::string& ServicePhysicalEndpoint::port_list(int index) const {
+  // @@protoc_insertion_point(field_get:E2.ServicePhysicalEndpoint.port_list)
+  return port_list_.Get(index);
+}
+inline ::std::string* ServicePhysicalEndpoint::mutable_port_list(int index) {
+  // @@protoc_insertion_point(field_mutable:E2.ServicePhysicalEndpoint.port_list)
+  return port_list_.Mutable(index);
+}
+inline void ServicePhysicalEndpoint::set_port_list(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:E2.ServicePhysicalEndpoint.port_list)
+  port_list_.Mutable(index)->assign(value);
+}
+inline void ServicePhysicalEndpoint::set_port_list(int index, const char* value) {
+  port_list_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:E2.ServicePhysicalEndpoint.port_list)
+}
+inline void ServicePhysicalEndpoint::set_port_list(int index, const char* value, size_t size) {
+  port_list_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:E2.ServicePhysicalEndpoint.port_list)
+}
+inline ::std::string* ServicePhysicalEndpoint::add_port_list() {
+  return port_list_.Add();
+}
+inline void ServicePhysicalEndpoint::add_port_list(const ::std::string& value) {
+  port_list_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:E2.ServicePhysicalEndpoint.port_list)
+}
+inline void ServicePhysicalEndpoint::add_port_list(const char* value) {
+  port_list_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:E2.ServicePhysicalEndpoint.port_list)
+}
+inline void ServicePhysicalEndpoint::add_port_list(const char* value, size_t size) {
+  port_list_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:E2.ServicePhysicalEndpoint.port_list)
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+ServicePhysicalEndpoint::port_list() const {
+  // @@protoc_insertion_point(field_list:E2.ServicePhysicalEndpoint.port_list)
+  return port_list_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+ServicePhysicalEndpoint::mutable_port_list() {
+  // @@protoc_insertion_point(field_mutable_list:E2.ServicePhysicalEndpoint.port_list)
+  return &port_list_;
+}
+
+// -------------------------------------------------------------------
+
+// ServicePhysicalEndpointList
+
+// repeated .E2.ServicePhysicalEndpoint list = 1;
+inline int ServicePhysicalEndpointList::list_size() const {
+  return list_.size();
+}
+inline void ServicePhysicalEndpointList::clear_list() {
+  list_.Clear();
+}
+inline const ::E2::ServicePhysicalEndpoint& ServicePhysicalEndpointList::list(int index) const {
+  // @@protoc_insertion_point(field_get:E2.ServicePhysicalEndpointList.list)
+  return list_.Get(index);
+}
+inline ::E2::ServicePhysicalEndpoint* ServicePhysicalEndpointList::mutable_list(int index) {
+  // @@protoc_insertion_point(field_mutable:E2.ServicePhysicalEndpointList.list)
+  return list_.Mutable(index);
+}
+inline ::E2::ServicePhysicalEndpoint* ServicePhysicalEndpointList::add_list() {
+  // @@protoc_insertion_point(field_add:E2.ServicePhysicalEndpointList.list)
+  return list_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::E2::ServicePhysicalEndpoint >*
+ServicePhysicalEndpointList::mutable_list() {
+  // @@protoc_insertion_point(field_mutable_list:E2.ServicePhysicalEndpointList.list)
+  return &list_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::E2::ServicePhysicalEndpoint >&
+ServicePhysicalEndpointList::list() const {
+  // @@protoc_insertion_point(field_list:E2.ServicePhysicalEndpointList.list)
+  return list_;
+}
+
+// -------------------------------------------------------------------
+
 // ServiceEndpoint
 
 // optional string name = 1;
@@ -2197,7 +2556,7 @@ inline void ServiceBinding::set_allocated_service(::E2::ServiceEndpoint* service
   // @@protoc_insertion_point(field_set_allocated:E2.ServiceBinding.service)
 }
 
-// optional .E2.NetworkElement access_element = 2;
+// optional .E2.ServicePhysicalEndpoint access_element = 2;
 inline bool ServiceBinding::has_access_element() const {
   return !_is_default_instance_ && access_element_ != NULL;
 }
@@ -2205,25 +2564,25 @@ inline void ServiceBinding::clear_access_element() {
   if (GetArenaNoVirtual() == NULL && access_element_ != NULL) delete access_element_;
   access_element_ = NULL;
 }
-inline const ::E2::NetworkElement& ServiceBinding::access_element() const {
+inline const ::E2::ServicePhysicalEndpoint& ServiceBinding::access_element() const {
   // @@protoc_insertion_point(field_get:E2.ServiceBinding.access_element)
   return access_element_ != NULL ? *access_element_ : *default_instance_->access_element_;
 }
-inline ::E2::NetworkElement* ServiceBinding::mutable_access_element() {
+inline ::E2::ServicePhysicalEndpoint* ServiceBinding::mutable_access_element() {
   
   if (access_element_ == NULL) {
-    access_element_ = new ::E2::NetworkElement;
+    access_element_ = new ::E2::ServicePhysicalEndpoint;
   }
   // @@protoc_insertion_point(field_mutable:E2.ServiceBinding.access_element)
   return access_element_;
 }
-inline ::E2::NetworkElement* ServiceBinding::release_access_element() {
+inline ::E2::ServicePhysicalEndpoint* ServiceBinding::release_access_element() {
   
-  ::E2::NetworkElement* temp = access_element_;
+  ::E2::ServicePhysicalEndpoint* temp = access_element_;
   access_element_ = NULL;
   return temp;
 }
-inline void ServiceBinding::set_allocated_access_element(::E2::NetworkElement* access_element) {
+inline void ServiceBinding::set_allocated_access_element(::E2::ServicePhysicalEndpoint* access_element) {
   delete access_element_;
   access_element_ = access_element;
   if (access_element) {
@@ -2234,61 +2593,7 @@ inline void ServiceBinding::set_allocated_access_element(::E2::NetworkElement* a
   // @@protoc_insertion_point(field_set_allocated:E2.ServiceBinding.access_element)
 }
 
-// repeated string access_port_list = 3;
-inline int ServiceBinding::access_port_list_size() const {
-  return access_port_list_.size();
-}
-inline void ServiceBinding::clear_access_port_list() {
-  access_port_list_.Clear();
-}
-inline const ::std::string& ServiceBinding::access_port_list(int index) const {
-  // @@protoc_insertion_point(field_get:E2.ServiceBinding.access_port_list)
-  return access_port_list_.Get(index);
-}
-inline ::std::string* ServiceBinding::mutable_access_port_list(int index) {
-  // @@protoc_insertion_point(field_mutable:E2.ServiceBinding.access_port_list)
-  return access_port_list_.Mutable(index);
-}
-inline void ServiceBinding::set_access_port_list(int index, const ::std::string& value) {
-  // @@protoc_insertion_point(field_set:E2.ServiceBinding.access_port_list)
-  access_port_list_.Mutable(index)->assign(value);
-}
-inline void ServiceBinding::set_access_port_list(int index, const char* value) {
-  access_port_list_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:E2.ServiceBinding.access_port_list)
-}
-inline void ServiceBinding::set_access_port_list(int index, const char* value, size_t size) {
-  access_port_list_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:E2.ServiceBinding.access_port_list)
-}
-inline ::std::string* ServiceBinding::add_access_port_list() {
-  return access_port_list_.Add();
-}
-inline void ServiceBinding::add_access_port_list(const ::std::string& value) {
-  access_port_list_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:E2.ServiceBinding.access_port_list)
-}
-inline void ServiceBinding::add_access_port_list(const char* value) {
-  access_port_list_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:E2.ServiceBinding.access_port_list)
-}
-inline void ServiceBinding::add_access_port_list(const char* value, size_t size) {
-  access_port_list_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:E2.ServiceBinding.access_port_list)
-}
-inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
-ServiceBinding::access_port_list() const {
-  // @@protoc_insertion_point(field_list:E2.ServiceBinding.access_port_list)
-  return access_port_list_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::std::string>*
-ServiceBinding::mutable_access_port_list() {
-  // @@protoc_insertion_point(field_mutable_list:E2.ServiceBinding.access_port_list)
-  return &access_port_list_;
-}
-
-// optional .E2.NetworkElementList edge_element_list = 4;
+// optional .E2.NetworkElementList edge_element_list = 3;
 inline bool ServiceBinding::has_edge_element_list() const {
   return !_is_default_instance_ && edge_element_list_ != NULL;
 }
@@ -2326,6 +2631,10 @@ inline void ServiceBinding::set_allocated_edge_element_list(::E2::NetworkElement
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

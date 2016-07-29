@@ -621,7 +621,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "126"
             endingLineNumber = "126"
-            landmarkName = "E2Client::placeService (std::string name, std::string pe_1, std::string pe_2, std::string access_element, std::string access_port)"
+            landmarkName = "E2Client::placeService (std::string name, std::string pe_1, std::string pe_2, std::string access)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -660,7 +660,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "controller/server/E2Server.cpp"
@@ -676,7 +676,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "controller/server/E2Server.cpp"
@@ -717,7 +717,71 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "23"
             endingLineNumber = "23"
-            landmarkName = "FabricLink::addCircuit (id_idx_t circuit_id)"
+            landmarkName = "FabricAdjacency::addCircuit (id_idx_t circuit_id)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "controller/server/E2Server.cpp"
+            timestampString = "491437381.844258"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "E2Server::addFabricAdjacency(ServerContext* context, const FabricAdjacencyList * request, ConfigurationReply * reply)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "controller/server/E2Server.cpp"
+            timestampString = "491437387.173669"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
+            landmarkName = "E2Server::addServiceEndpoint (ServerContext* context, const ServiceEndpointList * request, ConfigurationReply * reply)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "controller/server/E2Server.cpp"
+            timestampString = "491440023.519907"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "287"
+            endingLineNumber = "287"
+            landmarkName = "E2Server::activateService (ServerContext* context, const ServiceBinding *request, ConfigurationReply * reply)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "controller/server/E2Server.cpp"
+            timestampString = "491440030.320523"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
+            landmarkName = "E2Server::activateService (ServerContext* context, const ServiceBinding *request, ConfigurationReply * reply)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

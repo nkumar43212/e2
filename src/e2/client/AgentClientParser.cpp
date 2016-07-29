@@ -94,7 +94,7 @@ handle_place_service (int argc, const char *argv[])
         element_list.push_back(argv[i+2]);
     }
     
-    clientp->placeService(argv[1], argv[2], argv[3], argv[4], argv[5]);
+    clientp->placeService(argv[1], argv[2], argv[3], argv[4]);
 }
 
 void
@@ -112,6 +112,27 @@ handle_deplace_service (int argc, const char *argv[])
     
     clientp->deplaceService(argv[1], argv[2], argv[3], argv[4]);
 }
+
+void
+handle_add_physical_access (int argc, const char *argv[])
+{
+    std::string e2_name("e2");
+    
+    E2Client *clientp = E2Client::create(grpc::CreateChannel(AGENT_SERVER_IP_PORT, grpc::InsecureCredentials()),
+                                         e2_name, 0, parser->getLogDir());
+    clientp->addPhysicalAccess(argv[1], argv[2], argv[3]);
+}
+
+void
+handle_delete_physical_access (int argc, const char *argv[])
+{
+    std::string e2_name("e2");
+    
+    E2Client *clientp = E2Client::create(grpc::CreateChannel(AGENT_SERVER_IP_PORT, grpc::InsecureCredentials()),
+                                         e2_name, 0, parser->getLogDir());
+    clientp->removePhysicalAccess(argv[1]);
+}
+
 
 void
 handle_add_service (int argc, const char *argv[])
@@ -183,16 +204,16 @@ handle_basic_test (int argc, const char *argv[])
     argv[0] = "add-service", argv[1] = "s3", argv[3] = "300";
     handle_add_service(argc, argv);
     
-    argc = 6;
-    argv[0] = "place-service", argv[1] = "s1", argv[2] = "edge1", argv[3] = "edge2", argv[4] = "access1", argv[5] = "xe-0/0/0";
+    argc = 5;
+    argv[0] = "place-service", argv[1] = "s1", argv[2] = "edge1", argv[3] = "edge2", argv[4] = "access-port1";
     handle_place_service(argc, argv);
     
-    argc = 6;
-    argv[0] = "place-service", argv[1] = "s2", argv[2] = "edge1", argv[3] = "edge2", argv[4] = "access2", argv[5] = "xe-0/0/1";
+    argc = 5;
+    argv[0] = "place-service", argv[1] = "s2", argv[2] = "edge1", argv[3] = "edge2", argv[4] = "access-port2";
     handle_place_service(argc, argv);
     
-    argc = 6;
-    argv[0] = "place-service", argv[1] = "s3", argv[2] = "edge1", argv[3] = "edge2", argv[4] = "access1", argv[5] = "xe-0/0/2";
+    argc = 5;
+    argv[0] = "place-service", argv[1] = "s3", argv[2] = "edge1", argv[3] = "edge2", argv[4] = "access-port3";
     handle_place_service(argc, argv);
 }
 
@@ -255,10 +276,26 @@ entry_t agent_client_commands [] = {
     },
     
     {
+        .e_cmd     = std::string("add-physical-access"),
+        .e_argc    = 4,
+        .e_help    = std::string("Add a physical access point to E2"),
+        .e_usage   = std::string("add-physical-access <name> <access-element> <port-name>"),
+        .e_handler = handle_add_physical_access
+    },
+   
+    {
+        .e_cmd     = std::string("delete-physical-access"),
+        .e_argc    = 2,
+        .e_help    = std::string("Delete a physical access point to E2"),
+        .e_usage   = std::string("delete-physical-access <name>"),
+        .e_handler = handle_delete_physical_access
+    },
+    
+    {
         .e_cmd     = std::string("place-service"),
-        .e_argc    = 6,
+        .e_argc    = 5,
         .e_help    = std::string("Place a service to E2"),
-        .e_usage   = std::string("place-service <name> <element1> <element2> <access_element> <access_port>"),
+        .e_usage   = std::string("place-service <name> <element1> <element2> <access_port>"),
         .e_handler = handle_place_service
     },
     
